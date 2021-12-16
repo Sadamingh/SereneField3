@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Data Acquisition 10 | Selenium</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Data Acquisition 10 | Selenium</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Data Acquisition
+</section>
+<section data-field="body" class="e-content">
+<section name="ead7" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="e366" id="e366" class="graf graf--h3 graf--leading graf--title">Data Acquisition 10 | Selenium</h3><figure name="556f" id="556f" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*U8lD-7lVuFGJcmjvxuvoRw.png" data-width="1274" data-height="714" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*U8lD-7lVuFGJcmjvxuvoRw.png"></figure><ol class="postList"><li name="57b7" id="57b7" class="graf graf--li graf-after--figure"><strong class="markup--strong markup--li-strong">Selenium Introduction</strong></li></ol><p name="ee14" id="ee14" class="graf graf--p graf-after--li">Selenium is an open-source web-based automation tool. Python language is used with Selenium for testing. We have used Python programs to scrape data from websites, but there are three scenarios that make it more challenging. For example, if we want to log in or click some buttons, it can be impossible if we use only the beautifulsoup.</p><p name="565d" id="565d" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">2. Installation</strong></p><p name="6bb5" id="6bb5" class="graf graf--p graf-after--p">To use the selenium on our computer, we have to install it first.</p><p name="005a" id="005a" class="graf graf--p graf-after--p">Step 1. Download/install Chrome browser.</p><p name="29c6" id="29c6" class="graf graf--p graf-after--p">Step 2. Install python packages we need.</p><pre name="5f7a" id="5f7a" class="graf graf--pre graf-after--p">$ pip install -U selenium<br>$ pip install chromedriver</pre><p name="9548" id="9548" class="graf graf--p graf-after--pre">Step 3. Install chrome driver binary executable (non-Python code):</p><pre name="e10d" id="e10d" class="graf graf--pre graf-after--p">$ brew cask install chromedriver</pre><p name="f731" id="f731" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">3. Starter Code for Selenium</strong></p><p name="677c" id="677c" class="graf graf--p graf-after--p">We can use the following code to test the selenium,</p><figure name="2a4b" id="2a4b" class="graf graf--figure graf--iframe graf-after--p"><script src="https://gist.github.com/Sadamingh/9fe768d76793aa6967036726f2b3b8bf.js"></script></figure><p name="3880" id="3880" class="graf graf--p graf-after--figure">This program will open a new instance of chrome browser for us. If we run the code above, then it is going to create a new instance for us. Then if we simply press the Enter key, the instance will be closed.</p><p name="044f" id="044f" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">4. Browser Seaching Simulation</strong></p><p name="39cc" id="39cc" class="graf graf--p graf-after--p">If we want to use selenium to search something for us, we can actually write a script to help us to do so. To find the search box element, we can view the html code for google, where we can discover,</p><pre name="1981" id="1981" class="graf graf--pre graf-after--p">&lt;input class=&quot;gLFyf gsfi&quot; maxlength=&quot;2048&quot; name=&quot;q&quot; type=&quot;text&quot; jsaction=&quot;paste:puy29d&quot; aria-autocomplete=&quot;both&quot; aria-haspopup=&quot;false&quot; autocapitalize=&quot;off&quot; autocomplete=&quot;off&quot; autocorrect=&quot;off&quot; autofocus=&quot;&quot; role=&quot;combobox&quot; spellcheck=&quot;false&quot; title=&quot;Search&quot; value=&quot;&quot; aria-label=&quot;Search&quot; data-ved=&quot;0ahUKEwi4yJ-667btAhUhMn0KHeLHBvUQ39UDCAY&quot;&gt;</pre><p name="41fe" id="41fe" class="graf graf--p graf-after--pre">Then we can know that the name for the search box element is “q”. To grab this element for us, we can write,</p><pre name="b7be" id="b7be" class="graf graf--pre graf-after--p">search_box = driver.find_element_by_name(&#39;q&#39;)</pre><p name="36e2" id="36e2" class="graf graf--p graf-after--pre">Then we can use the following statement to sent words to search in this box,</p><pre name="7ea0" id="7ea0" class="graf graf--pre graf-after--p">search_box.send_keys(query)</pre><p name="07a9" id="07a9" class="graf graf--p graf-after--pre">Finally, the .submit method will then send the words for us,</p><pre name="3e16" id="3e16" class="graf graf--pre graf-after--p">search_box.submit()</pre><p name="01d8" id="01d8" class="graf graf--p graf-after--pre">In summary, we can test the following code,</p><figure name="9874" id="9874" class="graf graf--figure graf--iframe graf-after--p"><script src="https://gist.github.com/Sadamingh/46aa1b4e793294e03822ad388bb7c8dc.js"></script></figure><p name="2557" id="2557" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">5. Button Clicking Simulation</strong></p><p name="6526" id="6526" class="graf graf--p graf-after--p">To test on clicking on a certain button, we can use the following statement on a statement</p><pre name="b895" id="b895" class="graf graf--pre graf-after--p">btn.click()</pre><p name="bcb9" id="bcb9" class="graf graf--p graf-after--pre">An interesting instance is to create a clicking instance based on the wepage of the willyoupressthebutton.com. There are two buttons on this page and we can choose one to click. The program is,</p><figure name="18ca" id="18ca" class="graf graf--figure graf--iframe graf-after--p"><script src="https://gist.github.com/Sadamingh/e8dc47623bd5bbd5fcd8f32721fb7a75.js"></script></figure><p name="bf56" id="bf56" class="graf graf--p graf-after--figure">The result can be (should be different based on different options):</p><pre name="9b4b" id="9b4b" class="graf graf--pre graf-after--p">WILL YOU PRESS THE BUTTON? (yes/no):yes<br>Yes: 41290 (56%)<br>No: 31976 (44%)<br>Press Enter to quit</pre><p name="2ab8" id="2ab8" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">6. Logging in Simulation</strong></p><p name="5d29" id="5d29" class="graf graf--p graf-after--p">We can also write a program to simlate the actions of logging in twitter (quite similar to what we have done before),</p><figure name="2e49" id="2e49" class="graf graf--figure graf--iframe graf-after--p"><script src="https://gist.github.com/Sadamingh/efb58d652f0f641f7c905e16212ce410.js"></script></figure><p name="c5c2" id="c5c2" class="graf graf--p graf-after--figure">Also, to make it better looking, the GUI can be used to create a window for the users to type in their username and password,</p><figure name="316b" id="316b" class="graf graf--figure graf--iframe graf-after--p"><script src="https://gist.github.com/Sadamingh/1b2f937c9a295e140610f25ed9ddf946.js"></script></figure><p name="c046" id="c046" class="graf graf--p graf-after--figure">After running this code, a GUI window will be created to make things clear to our users,</p><figure name="8c2e" id="8c2e" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*8n2OgHY9e4-_R9BU9yRseA.png" data-width="1088" data-height="292" src="https://cdn-images-1.medium.com/max/800/1*8n2OgHY9e4-_R9BU9yRseA.png"></figure><p name="eb35" id="eb35" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">7. Scrolling Simulation</strong></p><p name="6837" id="6837" class="graf graf--p graf-after--p">Sometimes, the information we want to grab is from different pages and these pages can be accessed by scrolling down the browser. The statement that we can use to scroll down is,</p><pre name="b4a4" id="b4a4" class="graf graf--pre graf-after--p">driver.execute_script(&quot;window.scrollTo(0, 10000);&quot;)</pre><p name="bdd1" id="bdd1" class="graf graf--p graf-after--pre">Then we can test this on the reddit. Remeber to pause for 2 second after each scrolling for the information to load.</p><figure name="edbb" id="edbb" class="graf graf--figure graf--iframe graf-after--p graf--trailing"><script src="https://gist.github.com/Sadamingh/a20c1836143d6a08e0a6211306f74652.js"></script></figure></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/faeb1d1b7a88"><time class="dt-published" datetime="2020-12-05T16:29:36.735Z">December 5, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/data-acquisition-10-selenium-faeb1d1b7a88" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

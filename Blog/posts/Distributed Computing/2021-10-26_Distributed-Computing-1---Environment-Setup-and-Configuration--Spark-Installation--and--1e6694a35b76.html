@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Distributed Computing 1 | Environment Setup and Configuration, Spark Installation, and…</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Distributed Computing 1 | Environment Setup and Configuration, Spark Installation, and…</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Distributed Computing
+</section>
+<section data-field="body" class="e-content">
+<section name="f2ea" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="0880" id="0880" class="graf graf--h3 graf--leading graf--title">Distributed Computing 1 | <strong class="markup--strong markup--h3-strong">Environment Setup and Configuration, Spark Installation, and Autogenerate PEP8 Pattern</strong></h3><figure name="c321" id="c321" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*O0GTaAjwJfHp-HOWCnn5Xg.png" data-width="1144" data-height="634" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*O0GTaAjwJfHp-HOWCnn5Xg.png"></figure><ol class="postList"><li name="78c0" id="78c0" class="graf graf--li graf-after--figure"><strong class="markup--strong markup--li-strong">Environment Setup</strong></li></ol><p name="92ca" id="92ca" class="graf graf--p graf-after--li"><strong class="markup--strong markup--p-strong">(1) Create an Environment</strong></p><pre name="b32b" id="b32b" class="graf graf--pre graf-after--p">$ conda create --name DistributedComputing python=3 -y</pre><p name="c47f" id="c47f" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(2) Activating the Environment</strong></p><pre name="c604" id="c604" class="graf graf--pre graf-after--p">$ conda activate DistributedComputing<br>$ conda info --envs<br>...<br>DistributedComputing  *  ...<br>...</pre><p name="2f34" id="2f34" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(3) Deactivating the Environment</strong></p><pre name="0446" id="0446" class="graf graf--pre graf-after--p">$ conda deactivate<br>$ conda info --envs<br>...<br>base                  *  ...<br>DistributedComputing     ...<br>...</pre><p name="7da4" id="7da4" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(4) Export the Environment</strong></p><pre name="3303" id="3303" class="graf graf--pre graf-after--p">$ conda activate DistributedComputing<br>$ conda env export &gt; DistributedComputing_environment.yml<br>$ ls *.yml</pre><p name="08a0" id="08a0" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(5) Remove an Environment</strong></p><pre name="c4b5" id="c4b5" class="graf graf--pre graf-after--p">$ conda deactivate<br>$ conda remove --name DistributedComputing --all<br>...<br>Proceed ([y]/n)? y<br>...<br>$ conda info --envs<br>...<br>base                  *  </pre><p name="c768" id="c768" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(6) Create an Environment by YML File</strong></p><pre name="4d66" id="4d66" class="graf graf--pre graf-after--p">$ conda env create -f DistributedComputing_environment.yml -n DistributedComputing</pre><p name="1521" id="1521" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(7) Update an Environment by YML File</strong></p><pre name="6b4e" id="6b4e" class="graf graf--pre graf-after--p">$ conda env update -f DistributedComputing_environment.yml -n DistributedComputing</pre><p name="eb74" id="eb74" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">2. Basic Concepts</strong></p><p name="1f8b" id="1f8b" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(1) The Definition of Big Data</strong></p><p name="8f80" id="8f80" class="graf graf--p graf-after--p">Big data is a kind of data whose size and structure are beyond the ability of traditional data processing application software can adequately handle.</p><p name="8b97" id="8b97" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(2) The Definition of Distributed Computing</strong></p><p name="9164" id="9164" class="graf graf--p graf-after--p">For processing large volumes of data in a fast way, we have to scale out the data rather than scale-up.</p><ul class="postList"><li name="c45a" id="c45a" class="graf graf--li graf-after--p">Scaling up: means high-performance computing (HPC) developed by IBM. This is fast but expensive and unreliable.</li><li name="f124" id="f124" class="graf graf--li graf-after--li">Scaling out: means to distribute the data on many ordinary computers. By this means, we can achieve better performance if we keep adding computing machines. This approach is cheaper and reliable, but not that fast and takes a long time for data transferring.</li></ul><p name="1cee" id="1cee" class="graf graf--p graf-after--li">This means the data processing system should have the following features,</p><ul class="postList"><li name="f2c9" id="f2c9" class="graf graf--li graf-after--p">Cheap: able to run large data on clusters of many smaller and cheaper machines</li><li name="34f2" id="34f2" class="graf graf--li graf-after--li">Reliability and Fault Tolerance: if one node or process fails, its workload should be assumed by other components in the system</li><li name="f900" id="f900" class="graf graf--li graf-after--li">Fast: it parallelizes and distributes computations</li></ul><p name="9967" id="9967" class="graf graf--p graf-after--li"><strong class="markup--strong markup--p-strong">3. Spark Installation</strong></p><p name="f1f5" id="f1f5" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(1) The History of Spark</strong></p><p name="fa2a" id="fa2a" class="graf graf--p graf-after--p">Apache Spark started as a research project at the UC Berkeley AMPLab in 2009 and was open-sourced in early 2010. Many of the ideas behind the system were presented in various research papers over the years. Spark runs on</p><ul class="postList"><li name="9af1" id="9af1" class="graf graf--li graf-after--p"><code class="markup--code markup--li-code">Java 8+</code></li><li name="60a5" id="60a5" class="graf graf--li graf-after--li"><code class="markup--code markup--li-code">Python 2.7+/3.4+</code></li><li name="f719" id="f719" class="graf graf--li graf-after--li"><code class="markup--code markup--li-code">R 3.1+</code></li></ul><p name="f6a8" id="f6a8" class="graf graf--p graf-after--li"><strong class="markup--strong markup--p-strong">(2) Update Homebrew</strong></p><pre name="805b" id="805b" class="graf graf--pre graf-after--p">$ brew update</pre><p name="b406" id="b406" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(3) Install Java SDK version 8+</strong></p><pre name="1c1f" id="1c1f" class="graf graf--pre graf-after--p">$ brew tap adoptopenjdk/openjdk<br>$ brew search java<br>$ brew install adoptopenjdk/openjdk/adoptopenjdk8 --cask</pre><p name="ae4c" id="ae4c" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(4) Install the Jupyter for the New Environment</strong></p><pre name="2fdc" id="2fdc" class="graf graf--pre graf-after--p">$ pip3 install jupyter</pre><p name="ed8f" id="ed8f" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(5) Install the Spark</strong></p><pre name="8680" id="8680" class="graf graf--pre graf-after--p">$ pip install pyspark<br>$ pyshark<br>...</pre><p name="bbc7" id="bbc7" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(6) Open the Jupyter Notebook</strong></p><pre name="9c68" id="9c68" class="graf graf--pre graf-after--p">$ jupyter notebook </pre><p name="7f2d" id="7f2d" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(7) Install </strong><code class="markup--code markup--p-code"><strong class="markup--strong markup--p-strong">nbextension</strong></code><strong class="markup--strong markup--p-strong"> for </strong><code class="markup--code markup--p-code"><strong class="markup--strong markup--p-strong">Autopep8</strong></code></p><pre name="7475" id="7475" class="graf graf--pre graf-after--p">$ pip install jupyter_contrib_nbextensions<br>$ jupyter contrib nbextension install --user<br>$ pip install jupyter_nbextensions_configurator<br>$ jupyter nbextensions_configurator enable --user<br>$ pip install autopep8<br>$ jupyter notebook</pre><p name="85e7" id="85e7" class="graf graf--p graf-after--pre graf--trailing">Then inside the Jupyter Notebook, select <code class="markup--code markup--p-code">Nbextensions</code> , then check <code class="markup--code markup--p-code">Autopep8</code> . Then open a notebook file and click on the Hammer icon for converting it to PEP8 pattern automatically.</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/1e6694a35b76"><time class="dt-published" datetime="2021-10-26T08:16:55.348Z">October 26, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/distributed-system-1-environment-setup-environment-configuration-spark-installation-and-1e6694a35b76" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

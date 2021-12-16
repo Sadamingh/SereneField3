@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Computer Systems Experiments 21 | 0 to F Counter By the GPIO Module</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Computer Systems Experiments 21 | 0 to F Counter By the GPIO Module</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Computer Systems Experiments
+</section>
+<section data-field="body" class="e-content">
+<section name="844f" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="9a1b" id="9a1b" class="graf graf--h3 graf--leading graf--title">Computer Systems Experiments 21 | 0 to F Counter By the GPIO Module</h3><figure name="2f23" id="2f23" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*QXHPyQEpIKS_t1gi.png" data-width="1530" data-height="1104" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/0*QXHPyQEpIKS_t1gi.png"></figure><p name="4f0f" id="4f0f" class="graf graf--p graf-after--figure">In the previous experiment, we create a 0 to 9 counter by the pointer. And in this experiment, we are going to develop the same counter (actually with more values from <code class="markup--code markup--p-code">0</code> to <code class="markup--code markup--p-code">9</code> and then <code class="markup--code markup--p-code">A</code> to <code class="markup--code markup--p-code">F</code> and finally a dash <code class="markup--code markup--p-code">-</code> ) with the GPIO module from the last experiment.</p><p name="7c6e" id="7c6e" class="graf graf--p graf-after--p">We are going to implement this counter in the <code class="markup--code markup--p-code">clock.c</code> file and this file can be compiled by command,</p><pre name="5573" id="5573" class="graf graf--pre graf-after--p">$ make install</pre><p name="dfc6" id="dfc6" class="graf graf--p graf-after--pre">First, let’s add a global array as we have used in the previous experiments. We are going to use the hexadecimal value for this case and also <code class="markup--code markup--p-code">A</code> to <code class="markup--code markup--p-code">F</code> should also be in this <code class="markup--code markup--p-code">digit</code> array,</p><pre name="594c" id="594c" class="graf graf--pre graf-after--p">unsigned int digit[] = {<br>    0x3f, // 0 0b00111111<br>    0x06, // 1 0b00000110<br>    0x5b, // 2 0b01011011<br>    0x4f, // 3 0b01001111<br>    0x66, // 4 0b01100110<br>    0x6d, // 5 0b01101101<br>    0x7d, // 6 0b01111101<br>    0x07, // 7 0b00000111<br>    0x7f, // 8 0b01111111<br>    0x6f, // 9 0b01101111<br>    0x77, // A 0b01110111<br>    0x7f, // B 0b01111111<br>    0x39, // C 0b00111001<br>    0x3f, // D 0b00111111<br>    0x79, // E 0b01111001<br>    0x71, // F 0b01110001<br>    0x40, // - 0b01000000<br>};</pre><p name="6efe" id="6efe" class="graf graf--p graf-after--pre">Second, let’s set up the output pins for the 7-segment display. The <code class="markup--code markup--p-code">GPIO 10 — 13</code> is used to control the position of the digits and the <code class="markup--code markup--p-code">GPIO 20 — 26</code> is used to for displaying the digits,</p><pre name="1c61" id="1c61" class="graf graf--pre graf-after--p">for (int t = 10; t &lt;= 13; t++) {<br>   gpio_set_output(t);<br>}<br>for (int t = 20; t &lt;= 26; t++) {<br>   gpio_set_output(t);<br>}</pre><p name="39a7" id="39a7" class="graf graf--p graf-after--pre">In this experiment, we only want to display on the last digit. So let’s set the value of the <code class="markup--code markup--p-code">GPIO 13</code> pin to <code class="markup--code markup--p-code">1</code> ,</p><pre name="9203" id="9203" class="graf graf--pre graf-after--p">gpio_write(GPIO_PIN13, 1);</pre><p name="abba" id="abba" class="graf graf--p graf-after--pre">Third, it can be quite complicated to display a digit value. We have to set value <code class="markup--code markup--p-code">1</code> or <code class="markup--code markup--p-code">0</code> to the 7 LED segments corresponding to the values and rules in the global <code class="markup--code markup--p-code">digit</code> array. To make the program easier for us to understand, we will construct a new function called <code class="markup--code markup--p-code">displaydigit</code> . There are two parts to this function,</p><ul class="postList"><li name="0de8" id="0de8" class="graf graf--li graf-after--p">Check if the value is valid.</li></ul><pre name="ebf3" id="ebf3" class="graf graf--pre graf-after--li">if (value &lt; 0 || value &gt; 16) return;</pre><ul class="postList"><li name="950f" id="950f" class="graf graf--li graf-after--pre">Display the value by each bit.</li></ul><pre name="5a10" id="5a10" class="graf graf--pre graf-after--li">int toDisplay =  digit[value];<br>for (int i = 20; i &lt;= 26; i++) {<br>   if (toDisplay &amp; 0b1) {<br>       gpio_write(i, 1);<br>   } else {<br>       gpio_write(i, 0);<br>   }<br>   toDisplay = toDisplay &gt;&gt; 1;<br>}</pre><p name="5c75" id="5c75" class="graf graf--p graf-after--pre">Also, we have to declare this function at the beginning of this file,</p><pre name="e0c7" id="e0c7" class="graf graf--pre graf-after--p">void displaydigit(int value);</pre><p name="a1b0" id="a1b0" class="graf graf--p graf-after--pre">Finally, the loop we use to display the digits in the main function should be,</p><pre name="59f7" id="59f7" class="graf graf--pre graf-after--p">// Display the digits.<br>for (int i = 0; ; i++) {<br>   displaydigit(i);<br>   // Delay a certain time.<br>   for (int c = DELAY; c != 0; c--) ;<br>   if (i == 16) i = -1;<br>}</pre><p name="019f" id="019f" class="graf graf--p graf-after--pre">In conclusion, the overall program is,</p><pre name="d685" id="d685" class="graf graf--pre graf-after--p">#include &quot;gpio.h&quot;<br>#include &quot;timer.h&quot;</pre><pre name="f339" id="f339" class="graf graf--pre graf-after--pre">#define DELAY 0x3f0000</pre><pre name="2647" id="2647" class="graf graf--pre graf-after--pre">void displaydigit(int value);</pre><pre name="63eb" id="63eb" class="graf graf--pre graf-after--pre">unsigned int digit[] = {<br>    0x3f, // 0 0b00111111<br>    0x06, // 1 0b00000110<br>    0x5b, // 2 0b01011011<br>    0x4f, // 3 0b01001111<br>    0x66, // 4 0b01100110<br>    0x6d, // 5 0b01101101<br>    0x7d, // 6 0b01111101<br>    0x07, // 7 0b00000111<br>    0x7f, // 8 0b01111111<br>    0x6f, // 9 0b01101111<br>    0x77, // A 0b01110111<br>    0x7f, // B 0b01111111<br>    0x39, // C 0b00111001<br>    0x3f, // D 0b00111111<br>    0x79, // E 0b01111001<br>    0x71, // F 0b01110001<br>    0x40, // - 0b01000000<br>};</pre><pre name="9ad3" id="9ad3" class="graf graf--pre graf-after--pre">void main(void)<br>{<br>   // Set the output pins.<br>   for (int t = 10; t &lt;= 13; t++) {<br>       gpio_set_output(t);<br>   }<br>   for (int t = 20; t &lt;= 26; t++) {<br>       gpio_set_output(t);<br>   }</pre><pre name="f07c" id="f07c" class="graf graf--pre graf-after--pre">   // Set 1 to the GPIO 13 pin to display <br>   // on the last digit.<br>   gpio_write(GPIO_PIN13, 1);</pre><pre name="8f97" id="8f97" class="graf graf--pre graf-after--pre">   // Display the digits.<br>   for (int i = 0; ; i++) {<br>       displaydigit(i);<br>       // Delay a certain time.<br>       for (int c = DELAY; c != 0; c--) ;<br>       if (i == 16) i = -1;<br>   }<br>}</pre><pre name="cafd" id="cafd" class="graf graf--pre graf-after--pre">void displaydigit(int value) {<br>   // Check if the value is valid.<br>   if (value &lt; 0 || value &gt; 16) return;</pre><pre name="6d16" id="6d16" class="graf graf--pre graf-after--pre">   // Display the value by each bit.<br>   int toDisplay =  digit[value];<br>   for (int i = 20; i &lt;= 26; i++) {<br>      if (toDisplay &amp; 0b1) {<br>          gpio_write(i, 1);<br>      } else {<br>          gpio_write(i, 0);<br>      }<br>      toDisplay = toDisplay &gt;&gt; 1;<br>   }<br>}</pre><p name="a249" id="a249" class="graf graf--p graf-after--pre graf--trailing">Note that this file can also be found from my <a href="https://github.com/Sadamingh/ComputerSysE/tree/A2FCounter/clock" data-href="https://github.com/Sadamingh/ComputerSysE/tree/A2FCounter/clock" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">repo</a>, but from the branch <code class="markup--code markup--p-code">A2FCounter</code> .</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/81e01e0e4a52"><time class="dt-published" datetime="2021-01-07T06:56:45.910Z">January 7, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/computer-systems-experiments-21-0-to-f-counter-by-the-gpio-module-81e01e0e4a52" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

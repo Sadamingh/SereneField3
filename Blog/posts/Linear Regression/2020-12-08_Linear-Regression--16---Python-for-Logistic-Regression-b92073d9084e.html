@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Linear Regression  16 | Python for Logistic Regression</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Linear Regression  16 | Python for Logistic Regression</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Linear Regression
+</section>
+<section data-field="body" class="e-content">
+<section name="50ae" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="cb48" id="cb48" class="graf graf--h3 graf--leading graf--title">Linear Regression 16 | Python for Logistic Regression</h3><figure name="362d" id="362d" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*O3fHlcUizYxZaCZU.png" data-width="1484" data-height="696" src="https://cdn-images-1.medium.com/max/800/0*O3fHlcUizYxZaCZU.png"></figure><ol class="postList"><li name="11fb" id="11fb" class="graf graf--li graf-after--figure"><strong class="markup--strong markup--li-strong">Import Packages</strong></li></ol><pre name="1bfd" id="1bfd" class="graf graf--pre graf-after--li">import pandas as pd<br>import numpy as np<br>import statsmodels.api as sm<br>import statsmodels.formula.api as smf</pre><p name="bc97" id="bc97" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">2. Fit the logistic model</strong></p><pre name="25f0" id="25f0" class="graf graf--pre graf-after--p">model = smf.glm(&#39;y ~ x1 + x2 + x3&#39;, data=df, family=sm.families.Binomial()).fit()<br>model.summary()</pre><p name="9fbc" id="9fbc" class="graf graf--p graf-after--pre graf--trailing">maybe more info in the future …</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/b92073d9084e"><time class="dt-published" datetime="2020-12-08T05:29:11.177Z">December 8, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/linear-regression-16-python-for-logistic-regression-b92073d9084e" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

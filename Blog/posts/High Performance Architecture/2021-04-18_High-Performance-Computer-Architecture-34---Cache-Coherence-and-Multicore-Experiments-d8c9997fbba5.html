@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>High-Performance Computer Architecture 34 | Cache Coherence and Multicore Experiments</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">High-Performance Computer Architecture 34 | Cache Coherence and Multicore Experiments</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: High-Performance Computer Architecture
+</section>
+<section data-field="body" class="e-content">
+<section name="c2e3" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="e497" id="e497" class="graf graf--h3 graf--leading graf--title">High-Performance Computer Architecture 34 | Cache Coherence and Multicore Experiments</h3><figure name="3089" id="3089" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*u5tPKo7vnglbyLA2.png" data-width="1446" data-height="864" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/0*u5tPKo7vnglbyLA2.png"></figure><blockquote name="04de" id="04de" class="graf graf--blockquote graf-after--figure"><strong class="markup--strong markup--blockquote-strong">NOTE:</strong> The present article does <strong class="markup--strong markup--blockquote-strong">NOT</strong> include anything related to the final submission (<strong class="markup--strong markup--blockquote-strong">no answers, no specific values, no results</strong>) for the course <a href="https://omscs.gatech.edu/cs-6290-high-performance-computer-architecture" data-href="https://omscs.gatech.edu/cs-6290-high-performance-computer-architecture" class="markup--anchor markup--blockquote-anchor" rel="noopener nofollow noopener" target="_blank">CS6290 HPCA</a> because of the honor code. Most of the contents in this article is repeating the basic instructions and the directions of the Project 3. More Linux commands are provided as complements to the project’s guidelines.</blockquote><blockquote name="21ef" id="21ef" class="graf graf--blockquote graf-after--blockquote"><strong class="markup--strong markup--blockquote-strong">Please feel free to contact me if this article violates the rules of Georgia Tech and I will immediately delete this article with no doubt.</strong></blockquote><ol class="postList"><li name="d9d4" id="d9d4" class="graf graf--li graf-after--blockquote"><strong class="markup--strong markup--li-strong">Experiment 1: Running a Parallel Application</strong></li></ol><p name="d012" id="d012" class="graf graf--p graf-after--li">Before we start this experiment, we have to remove all the codes we have implemented for the previous projects. It may be easier if you do a fresh restart with all the configurations simply removed by reinstall the virtual machine. you may refer to the following article to do so,</p><div name="75fb" id="75fb" class="graf graf--mixtapeEmbed graf-after--p"><a href="https://medium.com/adamedelwiess/high-performance-computer-architecture-5-set-up-the-virtual-machine-and-simulator-report-7fa9ababc92b" data-href="https://medium.com/adamedelwiess/high-performance-computer-architecture-5-set-up-the-virtual-machine-and-simulator-report-7fa9ababc92b" class="markup--anchor markup--mixtapeEmbed-anchor" title="https://medium.com/adamedelwiess/high-performance-computer-architecture-5-set-up-the-virtual-machine-and-simulator-report-7fa9ababc92b"><strong class="markup--strong markup--mixtapeEmbed-strong">High-Performance Computer Architecture 5 | Set Up the Virtual Machine and Simulator, Report…</strong><br><em class="markup--em markup--mixtapeEmbed-em">Series: High-Performance Computer Architecture</em>medium.com</a><a href="https://medium.com/adamedelwiess/high-performance-computer-architecture-5-set-up-the-virtual-machine-and-simulator-report-7fa9ababc92b" class="js-mixtapeImage mixtapeImage u-ignoreBlock" data-media-id="954c931d7cc3ec7135d6631b142170f6" data-thumbnail-img-id="0*sonfOc7oInkm0vkm.png" style="background-image: url(https://cdn-images-1.medium.com/fit/c/160/160/0*sonfOc7oInkm0vkm.png);"></a></div><p name="5418" id="5418" class="graf graf--p graf-after--mixtapeEmbed">In this experiment, we will be using the LU benchmark with a 16-core system. The configuration file we would like to use is <code class="markup--code markup--p-code">~/sesc/confs/cmp16-noc.conf</code> and we can modify the number of threads by <code class="markup--code markup--p-code">-p</code> option. We can first direct to the LU directory by,</p><pre name="db1a" id="db1a" class="graf graf--pre graf-after--p">$ cd ~/sesc/apps/Splash2/lu</pre><p name="2921" id="2921" class="graf graf--p graf-after--pre">We simulate the lu application with 1, 4, or 16 threads and then save the report as <code class="markup--code markup--p-code">sesc_lu.mipseb.Ap1</code>, <code class="markup--code markup--p-code">sesc_lu.mipseb.Ap4</code>, and <code class="markup--code markup--p-code">sesc_lu.mipseb.Ap16</code>.</p><pre name="9395" id="9395" class="graf graf--pre graf-after--p">$ ~/sesc/sesc.opt -fAp1 -c ~/sesc/confs/cmp16-noc.conf -olu.out  -elu.err lu.mipseb -n512 -p1<br>$ ~/sesc/sesc.opt -fAp4 -c ~/sesc/confs/cmp16-noc.conf -olu.out  -elu.err lu.mipseb -n512 -p4<br>$ ~/sesc/sesc.opt -fAp16 -c ~/sesc/confs/cmp16-noc.conf -olu.out  -elu.err lu.mipseb -n512 -p16</pre><p name="ea47" id="ea47" class="graf graf--p graf-after--pre">Then we can read the report by,</p><pre name="3ce5" id="3ce5" class="graf graf--pre graf-after--p">$ ~/sesc/scripts/report.pl <code class="markup--code markup--pre-code">sesc_lu.mipseb.Ap1</code><br>$ ~/sesc/scripts/report.pl <code class="markup--code markup--pre-code">sesc_lu.mipseb.Ap4</code><br>$ ~/sesc/scripts/report.pl <code class="markup--code markup--pre-code">sesc_lu.mipseb.Ap16</code></pre><p name="3b05" id="3b05" class="graf graf--p graf-after--pre">Now, let’s compare the result of these three reports. We can find out that the speedup for each core is not equivalent to the number of cores we have. So what do you think is the problem? What’s more, when we have more cores, core #0 will execute more instructions compared with other cores and the IPC of core #0 will be reduced, what do you think is the problem?</p><p name="a85b" id="a85b" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">2. Experiment 2: Read Misses for L1 Caches</strong></p><p name="3280" id="3280" class="graf graf--p graf-after--p">Now, let’s have a look at the number of cache-read-misses that occur in each Data L1 cache (DL1 cache). We can print out the read misses of core #0’s DL1 caches by,</p><pre name="527e" id="527e" class="graf graf--pre graf-after--p">$ cat sesc_lu.mipseb.Ap1 | grep &quot;P(0)_DL1:readMiss=&quot;<br>$ cat sesc_lu.mipseb.Ap4 | grep &quot;P(0)_DL1:readMiss=&quot;<br>$ cat sesc_lu.mipseb.Ap16 | grep &quot;P(0)_DL1:readMiss=&quot;</pre><p name="2558" id="2558" class="graf graf--p graf-after--pre">From the result, we can discover that number of these misses <strong class="markup--strong markup--p-strong">decreases</strong> when from 1 to 16 threads. Why?</p><p name="ebf5" id="ebf5" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">3. Experiment 3: Counting Coherence Misses</strong></p><p name="aa7c" id="aa7c" class="graf graf--p graf-after--p">In the last project, we have counted different types of misses. In this project, we are going to count the new coherence misses especially for the multithreading program. In this project, we will count how many read misses in each core #0’s DL1 cache are compulsory (readCompMiss), replacement (capacity or conflict, the counter should be called readReplMiss), and coherence misses (readCoheMiss), and separately also classify write misses (writeCompMiss, writeReplMiss, and writeCoheMiss).</p><p name="9da8" id="9da8" class="graf graf--p graf-after--p">Again, we can get the value of the write misses by,</p><pre name="c55d" id="c55d" class="graf graf--pre graf-after--p">$ cat sesc_lu.mipseb.Ap1 | grep &quot;P(0)_DL1:writeMiss=&quot;<br>$ cat sesc_lu.mipseb.Ap4 | grep &quot;P(0)_DL1:writeMiss=&quot;<br>$ cat sesc_lu.mipseb.Ap16 | grep &quot;P(0)_DL1:writeMiss=&quot;</pre><p name="53cf" id="53cf" class="graf graf--p graf-after--pre">You should modify some codes for the <code class="markup--code markup--p-code">sesc</code> and finally, we should be able to count the following numbers,</p><ul class="postList"><li name="fd47" id="fd47" class="graf graf--li graf-after--p"><code class="markup--code markup--li-code">rcompMiss</code>: read compulsory misses</li><li name="0b08" id="0b08" class="graf graf--li graf-after--li"><code class="markup--code markup--li-code">rcoheMiss</code>: read coherence misses</li><li name="a767" id="a767" class="graf graf--li graf-after--li"><code class="markup--code markup--li-code">rreplMiss</code>: read replacement misses (conflict misses + capacity misses)</li><li name="5f9b" id="5f9b" class="graf graf--li graf-after--li"><code class="markup--code markup--li-code">wcompMiss</code>: write compulsory misses</li><li name="3656" id="3656" class="graf graf--li graf-after--li"><code class="markup--code markup--li-code">wcoheMiss</code>: write coherence misses</li><li name="1c32" id="1c32" class="graf graf--li graf-after--li"><code class="markup--code markup--li-code">wreplMiss</code>: write replacement misses (conflict misses + capacity misses)</li></ul><p name="0d32" id="0d32" class="graf graf--p graf-after--li">After we finish modifying the code, we have to rebuild the <code class="markup--code markup--p-code">sesc</code> by,</p><pre name="371a" id="371a" class="graf graf--pre graf-after--p">$ cd ~/sesc<br>$ make</pre><p name="68c6" id="68c6" class="graf graf--p graf-after--pre">Finally, we need to re-run the simulations from Part 1 and get the resulting simulation report files by,</p><pre name="5250" id="5250" class="graf graf--pre graf-after--p graf--trailing">$ ~/sesc/sesc.opt -fHp1 -c ~/sesc/confs/cmp16-noc.conf -olu.out  -elu.err lu.mipseb -n512 -p1<br>$ ~/sesc/sesc.opt -fHp4 -c ~/sesc/confs/cmp16-noc.conf -olu.out  -elu.err lu.mipseb -n512 -p4<br>$ ~/sesc/sesc.opt -fHp16 -c ~/sesc/confs/cmp16-noc.conf -olu.out  -elu.err lu.mipseb -n512 -p16</pre></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/d8c9997fbba5"><time class="dt-published" datetime="2021-04-18T14:54:06.246Z">April 18, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/high-performance-computer-architecture-34-cache-coherence-and-multicore-experiments-d8c9997fbba5" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

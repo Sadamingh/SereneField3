@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Leetcode 1 | String Operation and Valid Anagram</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Leetcode 1 | String Operation and Valid Anagram</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Leetcode
+</section>
+<section data-field="body" class="e-content">
+<section name="9bf2" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="5afe" id="5afe" class="graf graf--h3 graf--leading graf--title">Leetcode 1 | String Operation and Valid Anagram</h3><figure name="f538" id="f538" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*QXrDY4nVmhZ1umbX" data-width="1000" data-height="750" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/0*QXrDY4nVmhZ1umbX"></figure><p name="fe14" id="fe14" class="graf graf--p graf-after--figure"><a href="https://leetcode.com/problems/valid-anagram/" data-href="https://leetcode.com/problems/valid-anagram/" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank"><strong class="markup--strong markup--p-strong">242 Question</strong></a><strong class="markup--strong markup--p-strong">:</strong></p><p name="3973" id="3973" class="graf graf--p graf-after--p">Given two strings <code class="markup--code markup--p-code">s</code> and <code class="markup--code markup--p-code">t</code>, return <code class="markup--code markup--p-code">true</code> if <code class="markup--code markup--p-code">t</code> is an anagram of <code class="markup--code markup--p-code">s</code>, and <code class="markup--code markup--p-code">false</code> otherwise.</p><p name="46b5" id="46b5" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">Constraints:</strong></p><ul class="postList"><li name="0c5c" id="0c5c" class="graf graf--li graf-after--p"><code class="markup--code markup--li-code">1 &lt;= s.length, t.length &lt;= 5 * 104</code></li><li name="2762" id="2762" class="graf graf--li graf-after--li"><code class="markup--code markup--li-code">s</code> and <code class="markup--code markup--li-code">t</code> consist of lowercase English letters.</li></ul><p name="29ef" id="29ef" class="graf graf--p graf-after--li"><strong class="markup--strong markup--p-strong">Example 1:</strong></p><pre name="af6a" id="af6a" class="graf graf--pre graf-after--p"><strong class="markup--strong markup--pre-strong">Input:</strong> s = &quot;anagram&quot;, t = &quot;nagaram&quot;<br><strong class="markup--strong markup--pre-strong">Output:</strong> true</pre><p name="e5c2" id="e5c2" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">Example 2:</strong></p><pre name="ce42" id="ce42" class="graf graf--pre graf-after--p"><strong class="markup--strong markup--pre-strong">Input:</strong> s = &quot;rat&quot;, t = &quot;car&quot;<br><strong class="markup--strong markup--pre-strong">Output:</strong> false</pre><ol class="postList"><li name="e71a" id="e71a" class="graf graf--li graf-after--pre"><strong class="markup--strong markup--li-strong">C++ String Operations</strong></li></ol><p name="b95e" id="b95e" class="graf graf--p graf-after--li"><strong class="markup--strong markup--p-strong">(1) C++ String Data Structure</strong></p><p name="6f3c" id="6f3c" class="graf graf--p graf-after--p">Strings in C++ are defined as an array of characters. The difference between a character array and a string is the string is terminated with a special NULL character <code class="markup--code markup--p-code">\0</code>.</p><p name="a674" id="a674" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(2) String Size</strong></p><p name="d609" id="d609" class="graf graf--p graf-after--p">To get the size of a string, we have to basically access the string by the method <code class="markup--code markup--p-code">size()</code>. We will have <code class="markup--code markup--p-code">O(1)</code> complexity for getting the size of a string.</p><pre name="cbb1" id="cbb1" class="graf graf--pre graf-after--p">s.size()</pre><p name="e01c" id="e01c" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(3) Find Substring</strong></p><p name="ad7d" id="ad7d" class="graf graf--p graf-after--p">To search in the string is equivalent to search in an array. We need to use the method <code class="markup--code markup--p-code">find()</code> and the time complexity will be <code class="markup--code markup--p-code">O(n)</code>. We will get a returned index back.</p><pre name="ead7" id="ead7" class="graf graf--pre graf-after--p">s.find(&quot;a&quot;)</pre><p name="088e" id="088e" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(4) </strong><code class="markup--code markup--p-code"><strong class="markup--strong markup--p-strong">std::string::npos</strong></code></p><p name="ee1e" id="ee1e" class="graf graf--p graf-after--p">Sometimes we search through a string for a character but nothing matches. Then the <code class="markup--code markup--p-code">find</code> function returns <code class="markup--code markup--p-code">std::string::npos</code>. You can find more information <a href="https://www.cplusplus.com/reference/string/string/npos/" data-href="https://www.cplusplus.com/reference/string/string/npos/" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">here</a>.</p><pre name="8481" id="8481" class="graf graf--pre graf-after--p">if (s.find(&quot;a&quot;) == <code class="markup--code markup--pre-code">string::npos) <br>    cout &lt;&lt; &quot;No \&quot;a\&quot; in the string&quot; &lt;&lt; endl;</code></pre><p name="f168" id="f168" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(5) Delete Substring By Index</strong></p><p name="c8f1" id="c8f1" class="graf graf--p graf-after--p">We can also delete the substring in a string by its index. For example, we can delete all the characters after index 5 by,</p><pre name="fbfa" id="fbfa" class="graf graf--pre graf-after--p">s.erase(5);</pre><p name="2bb3" id="2bb3" class="graf graf--p graf-after--pre">Or we can delete only the character on index 5 by,</p><pre name="2f8b" id="2f8b" class="graf graf--pre graf-after--p">s.erase(5,1);</pre><p name="4aa0" id="4aa0" class="graf graf--p graf-after--pre">Or we can delete characters with index 5 to 7 in the string by,</p><pre name="de9f" id="de9f" class="graf graf--pre graf-after--p">s.erase(5,3);</pre><p name="bef8" id="bef8" class="graf graf--p graf-after--pre">The time complexity of deletion is <code class="markup--code markup--p-code">O(n)</code>.</p><p name="1ac7" id="1ac7" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">Solution:</strong></p><p name="2772" id="2772" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">Idea #1.</strong> Sorting</p><p name="81e3" id="81e3" class="graf graf--p graf-after--p">The simplest idea is that we can simply sort all the characters in these two strings. Because they are all sorted, then we can simplest get the result by comparing these two sorted strings. However, the problem is that we can not control the sorting algorithm, and even if we can control the algorithms, they will not be efficient.</p><p name="f5d8" id="f5d8" class="graf graf--p graf-after--p">The example code is,</p><pre name="1286" id="1286" class="graf graf--pre graf-after--p">class Solution {<br>public:<br>    bool isAnagram(string s, string t) { <br>        sort(s.begin(), s.end());<br>        sort(t.begin(), t.end());<br>        return s == t; <br>    }<br>};</pre><p name="1098" id="1098" class="graf graf--p graf-after--pre">The result is,</p><pre name="981c" id="981c" class="graf graf--pre graf-after--p">Run time: 16 ms<br>Memory Usage: 7.3 MB</pre><p name="82bb" id="82bb" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">Idea 2.</strong> Find and Delete</p><p name="da16" id="da16" class="graf graf--p graf-after--p">The second idea to solve this problem is also simple. We can simply go through every letter in the first string <code class="markup--code markup--p-code">s</code>, find if it exists in the string <code class="markup--code markup--p-code">t</code>. If the letter exists, we will delete it from the string <code class="markup--code markup--p-code">t</code> and continue the loop. If the letter doesn’t exist, we will get <code class="markup--code markup--p-code">npos</code> back and this shows that <code class="markup--code markup--p-code">s</code> is not an anagram of <code class="markup--code markup--p-code">t</code>.</p><p name="4496" id="4496" class="graf graf--p graf-after--p">Note that there is also a case when the sizes of the two strings are different, so we have to make a judgment in the first place.</p><pre name="fa54" id="fa54" class="graf graf--pre graf-after--p">class Solution {<br>public:<br>    bool isAnagram(string s, string t) {<br>        int index;<br>        if (s.size() != t.size()) return false;<br>        for (int i = 0; i &lt; s.size(); i++) {<br>            if ((index = t.find(s[i])) == string::npos) return false;<br>            t.erase(index,1);<br>        }<br>        return true;<br>    }<br>};</pre><p name="624b" id="624b" class="graf graf--p graf-after--pre">The result is,</p><pre name="8a5c" id="8a5c" class="graf graf--pre graf-after--p">Run time: 652 ms<br>Memory Usage: 7.3 MB</pre><p name="ce0c" id="ce0c" class="graf graf--p graf-after--pre">We can find out that because we have a time complexity of <code class="markup--code markup--p-code">O(M*N)</code> , then the run time for this idea will be much longer than the sorting one.</p><p name="3c1c" id="3c1c" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">Idea 3</strong>. Hash Table</p><p name="4f63" id="4f63" class="graf graf--p graf-after--p">Based on the discussion above, we can know that the only way to improve our code is not to use any string operations like <code class="markup--code markup--p-code">find</code> or <code class="markup--code markup--p-code">erase</code> in the loop. And we can maintain the letter information of these two strings by using a 26-element array as our hash table. We can use this method because <code class="markup--code markup--p-code">s</code> and <code class="markup--code markup--p-code">t</code> consist of lowercase English letters, which makes the case simpler. Each of the 26 lowercase English letters corresponds to an index (or hash value that can be calculated simply by modifying its ASCII).</p><p name="aa05" id="aa05" class="graf graf--p graf-after--p">For each letter in <code class="markup--code markup--p-code">s</code>, it increases the counter by <code class="markup--code markup--p-code">1</code> while for each letter in <code class="markup--code markup--p-code">t</code>, it decreases the counter by <code class="markup--code markup--p-code">1</code>. Finally, all the counters will be <code class="markup--code markup--p-code">0</code> if they two are anagrams of each other. So the example code should be,</p><pre name="2f5e" id="2f5e" class="graf graf--pre graf-after--p">class Solution {<br>public:<br>    bool isAnagram(string s, string t) {<br>        if (s.length() != t.length()) return false;<br>        int n = s.length();<br>        int counts[26] = {0};<br>        for (int i = 0; i &lt; n; i++) { <br>            counts[s[i] - &#39;a&#39;]++;<br>            counts[t[i] - &#39;a&#39;]--;<br>        }<br>        for (int i = 0; i &lt; 26; i++)<br>            if (counts[i]) return false;<br>        return true;<br>    }<br>};</pre><p name="5b6d" id="5b6d" class="graf graf--p graf-after--pre">And the result will be,</p><pre name="ecd5" id="ecd5" class="graf graf--pre graf-after--p">Run time: 8 ms<br>Memory Usage: 7.3 MB</pre><p name="3281" id="3281" class="graf graf--p graf-after--pre graf--trailing">This one is perfect.</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/3be22eb2ec91"><time class="dt-published" datetime="2021-05-30T14:44:19.146Z">May 30, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/leetcode-1-string-operation-and-valid-anagram-3be22eb2ec91" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

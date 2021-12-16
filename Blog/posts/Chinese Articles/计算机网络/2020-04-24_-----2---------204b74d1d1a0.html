@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>计算机网络2 数据链路层协议</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">计算机网络2 数据链路层协议</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+系列：计算机网络
+</section>
+<section data-field="body" class="e-content">
+<section name="dd83" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="5b08" id="5b08" class="graf graf--h3 graf--leading graf--title">计算机网络2 <strong class="markup--strong markup--h3-strong">数据链路层协议</strong></h3><figure name="f0f6" id="f0f6" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*cjJgSgroJtgtXMVPTmt2WA.jpeg" data-width="2689" data-height="1513" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*cjJgSgroJtgtXMVPTmt2WA.jpeg"></figure><p name="90f5" id="90f5" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">一、以太网协议</strong></p><ol class="postList"><li name="149d" id="149d" class="graf graf--li graf-after--p">格式图（字节）</li></ol><p name="2c50" id="2c50" class="graf graf--p graf-after--li">前同步码8+目的MAC6+源MAC6+类型2+数据46～1500+CRC4</p><figure name="3fee" id="3fee" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*tffQ325zW8rtzzJpuwzC9w.png" data-width="1982" data-height="384" src="https://cdn-images-1.medium.com/max/800/1*tffQ325zW8rtzzJpuwzC9w.png"><figcaption class="imageCaption">from wikipedia</figcaption></figure><p name="60e8" id="60e8" class="graf graf--p graf-after--figure">2. 前同步码</p><ul class="postList"><li name="ca9d" id="ca9d" class="graf graf--li graf-after--p">目的：让发信息方和收信息方进行时间同步</li><li name="69e9" id="69e9" class="graf graf--li graf-after--li">前7个字节都是10101010</li><li name="c9dd" id="c9dd" class="graf graf--li graf-after--li">最后一个字节是10101011</li><li name="f9bf" id="f9bf" class="graf graf--li graf-after--li">通常情况可以忽略前同步码</li></ul><p name="66b8" id="66b8" class="graf graf--p graf-after--li">3. MAC地址字段</p><ul class="postList"><li name="6cba" id="6cba" class="graf graf--li graf-after--p">MAC的地址是机器网卡的物理地址，每个机器的地址是唯一的</li><li name="af52" id="af52" class="graf graf--li graf-after--li">MAC地址是128位6字节的地址</li><li name="432c" id="432c" class="graf graf--li graf-after--li">表示范围：00–00–00–00–00–00～FF-FF-FF-FF-FF-FF</li></ul><p name="049d" id="049d" class="graf graf--p graf-after--li">4. 类型字段</p><ul class="postList"><li name="dfbd" id="dfbd" class="graf graf--li graf-after--p">目的：允许以太网多路复用</li><li name="f304" id="f304" class="graf graf--li graf-after--li">类型字段表</li></ul><figure name="e7d0" id="e7d0" class="graf graf--figure graf-after--li"><img class="graf-image" data-image-id="1*Gf1vVp5_-OI2iypYqQ-nPg.png" data-width="1298" data-height="1480" src="https://cdn-images-1.medium.com/max/800/1*Gf1vVp5_-OI2iypYqQ-nPg.png"></figure><figure name="4897" id="4897" class="graf graf--figure graf-after--figure"><img class="graf-image" data-image-id="1*3nL_IRq45XoV5HaTO1ly0Q.png" data-width="1298" data-height="406" src="https://cdn-images-1.medium.com/max/800/1*3nL_IRq45XoV5HaTO1ly0Q.png"></figure><p name="cffe" id="cffe" class="graf graf--p graf-after--figure">5. 数据字段</p><ul class="postList"><li name="e5a8" id="e5a8" class="graf graf--li graf-after--p"><strong class="markup--strong markup--li-strong">定义：</strong>在交换式以太网中，一台主机向局域网中的另一台主机发送一个IP数据报文，这个数据报封装在以太网帧结构中作为其有效载荷。</li><li name="bf82" id="bf82" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">大小限制：</strong>以太网的最大传输单元（MTU）是1500字节，也就是限制了一个IP数据报最大为1500字节，如果超过1500字节，就要启用IP协议的分片策略进行传输。</li><li name="695b" id="695b" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">IEEE802.3规定：</strong>数据字段最小长度为46字节，如果不够必须要填充到46字节。如IP数据报和填充部分会被网络层利用IP数据报首部的长度字段去除相关填充。</li><li name="ee66" id="ee66" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">最小长度原理：</strong>数据链路层的最小MTU为46字节。对于IEEE802.3，两个站点的最远距离不超过2500m， 由 4 个中继器连接而成，其冲突窗口为 51.2us(2倍电缆传播延迟加上 4 个中继器的双向延迟)。对于 10Mbps 的 IEEE802.3 来说，这个时间等于发送46字节，即 512 位的时间，46字节就是由此而来的。如果一个站点已经传输了512bit，就认为它已经占用了这个信道。</li></ul><p name="5a44" id="5a44" class="graf graf--p graf-after--li">6. 循环冗余校检CRC（参考信息密码学）</p><ul class="postList"><li name="83f3" id="83f3" class="graf graf--li graf-after--p">奇偶校检</li><li name="d16a" id="d16a" class="graf graf--li graf-after--li">累加和校检</li><li name="f0c5" id="f0c5" class="graf graf--li graf-after--li">模二除法</li><li name="8da6" id="8da6" class="graf graf--li graf-after--li">生成多项式：CRC算法的除数</li><li name="2890" id="2890" class="graf graf--li graf-after--li">常用的生成多项式</li><li name="66de" id="66de" class="graf graf--li graf-after--li">a. CRC8/16/32</li><li name="a3a0" id="a3a0" class="graf graf--li graf-after--li">b. CRC-CCITT</li></ul><p name="cf54" id="cf54" class="graf graf--p graf-after--li">7. 最大传输单元MTU的概念</p><ul class="postList"><li name="4597" id="4597" class="graf graf--li graf-after--p">IEEE802.3规定：数据链路层的最大MTU为1500字节，即1500B为数据字段的最大长度</li></ul><p name="244f" id="244f" class="graf graf--p graf-after--li"><strong class="markup--strong markup--p-strong">二、地址解析ARP协议</strong></p><ol class="postList"><li name="f410" id="f410" class="graf graf--li graf-after--p"><strong class="markup--strong markup--li-strong">ARP协议的本质：</strong>MAC地址和IP地址互查机制，也就是ARP为IP地址（逻辑地址）到对应的硬件MAC地址（物理地址）提供动态映射。 点对点的链路不需要使用ARP协议。</li></ol><p name="684b" id="684b" class="graf graf--p graf-after--li">2. 一点注意：其实也可以查找其他协议的地址，但是由于最常见的网络层地址协议为IP地址，这点会在ARP报文中的ARP报头中体现。</p><p name="de24" id="de24" class="graf graf--p graf-after--p">3. 协议所处OSI：理解为链路层或者网络层都可以，但是一般归为链路层协议</p><p name="4ee9" id="4ee9" class="graf graf--p graf-after--p">4. ARP报文格式（28B）</p><p name="36c0" id="36c0" class="graf graf--p graf-after--p">物理网络类型2B+网络层协议类型2B+MAC地址长度1B +网络层协议地址长度1B+ARP报文类型2B+发送方MAC地址6B+发送方网络层协议地址4B +接收方MAC地址6B+接收方网络层协议地址4B</p><figure name="6eb3" id="6eb3" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*A_3cuu0Co1ImbvY5oTbOUA.png" data-width="1828" data-height="450" src="https://cdn-images-1.medium.com/max/800/1*A_3cuu0Co1ImbvY5oTbOUA.png"></figure><p name="a6f9" id="a6f9" class="graf graf--p graf-after--figure">5. 物理网络类型字段：</p><ul class="postList"><li name="b347" id="b347" class="graf graf--li graf-after--p">表示ARP报文传输的硬件网络，值为1的时候表示以太网</li></ul><p name="eace" id="eace" class="graf graf--p graf-after--li">6. 网络层协议类型字段：</p><ul class="postList"><li name="248c" id="248c" class="graf graf--li graf-after--p">表示网络层报文传输的途径，通常是ipv4，对应的十进制为2048，对应的16进制为0x0800</li></ul><p name="380c" id="380c" class="graf graf--p graf-after--li">7. MAC地址长度字段：</p><ul class="postList"><li name="0c32" id="0c32" class="graf graf--li graf-after--p">对于MAC地址来说，这个值为6（6字节）</li></ul><p name="8f83" id="8f83" class="graf graf--p graf-after--li">8. 网络层协议地址长度字段：</p><ul class="postList"><li name="eca7" id="eca7" class="graf graf--li graf-after--p">对于IPv4地址来说，这个值为4</li></ul><p name="faf9" id="faf9" class="graf graf--p graf-after--li">9. ARP报文类型Opcode字段：</p><ul class="postList"><li name="adfc" id="adfc" class="graf graf--li graf-after--p">占2个字节</li><li name="7d47" id="7d47" class="graf graf--li graf-after--li">值为1表示ARP请求报文</li><li name="36c8" id="36c8" class="graf graf--li graf-after--li">值为2表示ARP应答报文</li><li name="d43d" id="d43d" class="graf graf--li graf-after--li">值为3表示RARP请求报文</li><li name="2a4d" id="2a4d" class="graf graf--li graf-after--li">值为4表示RARP应答报文</li></ul><p name="b59f" id="b59f" class="graf graf--p graf-after--li">10. 发送方MAC地址字段：</p><ul class="postList"><li name="b533" id="b533" class="graf graf--li graf-after--p">发送方物理地址</li></ul><p name="ca21" id="ca21" class="graf graf--p graf-after--li">11. 发送方网络层协议地址字段：</p><ul class="postList"><li name="5484" id="5484" class="graf graf--li graf-after--p">如果是IP协议，则表示发送方ip地址</li></ul><p name="ab9b" id="ab9b" class="graf graf--p graf-after--li">12. 接收方MAC地址字段：</p><ul class="postList"><li name="95b6" id="95b6" class="graf graf--li graf-after--p">如果是ARP请求报文，此处应该是广播地址FF-FF-FF-FF-FF-FF，发给所有同一网络的用户</li></ul><p name="768e" id="768e" class="graf graf--p graf-after--li">13. 接收方网络层协议地址字段：</p><ul class="postList"><li name="d47a" id="d47a" class="graf graf--li graf-after--p">如果是IP协议，则表示接收方ip地址</li></ul><p name="cbb7" id="cbb7" class="graf graf--p graf-after--li">14. ARP帧的格式</p><ul class="postList"><li name="e279" id="e279" class="graf graf--li graf-after--p"><strong class="markup--strong markup--li-strong">ARP帧出现原因</strong>：ARP不是在网络层发送的，而是在数据链路层发送的，因此在传输到数据链路层要进行封装</li><li name="6af2" id="6af2" class="graf graf--li graf-after--li">以以太网为例：ARP帧是在ARP报文前添加以太网帧头</li><li name="c06c" id="c06c" class="graf graf--li graf-after--li">以太网帧头格式：接收方MAC地址6B+发送方MAC地址6B+帧类型2B</li><li name="ce04" id="ce04" class="graf graf--li graf-after--li">a. 接收方MAC地址：如果是ARP请求报文，此处应该是广播地址FF-FF-FF-FF-FF-FF，发给所有同一网络的用户</li><li name="8fc0" id="8fc0" class="graf graf--li graf-after--li">b. 发送方MAC地址：本机物理地址</li><li name="0baa" id="0baa" class="graf graf--li graf-after--li">c. 帧类型：2字节，值0x0806表示ARP帧类型</li></ul><p name="dafa" id="dafa" class="graf graf--p graf-after--li">15. ARP帧中是否存在完全重复的信息：是</p><p name="4bd7" id="4bd7" class="graf graf--p graf-after--p">16. ARP缓存</p><ul class="postList"><li name="6a01" id="6a01" class="graf graf--li graf-after--p">如果每次主机通信都要发送 ARP 协议去查询 MAC 地址无疑是低效的，为了提供性能最常见的做法是在系统层面保存 ARP 的结果。</li><li name="2ac3" id="2ac3" class="graf graf--li graf-after--li">因为 IP 地址和 MAC 地址并不会经常变化，而且主机间第一次通信之后有很大的可能性会在短时间内再次通信， 所以 ARP 缓存能够大大提高网络效率。</li><li name="aa65" id="aa65" class="graf graf--li graf-after--li">ARP高效运行的关键：每个主机上都有一个ARP高速缓存</li></ul><p name="760f" id="760f" class="graf graf--p graf-after--li">17. ARP的原理</p><ul class="postList"><li name="5587" id="5587" class="graf graf--li graf-after--p">第一步：机器 A 想和同一个以太网络的机器 B 通信，A 会现在自己的 ARP 表中查找 B 的 MAC 地址，如果能找到就直接发送以太网帧；如果没有找到，就跳到第二步</li><li name="b62f" id="b62f" class="graf graf--li graf-after--li">第二步：机器 A 发送 ARP 请求报文去查询机器 B 的 MAC 地址，这是个以太网广播报文，因此交换机会广播到网络中所有的机器</li><li name="a68f" id="a68f" class="graf graf--li graf-after--li">第三步：各个主机接收到 ARP 请求报文，如果发现 ARP 报文中询问的 IP 地址和自己不同，则直接丢弃；机器 B 发现 ARP 报文中询问的 IP 地址是自己的主机地址，则生成一个 ARP 应答报文，把自己的 MAC 地址填到报文中，发送给机器 A，这个报文是单播报文，不会发送给其他主机；同时机器 B 也会把机器 A 的 ARP 记录缓存起来</li><li name="f869" id="f869" class="graf graf--li graf-after--li">第四步：机器 A 接收到 B 发来的 ARP 应答，读取报文中 B 的 MAC 地址，使用这个 MAC 地址和机器 B 进行后续的通信，同时把它缓存到系统中</li></ul><p name="8c85" id="8c85" class="graf graf--p graf-after--li">18. ARP协议的缺陷</p><ul class="postList"><li name="c713" id="c713" class="graf graf--li graf-after--p"><strong class="markup--strong markup--li-strong">非认证广播</strong>：ARP 报文没有任何认证，假设所有的机器都可靠而且诚信，所以 ARP 报文（尤其是应答）可以伪造。（窃听报文，或者报文转发）【参考：ARP Spoffing】</li><li name="dddd" id="dddd" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">无请求应答</strong>：ARP 报文没有状态，机器可以在没有收到请求的时候直接发送应答。虽然特性能够有效地来更新 ARP 记录，也可能被恶意利用</li><li name="62ca" id="62ca" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">ARP缓存修改</strong>：主机的地址映射是基于高速缓存的，动态更新的。地址刷新是有时间限制的。 可以通过下次更新之前修改计算机上的地址缓存，造成拒绝服务攻击或者 ARP 欺骗。</li></ul><p name="45ee" id="45ee" class="graf graf--p graf-after--li">19. ARP代理</p><ul class="postList"><li name="481a" id="481a" class="graf graf--li graf-after--p">若 ARP 请求是从一个网络的主机发送给另一个网络上的主机，那么连接这两个网络的路由器就可以回答该请求这个过程叫做 ARP 代理。</li><li name="49d6" id="49d6" class="graf graf--li graf-after--li">ARP 代理路由器响应 ARP 请求的 MAC 地 址为路由器的 MAC 地址而非 ARP 请求的主机的 MAC 地址。</li><li name="7159" id="7159" class="graf graf--li graf-after--li">应用环境：两个物理网络之间的路由是使用相同的网络号，两个路由器设置成 ARP 代理，实现相互隐瞒物理网络</li></ul><p name="6557" id="6557" class="graf graf--p graf-after--li">20. free ARP</p><ul class="postList"><li name="b6d8" id="b6d8" class="graf graf--li graf-after--p">指主机发送 ARP 查找自己的 IP 地址，即数据链路层 SIP=DIP</li><li name="d1cf" id="d1cf" class="graf graf--li graf-after--li">作用: 一个主机使用免费 ARP 确定是有存在有其他主机设置了相同的 IP 地址</li><li name="45db" id="45db" class="graf graf--li graf-after--li">如果发送免费 ARP 的主机改变了 MAC 地址，可以通过发送免费 ARP 的方式告知其他 主机端更新 ARP 表</li></ul><p name="3f7b" id="3f7b" class="graf graf--p graf-after--li">21. 逆地址解析RARP协议</p><ul class="postList"><li name="e251" id="e251" class="graf graf--li graf-after--p">ARP协议是在已经知道IP地址的情况下，寻找目标机的MAC地址；RARP协议是在已经知道目标机的MAC地址的情况下，请求得到目标机的IP地址</li><li name="9245" id="9245" class="graf graf--li graf-after--li graf--trailing">原理差不多，不用细纠</li></ul></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/204b74d1d1a0"><time class="dt-published" datetime="2020-04-24T18:45:53.651Z">April 24, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E5%8D%8F%E8%AE%AE-204b74d1d1a0" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

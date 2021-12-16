@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>OSX 配置 Terminal 走 SS5 代理</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">OSX 配置 Terminal 走 SS5 代理</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+因为某一些原因，我们在国内访问外国网站的速度是非常慢的（或者不能访问）。在OSX上虽然我们可以通过ss5来解决这个问题，但是当我们使用Terminal中的联网脚本，比如git和brew等的时候，我们的下载和上传的网速还是非常慢的（即使我们打开了全局模式）。
+</section>
+<section data-field="body" class="e-content">
+<section name="1258" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="97b9" id="97b9" class="graf graf--h3 graf--leading graf--title">OSX 配置 Terminal 走 SS5 代理</h3><figure name="50aa" id="50aa" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*y0ef4oDUlCgNRBZhMsZITA.jpeg" data-width="2088" data-height="1176" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*y0ef4oDUlCgNRBZhMsZITA.jpeg"></figure><p name="2b7e" id="2b7e" class="graf graf--p graf-after--figure">因为某一些原因，我们在国内访问外国网站的速度是非常慢的（或者不能访问）。在OSX上虽然我们可以通过ss5来解决这个问题，但是当我们使用Terminal中的联网脚本，比如git和brew等的时候，我们的下载和上传的网速还是非常慢的（即使我们打开了全局模式）。</p><p name="acb7" id="acb7" class="graf graf--p graf-after--p">造成这一问题的原因是我们在Terminal中的网络流量没有经过ss5的端口，因此实际上在Terminal中收发的流量依然是国内节点完成的，所以网速是非常慢的。</p><p name="d1a4" id="d1a4" class="graf graf--p graf-after--p">我们在本文假设我们的读者想要在当前的user上一次性地解决这个问题，也就是对于当前的shell和后续的shell，我们的流量收发走的都是ss5端口。因此我们需要配置.bashrc文件。</p><p name="28f2" id="28f2" class="graf graf--p graf-after--p">我们先来打开我们的Shadowsocks，在软件中找到 “高级设置” 选项。在弹出的窗口中，我们记下两个参数，分别为 “本地Sock5监听地址” （通常为127.0.0.1）和 “本地Sock5监听端口” 。这两个参数的可能数值如下图所示：</p><figure name="200a" id="200a" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*8odkfRs6kYzG33Of_FmwHA.png" data-width="1188" data-height="198" src="https://cdn-images-1.medium.com/max/800/1*8odkfRs6kYzG33Of_FmwHA.png"></figure><p name="775c" id="775c" class="graf graf--p graf-after--figure">接下来我们打开一个Terminal，在端口内，我们先通过vim打开.bashrc：</p><pre name="0533" id="0533" class="graf graf--pre graf-after--p">vim ~/.bashrc</pre><p name="7dcd" id="7dcd" class="graf graf--p graf-after--pre">在 Unix-like 操作系统的终端，有三个和代理相关的环境变量，分别为 <code class="markup--code markup--p-code">http_proxy</code>, <code class="markup--code markup--p-code">https_proxy</code> 和<code class="markup--code markup--p-code">all_proxy</code>。粗略来说，<code class="markup--code markup--p-code">http_proxy</code> 和 <code class="markup--code markup--p-code">https_proxy</code> 分别用来设置 http 和 https连接的代理，<code class="markup--code markup--p-code">all_proxy</code> 设置所有连接的代理。</p><p name="272c" id="272c" class="graf graf--p graf-after--p">对于一般的联网脚本，如brew和git，他们走的实际上都是http连接，因此，我们在这里需要更改配置的是<code class="markup--code markup--p-code">https_proxy</code> 或者<code class="markup--code markup--p-code">all_proxy</code>中的任何一个就可以。我们在.bashrc文件的末尾添加两行指令（其中127.0.0.1和1086应该根据我们自己实际上在之前的步骤中获得的参数更改）：</p><pre name="413a" id="413a" class="graf graf--pre graf-after--p"><code class="markup--code markup--pre-code">export https_proxy=127.0.0.1:1086<br>export https_proxy=&quot;socks5://127.0.0.1:1086&quot;</code></pre><p name="ac94" id="ac94" class="graf graf--p graf-after--pre">写入文件并且退出。之后我们通过下面的代码来检测连接状态：</p><pre name="05ae" id="05ae" class="graf graf--pre graf-after--p">curl https://ipinfo.io/</pre><p name="1e55" id="1e55" class="graf graf--p graf-after--pre">如果您已经正确配置，那么得到的返回值中将会有IP地址的全部信息，并且IP地址的所在位置应该在中国大陆之外的地区。可能的错误是：</p><pre name="9ba3" id="9ba3" class="graf graf--pre graf-after--p">curl: (7) Failed to connect to 127.0.0.1 port 1086: Connection refused</pre><p name="0f7a" id="0f7a" class="graf graf--p graf-after--pre graf--trailing">如果出现该错误，则表示SS5在localhost上的1086端口没有打开，请检查SS5的状态。</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/fdd3d7d75d43"><time class="dt-published" datetime="2020-05-17T16:59:21.702Z">May 17, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/osx-%E9%85%8D%E7%BD%AE-terminal-%E8%B5%B0-ss5-%E4%BB%A3%E7%90%86-fdd3d7d75d43" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

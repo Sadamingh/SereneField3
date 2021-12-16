@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Manually Download the NLTK Data Packages</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Manually Download the NLTK Data Packages</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: NLTK
+</section>
+<section data-field="body" class="e-content">
+<section name="2545" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="305d" id="305d" class="graf graf--h3 graf--leading graf--title">Manually Download the NLTK Data Packages</h3><figure name="4c8e" id="4c8e" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*jVPRnTJJ8vQB8Uu68Tuqog.png" data-width="1236" data-height="572" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*jVPRnTJJ8vQB8Uu68Tuqog.png"></figure><p name="79fa" id="79fa" class="graf graf--p graf-after--figure">Suppose we are using the nltk package in python, for example,</p><pre name="e458" id="e458" class="graf graf--pre graf-after--p">from nltk.tokenize import word_tokenize<br>word_tokenize(&#39;He can can a can.&#39;)</pre><p name="f4ca" id="f4ca" class="graf graf--p graf-after--pre">then the output gives us the error like:</p><pre name="e49b" id="e49b" class="graf graf--pre graf-after--p">LookupError: <br>**********************************************<br>  Resource punkt not found.<br>  Please use the NLTK Downloader to obtain the resource:<br><br>  &gt;&gt;&gt; import nltk<br>  &gt;&gt;&gt; nltk.download(&#39;punkt&#39;)<br>  <br>  For more information see: <a href="https://www.nltk.org/data.html" data-href="https://www.nltk.org/data.html" class="markup--anchor markup--pre-anchor" rel="noopener" target="_blank">https://www.nltk.org/data.html</a><br><br>  Attempted to load tokenizers/punkt/PY3/english.pickle<br><br>  Searched in:<br>    - &#39;/Users/apple/nltk_data&#39;<br>    - &#39;/Users/apple/opt/anaconda3/nltk_data&#39;<br>    - &#39;/Users/apple/opt/anaconda3/share/nltk_data&#39;<br>    - &#39;/Users/apple/opt/anaconda3/lib/nltk_data&#39;<br>    - &#39;/usr/share/nltk_data&#39;<br>    - &#39;/usr/local/share/nltk_data&#39;<br>    - &#39;/usr/lib/nltk_data&#39;<br>    - &#39;/usr/local/lib/nltk_data&#39;<br>    - &#39;&#39;<br>*********************************************</pre><p name="439c" id="439c" class="graf graf--p graf-after--pre">then we would like to download the nltk_data packages (i.e. punkt). The normal way to download the data is to use the nltk downloader, by</p><pre name="a6a2" id="a6a2" class="graf graf--pre graf-after--p">import nltk<br>nltk.download(&#39;punkt&#39;)</pre><p name="36c2" id="36c2" class="graf graf--p graf-after--pre">However, sometimes we may have a connection problem if we are using a proxy,</p><pre name="0a3d" id="0a3d" class="graf graf--pre graf-after--p">[nltk_data] Error loading punkt: &lt;urlopen error [Errno 61] Connection<br>[nltk_data]     refused&gt;</pre><p name="e9fd" id="e9fd" class="graf graf--p graf-after--pre">Then we have to download the package manually.</p><p name="dbc4" id="dbc4" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">Step 1. </strong>Go to <a href="https://github.com/nltk/nltk_data/tree/gh-pages/packages" data-href="https://github.com/nltk/nltk_data/tree/gh-pages/packages" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">GitHub repo</a>, download the package we need and unzip this file.</p><p name="a71d" id="a71d" class="graf graf--p graf-after--p">For example, in this punkt case, we are going to download the zip file in this <a href="https://github.com/nltk/nltk_data/blob/gh-pages/packages/tokenizers/punkt.zip?raw=true" data-href="https://github.com/nltk/nltk_data/blob/gh-pages/packages/tokenizers/punkt.zip?raw=true" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">link</a>. After we download it, we can then unzip it to get a folder named punkt.</p><p name="b57e" id="b57e" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">Step 2.</strong> View the paths we searched in the LookupError. On my PC, the paths are,</p><pre name="b101" id="b101" class="graf graf--pre graf-after--p">Searched in:<br>    - &#39;/Users/apple/nltk_data&#39;<br>    - &#39;/Users/apple/opt/anaconda3/nltk_data&#39;<br>    - &#39;/Users/apple/opt/anaconda3/share/nltk_data&#39;<br>    - &#39;/Users/apple/opt/anaconda3/lib/nltk_data&#39;<br>    - &#39;/usr/share/nltk_data&#39;<br>    - &#39;/usr/local/share/nltk_data&#39;<br>    - &#39;/usr/lib/nltk_data&#39;<br>    - &#39;/usr/local/lib/nltk_data&#39;<br>    - &#39;&#39;</pre><p name="fe58" id="fe58" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">Step 3. </strong>Go to any one of these paths (if the folder does not exist, make a folder first)</p><pre name="d176" id="d176" class="graf graf--pre graf-after--p">$ mkdir /Users/apple/opt/anaconda3/nltk_data<br>$ cd /Users/apple/opt/anaconda3/nltk_data</pre><p name="11e0" id="11e0" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">Step 4. </strong>View the LookupError and find the loading path.</p><pre name="d7af" id="d7af" class="graf graf--pre graf-after--p">Attempted to load tokenizers/punkt/PY3/english.pickle</pre><p name="d7eb" id="d7eb" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">Step 5. </strong>Make a folder with the loading path directory name and go to this folder.</p><pre name="4d70" id="4d70" class="graf graf--pre graf-after--p">$ mkdir tokenizers<br>$ open ./</pre><p name="d82a" id="d82a" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">Step 6.</strong> Copy the package we have downloaded into this folder.</p><figure name="053a" id="053a" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*7i5Qut3SQMIBhMbFtvohIw.png" data-width="1236" data-height="572" src="https://cdn-images-1.medium.com/max/800/1*7i5Qut3SQMIBhMbFtvohIw.png"></figure><p name="9b3b" id="9b3b" class="graf graf--p graf-after--figure">Then retry the python code,</p><pre name="596c" id="596c" class="graf graf--pre graf-after--p">from nltk.tokenize import word_tokenize<br>word_tokenize(&#39;He can can a can.&#39;)</pre><p name="7290" id="7290" class="graf graf--p graf-after--pre">We are supposed to have no error now,</p><pre name="8715" id="8715" class="graf graf--pre graf-after--p graf--trailing">[&#39;He&#39;, &#39;can&#39;, &#39;can&#39;, &#39;a&#39;, &#39;can&#39;, &#39;.&#39;]</pre></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/529f81df3deb"><time class="dt-published" datetime="2020-11-09T07:25:22.962Z">November 9, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/manually-download-the-nltk-data-packages-529f81df3deb" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

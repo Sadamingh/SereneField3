@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Computer Systems Experiments 19 | Develop a 4-Digit Counter</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Computer Systems Experiments 19 | Develop a 4-Digit Counter</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Computer Systems Experiments
+</section>
+<section data-field="body" class="e-content">
+<section name="39c0" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="77e3" id="77e3" class="graf graf--h3 graf--leading graf--title">Computer Systems Experiments 19 | Develop a 4-Digit Counter</h3><figure name="ea03" id="ea03" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*FMjODt73EW6ip92E.png" data-width="1530" data-height="1104" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/0*FMjODt73EW6ip92E.png"></figure><p name="9293" id="9293" class="graf graf--p graf-after--figure">Let’s now design a counter counting from 0000 to 9999. To get started, we have to wrap up all the things that we have learned. First, you need to have a breadboard that finished the last experiment. Second, you need to know about the <code class="markup--code markup--p-code">Makefile</code> file. And finally, you have to be able to know the C language that we have covered in the previous experiment.</p><p name="5fba" id="5fba" class="graf graf--p graf-after--p">Now, let’s start with the code from the last experiment,</p><pre name="aa9a" id="aa9a" class="graf graf--pre graf-after--p">static volatile unsigned int *FSEL1 =  (unsigned int *)0x20200004;<br>static volatile unsigned int *FSEL2 =  (unsigned int *)0x20200008;<br>static volatile unsigned int *SET0  =  (unsigned int *)0x2020001c;<br>static volatile unsigned int *CLR0  =  (unsigned int *)0x20200028;</pre><pre name="4aeb" id="4aeb" class="graf graf--pre graf-after--pre">#define DELAY 0x3f00</pre><pre name="54eb" id="54eb" class="graf graf--pre graf-after--pre">void main(void) {<br>    // set GPIO 10-13 to output<br>    *FSEL1 = 0b1001001001;<br>    // set GPIO 20-26 to output<br>    *FSEL2 = 0b1001001001001001001; <br>    // assign the rules for displaying digits<br>    int digit[] = {<br>        0b111111,<br>        0b110,<br>        0b1011011,<br>        0b1001111,<br>        0b1100110,<br>        0b1101101,<br>        0b1111101,<br>        0b111,<br>        0b1111111,<br>        0b1101111};</pre><pre name="2975" id="2975" class="graf graf--pre graf-after--pre">while (1) {<br>        for(int i = 0; i &lt; 4; i++){<br>            *SET0 = (digit[i] &lt;&lt; 20) + (1 &lt;&lt; (10+i)); <br>            // delay a short time to produce pov<br>            for (int c = DELAY; c != 0; c--) ;<br>            *CLR0 = (digit[i] &lt;&lt; 20) + (1 &lt;&lt; (10+i)); <br>        }<br>    }<br>}</pre><p name="59aa" id="59aa" class="graf graf--p graf-after--pre">If we want to turn this program into a 4-digit counter, first of all, we have to add a second delay time <code class="markup--code markup--p-code">DELAY_LONG</code> that is used to switch the values.</p><pre name="f442" id="f442" class="graf graf--pre graf-after--p">#define DELAY_LONG 0x3f</pre><p name="24b4" id="24b4" class="graf graf--p graf-after--pre">Note that we use the value <code class="markup--code markup--p-code">0x3f</code> because this time is not too fast or too slow. We actually got this value by several times of manual trials. Then we can make this work for our program by adding a for loop to the program,</p><pre name="53ee" id="53ee" class="graf graf--pre graf-after--p">for (int t = DELAY_LONG; t != 0; t--) {<br>    for(int i = 0; i &lt; 4; i++){<br>        *SET0 = (digit[i] &lt;&lt; 20) + (1 &lt;&lt; (10+i)); <br>        // delay a short time to produce pov<br>        for (int c = DELAY; c != 0; c--) ;<br>        *CLR0 = (digit[i] &lt;&lt; 20) + (1 &lt;&lt; (10+i)); <br>    }<br>}</pre><p name="2757" id="2757" class="graf graf--p graf-after--pre">Then, to tell which four-digit display we are going to have for each turn, we have to use an algorithm to separate the value we want to display. The result should be,</p><pre name="6148" id="6148" class="graf graf--pre graf-after--p">value = 0    -&gt; a = 0, b = 0, c = 0, d = 0<br>value = 1    -&gt; a = 0, b = 0, c = 0, d = 1<br>value = 12   -&gt; a = 0, b = 0, c = 1, d = 2<br>value = 1234 -&gt; a = 1, b = 2, c = 3, d = 4<br>value = 5432 -&gt; a = 5, b = 4, c = 3, d = 2<br>...</pre><p name="ac15" id="ac15" class="graf graf--p graf-after--pre">Let’s start the value from <code class="markup--code markup--p-code">0000</code> by,</p><pre name="0a75" id="0a75" class="graf graf--pre graf-after--p">int value = 0;</pre><p name="6a58" id="6a58" class="graf graf--p graf-after--pre">Then we define an array to store the four digits of each value,</p><pre name="db48" id="db48" class="graf graf--pre graf-after--p">int digits[4];</pre><p name="e879" id="e879" class="graf graf--p graf-after--pre">For each value, we use the following algorithm to extract each digit,</p><pre name="5756" id="5756" class="graf graf--pre graf-after--p">digits[0] = (value - value % 1000) / 1000;<br>digits[1] = value % 1000 / 100;<br>digits[2] = value % 100 / 10;<br>digits[3] = value % 10;</pre><p name="3d19" id="3d19" class="graf graf--p graf-after--pre">To make the program work for us, we have to change the <code class="markup--code markup--p-code">i</code> variable to <code class="markup--code markup--p-code">digits[i]</code> and then it will display our digits in the right position,</p><pre name="869e" id="869e" class="graf graf--pre graf-after--p">for (int t = DELAY_LONG; t != 0; t--) {<br>    for(int i = 0; i &lt; 4; i++){<br>        *SET0 = (digit[digits[i]] &lt;&lt; 20) + (1 &lt;&lt; (10+i)); <br>        // delay a short time to produce pov<br>        for (int c = DELAY; c != 0; c--) ;<br>        *CLR0 = (digit[digits[i]] &lt;&lt; 20) + (1 &lt;&lt; (10+i)); <br>    }<br>}</pre><p name="a787" id="a787" class="graf graf--p graf-after--pre">After successfully displays a number, we add 1 to the value in order to count for the next number,</p><pre name="18f4" id="18f4" class="graf graf--pre graf-after--p">value++;</pre><p name="5267" id="5267" class="graf graf--p graf-after--pre">Also, note that the program can only count to <code class="markup--code markup--p-code">9999</code> and after that, the value will be overflowed. If the value is <code class="markup--code markup--p-code">10000</code> , we have to reset it to <code class="markup--code markup--p-code">0</code> so that the overflow problem will not exist.</p><pre name="1c5c" id="1c5c" class="graf graf--pre graf-after--p">if (value == 10000) value = 0;</pre><p name="997e" id="997e" class="graf graf--p graf-after--pre">Finally, the overall program is,</p><pre name="98f0" id="98f0" class="graf graf--pre graf-after--p">static volatile unsigned int *FSEL1 =  (unsigned int *)0x20200004;<br>static volatile unsigned int *FSEL2 =  (unsigned int *)0x20200008;<br>static volatile unsigned int *SET0  =  (unsigned int *)0x2020001c;<br>static volatile unsigned int *CLR0  =  (unsigned int *)0x20200028;</pre><pre name="5329" id="5329" class="graf graf--pre graf-after--pre">#define DELAY 0x3f00<br>#define DELAY_LONG 0x3f</pre><pre name="aa95" id="aa95" class="graf graf--pre graf-after--pre">void main(void) {<br>    // set GPIO 10-13 to output<br>    *FSEL1 = 0b1001001001;<br>    // set GPIO 20-26 to output<br>    *FSEL2 = 0b1001001001001001001;</pre><pre name="42cb" id="42cb" class="graf graf--pre graf-after--pre">    int digit[] = {<br>        0b111111,<br>        0b110,<br>        0b1011011,<br>        0b1001111,<br>        0b1100110,<br>        0b1101101,<br>        0b1111101,<br>        0b111,<br>        0b1111111,<br>        0b1101111};</pre><pre name="ffee" id="ffee" class="graf graf--pre graf-after--pre">    int value = 0;<br>    int digits[4];</pre><pre name="d525" id="d525" class="graf graf--pre graf-after--pre">    while (1) {<br>        digits[0] = (value - value % 1000) / 1000;<br>        digits[1] = value % 1000 / 100;<br>        digits[2] = value % 100 / 10;<br>        digits[3] = value % 10;<br>        // keep the value for a time<br>        for (int t = DELAY_LONG; t != 0; t--) {<br>            for(int i = 0; i &lt; 4; i++){<br>                *SET0 = (digit[digits[i]] &lt;&lt; 20) + (1 &lt;&lt; (10+i)); <br>                // delay a short time to produce pov<br>                for (int c = DELAY; c != 0; c--) ;<br>                *CLR0 = (digit[digits[i]] &lt;&lt; 20) + (1 &lt;&lt; (10+i)); <br>            }<br>        }<br>        value++;<br>        if (value == 10000) value = 0;<br>    }</pre><pre name="e69e" id="e69e" class="graf graf--pre graf-after--pre">}</pre><p name="6a51" id="6a51" class="graf graf--p graf-after--pre">You can also find this code from my <a href="https://github.com/Sadamingh/ComputerSysE/tree/main/counter-4d" data-href="https://github.com/Sadamingh/ComputerSysE/tree/main/counter-4d" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">repo</a>. The final result is (just a short video clip),</p><figure name="84f4" id="84f4" class="graf graf--figure graf-after--p graf--trailing"><img class="graf-image" data-image-id="1*V0uDRQIV_tGYHElwm4OiVw.gif" data-width="600" data-height="340" src="https://cdn-images-1.medium.com/max/800/1*V0uDRQIV_tGYHElwm4OiVw.gif"></figure></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/e0da58145d73"><time class="dt-published" datetime="2021-01-05T16:06:27.068Z">January 5, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/computer-systems-experiments-19-develop-a-4-digit-counter-e0da58145d73" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>High-Performance Computer Architecture 20 | VLIW and Explicitly Parallel Processors</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">High-Performance Computer Architecture 20 | VLIW and Explicitly Parallel Processors</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: High-Performance Computer Architecture
+</section>
+<section data-field="body" class="e-content">
+<section name="a6b8" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="5032" id="5032" class="graf graf--h3 graf--leading graf--title">High-Performance Computer Architecture 20 | VLIW and Explicitly Parallel Processors</h3><figure name="008a" id="008a" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*hltffnyIx3efz1Yg.png" data-width="1446" data-height="864" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/0*hltffnyIx3efz1Yg.png"></figure><ol class="postList"><li name="1d1e" id="1d1e" class="graf graf--li graf-after--figure"><strong class="markup--strong markup--li-strong">VLIW Processor</strong></li></ol><p name="7c27" id="7c27" class="graf graf--p graf-after--li"><strong class="markup--strong markup--p-strong">(1) Recall: Superscalar Processor</strong></p><p name="da82" id="da82" class="graf graf--p graf-after--p">The superscalar processor is a computer architecture where <strong class="markup--strong markup--p-strong">more than one instructions</strong> are loaded at once and, as far as possible, is executed simultaneously, shortening the time taken to run the whole program.</p><p name="4ae1" id="4ae1" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(2) VLIW Processor</strong></p><p name="239a" id="239a" class="graf graf--p graf-after--p">Unlike the out-of-order super processors, these processors do not try to identify ILP on their own. Even though a <strong class="markup--strong markup--p-strong">very long instruction word (VLIW)</strong> processor will also try to execute more than one instructions per cycle, the work is implemented in a different way.</p><p name="762a" id="762a" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(3) Superscalar Processor Vs. VLIW Processor</strong></p><ul class="postList"><li name="c3d6" id="c3d6" class="graf graf--li graf-after--p">Instructions Per Cycle</li></ul><p name="d7e4" id="d7e4" class="graf graf--p graf-after--li">Both the out-of-order superscalar and the in-order superscalar are trying to do <strong class="markup--strong markup--p-strong">up to N</strong> (called an N-issue processor) instructions per cycle. While, for a VLIW processor, this is different because the VLIW processor will only try to do <strong class="markup--strong markup--p-strong">1 large instruction</strong> per cycle, and this large instruction does the <strong class="markup--strong markup--p-strong">same work</strong> as N normal instructions.</p><ul class="postList"><li name="fcc0" id="fcc0" class="graf graf--li graf-after--p">Find independent instructions</li></ul><p name="416e" id="416e" class="graf graf--p graf-after--li">The out-of-order superscalar will look at much <strong class="markup--strong markup--p-strong">more than the number N</strong> in its instruction window in order to get up to N instructions per cycle. By contrast, the in-order superscalar processor is trying to execute up to N instructions per cycle by looking at only the <strong class="markup--strong markup--p-strong">next N instructions</strong> in the program order. The VLIW processor doesn’t even try to find the independent instructions because it simply tries to do the <strong class="markup--strong markup--p-strong">next large instruction</strong>. So it behaves like a non-superscalar processor that uses the instructions in order.</p><ul class="postList"><li name="a3a2" id="a3a2" class="graf graf--li graf-after--p">Hardware cost</li></ul><p name="cadb" id="cadb" class="graf graf--p graf-after--li">Because the out-of-order superscalar has to look at more than N instructions for N instructions per cycle, the cost would be <strong class="markup--strong markup--p-strong">expensive</strong>. While, because the in-order superscalar only has to look at the next N instructions, so the cost will be<strong class="markup--strong markup--p-strong"> less expensive</strong> than the out-of-order superscalar. However, because the VLIW reduces the cost even further by only looking at the next large instruction, it is <strong class="markup--strong markup--p-strong">even less expensive</strong> than an in-order superscalar.</p><ul class="postList"><li name="820b" id="820b" class="graf graf--li graf-after--p">Importance of the compiler’s support</li></ul><p name="edf4" id="edf4" class="graf graf--p graf-after--li">For an out-of-order superscalar, the compiler can how to improve the program performance. But even <strong class="markup--strong markup--p-strong">without a compiler</strong>’s help, the out-of-order superscalar can have good performance. However, an in-order superscalar is <strong class="markup--strong markup--p-strong">more dependent on the compiler</strong> if the compiler doesn’t do anything (like instruction scheduling) to put independent instructions consecutively, then an in-order superscalar will not have a good performance. Finally, a VLIW processor <strong class="markup--strong markup--p-strong">completely depends on the compiler</strong> to produce performance. If we don’t have support from the compiler, the VLIW processor will fail miserably as far as performance is concerned.</p><p name="f8ee" id="f8ee" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(4) VLIW Evaluation</strong></p><p name="8961" id="8961" class="graf graf--p graf-after--p">a. <strong class="markup--strong markup--p-strong">Benefits</strong></p><ul class="postList"><li name="bc88" id="bc88" class="graf graf--li graf-after--p">the compiler does the hard work, so the penalty of optimization (figuring out a good schedule) only takes one time.</li><li name="eb13" id="eb13" class="graf graf--li graf-after--li">can have simpler hardware compared with an out-of-order processor</li><li name="4f5a" id="4f5a" class="graf graf--li graf-after--li">can be energy efficient</li><li name="3db8" id="3db8" class="graf graf--li graf-after--li">works well on loops and regular codes like sweeping through arrays, multiplying matrics</li></ul><p name="a463" id="a463" class="graf graf--p graf-after--li">b. <strong class="markup--strong markup--p-strong">Downsides</strong></p><ul class="postList"><li name="483e" id="483e" class="graf graf--li graf-after--p">latencies are not always the same (i.e. a cache miss)</li><li name="11eb" id="11eb" class="graf graf--li graf-after--li">not compatible with the irregular applications (i.e. AI applications, applications that work with pointers that are hard for a compiler to figure out)</li><li name="0c9c" id="0c9c" class="graf graf--li graf-after--li">code bloat: the code for a VLIW processor can be much larger than the code for a normal OOO processor because we are adding a lot of NOPs in order to prevent dependencies</li></ul><p name="4b50" id="4b50" class="graf graf--p graf-after--li"><strong class="markup--strong markup--p-strong">(5) VLIW and Backward Compatibility</strong></p><p name="35af" id="35af" class="graf graf--p graf-after--p">If we do want backward compatibility to improve our VLIW, then the wider processor will <strong class="markup--strong markup--p-strong">not</strong> be a VLIW processor anymore. Because instead of using a NOP to deal with the dependencies, the wider processor will have to check the dependencies between the VLIW instructions, which makes it seem like a normal superscalar processor.</p><p name="c2eb" id="c2eb" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(6) VLIW Instructions</strong></p><ul class="postList"><li name="be36" id="be36" class="graf graf--li graf-after--p">VLIW instructions have <strong class="markup--strong markup--li-strong">all the usual ISA opcodes</strong></li></ul><p name="7d18" id="7d18" class="graf graf--p graf-after--li">The instructions set of a VLIW processor typically has <strong class="markup--strong markup--p-strong">all the normal ISA opcodes</strong>. So each of the VLIW instructions can typically do whatever normal instructions can do.</p><ul class="postList"><li name="5f7f" id="5f7f" class="graf graf--li graf-after--p"><strong class="markup--strong markup--li-strong">Fully support predication</strong></li></ul><p name="9591" id="9591" class="graf graf--p graf-after--li">This is because the VLIW relies on the compiler to expose parallelism and one of the ways the compiler does that is through scheduling instructions. If the compilers are able to do predications, we have more opportunities for instruction scheduling.</p><ul class="postList"><li name="45db" id="45db" class="graf graf--li graf-after--p"><strong class="markup--strong markup--li-strong">Require many registers</strong> because of the scheduling optimizations</li><li name="471d" id="471d" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">Branch hints</strong> because the compiler needs to tell the hardware its predictions</li><li name="16f2" id="16f2" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">VLIW instruction compaction</strong></li></ul><p name="5f7e" id="5f7e" class="graf graf--p graf-after--li">I­nstead of using NOPs for empty instruction slots there are stops. This reduces the number of instructions required, thus reducing code bloat.</p><p name="dd1a" id="dd1a" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(7) VLIW: Examples</strong></p><ul class="postList"><li name="00c7" id="00c7" class="graf graf--li graf-after--p">Itanium</li></ul><p name="f5d2" id="f5d2" class="graf graf--p graf-after--li">Intel’s <strong class="markup--strong markup--p-strong">Itanium</strong> is typically a VLIW processor and it has <strong class="markup--strong markup--p-strong">tons of ISA</strong> features. As a result, the hardware of a VLIW processor becomes very <strong class="markup--strong markup--p-strong">complicated</strong> and it no longer has any needs to check for the dependencies between the instructions.</p><ul class="postList"><li name="915d" id="915d" class="graf graf--li graf-after--p">(Digital Signal Processing) DSP Processors</li></ul><p name="9d39" id="9d39" class="graf graf--p graf-after--li graf--trailing">The DSP does a lot of floating-point work typically in a very regular loop with lots of iterations and each iteration has only a small amount of work. So typically, these types of processors on these types of codes get excellent performance and they are very energy efficient because they don’t spend much power on figuring out dependencies. So in this case, the VLIW is a good choice now.</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/35f02ab9495c"><time class="dt-published" datetime="2021-02-22T03:56:08.938Z">February 22, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/high-performance-computer-architecture-20-vliw-and-explicitly-parallel-processors-35f02ab9495c" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

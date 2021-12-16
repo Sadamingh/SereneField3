@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Data Acquisition 1 | Data Pipeline</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Data Acquisition 1 | Data Pipeline</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Data Acquisition
+</section>
+<section data-field="body" class="e-content">
+<section name="a16a" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="e076" id="e076" class="graf graf--h3 graf--leading graf--title">Data Acquisition 1 | <strong class="markup--strong markup--h3-strong">Characters Encoding, Stdin and Stdout</strong>, and Data Pipeline</h3><figure name="9ff7" id="9ff7" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*9JtamvoGswpVyrbI1aC5Ag.png" data-width="2032" data-height="1122" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*9JtamvoGswpVyrbI1aC5Ag.png"><figcaption class="imageCaption"><a href="https://dribbble.com/shots/13575928-Data-Pipeline" data-href="https://dribbble.com/shots/13575928-Data-Pipeline" class="markup--anchor markup--figure-anchor" rel="nofollow noopener" target="_blank">https://dribbble.com/shots/13575928-Data-Pipeline</a></figcaption></figure><ol class="postList"><li name="b7d6" id="b7d6" class="graf graf--li graf-after--figure"><strong class="markup--strong markup--li-strong">Characters Encoding</strong></li></ol><p name="fb1e" id="fb1e" class="graf graf--p graf-after--li"><strong class="markup--strong markup--p-strong">(1) ASCII</strong></p><p name="9b18" id="9b18" class="graf graf--p graf-after--p">ASCII codes are 7 bits for each character, so it has a maximum of 2⁷ = 128 chars for expression, however, this is not enough for all though languages and the information we have today.</p><p name="5978" id="5978" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(2) Unicode</strong></p><p name="959c" id="959c" class="graf graf--p graf-after--p">To represent Unicode we have to use 16-bit (2 bytes) not 8-bit (1 byte) characters. However, Python 3 does seem to do some optimization, keeping strings as 1-byte-per-char as long as possible, until we introduce a non-ASCII character.</p><pre name="c3e2" id="c3e2" class="graf graf--pre graf-after--p">from sys import getsizeof<br>print(getsizeof(&#39;&#39;))        # 49 for ASCII overhead<br>print(getsizeof(&#39;a&#39;))<br>print(getsizeof(&#39;ab&#39;))<br>print(getsizeof(&#39;Ω&#39;))       # 74 for non-ASCII overhead<br>print(getsizeof(&#39;ΩΩ&#39;))</pre><p name="b726" id="b726" class="graf graf--p graf-after--pre">Actually, Unicode is started with \u, for example</p><pre name="eb20" id="eb20" class="graf graf--pre graf-after--p">&#39;<strong class="markup--strong markup--pre-strong">\</strong>u00ab&#39;</pre><p name="7d96" id="7d96" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(3) Hexadecimal</strong></p><p name="c761" id="c761" class="graf graf--p graf-after--p">Because a byte can be described in 2 hexadecimal digits, which is why we tend to use hexadecimal. For example,</p><pre name="db42" id="db42" class="graf graf--pre graf-after--p">&#39;\xFF&#39;</pre><p name="062e" id="062e" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(4) Show Encoding Values</strong></p><p name="dd50" id="dd50" class="graf graf--p graf-after--p">We can show the decimal value of the encoding value of a character by ord() function.</p><pre name="24fb" id="24fb" class="graf graf--pre graf-after--p">ord(&#39;Ω&#39;)     # 937</pre><p name="058a" id="058a" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(5) Decoding Decimal Values</strong></p><p name="b559" id="b559" class="graf graf--p graf-after--p">Also, we can decode a decimal value of a character by the chr() function.</p><pre name="6637" id="6637" class="graf graf--pre graf-after--p">chr(937)     # &#39;Ω&#39;</pre><p name="8547" id="8547" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(6) Encoding ASCII with Command Line</strong></p><p name="295d" id="295d" class="graf graf--p graf-after--p">Let’s, firstly create a file named ascii.txt by,</p><pre name="5b58" id="5b58" class="graf graf--pre graf-after--p">$ echo ID 345\n &gt; ascii.txt</pre><p name="d3df" id="d3df" class="graf graf--p graf-after--pre">The <code class="markup--code markup--p-code">od</code> command is a good way to encode a file. The <code class="markup--code markup--p-code">-c</code> tells it to print out the bytes as characters and <code class="markup--code markup--p-code">-t dC</code> tells it to print out the decimal values of those characters; <code class="markup--code markup--p-code">-t xC</code> tells it to print those character values in hexadecimal.</p><pre name="e87b" id="e87b" class="graf graf--pre graf-after--p">$ od -c -t dC ascii.txt</pre><p name="0773" id="0773" class="graf graf--p graf-after--pre">then this will give us the following output with every character being encoded to a decimal value.</p><figure name="9a54" id="9a54" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*J7O0rZGncwudA2o5Jx6b0w.png" data-width="1330" data-height="154" src="https://cdn-images-1.medium.com/max/800/1*J7O0rZGncwudA2o5Jx6b0w.png"></figure><p name="adcb" id="adcb" class="graf graf--p graf-after--figure">Also, we can do the same thing to encode characters into hexadecimal values,</p><pre name="ecbb" id="ecbb" class="graf graf--pre graf-after--p">$ od -c -t xC ascii.txt</pre><p name="c75e" id="c75e" class="graf graf--p graf-after--pre">then,</p><figure name="b5ad" id="b5ad" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*pE1L1ZU1OpVsQjTPVOEXhw.png" data-width="1356" data-height="144" src="https://cdn-images-1.medium.com/max/800/1*pE1L1ZU1OpVsQjTPVOEXhw.png"></figure><p name="edd4" id="edd4" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">(7) Encoding Unicode with Command Line</strong></p><p name="2834" id="2834" class="graf graf--p graf-after--p">Let’s, firstly create a file named utf8.txt by,</p><pre name="66f4" id="66f4" class="graf graf--pre graf-after--p">$ echo &#39;Pencil: ✏, Euro: €\n&#39; &gt; utf8.txt</pre><p name="aabe" id="aabe" class="graf graf--p graf-after--pre">Then, do</p><pre name="5ec1" id="5ec1" class="graf graf--pre graf-after--p">$ od -c -t xC utf8.txt</pre><p name="e084" id="e084" class="graf graf--p graf-after--pre">we will have the output that,</p><figure name="2579" id="2579" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*KrWBuPEfmTmxbBuw4_41Nw.png" data-width="1454" data-height="188" src="https://cdn-images-1.medium.com/max/800/1*KrWBuPEfmTmxbBuw4_41Nw.png"></figure><p name="d315" id="d315" class="graf graf--p graf-after--figure">The <code class="markup--code markup--p-code">**</code> mean &quot;Hi, I&#39;m a byte that is part of the preceding character shown&quot;.</p><p name="f8f9" id="f8f9" class="graf graf--p graf-after--p">The word count command <code class="markup--code markup--p-code">**</code> means to output newline, word, and byte counts of a file. For example,</p><pre name="228d" id="228d" class="graf graf--pre graf-after--p">wc utf8.txt</pre><p name="c315" id="c315" class="graf graf--p graf-after--pre">we will then have,</p><pre name="f4bd" id="f4bd" class="graf graf--pre graf-after--p">      1       4      25 utf8.txt</pre><p name="4751" id="4751" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">2. Data Pipeline</strong></p><p name="87b5" id="87b5" class="graf graf--p graf-after--p">Before we start this part, make sure you understand sort of the command lines. If you are not sure how to use the command line, here is a quick reference that you may find out somehow helpful.</p><div name="c581" id="c581" class="graf graf--mixtapeEmbed graf-after--p"><a href="https://medium.com/adamedelwiess/play-with-the-command-lines-2d1916875184" data-href="https://medium.com/adamedelwiess/play-with-the-command-lines-2d1916875184" class="markup--anchor markup--mixtapeEmbed-anchor" title="https://medium.com/adamedelwiess/play-with-the-command-lines-2d1916875184"><strong class="markup--strong markup--mixtapeEmbed-strong">Play With the Command Lines</strong><br><em class="markup--em markup--mixtapeEmbed-em">Series: Linux Commands</em>medium.com</a><a href="https://medium.com/adamedelwiess/play-with-the-command-lines-2d1916875184" class="js-mixtapeImage mixtapeImage u-ignoreBlock" data-media-id="46175eb7fe91f9a267dde692022be8a1" data-thumbnail-img-id="1*T3fyEcVhUptM9Bx0U8QguA.png" style="background-image: url(https://cdn-images-1.medium.com/fit/c/160/160/1*T3fyEcVhUptM9Bx0U8QguA.png);"></a></div><p name="d76d" id="d76d" class="graf graf--p graf-after--mixtapeEmbed"><strong class="markup--strong markup--p-strong">(1) Recall: Stdin and Stdout</strong></p><p name="3434" id="3434" class="graf graf--p graf-after--p">We have known that all the inputs in Linux are standard inputs and all the outputs are standard outputs. The most common command to create a standard output is to use an <code class="markup--code markup--p-code">echo</code> command. For example,</p><pre name="2e37" id="2e37" class="graf graf--pre graf-after--p">$ echo Hello</pre><p name="f639" id="f639" class="graf graf--p graf-after--pre">This will give back a hello in our command line. This output hello is called the standard output.</p><p name="c5cc" id="c5cc" class="graf graf--p graf-after--p">We can redirect this output to a .txt file named Hello.txt.</p><pre name="73a0" id="73a0" class="graf graf--pre graf-after--p">$ echo Hello &gt; Hello.txt</pre><p name="6a1c" id="6a1c" class="graf graf--p graf-after--pre">we can then use cat command to test this,</p><pre name="8244" id="8244" class="graf graf--pre graf-after--p">$ cat Hello.txt</pre><p name="1c0a" id="1c0a" class="graf graf--p graf-after--pre">Also, we would like to check the standard input, the <code class="markup--code markup--p-code">read</code> command actually gives us a feature to read a value and then give that value to a file, for example,</p><pre name="7073" id="7073" class="graf graf--pre graf-after--p">$ read Something</pre><p name="0472" id="0472" class="graf graf--p graf-after--pre">then, we can type in,</p><pre name="e157" id="e157" class="graf graf--pre graf-after--p">World</pre><p name="5ea8" id="5ea8" class="graf graf--p graf-after--pre">To show the variable Something, we can use,</p><pre name="bb40" id="bb40" class="graf graf--pre graf-after--p">$ echo $Something</pre><p name="4ebb" id="4ebb" class="graf graf--p graf-after--pre">The process we type the word World is called the standard input.</p><p name="a74f" id="a74f" class="graf graf--p graf-after--p">Then we are trying to mix the standard input and the standard output in a single line together. Firstly, we create a new file called readline.sh with the following code,</p><pre name="a362" id="a362" class="graf graf--pre graf-after--p">#!/bin/bash</pre><pre name="e0fa" id="e0fa" class="graf graf--pre graf-after--pre">read Something<br>echo $Something</pre><p name="8563" id="8563" class="graf graf--p graf-after--pre">then, we type in,</p><pre name="1b8f" id="1b8f" class="graf graf--pre graf-after--p">$ source readline.sh &lt; ascii.txt</pre><p name="ad5d" id="ad5d" class="graf graf--p graf-after--pre">This code will give ascii.txt as our standard input and returns its content,</p><pre name="ac22" id="ac22" class="graf graf--pre graf-after--p">ID 345n</pre><p name="e8ff" id="e8ff" class="graf graf--p graf-after--pre">We can also redirect the standard output to another file,</p><pre name="4bde" id="4bde" class="graf graf--pre graf-after--p">$ source readline.sh &lt; ascii.txt &gt; ascii2.txt</pre><p name="d29f" id="d29f" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(2) Project of the Data Pipeline</strong></p><p name="b0ad" id="b0ad" class="graf graf--p graf-after--p graf--trailing">Here’s a quick <a href="https://github.com/parrt/msds692/blob/master/hw/pipeline.md" data-href="https://github.com/parrt/msds692/blob/master/hw/pipeline.md" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">reference</a> for this project of the data pipeline.</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/aa8cbdcf5a4b"><time class="dt-published" datetime="2020-10-19T10:53:38.847Z">October 19, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/data-acquisition-1-data-pipeline-aa8cbdcf5a4b" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

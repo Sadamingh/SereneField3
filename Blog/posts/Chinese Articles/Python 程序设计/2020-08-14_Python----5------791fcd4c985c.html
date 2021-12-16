@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Python程序设计5 文件读取</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Python程序设计5 文件读取</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+系列：Python程序设计
+</section>
+<section data-field="body" class="e-content">
+<section name="1539" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="6b9e" id="6b9e" class="graf graf--h3 graf--leading graf--title">Python程序设计5 文件读取</h3><figure name="b85b" id="b85b" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*nMQTiDVkQq7j6ZlqQEKLbQ.jpeg" data-width="2689" data-height="1513" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*nMQTiDVkQq7j6ZlqQEKLbQ.jpeg"></figure><p name="c912" id="c912" class="graf graf--p graf-after--figure">通常来说，我们如果想要在一个程序中使用数据，我们通常有四种方法来获得数据：（1）直接将数据放在程序中，例如我们在程序中直接定义的变量；（2）从程序的用户调用，例如读取鼠标的数据；（3）随机生成，利用随机函数生成随机数据；（4）从外部文件读取，通过外部文件来储存数据并且稍后通过程序调用。</p><p name="a4f0" id="a4f0" class="graf graf--p graf-after--p">基本上绝大多数我们遇到的程序都会在某些时间调用disk上的文件。例如：</p><ul class="postList"><li name="b493" id="b493" class="graf graf--li graf-after--p">文字处理器：调用文件</li><li name="4157" id="4157" class="graf graf--li graf-after--li">网页浏览器：调用cookies</li><li name="a2cf" id="a2cf" class="graf graf--li graf-after--li">游戏：调用下载好的程序</li><li name="b678" id="b678" class="graf graf--li graf-after--li">PyCharm：调用Python文件</li><li name="03c0" id="03c0" class="graf graf--li graf-after--li">音乐播放器：调用音频文件</li></ul><p name="2f0f" id="2f0f" class="graf graf--p graf-after--li"><strong class="markup--strong markup--p-strong">一、文件读取</strong></p><ol class="postList"><li name="2764" id="2764" class="graf graf--li graf-after--p"><strong class="markup--strong markup--li-strong">示例</strong></li></ol><p name="f267" id="f267" class="graf graf--p graf-after--li">首先我们先制作两个文件，我们通过Sublime编写下面两个文件：</p><ul class="postList"><li name="f876" id="f876" class="graf graf--li graf-after--p">首先是mydata.txt文件，我们在文件中贴入这样的文字：</li></ul><pre name="ffd2" id="ffd2" class="graf graf--pre graf-after--li">Neither be cynical about love;<br>for in the face of all aridity<br>and disenchantment it is as<br>perennial as the grass.<br>- Max Ehrmann &quot;Desiderata&quot;</pre><ul class="postList"><li name="8b09" id="8b09" class="graf graf--li graf-after--pre">其次是mycode.py文件，我们在文件中输入这样的代码：</li></ul><pre name="b1cb" id="b1cb" class="graf graf--pre graf-after--li">file = open(&#39;mydata.txt&#39;) <br>for line in file: <br>      print(line) <br>file.close()</pre><p name="33a8" id="33a8" class="graf graf--p graf-after--pre">我们将上面的两个文件保存在同一个路径下。之后我们打开terminal，进入保存这两个文件的路径（我的是在Desktop上）。</p><pre name="5255" id="5255" class="graf graf--pre graf-after--p">$ cd ~/Desktop</pre><p name="e5ea" id="e5ea" class="graf graf--p graf-after--pre">之后输入：</p><pre name="b5dd" id="b5dd" class="graf graf--pre graf-after--p">$ python3 mycode.py</pre><p name="9f66" id="9f66" class="graf graf--p graf-after--pre">运行得到：</p><pre name="ddf8" id="ddf8" class="graf graf--pre graf-after--p">Neither be cynical about love;</pre><pre name="eb6a" id="eb6a" class="graf graf--pre graf-after--pre">for in the face of all aridity</pre><pre name="4de5" id="4de5" class="graf graf--pre graf-after--pre">and disenchantment it is as</pre><pre name="b8b3" id="b8b3" class="graf graf--pre graf-after--pre">perennial as the grass.</pre><pre name="8347" id="8347" class="graf graf--pre graf-after--pre">- Max Ehrmann &quot;Desiderata&quot;</pre><p name="0c76" id="0c76" class="graf graf--p graf-after--pre">这表示我们从mydata.txt文件中读取了数据。接下来我们来逐步分析代码。</p><p name="f56e" id="f56e" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">2. 文件读取的分步解释</strong></p><ul class="postList"><li name="6908" id="6908" class="graf graf--li graf-after--p">打开文件：我们通过open函数来打开一个文件，结果将会返回一个文件变量，我们可以对这个变量进行进一步的操作。</li></ul><pre name="ae8e" id="ae8e" class="graf graf--pre graf-after--li">file = open(&#39;mydata.txt&#39;)</pre><ul class="postList"><li name="b117" id="b117" class="graf graf--li graf-after--pre">按行读取：在文件变量中，基本单位是行。所以我们可以通过按行遍历来读取整个文件。例如：</li></ul><pre name="d2e0" id="d2e0" class="graf graf--pre graf-after--li">for line in file: <br>      print(line)</pre><ul class="postList"><li name="02b9" id="02b9" class="graf graf--li graf-after--pre">释放变量：当我们open并得到一个文件变量，除非通过close释放这个变量，否则我们将无法得到这个变量。因此，在程序的最后我们通过close方法释放变量。注意：如果我们不去释放变量，那么这个变量将会始终占用我们的内存，最后成为垃圾变量（garbage var）造成资源浪费。例如：</li></ul><pre name="4598" id="4598" class="graf graf--pre graf-after--li">file.close()</pre><p name="9297" id="9297" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">3. 避免行间距</strong></p><p name="ae8f" id="ae8f" class="graf graf--p graf-after--p">你可能已经注意到了，虽然我们在 mydata.txt 文件中没有任何换行的暗示，但是我们最后得到的输出是行与行之间分割的。例如：</p><pre name="db9c" id="db9c" class="graf graf--pre graf-after--p">Neither be cynical about love;</pre><pre name="6b06" id="6b06" class="graf graf--pre graf-after--pre">for in the face of all aridity</pre><pre name="491d" id="491d" class="graf graf--pre graf-after--pre">and disenchantment it is as</pre><pre name="ee8b" id="ee8b" class="graf graf--pre graf-after--pre">perennial as the grass.</pre><pre name="a347" id="a347" class="graf graf--pre graf-after--pre">- Max Ehrmann &quot;Desiderata&quot;</pre><p name="4e6c" id="4e6c" class="graf graf--p graf-after--pre">但是我们实际想要得到的是：</p><pre name="ec95" id="ec95" class="graf graf--pre graf-after--p">Neither be cynical about love;<br>for in the face of all aridity<br>and disenchantment it is as<br>perennial as the grass.<br>- Max Ehrmann &quot;Desiderata&quot;</pre><p name="c776" id="c776" class="graf graf--p graf-after--pre">造成这个结果的原因是在mydata.txt文件的每一行最后还有一个我们看不见的换行符 ’\n’ 。当它被输出的时候，会自动换一行，而print函数本来就会在后面自动加上换行符，这导致我们换了两行，从而产生了行间距。</p><p name="b94d" id="b94d" class="graf graf--p graf-after--p">避免行间距的方法是控制函数输出到每行字符串的倒数第二位（最后一位应该是换行符）。我们可以通过切片来简单地实现这个功能。例如：</p><pre name="aea7" id="aea7" class="graf graf--pre graf-after--p">file = open(&#39;mydata.txt&#39;) <br>for line in file: <br>    line = line[:-1] <br>    print(line) <br>file.close()</pre><p name="7e99" id="7e99" class="graf graf--p graf-after--pre">运行这段代码，我们发现行与行之间不再出现空行。另外，一种更简单的写法也是可以的，例如：</p><pre name="f73f" id="f73f" class="graf graf--pre graf-after--p">file = open(&#39;mydata.txt&#39;) <br>for line in file: <br>    print(line[:-1]) <br>file.close()</pre><p name="926e" id="926e" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">4. 两次输出？</strong></p><p name="5b3f" id="5b3f" class="graf graf--p graf-after--p">观察下面的代码，看看这段代码做了什么？</p><pre name="2611" id="2611" class="graf graf--pre graf-after--p">f = open(&#39;mydata.txt&#39;) </pre><pre name="33d5" id="33d5" class="graf graf--pre graf-after--pre">for line in f: <br>    print(line[:-1]) </pre><pre name="9ed3" id="9ed3" class="graf graf--pre graf-after--pre">print(&#39;-----&#39;) </pre><pre name="533a" id="533a" class="graf graf--pre graf-after--pre">for line in f: <br>    print(line[:-1])</pre><p name="87f5" id="87f5" class="graf graf--p graf-after--pre">我们有可能认为这段代码会输出下面的结果：</p><pre name="e961" id="e961" class="graf graf--pre graf-after--p">Neither be cynical about love; <br>for in the face of all aridity <br>and disenchantment it is as <br>perennial as the grass <br>- Max Ehrmann &quot;Desiderata&quot; <br>----- <br>Neither be cynical about love; <br>for in the face of all aridity <br>and disenchantment it is as <br>perennial as the grass <br>- Max Ehrmann &quot;Desiderata&quot;</pre><p name="152c" id="152c" class="graf graf--p graf-after--pre">但是实际上，我们运行该程序，只能得到一次输出。例如：</p><pre name="3469" id="3469" class="graf graf--pre graf-after--p">Neither be cynical about love; <br>for in the face of all aridity <br>and disenchantment it is as <br>perennial as the grass <br>- Max Ehrmann &quot;Desiderata&quot; <br>-----</pre><p name="b196" id="b196" class="graf graf--p graf-after--pre">造成这种结果的原因是程序的输出是依靠光标来进行的，当一个程序输出到最后的时候，它的光标也移动到了最后。在默认条件下，光标是不复位（reset）执行的，所以下一次输出该文件的时候，光标还是位于该文件的末尾，所以无法被计算机执行，从而只能输出一次。</p><p name="20ab" id="20ab" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">5. 跳过一行</strong></p><p name="a861" id="a861" class="graf graf--p graf-after--p">我们观察下面的代码：</p><pre name="aace" id="aace" class="graf graf--pre graf-after--p">f = open(&#39;mydata.txt&#39;) <br>next(f) <br>for line in f: <br>    print(line[:-1])</pre><p name="1f9d" id="1f9d" class="graf graf--p graf-after--pre">这段代码输出的结果为：</p><pre name="2f4f" id="2f4f" class="graf graf--pre graf-after--p">for in the face of all aridity <br>and disenchantment it is as <br>perennial as the grass <br>- Max Ehrmann &quot;Desiderata&quot;</pre><p name="df62" id="df62" class="graf graf--p graf-after--pre">观察输出结果，我们发现代码跳过了第一行。所以next函数的用法是跳过当前光标所在的一行，到下一行开头。当然，next函数的返回值就是被跳过的一行内容。</p><p name="0d9b" id="0d9b" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">6. 通过with语句自动释放文件</strong></p><p name="bd2c" id="bd2c" class="graf graf--p graf-after--p">有的时候我们经常会忘记在文件打开之后释放文件，这造成了资源的浪费。实际上，我们可以通过with语句来自动释放变量，这样就不用担心在打开文件之后忘记close了。with语句的语法为：</p><pre name="f311" id="f311" class="graf graf--pre graf-after--p">with open(&#39;mydata.txt&#39;) as f:</pre><p name="936a" id="936a" class="graf graf--p graf-after--pre">例如：</p><pre name="b37c" id="b37c" class="graf graf--pre graf-after--p">with open(&#39;mydata.txt&#39;) as f:<br>    for line in f: <br>        line = line[:-1] <br>        print(line)</pre><p name="3680" id="3680" class="graf graf--p graf-after--pre">当然，有的时候我们通过for也能直接实现这个功能，这是因为python内置了一个垃圾回收器（garbage collector），在你忘记close的时候自动释放变量。比如：</p><pre name="0298" id="0298" class="graf graf--pre graf-after--p">for line in open(&#39;mydata.txt&#39;):<br>    line = line[:-1]  <br>    print(line)</pre><p name="d6f6" id="d6f6" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">7. 垃圾回收器 garbage collector</strong></p><p name="e545" id="e545" class="graf graf--p graf-after--p">垃圾回收器实现的实际上是一个重新指派的功能，但是在指派的同时也释放堆上的字符串，从而实现了资源的再利用。</p><p name="06a3" id="06a3" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">8. 将文件中的内容导入为列表</strong></p><p name="c8d5" id="c8d5" class="graf graf--p graf-after--p">我们想要将下面的内容按行转换为列表。</p><pre name="ce44" id="ce44" class="graf graf--pre graf-after--p">Kenya,100,50 <br>Malaysia,50,100<br> ... <br>Turkey,20,20<br>Spain,95,95</pre><p name="1c13" id="1c13" class="graf graf--p graf-after--pre">我们可以通过下面的代码来实现：</p><pre name="eaf4" id="eaf4" class="graf graf--pre graf-after--p graf--trailing">for line in f: <br>   line = line[:-1] <br>   values = line.split(&#39;,&#39;) <br>   print(values[1])</pre></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/791fcd4c985c"><time class="dt-published" datetime="2020-08-14T21:26:18.041Z">August 14, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/python%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A15-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96-791fcd4c985c" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

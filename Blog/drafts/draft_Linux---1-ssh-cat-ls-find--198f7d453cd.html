@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Linux命令行1 ssh、cat、ls、find、</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Linux命令行1 ssh、cat、ls、find、</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+本部分全部基于WarGame Over The Wire的Bandit章节。
+</section>
+<section data-field="body" class="e-content">
+<section name="d529" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="0253" id="0253" class="graf graf--h3 graf--leading graf--title">Linux命令行1 ssh、cat、ls、find、</h3><figure name="5cca" id="5cca" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*xwRv6s8vTnY6uJYO" data-width="1000" data-height="750" src="https://cdn-images-1.medium.com/max/800/0*xwRv6s8vTnY6uJYO"></figure><p name="9f1a" id="9f1a" class="graf graf--p graf-after--figure">本部分全部基于WarGame Over The Wire的Bandit章节。</p><p name="ab00" id="ab00" class="graf graf--p graf--empty graf-after--p"><br></p><p name="ca42" id="ca42" class="graf graf--p graf-after--p">一、通过ssh连接到远端主机</p><p name="365d" id="365d" class="graf graf--p graf-after--p">对于Unix-like的计算机系统，我们都可以通过ssh协议（全称为Secure Shell）连接到远程主机。使用ssh协议可以保证在信息的传输过程中，即使被截获，也无法通过被截获的内容得到准确的信息。客户端通过公钥对信息进行加密，但是，信息并不能通过公钥直接解密，只有通过在服务器上储存的私钥才可以将公钥加密的内容翻译成明文。这种加密方式称为非对称加密。</p><p name="7c03" id="7c03" class="graf graf--p graf-after--p">为了连接到远端的服务器主机，我们需要输入下面的代码。这个代码可以让我们连接到地址为bandit.labs.overthewire.org的服务器，其中用户名为bandit0，端口为2220：</p><pre name="189b" id="189b" class="graf graf--pre graf-after--p">ssh bandit0@bandit.labs.overthewire.org -p 2220</pre><p name="e835" id="e835" class="graf graf--p graf-after--pre">bandit0用户的代码为bandit0，我们键入密码后即可连接到远端主机。</p><p name="35e7" id="35e7" class="graf graf--p graf--empty graf-after--p"><br></p><p name="c24e" id="c24e" class="graf graf--p graf-after--p">二、cat指令</p><p name="4e79" id="4e79" class="graf graf--p graf-after--p">cat是一个文件管理指令。它的作用是将文件打印到标准输出上。常见可选项为：</p><ul class="postList"><li name="67a3" id="67a3" class="graf graf--li graf-after--p">-n：表示按行编号</li><li name="7b58" id="7b58" class="graf graf--li graf-after--li">-b：表示按行编号但是空白行不编号</li><li name="60da" id="60da" class="graf graf--li graf-after--li">-E：每行末尾添加符号$</li><li name="44a1" id="44a1" class="graf graf--li graf-after--li">&gt;：表示将内容输出到某个文件中</li><li name="3063" id="3063" class="graf graf--li graf-after--li">&gt;&gt;：表示将内容附加到某个文件的后面</li></ul><p name="1b46" id="1b46" class="graf graf--p graf-after--li">在bandit0用户中，我们先输入ls来查看home下的文件，发现为readme。之后我们可以通过cat指令将readme文件的内容输出到terminal中，获得bandit1用户的公钥。代码如下：</p><pre name="557b" id="557b" class="graf graf--pre graf-after--p">cat readme</pre><p name="75c8" id="75c8" class="graf graf--p graf--empty graf-after--pre"><br></p><p name="8d54" id="8d54" class="graf graf--p graf-after--p">三、特殊文件名</p><ol class="postList"><li name="4184" id="4184" class="graf graf--li graf-after--p">短横线</li></ol><p name="3fa9" id="3fa9" class="graf graf--p graf-after--li">在linux系统的指令中，短横线通常是用来表示options的。如果一个文件的文件名称为-，那么我们通过普通的方法来调用这个文件是不可以的。系统会提示我们继续输入。这个时候我们就要强行指定这个字符为文件名称 。例如：</p><pre name="91e6" id="91e6" class="graf graf--pre graf-after--p">cat ./-</pre><p name="e01b" id="e01b" class="graf graf--p graf-after--pre">2. 空格</p><p name="f0dc" id="f0dc" class="graf graf--p graf-after--p">在linux系统中，我们允许文件名称之间存在空格，虽然我们通常会避免空格的存在。这个时候我们在引用该文件的时候需要通过\ 来表示。</p><pre name="7203" id="7203" class="graf graf--pre graf-after--p">cat spaces\ in\ this\ filename</pre><p name="20d5" id="20d5" class="graf graf--p graf--empty graf-after--pre"><br></p><p name="7f80" id="7f80" class="graf graf--p graf-after--p">三、ls指令</p><p name="0da1" id="0da1" class="graf graf--p graf-after--p">ls是一个目录管理指令。显示当前目录内文件的名称。常见可选项为：</p><ul class="postList"><li name="df70" id="df70" class="graf graf--li graf-after--p">-a：显示所有文件和目录，包括隐藏文件</li><li name="0166" id="0166" class="graf graf--li graf-after--li">-l：显示文件和目录的信息</li><li name="a207" id="a207" class="graf graf--li graf-after--li">-r：递归显示所有文件和子目录中的所有文件</li></ul><p name="9bd8" id="9bd8" class="graf graf--p graf-after--li">在banit3用户中，我们已经知道在inhere目录下面有一个隐藏文件，我们需要做的工作就是显示当前目录下的全部文件来找到这个隐藏文件。</p><pre name="bbe1" id="bbe1" class="graf graf--pre graf-after--p">ls -a</pre><p name="b4de" id="b4de" class="graf graf--p graf--empty graf-after--pre"><br></p><p name="ede6" id="ede6" class="graf graf--p graf-after--p">四、find指令</p><p name="a681" id="a681" class="graf graf--p graf-after--p">find是一个文件查找指令，主要用来寻找指定信息的文件。常见的可选项为：</p><ul class="postList"><li name="e226" id="e226" class="graf graf--li graf-after--p">-amin &lt;n&gt;：在过去n分钟内被读取的文件</li><li name="e695" id="e695" class="graf graf--li graf-after--li">-atime &lt;n&gt;：在过去n天内被读取的文件</li><li name="0067" id="0067" class="graf graf--li graf-after--li">-cmin &lt;n&gt;：在过去n分钟内被修改过的文件</li><li name="a61a" id="a61a" class="graf graf--li graf-after--li">-ctime &lt;n&gt;：在过去n天内被修改过的文件</li><li name="c078" id="c078" class="graf graf--li graf-after--li">-name &lt;str&gt;：查找名称为str的文件</li><li name="e16e" id="e16e" class="graf graf--li graf-after--li">-size &lt;n&gt;：查找大小为n的文件，其中单位c表示字节（byte），k（kb，表示kilo bytes）</li><li name="c82c" id="c82c" class="graf graf--li graf-after--li">-type &lt;type&gt;：查找某种类型的文件。文件类型分为f类型（一般文件），d类型（目录）等等。</li><li name="401d" id="401d" class="graf graf--li graf-after--li">-user：查找属于某个用户的文件</li><li name="48e7" id="48e7" class="graf graf--li graf-after--li">-group：查找属于某个用户组的文件</li></ul><p name="6227" id="6227" class="graf graf--p graf-after--li">在bandit6用户中，我们需要在root目录查找一个文件，它属于bandit6用户组和bandit7用户。所以我们有指令：</p><pre name="e6c9" id="e6c9" class="graf graf--pre graf-after--p">find -user bandit7 -group bandit6 -size 33c</pre><p name="9d19" id="9d19" class="graf graf--p graf--empty graf-after--pre"><br></p><p name="697e" id="697e" class="graf graf--p graf-after--p">五、grep指令</p><p name="894e" id="894e" class="graf graf--p graf-after--p">grep是文件内查找指令，用来查找文件中的指定字符串。常用可选项如下：</p><ul class="postList"><li name="03bf" id="03bf" class="graf graf--li graf-after--p">-r &lt;str&gt; &lt;path&gt;：以递归的方式查找在path位置中包括str字符串的文件</li><li name="78b1" id="78b1" class="graf graf--li graf-after--li">-e &lt;RegEx&gt; &lt;file&gt;：在file中查找符合正则表达式RegEx的部分</li><li name="bd50" id="bd50" class="graf graf--li graf-after--li">-i：查找时不区分大小写</li><li name="9d34" id="9d34" class="graf graf--li graf-after--li">-v &lt;str&gt;：反向查找，查找不包括字符串str的行</li></ul><p name="8d86" id="8d86" class="graf graf--p graf-after--li">在bandit7用户中，我们需要在data.txt中找到含有millionth的行。我们需要输入的指令是：</p><pre name="e2af" id="e2af" class="graf graf--pre graf-after--p">grep millionth* data.txt</pre><p name="66ac" id="66ac" class="graf graf--p graf--empty graf-after--pre"><br></p><p name="c716" id="c716" class="graf graf--p graf-after--p">六、uniq指令</p><p name="612c" id="612c" class="graf graf--p graf-after--p">正如uniq的字面意思一样，uniq指令是用来统计以及处理文本中重复的内容（这个重复指的是在同一处有重复的内容，如果重复的内容分散在两三处，那么uniq不会把它算作是同样的内容）。常用可选项如下：</p><ul class="postList"><li name="8c13" id="8c13" class="graf graf--li graf-after--p">-c：在输出内容每行的最左侧显示每个重复内容重复的次数</li><li name="e9e4" id="e9e4" class="graf graf--li graf-after--li">-d：仅显示重复的内容</li><li name="04ed" id="04ed" class="graf graf--li graf-after--li">-u：仅显示出现了一次的内容</li></ul><p name="49aa" id="49aa" class="graf graf--p graf-after--li">对于分散重复的内容，我们需要对其先进行sort，等其内容按照行首字母顺序排序后再用uniq指令统计。例如在bandit8用户中，由于重复出现的行是分散的，所以如果我们直接使用uniq指令并不会统计重复的内容。所以我们需要先用sort命令进行排序，之后再通过uniq指令找到符合我们要求的行。要注意的是，|符号指的是在前一个命令执行之后执行。如果多句指令有着相同的操作对象，则对于除了第一个指令之外的其他指令，我们不需要对后面的指令指明操作对象。例如，</p><pre name="68b6" id="68b6" class="graf graf--pre graf-after--p">sort data.txt | uniq -u</pre><p name="f7e0" id="f7e0" class="graf graf--p graf--empty graf-after--pre"><br></p><p name="b6b0" id="b6b0" class="graf graf--p graf-after--p">七、strings指令</p><p name="a4ca" id="a4ca" class="graf graf--p graf-after--p">strings指令是文件编码指令，它的目的是在某个二进制文件中或者给定的目标文件中寻找可以打印的字符串。strings指令是按照ASCII编码规则来查找指定的字符串，因此如果文件不是用ASCII进行编码的，那么也就无法通过strings指令查找所需的字符串。常用的可选项如下：</p><ul class="postList"><li name="033d" id="033d" class="graf graf--li graf-after--p">-a：扫描整个文件</li><li name="3cc7" id="3cc7" class="graf graf--li graf-after--li">-f：输出的字符串前显示文件名称</li></ul><p name="0933" id="0933" class="graf graf--p graf-after--li">另外，strings指令也可以和grep指令连用用来搜索指定的字符串内容。</p><p name="3b0a" id="3b0a" class="graf graf--p graf-after--p">在bandit9用户中，我们通过strings指令对给出的二进制文件data.txt在ASCII码的规则下进行编码，得到的结果中我们找到=后面的内容，就是我们所需的密码。</p><pre name="40a1" id="40a1" class="graf graf--pre graf-after--p">strings data.txt | grep &#39;=&#39;</pre><p name="2a3e" id="2a3e" class="graf graf--p graf--empty graf-after--pre"><br></p><p name="c532" id="c532" class="graf graf--p graf--empty graf-after--p graf--trailing"><br></p></div></div></section>
+</section>
+<footer><p><a href="https://medium.com/p/198f7d453cd">View original.</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

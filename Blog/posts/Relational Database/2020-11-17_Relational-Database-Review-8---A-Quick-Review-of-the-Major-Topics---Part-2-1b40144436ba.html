@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Relational Database Review 8 | A Quick Review of the Major Topics — Part 2</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Relational Database Review 8 | A Quick Review of the Major Topics — Part 2</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Relational Database
+</section>
+<section data-field="body" class="e-content">
+<section name="055d" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="126e" id="126e" class="graf graf--h3 graf--leading graf--title">Relational Database Review 8 | A Quick Review of the Major Topics — Part 2</h3><figure name="0e2a" id="0e2a" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*3IaCF_vbefdstmWFpZxCRw.png" data-width="1600" data-height="1200" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*3IaCF_vbefdstmWFpZxCRw.png"></figure><p name="d729" id="d729" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">1. JOIN</strong></p><pre name="984a" id="984a" class="graf graf--pre graf-after--p">CROSS JOIN                    # cartesian product<br>JOIN ... ON ...               # no NULL values<br>LEFT JOIN ... ON ...          # values in the left table else NULL<br>RIGHT JOIN ... ON ...         # values in the right table else NULL<br>FULL JOIN ... ON ...          # values in both tables else NULL</pre><p name="95d7" id="95d7" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">2. Conditional Statement</strong></p><pre name="4b33" id="4b33" class="graf graf--pre graf-after--p">CASE WHEN ... THEN ...<br>     WHEN ... THEN ...<br>     ELSE ...<br>END AS ...</pre><p name="3960" id="3960" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">3. Pivot Table</strong></p><p name="88ed" id="88ed" class="graf graf--p graf-after--p">Input: finalscore table</p><pre name="6c64" id="6c64" class="graf graf--pre graf-after--p">+---------+----------+---------+<br>|   sid   |  subject |  grade  |<br>+---------+----------+---------+<br>|    1    |   Math   |   94    |<br>|    1    |  Physics |   87    |<br>|    2    |  English |   82    |<br>|    3    |   Math   |   91    |<br>|    3    |  English |   97    |<br>+---------+----------+---------+</pre><p name="c1ac" id="c1ac" class="graf graf--p graf-after--pre">Output:</p><pre name="b468" id="b468" class="graf graf--pre graf-after--p">+---------+----------+-----------+-----------+<br>|   sid   |   Math   |  Physics  |  English  |<br>+---------+----------+-----------+-----------+<br>|    1    |    94    |     87    |           |<br>|    2    |          |           |     82    |<br>|    3    |    91    |           |     97    |<br>+---------+----------+-----------+-----------+</pre><p name="05b9" id="05b9" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">Wrong Code:</strong></p><pre name="7b9f" id="7b9f" class="graf graf--pre graf-after--p">SELECT sid,<br>       CASE WHEN subject = &#39;Math&#39; THEN grade END AS Math,<br>       CASE WHEN subject = &#39;Physics&#39; THEN grade END AS Physics,<br>       CASE WHEN subject = &#39;English&#39; THEN grade END AS English<br>FROM finalscore<br>ORDER BY sid;</pre><p name="78c2" id="78c2" class="graf graf--p graf-after--pre">Because the output will be,</p><pre name="2f96" id="2f96" class="graf graf--pre graf-after--p">+---------+----------+-----------+-----------+<br>|   sid   |   Math   |  Physics  |  English  |<br>+---------+----------+-----------+-----------+<br>|    1    |    94    |           |           |<br>|    1    |          |     87    |           |<br>|    2    |          |           |     82    |<br>|    3    |    91    |           |           |<br>|    3    |          |           |     97    |<br>+---------+----------+-----------+-----------+</pre><p name="8a32" id="8a32" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">Answer Code:</strong></p><pre name="7774" id="7774" class="graf graf--pre graf-after--p">WITH tmp AS (<br>   SELECT sid,<br>       CASE WHEN subject = &#39;Math&#39; THEN grade END AS Math,<br>       CASE WHEN subject = &#39;Physics&#39; THEN grade END AS Physics,<br>       CASE WHEN subject = &#39;English&#39; THEN grade END AS English<br>   FROM finalscore<br>)<br>SELECT sid, <br>       SUM(Math) AS Math, <br>       SUM(Physics) AS Physics, <br>       SUM(English) AS English<br>FROM tmp<br>GROUP BY sid<br>ORDER BY sid;</pre><p name="3cb2" id="3cb2" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">4. &lt;&gt; vs != Debate</strong></p><p name="e13f" id="e13f" class="graf graf--p graf-after--p">There is a conflict between the operation of “not equal”. In fact, you can use either <code class="markup--code markup--p-code">!=</code> or <code class="markup--code markup--p-code">&lt;&gt;</code> for not equal and they have the same meaning in PostgreSQL. You can see a discussion of which one to use from <a href="https://stackoverflow.com/questions/723195/should-i-use-or-for-not-equal-in-t-sql" data-href="https://stackoverflow.com/questions/723195/should-i-use-or-for-not-equal-in-t-sql" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">here</a>.</p><p name="077b" id="077b" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">5. NULL Functions</strong></p><pre name="d2e6" id="d2e6" class="graf graf--pre graf-after--p">ISNULL(colname, expression)      # return value if not null else exp<br>COALESCE(col1, col2, ...)      # return 1st not null value else null<br>NULLIF(col1, col2)   # return value of col1 if col1 = col2 else null</pre><p name="dc13" id="dc13" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">6. Get Running Time</strong></p><pre name="c3ce" id="c3ce" class="graf graf--pre graf-after--p">EXPLAIN ANALYZE VERBOSE</pre><p name="3ede" id="3ede" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">7. Indexing</strong></p><ul class="postList"><li name="4b77" id="4b77" class="graf graf--li graf-after--p">Indexing By Hash Table (Equality Searching / Deleting)</li></ul><pre name="4198" id="4198" class="graf graf--pre graf-after--li">CREATE INDEX indexname<br>ON tablename<br>USING hash (colname);</pre><ul class="postList"><li name="5e26" id="5e26" class="graf graf--li graf-after--pre">Indexing By Binary Tree (Range Searching / Sorting / Deleting)</li></ul><pre name="e6ac" id="e6ac" class="graf graf--pre graf-after--li">CREATE INDEX indexname<br>ON tablename<br>USING btree (colname);</pre><pre name="6a67" id="6a67" class="graf graf--pre graf-after--pre">CLUSTER tablename<br>USING indexname</pre><ul class="postList"><li name="a8e1" id="a8e1" class="graf graf--li graf-after--pre">No Index (Inserting)</li><li name="c89a" id="c89a" class="graf graf--li graf-after--li">Delete indexing</li></ul><pre name="850a" id="850a" class="graf graf--pre graf-after--li">DROP INDEX IF EXISTS indexname CASCADE;</pre><p name="8dca" id="8dca" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">8. Window Function</strong></p><pre name="68c0" id="68c0" class="graf graf--pre graf-after--p"><strong class="markup--strong markup--pre-strong"># SUM all column name</strong><br>SUM(col) OVER () <br>            <br><strong class="markup--strong markup--pre-strong"># SUM the col1 values group by cole2</strong><br>SUM(col1) OVER (<br>    PARTITION BY col2)       </pre><pre name="fa8a" id="fa8a" class="graf graf--pre graf-after--pre"><strong class="markup--strong markup--pre-strong"># SUM the col1 values group by cole2</strong><br>SUM(col1) OVER (<br>     PARTITION BY col2<br>     ORDER BY col1<br>     ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)</pre><pre name="b75c" id="b75c" class="graf graf--pre graf-after--pre"><strong class="markup--strong markup--pre-strong"># Accumulate col1 values group by cole2</strong><br>SUM(col1) OVER (<br>    PARTITION BY col2<br>    ORDER BY col1)       </pre><pre name="a4d4" id="a4d4" class="graf graf--pre graf-after--pre"><strong class="markup--strong markup--pre-strong"># Accumulate col1 values group by cole2 </strong>  <br>SUM(col1) OVER (<br>     PARTITION BY col2<br>     ORDER BY col1<br>     ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)</pre><pre name="2dc5" id="2dc5" class="graf graf--pre graf-after--pre"><strong class="markup--strong markup--pre-strong"># Add the col1 values (current, current + 1) group by col2</strong><br>SUM(col1) OVER (<br>     PARTITION BY col2<br>     ORDER BY col1<br>     ROWS BETWEEN CURRENT ROW AND 1 FOLLOWING)</pre><p name="d315" id="d315" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">9. CTE</strong></p><pre name="682f" id="682f" class="graf graf--pre graf-after--p">WITH tablename1 AS (SELECT * FROM tablename3),<br>     tablename2 AS (SELECT * FROM tablename4),<br>     ...<br>SELECT tablename1.colname1, tablename2.colname2, ...<br>FROM tablename1, tablename2, ...;</pre><p name="461e" id="461e" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">10. Function</strong></p><ul class="postList"><li name="3b66" id="3b66" class="graf graf--li graf-after--p">Example</li></ul><pre name="e4ed" id="e4ed" class="graf graf--pre graf-after--li">CREATE OR REPLACE FUNCTION sid_by_name(name VARCHAR) <br>RETURNS TABLE (sid INTEGER, sname VARCHAR) AS<br>$$<br>    SELECT sid, sname<br>    FROM students<br>    WHERE sname = name<br>$$<br>LANGUAGE SQL;</pre><ul class="postList"><li name="7066" id="7066" class="graf graf--li graf-after--pre">Delete a function</li></ul><pre name="062b" id="062b" class="graf graf--pre graf-after--li">DROP FUNCTION IF EXISTS functname;</pre><p name="92aa" id="92aa" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">11. View</strong></p><ul class="postList"><li name="7d1a" id="7d1a" class="graf graf--li graf-after--p">Create a view</li></ul><pre name="7535" id="7535" class="graf graf--pre graf-after--li">CREATE VIEW viewname AS<br>...</pre><ul class="postList"><li name="1ed0" id="1ed0" class="graf graf--li graf-after--pre">Delete a view</li></ul><pre name="4c31" id="4c31" class="graf graf--pre graf-after--li">DROP VIEW IF EXISTS viewname CASCADE;</pre><p name="3584" id="3584" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">12. JSON</strong></p><ul class="postList"><li name="d1f2" id="d1f2" class="graf graf--li graf-after--p">Get a JSON value of ‘_id’ in a json datatype</li></ul><pre name="f2fa" id="f2fa" class="graf graf--pre graf-after--li">SELECT colname -&gt; &#39;_id&#39;<br>FROM tablename;</pre><ul class="postList"><li name="a2be" id="a2be" class="graf graf--li graf-after--pre">Get a text value of ‘_id’ in a json datatype</li></ul><pre name="4940" id="4940" class="graf graf--pre graf-after--li">SELECT colname -&gt;&gt; &#39;_id&#39;<br>FROM tablename;</pre><ul class="postList"><li name="62c7" id="62c7" class="graf graf--li graf-after--pre">Convert a table to JSON</li></ul><pre name="eaf2" id="eaf2" class="graf graf--pre graf-after--li graf--trailing">SELECT TO_JSON(tablename) <br>FROM tablename;</pre></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/1b40144436ba"><time class="dt-published" datetime="2020-11-17T13:49:52.259Z">November 17, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/relational-database-review-8-a-quick-review-of-the-major-topics-part-2-1b40144436ba" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

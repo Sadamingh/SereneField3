@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>密码导论1 常见的古典密码</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">密码导论1 常见的古典密码</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+系列：密码导论
+</section>
+<section data-field="body" class="e-content">
+<section name="3605" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="d34b" id="d34b" class="graf graf--h3 graf--leading graf--title">密码导论1 常见的古典密码</h3><figure name="92f4" id="92f4" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*EMMJWRwbE-Ua0JxrAZskPA.jpeg" data-width="2250" data-height="1500" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*EMMJWRwbE-Ua0JxrAZskPA.jpeg"></figure><p name="c552" id="c552" class="graf graf--p graf-after--figure">古典密码的设计者只考虑消息的保密性，不考虑密钥的保密性。加密方式一般为对称加密。所有拥有密钥的人都可以对密文进行解密，对于信息的完整性和不可否认性没有太多设计。现在一般被弃用。</p><ol class="postList"><li name="4a80" id="4a80" class="graf graf--li graf-after--p"><strong class="markup--strong markup--li-strong">凯撒密码 </strong>Caesar Cipher</li></ol><p name="b45a" id="b45a" class="graf graf--p graf-after--li">将明文中的每个字母都按照其在字母表中的顺序向后或者向前移动固定数目（循环移动）作为密文。在凯撒密码中，密钥就是偏移量（一个阿拉伯数字），只要我们知道偏移量，我们就能够翻译密码。</p><figure name="8adc" id="8adc" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*c4jrZNayjIIksDf2LfKFUg.png" data-width="1268" data-height="400" src="https://cdn-images-1.medium.com/max/800/1*c4jrZNayjIIksDf2LfKFUg.png"></figure><p name="3607" id="3607" class="graf graf--p graf-after--figure">当凯撒密码偏移量为13时，称此加密方式为ROT13。由于凯撒密码只有25种可能性（除了它本身），所以破译起来非常简单。</p><p name="60af" id="60af" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">2. 基于密钥的凯撒密码 </strong>Keyed Caesar Cipher</p><p name="cd7d" id="cd7d" class="graf graf--p graf-after--p">在给出密文的同时给出纯英文密钥，密钥中字母A～Z分别表示偏移量为0～25。密文中每个字母按照密钥给出的偏移量依次后移就可以得到明文，同样地，明文中每个字母按照密钥给出的偏移量依次前移就可以得到密文。</p><figure name="b30f" id="b30f" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*-u3Bj9sKu4QG_PbV_xeOug.png" data-width="1508" data-height="400" src="https://cdn-images-1.medium.com/max/800/1*-u3Bj9sKu4QG_PbV_xeOug.png"></figure><p name="9530" id="9530" class="graf graf--p graf-after--figure">例如：</p><pre name="93d8" id="93d8" class="graf graf--pre graf-after--p">明文：GOTVICTORY<br>密钥：LEMONLEMON<br>密文：VKHHVQPCDL</pre><p name="1fa9" id="1fa9" class="graf graf--p graf-after--pre">一般来说，只有知道对应的密钥才可以对基于密钥的凯撒密码进行破解，否则是难以解密的。</p><p name="1c88" id="1c88" class="graf graf--p graf-after--p">基于密钥的凯撒密码的问题是明文向暗文加密是往前偏移的，只有在解密的时候才是向后偏移的，这给解密的人提供了方便但是给加密的人造成了更大的工作量。因此，人们将明文向暗文加密改成向后偏移，这就产生了<em class="markup--em markup--p-em">维吉尼亚密码</em>。</p><p name="28d0" id="28d0" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">3. 维吉尼亚密码 </strong>Vigenère Cipher</p><p name="88cc" id="88cc" class="graf graf--p graf-after--p">之前我们提到的加密方式都属于单表密码，它指的是我们只根据给定的偏移和一维列表进行加密和解密。如果我们将将明文向暗文加密改成向后偏移，那么在加密的过程中，我们可以使用一种密码表来进行加密，它的出现减轻了人们的工作量。</p><figure name="62bd" id="62bd" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*VkiMBAuioc0g1ptjTIbxqA.png" data-width="1074" data-height="460" src="https://cdn-images-1.medium.com/max/800/1*VkiMBAuioc0g1ptjTIbxqA.png"></figure><p name="f5b6" id="f5b6" class="graf graf--p graf-after--figure">这个表格可以理解为上侧一排表示明文，左侧一排表示密钥对应的字母（偏移量）。根据这个表格，我们能够更方便地对有密钥的凯撒密码进行解密。同时，通过此表格加密的密码被称为维吉尼亚密码。</p><p name="cc90" id="cc90" class="graf graf--p graf-after--p">如果维吉尼亚密码的密钥是关键词重复（Repeat Mode）的，那么密钥会自动填充直到和明文等长度（LEMON-&gt;LEMONLEMON）。例如：</p><pre name="ed6d" id="ed6d" class="graf graf--pre graf-after--p">明文：GOTVICTORY<br>密钥：LEMON<br>密文：RSFJVNXAFL</pre><p name="6bf9" id="6bf9" class="graf graf--p graf-after--pre">如果维吉尼亚密码的密钥是自动关键词（Autokey Mode）的，那么密钥不够的部分会自动填充明文（LEMON-&gt;LEMONGOTVI）。例如：</p><pre name="0f03" id="0f03" class="graf graf--pre graf-after--p">明文：GOTVICTORY<br>密钥：LEMON<br>密文：RSFJVIHHMG</pre><p name="8559" id="8559" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">4. 栅栏密码</strong> Rail Fence Cipher</p><p name="c191" id="c191" class="graf graf--p graf-after--p">栅栏密码是通过分组重排来实现的，它本身并不改变字母的组成。我们先将明文分为Key个字母一组，这里的Key就是栅栏密码的密钥，也是编码的时候人为指定的。之后我们提取出每组的第一个字母组成一串字符，再取出每组第二个字母组成一串字符，依此类推……直到得到最后一串字符。最后我们将这些字符串按照顺序拼在一起就是栅栏密码的密文。（实际上，这个说法是有问题的，并不是按照这样加密的）例如：</p><pre name="8c4a" id="8c4a" class="graf graf--pre graf-after--p">明文：GOTVICTORY<br>密钥：2<br>密文：GTITROVCOY</pre><p name="db01" id="db01" class="graf graf--p graf-after--pre">以及，</p><pre name="5f2c" id="5f2c" class="graf graf--pre graf-after--p">明文：GOTVICTORY<br>密钥：3<br>密文：GIROVCOYTT</pre><p name="7e26" id="7e26" class="graf graf--p graf-after--pre">实际上加密的过程我们可以用下面的方法：</p><figure name="0ba7" id="0ba7" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="0*KjtnckLDbwQLGSeY.png" data-width="662" data-height="174" src="https://cdn-images-1.medium.com/max/800/0*KjtnckLDbwQLGSeY.png"></figure><figure name="2af4" id="2af4" class="graf graf--figure graf-after--figure"><img class="graf-image" data-image-id="0*yEo4-Drobjms7O5G.png" data-width="662" data-height="200" src="https://cdn-images-1.medium.com/max/800/0*yEo4-Drobjms7O5G.png"></figure><p name="dae3" id="dae3" class="graf graf--p graf-after--figure">栅栏密码常用的破解方法一般是暴力破解，因为当Key≥明文字母数量的时候，明文将不会被加密。因此，Key的可用数值存在上限，可以通过暴力破解来看出明文。</p><p name="e525" id="e525" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">5. 波雷费密码</strong> Playfair Cipher</p><p name="1ba9" id="1ba9" class="graf graf--p graf-after--p">波雷费密码的本质上是通过一个给定的5 x 5密码表进行加密。当没有给出密钥时，密码表是从左到右从上到下的从A到Z（除了J，将I和J看作是同一个字母）。当给出密钥时，先删去密钥中的相同字母，然后再将密钥从左到右从上到下放入5 x 5的密码表中，最后再在末尾按照A到Z的顺序补充其他字母。</p><figure name="505e" id="505e" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*OOk96J2gpzbmDHS8_VlIXQ.png" data-width="1576" data-height="460" src="https://cdn-images-1.medium.com/max/800/1*OOk96J2gpzbmDHS8_VlIXQ.png"></figure><p name="9b99" id="9b99" class="graf graf--p graf-after--figure">密码的加密过程是先将明文中的字母按照顺序分为两两一组。例如对于明文GOTVICTORY，我们可以将它分为 GO TV IC TO RY。在这一过程中，如果字母的数量是单数，则最后一个字母和字母X配对。如果这一过程中出现了重复的字母，那么同样也将第二个字母替换为X。</p><p name="572c" id="572c" class="graf graf--p graf-after--p">对于明文中的一组字母，可能会出现三种情况：（1）两个字母在同一列，那么两个字母都被替换为它们各自下面的字母，如果下面没有字母，则替换为该列第一个字母；（2）两个字母在同一行，那么两个字母都被替换为它们各自后面的字母，如果后面没有字母，则替换为该行第一个字母；（3）两个字母不在同一行也不在同一列，那么就替换为两个字母围成的矩形中另外的对角线水平对应的字母。</p><figure name="4212" id="4212" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*_srgm7hETS01uZBv8CF4KA.png" data-width="1576" data-height="470" src="https://cdn-images-1.medium.com/max/800/1*_srgm7hETS01uZBv8CF4KA.png"></figure><p name="efba" id="efba" class="graf graf--p graf-after--figure">由于波雷费密码是可以被破解的，所以它被认为是一种及其不安全的加密方法，现在已经很少被使用。</p><p name="2484" id="2484" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">6. 01248密码</strong></p><p name="89d1" id="89d1" class="graf graf--p graf-after--p">通过1248相加来表示1～26数字，依次代表A～Z字母。0表示字母之间的间隔。很好加密也非常容易被破译。</p><p name="39f0" id="39f0" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">7. A1Z26密码</strong></p><p name="7cf1" id="7cf1" class="graf graf--p graf-after--p">正如本密码的名字所表示的那样，我们将字母A用数字1代替，字母Z用数字26代替，不同字母得到的数字之间用短横线-分割，由此得到的密码就是A1Z26密码。A1Z26密码是最为简单的密码之一，几乎不需要任何难度就能被轻松破译。</p><p name="714f" id="714f" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">8. 仿射密码</strong> Affine Cipher（阿特巴希密码 Atbash Code）</p><p name="d907" id="d907" class="graf graf--p graf-after--p">将整个字母表扭转，第一个字母对应最后一个字母，以此类推的加密方法。</p><pre name="c6d2" id="c6d2" class="graf graf--pre graf-after--p graf--trailing">明文：  abcdefghijklmnopqrstuvwxyz<br>密文：  ZYXWVUTSRQPONMLKJIHGFEDCBA</pre></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/dfced904e1"><time class="dt-published" datetime="2020-08-02T15:07:25.075Z">August 2, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/%E5%AF%86%E7%A0%81%E5%AF%BC%E8%AE%BA1-%E5%B8%B8%E8%A7%81%E7%9A%84%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81-dfced904e1" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

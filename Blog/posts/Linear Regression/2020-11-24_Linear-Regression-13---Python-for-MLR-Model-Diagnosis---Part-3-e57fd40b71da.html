@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Linear Regression 13 | Python for MLR Model Diagnosis — Part 3</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Linear Regression 13 | Python for MLR Model Diagnosis — Part 3</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Linear Regression
+</section>
+<section data-field="body" class="e-content">
+<section name="dbec" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="9f86" id="9f86" class="graf graf--h3 graf--leading graf--title">Linear Regression 13 | Python for MLR Model Diagnosis — Part 3</h3><figure name="6736" id="6736" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*hkj7_q-YssocgV9B.png" data-width="1484" data-height="696" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/0*hkj7_q-YssocgV9B.png"></figure><ol class="postList"><li name="e8dc" id="e8dc" class="graf graf--li graf-after--figure"><strong class="markup--strong markup--li-strong">Import Packages</strong></li></ol><pre name="3afd" id="3afd" class="graf graf--pre graf-after--li">import copy<br>from math import *</pre><pre name="2741" id="2741" class="graf graf--pre graf-after--pre">import pandas as pd<br>import numpy as np<br>import scipy<br>from scipy import stats<br>from scipy.stats import kstest<br>from scipy.stats import boxcox<br>import scipy.linalg as linalg</pre><pre name="3e73" id="3e73" class="graf graf--pre graf-after--pre">from sklearn import linear_model<br>import statsmodels.api as sm<br>import statsmodels.formula.api as smf<br>from statsmodels.stats.diagnostic import het_breuschpagan<br>from patsy import dmatrices<br>from statsmodels.stats.outliers_influence import variance_inflation_factor</pre><pre name="6b06" id="6b06" class="graf graf--pre graf-after--pre">import matplotlib.pyplot as plt<br>import seaborn as sns<br>%config InlineBackend.figure_format=&#39;retina&#39;</pre><p name="e659" id="e659" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">2. Subset Selection</strong></p><figure name="53ef" id="53ef" class="graf graf--figure graf--iframe graf-after--p"><script src="https://gist.github.com/Sadamingh/433136ca46337244f5b38259c01aed5d.js"></script></figure><p name="c4d8" id="c4d8" class="graf graf--p graf-after--figure">An example instance is,</p><pre name="625a" id="625a" class="graf graf--pre graf-after--p">SubsetSelection(df_brand, &#39;BrandLiking&#39;)</pre><p name="c5ef" id="c5ef" class="graf graf--p graf-after--pre">The output is,</p><figure name="3049" id="3049" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*SGxPYXz2NlVk0Q3Z6s5D2Q.png" data-width="1228" data-height="242" src="https://cdn-images-1.medium.com/max/800/1*SGxPYXz2NlVk0Q3Z6s5D2Q.png"></figure><p name="a212" id="a212" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">3. Forward Stepwise Model Selection (Automatically Select)</strong></p><figure name="1bb8" id="1bb8" class="graf graf--figure graf--iframe graf-after--p"><script src="https://gist.github.com/Sadamingh/730c8fbcacc4713733987ed65387bd97.js"></script></figure><p name="ba59" id="ba59" class="graf graf--p graf-after--figure">An example instance is,</p><pre name="fbb8" id="fbb8" class="graf graf--pre graf-after--p">ForwardSelection(df_icecream, &#39;cons&#39;, &#39;R_sq_adj&#39;)</pre><p name="8328" id="8328" class="graf graf--p graf-after--pre">The plot of the model selection is,</p><figure name="a48b" id="a48b" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*a51qhnZEEmTg1khloOpYpQ.png" data-width="964" data-height="408" src="https://cdn-images-1.medium.com/max/800/1*a51qhnZEEmTg1khloOpYpQ.png"></figure><p name="5d33" id="5d33" class="graf graf--p graf-after--figure">The output is,</p><pre name="956a" id="956a" class="graf graf--pre graf-after--p">&#39;cons ~ temp + income + price&#39;</pre><p name="c569" id="c569" class="graf graf--p graf-after--pre">Note that different methods can give different results,</p><pre name="4e21" id="4e21" class="graf graf--pre graf-after--p">ForwardSelection(df_icecream, &#39;cons&#39;, &#39;aic&#39;)</pre><p name="d947" id="d947" class="graf graf--p graf-after--pre">The plot of the model selection is,</p><figure name="f370" id="f370" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*baRUYBZ-5C1xF3jaKbwBxQ.png" data-width="930" data-height="408" src="https://cdn-images-1.medium.com/max/800/1*baRUYBZ-5C1xF3jaKbwBxQ.png"></figure><p name="41e9" id="41e9" class="graf graf--p graf-after--figure">The output is,</p><pre name="b487" id="b487" class="graf graf--pre graf-after--p graf--trailing">&#39;cons ~ income + price + time + temp&#39;</pre></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/e57fd40b71da"><time class="dt-published" datetime="2020-11-24T17:14:16.995Z">November 24, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/linear-regression-13-python-for-mlr-model-diagnosis-part-3-e57fd40b71da" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

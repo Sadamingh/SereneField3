@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Information Security Lab 1 | Building Local Environment</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Information Security Lab 1 | Building Local Environment</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Information Security Lab
+</section>
+<section data-field="body" class="e-content">
+<section name="b294" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="eef9" id="eef9" class="graf graf--h3 graf--leading graf--title">Information Security Lab 1 | Building Local Environment</h3><figure name="5e11" id="5e11" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*-LjO2iHBH7t7zGHMXAZJVg.png" data-width="1738" data-height="952" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*-LjO2iHBH7t7zGHMXAZJVg.png"></figure><ol class="postList"><li name="d1a2" id="d1a2" class="graf graf--li graf-after--figure"><strong class="markup--strong markup--li-strong">Basic Installation</strong></li></ol><p name="fbdd" id="fbdd" class="graf graf--p graf-after--li">First, we have to install VirtualBox and Vagrant.</p><ul class="postList"><li name="0e45" id="0e45" class="graf graf--li graf-after--p">Download and install the latest version of VirtualBox <a href="https://www.virtualbox.org/wiki/Downloads" data-href="https://www.virtualbox.org/wiki/Downloads" class="markup--anchor markup--li-anchor" rel="noopener" target="_blank">here</a>.</li><li name="b767" id="b767" class="graf graf--li graf-after--li">Download and install the latest version of vagrant <a href="http://www.vagrantup.com/downloads.html" data-href="http://www.vagrantup.com/downloads.html" class="markup--anchor markup--li-anchor" rel="noopener" target="_blank">here</a>.</li><li name="afe2" id="afe2" class="graf graf--li graf-after--li">Windows: Download and install git <a href="http://git-scm.com/download/win" data-href="http://git-scm.com/download/win" class="markup--anchor markup--li-anchor" rel="noopener" target="_blank">here</a>.</li></ul><p name="2e43" id="2e43" class="graf graf--p graf-after--li">Ubuntu users may want to use the following commands to install Virtualbox and Vagrant,</p><pre name="6b2c" id="6b2c" class="graf graf--pre graf-after--p">$ sudo apt-get install virtualbox<br>$ sudo apt-get install vagrant</pre><p name="1dca" id="1dca" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">2. Setup the Environment</strong></p><p name="4e90" id="4e90" class="graf graf--p graf-after--p">First, let’s make a new folder named <code class="markup--code markup--p-code">cs6265-tut</code>,</p><pre name="bf43" id="bf43" class="graf graf--pre graf-after--p">$ cd ~<br>$ mkdir cs6265-tut<br>$ cd cs6265-tut</pre><p name="325c" id="325c" class="graf graf--p graf-after--pre">Then let’s download the environment configuration files from the internet by <code class="markup--code markup--p-code">wget</code>,</p><pre name="6116" id="6116" class="graf graf--pre graf-after--p">$ wget https://tc.gts3.org/cs6265/tut/tut.tar.gz</pre><p name="2379" id="2379" class="graf graf--p graf-after--pre">After we download this file, we can unzip it by,</p><pre name="540d" id="540d" class="graf graf--pre graf-after--p">$ tar xzvf tut.tar.gz</pre><p name="ce11" id="ce11" class="graf graf--p graf-after--pre">Finally, let’s use <code class="markup--code markup--p-code">vagrant</code> to set up the environment,</p><pre name="c4d4" id="c4d4" class="graf graf--pre graf-after--p">$ vagrant up</pre><p name="13af" id="13af" class="graf graf--p graf-after--pre">After finishing the setups, we can use <code class="markup--code markup--p-code">ssh</code> to test whether we have successfully configured the environment or not,</p><pre name="f324" id="f324" class="graf graf--pre graf-after--p">$ vagrant ssh</pre><p name="e540" id="e540" class="graf graf--p graf-after--pre">In the VM, we can use the following command to check if everything is okay. By,</p><pre name="672a" id="672a" class="graf graf--pre graf-after--p">$ seclab tut01</pre><p name="6050" id="6050" class="graf graf--p graf-after--pre">If we can get the result of a testing flag, we will be okay to continue.</p><pre name="d588" id="d588" class="graf graf--pre graf-after--p graf--trailing">0<br>[!] Ready for tut01<br>F38FE749E36CD0437AD0062D6836C393618FCC4A412FDE666C89EB41AC0814D5<br>B734EBE71127B13BFE569599D6521FF424CEBDF34F07A91CF70B8CB12E324283<br>...</pre></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/ae6c6306d50d"><time class="dt-published" datetime="2021-05-06T11:31:53.962Z">May 6, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/information-security-lab-1-building-local-environment-ae6c6306d50d" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

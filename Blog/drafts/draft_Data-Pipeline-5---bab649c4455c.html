@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Data Pipeline 5 |</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Data Pipeline 5 |</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Branching
+</section>
+<section data-field="body" class="e-content">
+<section name="df19" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="9253" id="9253" class="graf graf--h3 graf--leading graf--title">Data Pipeline 5 | </h3><figure name="6260" id="6260" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*005G3TPP0Hht0xdv.png" data-width="1352" data-height="622" src="https://cdn-images-1.medium.com/max/800/0*005G3TPP0Hht0xdv.png"></figure><ol class="postList"><li name="c7c3" id="c7c3" class="graf graf--li graf-after--figure"><strong class="markup--strong markup--li-strong">Branching</strong></li></ol><p name="defe" id="defe" class="graf graf--p graf-after--li"><strong class="markup--strong markup--p-strong">(1) The Definition of Branching</strong></p><p name="4bc9" id="4bc9" class="graf graf--p graf-after--p">When the DAG becomes even more complex, we may need to create branches in the workflows so that we can skip some tasks based on different scenarios. This is called branching. For example, we may want the workflow to work only on Tuesday.</p><p name="070e" id="070e" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(2) BranchPythonOperator</strong></p><p name="61b7" id="61b7" class="graf graf--p graf-after--p">Now, let’s consider the following DAG.</p><figure name="54f0" id="54f0" class="graf graf--figure graf--iframe graf-after--p"><script src="https://gist.github.com/Sadamingh/762e4810743065f1aa76039dad58b02c.js"></script></figure><p name="bdf9" id="bdf9" class="graf graf--p graf-after--figure">The <code class="markup--code markup--p-code">BranchPythonOperator</code> works similar to the <code class="markup--code markup--p-code">PythonOperator</code>, in that it requires a <code class="markup--code markup--p-code">python_callable</code>. The callable is expected to return a <code class="markup--code markup--p-code">task_id</code> or a list of <code class="markup--code markup--p-code">task_ids</code> that are then executed, and tasks on the other paths are skipped. In this case, the task <code class="markup--code markup--p-code">branch_select</code> will call the function <code class="markup--code markup--p-code">choose_branch</code> and this function will randomly choose from returning a list of <code class="markup--code markup--p-code">[&#39;task_1&#39;, &#39;task_2&#39;]</code> or <code class="markup--code markup--p-code">&#39;task_3&#39;</code> .</p><p name="61f3" id="61f3" class="graf graf--p graf-after--p">If we trigger the script several times, we can probably find that we can execute different tasks on different branches according to the random value we generate.</p><figure name="8ae2" id="8ae2" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*Lvha0Ifx4wCvo-BlfiYOgg.png" data-width="1652" data-height="350" src="https://cdn-images-1.medium.com/max/800/1*Lvha0Ifx4wCvo-BlfiYOgg.png"></figure><p name="7dfa" id="7dfa" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">(3) BranchDayOfWeekOperator</strong></p><p name="b1d6" id="b1d6" class="graf graf--p graf-after--p">Suppose we want some tasks only to be executed on some specific week of day, we may consider using the <code class="markup--code markup--p-code">BranchDayOfWeekOperator</code>. </p><ul class="postList"><li name="0a14" id="0a14" class="graf graf--li graf-after--p"><code class="markup--code markup--li-code">week_day</code> : the weekday for return True</li><li name="aefc" id="aefc" class="graf graf--li graf-after--li"><code class="markup--code markup--li-code">follow_task_ids_if_true</code> : the task if the current weekday meets the <code class="markup--code markup--li-code">week_day</code></li><li name="86bd" id="86bd" class="graf graf--li graf-after--li"><code class="markup--code markup--li-code">follow_task_ids_if_false</code> : the task if the current weekday doesn’t meet the <code class="markup--code markup--li-code">week_day</code></li></ul><p name="7d58" id="7d58" class="graf graf--p graf-after--li">Here is an example script from the official document showing how it works,</p><pre name="1118" id="1118" class="graf graf--pre graf-after--p">dummy_task_1 = DummyOperator(task_id=&#39;branch_true&#39;, dag=dag)<br>dummy_task_2 = DummyOperator(task_id=&#39;branch_false&#39;, dag=dag)<br><br>branch = BranchDayOfWeekOperator(<br>    task_id=&quot;make_choice&quot;,<br>    follow_task_ids_if_true=&quot;branch_true&quot;,<br>    follow_task_ids_if_false=&quot;branch_false&quot;,<br>    week_day=&quot;Monday&quot;,<br>)<br><br># Run dummy_task_1 if branch executes on Monday<br>branch &gt;&gt; [dummy_task_1, dummy_task_2]</pre><p name="254d" id="254d" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(4) BranchDateTimeOperator</strong></p><p name="db86" id="db86" class="graf graf--p graf-after--p">We can also use the <code class="markup--code markup--p-code">BranchDateTimeOperator</code> to branch into one of two execution paths depending on whether the date and/or time of execution falls into the range given by two target arguments.</p><ul class="postList"><li name="51f9" id="51f9" class="graf graf--li graf-after--p"><code class="markup--code markup--li-code">target_upper</code>: the ending time</li><li name="3893" id="3893" class="graf graf--li graf-after--li"><code class="markup--code markup--li-code">target_lower</code>: the starting time</li><li name="4aa7" id="4aa7" class="graf graf--li graf-after--li"><code class="markup--code markup--li-code">follow_task_ids_if_true</code>: the task for execution when in the time period</li><li name="a767" id="a767" class="graf graf--li graf-after--li"><code class="markup--code markup--li-code">follow_task_ids_if_false</code>: the task for execution when outside the time period</li></ul><p name="b70a" id="b70a" class="graf graf--p graf-after--li">Note that there are some rules for using this operator,</p><ul class="postList"><li name="b6bf" id="b6bf" class="graf graf--li graf-after--p">In the event that <code class="markup--code markup--li-code">target_upper</code> is set to a <code class="markup--code markup--li-code">datetime.time</code> that occurs before the given <code class="markup--code markup--li-code">target_lower</code>, a day will be added to <code class="markup--code markup--li-code">target_upper</code>. This is done to allow for time periods that span over two dates.</li><li name="ad0f" id="ad0f" class="graf graf--li graf-after--li">If a target parameter is set to <code class="markup--code markup--li-code">None</code>, the operator will perform a unilateral comparison using only the non-<code class="markup--code markup--li-code">None</code> target. </li><li name="cbe2" id="cbe2" class="graf graf--li graf-after--li">Setting both <code class="markup--code markup--li-code">target_upper</code> and <code class="markup--code markup--li-code">target_lower</code> to <code class="markup--code markup--li-code">None</code> will raise an exception.</li></ul><p name="9b23" id="9b23" class="graf graf--p graf-after--li">Here is an example from the official document,</p><pre name="fc8b" id="fc8b" class="graf graf--pre graf-after--p">dummy_task_1 = DummyOperator(task_id=&#39;date_in_range&#39;, dag=dag)<br>dummy_task_2 = DummyOperator(task_id=&#39;date_outside_range&#39;, dag=dag)<br><br>cond1 = BranchDateTimeOperator(<br>    task_id=&#39;datetime_branch&#39;,<br>    follow_task_ids_if_true=[&#39;date_in_range&#39;],<br>    follow_task_ids_if_false=[&#39;date_outside_range&#39;],<br>    target_upper=datetime.datetime(2020, 10, 10, 15, 0, 0),<br>    target_lower=datetime.datetime(2020, 10, 10, 14, 0, 0),<br>    dag=dag,<br>)<br><br># Run dummy_task_1 if cond1 executes between 2020-10-10 14:00:00 and 2020-10-10 15:00:00<br>cond1 &gt;&gt; [dummy_task_1, dummy_task_2]</pre><p name="15f3" id="15f3" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">2. SubDAG</strong></p><p name="b31e" id="b31e" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(1) The Development of SubDAG</strong></p><p name="ea51" id="ea51" class="graf graf--p graf-after--p">In the production with Airflow, as we may reuse some structures of the DAGs inside the other DAG, it can be helpful if we abstract some portions of the pipeline as SubDAGs.</p><p name="568b" id="568b" class="graf graf--p graf-after--p">(2) </p><p name="e97d" id="e97d" class="graf graf--p graf--empty graf-after--p"><br></p><p name="8649" id="8649" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">3. Task Groups</strong></p><p name="9b81" id="9b81" class="graf graf--p graf-after--p">(1) </p><p name="0295" id="0295" class="graf graf--p graf--empty graf-after--p graf--trailing"><br></p></div></div></section>
+</section>
+<footer><p><a href="https://medium.com/p/bab649c4455c">View original.</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

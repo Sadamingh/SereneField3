@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Computer Systems Experiments 16 | 0 To 9 Counter</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Computer Systems Experiments 16 | 0 To 9 Counter</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Computer Systems Experiments
+</section>
+<section data-field="body" class="e-content">
+<section name="b14e" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="f55a" id="f55a" class="graf graf--h3 graf--leading graf--title">Computer Systems Experiments 16 | 0 To 9 Counter</h3><figure name="5a6d" id="5a6d" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*LsHurm6MEaEoP8ek.png" data-width="1530" data-height="1104" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/0*LsHurm6MEaEoP8ek.png"></figure><p name="1813" id="1813" class="graf graf--p graf-after--figure">In this experiment, we are going to control the 7 LEDs of the last digit (on the right side) in C language. The last digit will count from 0 to 9.</p><ol class="postList"><li name="8953" id="8953" class="graf graf--li graf-after--p"><strong class="markup--strong markup--li-strong">Set the pointer to the register</strong></li></ol><p name="fe5b" id="fe5b" class="graf graf--p graf-after--li">The pointer in C is a variable being used to store the direct address of the memory location. Suppose we have a variable named <code class="markup--code markup--p-code">VAR</code>, and then we can extract the data on that memory by,</p><pre name="be66" id="be66" class="graf graf--pre graf-after--p">*VAR</pre><p name="b449" id="b449" class="graf graf--p graf-after--pre">Also, for a given variable <code class="markup--code markup--p-code">DATA</code>, we can extract the address of it by,</p><pre name="e486" id="e486" class="graf graf--pre graf-after--p">&amp;DATA</pre><p name="0758" id="0758" class="graf graf--p graf-after--pre">To declare a pointer data type, we should add an <code class="markup--code markup--p-code">*</code> after the declaration of the data type stored. For example, if we want to define a pointer <code class="markup--code markup--p-code">PT</code> pointing to the <code class="markup--code markup--p-code">int</code> typed data <code class="markup--code markup--p-code">DATA</code>, then,</p><pre name="ec3d" id="ec3d" class="graf graf--pre graf-after--p">int *PT = &amp;DATA</pre><p name="f263" id="f263" class="graf graf--p graf-after--pre">Or, if we want to directly assign an address to a pointer, we have to use the type conversion to change a hexadecimal value to an address,</p><pre name="2489" id="2489" class="graf graf--pre graf-after--p">int *PT = (int *) 0xffffffff</pre><p name="1e9f" id="1e9f" class="graf graf--p graf-after--pre">Recall, we have stored the address of the <code class="markup--code markup--p-code">FSEL</code>, <code class="markup--code markup--p-code">SET</code>, and <code class="markup--code markup--p-code">CLR</code> registers in the assembly by,</p><pre name="c31d" id="c31d" class="graf graf--pre graf-after--p">FSEL2: .word 0x20200008<br>SET0: .word 0x2020001C<br>CLR0: .word 0x20200028</pre><p name="e757" id="e757" class="graf graf--p graf-after--pre">Now, in the C language, we are going to assign these values with pointers. If we declare the data to be an <code class="markup--code markup--p-code">int</code> , then the highest bit will then be used to mean the sign of this value. Because all the bits for the register have a meaning of controlling the LEDs and we don’t want to mess up the things, we have to use <code class="markup--code markup--p-code">unsigned int</code> as our data type. Thus, the equivalent code in C should be,</p><pre name="0af5" id="0af5" class="graf graf--pre graf-after--p">static volatile unsigned int *FSEL2 =  (unsigned int *)0x20200008;<br>static volatile unsigned int *SET0  =  (unsigned int *)0x2020001c;<br>static volatile unsigned int *CLR0  =  (unsigned int *)0x20200028;</pre><p name="34fb" id="34fb" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">2. Set the delay time</strong></p><p name="cbb8" id="cbb8" class="graf graf--p graf-after--p">In the assembly language, we have used,</p><pre name="e40b" id="e40b" class="graf graf--pre graf-after--p">.equ DELAY, 0x3F0000</pre><p name="ce37" id="ce37" class="graf graf--p graf-after--pre">to assign a value. For C, we can also similarly define this value by,</p><pre name="ba8b" id="ba8b" class="graf graf--pre graf-after--p">#define DELAY 0x3f0000</pre><p name="922e" id="922e" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">3. Construct the main function</strong></p><p name="6276" id="6276" class="graf graf--p graf-after--p">We have talked about the C functions in the last experiment and for the C language, the <code class="markup--code markup--p-code">main</code> function is where a C program starts by default. From the main function, let’s first assign the functions of the GPIOs. For GPIO 20–26, let’s set them all to be <code class="markup--code markup--p-code">output</code> ,</p><pre name="262d" id="262d" class="graf graf--pre graf-after--p">*FSEL2 = 0b1001001001001001001;</pre><p name="806f" id="806f" class="graf graf--p graf-after--pre">Then, for different digits, we have to use different rules for LEDs. For example, we have to set HIGH to the ABCDEF pins and set LOW to the G pin to create a 0 digit. A reference diagram is as follows,</p><figure name="b254" id="b254" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*ow6uAl3x4ZICnoxiNB0NZQ.png" data-width="1250" data-height="194" src="https://cdn-images-1.medium.com/max/800/1*ow6uAl3x4ZICnoxiNB0NZQ.png"></figure><p name="c7c2" id="c7c2" class="graf graf--p graf-after--figure">Then, for the number 0 to 9, we have the following series of rules,</p><pre name="73ea" id="73ea" class="graf graf--pre graf-after--p">int digit0 = 0b111111;<br>int digit1 = 0b110;<br>int digit2 = 0b1011011;<br>int digit3 = 0b1001111;<br>int digit4 = 0b1100110;<br>int digit5 = 0b1101101;<br>int digit6 = 0b1111101;<br>int digit7 = 0b111;<br>int digit8 = 0b1111111;<br>int digit9 = 0b1101111;</pre><p name="b76b" id="b76b" class="graf graf--p graf-after--pre">After this, we are going to construct an infinite <code class="markup--code markup--p-code">while</code> loop for the counting program,</p><pre name="172c" id="172c" class="graf graf--pre graf-after--p">while (1) {}</pre><p name="c171" id="c171" class="graf graf--p graf-after--pre">And for displaying each digit, we have to left shift all the digits by 20 bits and then assign this value to the <code class="markup--code markup--p-code">SET0</code> register. Then we use the <code class="markup--code markup--p-code">for</code> loop to delay a certain time and finally, the same value should be assigned this value to the <code class="markup--code markup--p-code">CLR0</code> register to wrap the result. For instance, to display the digit 0,</p><pre name="3c68" id="3c68" class="graf graf--pre graf-after--p">*SET0 = digit0 &lt;&lt; 20; <br>for (int c = DELAY; c != 0; c--) ; <br>*CLR0 = digit0 &lt;&lt; 20;</pre><p name="1305" id="1305" class="graf graf--p graf-after--pre">In conclusion, the overall program is,</p><pre name="f344" id="f344" class="graf graf--pre graf-after--p">static volatile unsigned int *FSEL2 =  (unsigned int *)0x20200008;<br>static volatile unsigned int *SET0  =  (unsigned int *)0x2020001c;<br>static volatile unsigned int *CLR0  =  (unsigned int *)0x20200028;</pre><pre name="8973" id="8973" class="graf graf--pre graf-after--pre">#define DELAY 0x3f0000</pre><pre name="d387" id="d387" class="graf graf--pre graf-after--pre">void main(void) {<br> // set GPIO 20-26 to output<br>    *FSEL2 = 0b1001001001001001001;</pre><pre name="2b8c" id="2b8c" class="graf graf--pre graf-after--pre">// assign the rules for displaying digits<br>    int digit0 = 0b111111;<br>    int digit1 = 0b110;<br>    int digit2 = 0b1011011;<br>    int digit3 = 0b1001111;<br>    int digit4 = 0b1100110;<br>    int digit5 = 0b1101101;<br>    int digit6 = 0b1111101;<br>    int digit7 = 0b111;<br>    int digit8 = 0b1111111;<br>    int digit9 = 0b1101111;</pre><pre name="d7ba" id="d7ba" class="graf graf--pre graf-after--pre">while (1) {<br>        *SET0 = digit0 &lt;&lt; 20; <br>        for (int c = DELAY; c != 0; c--) ; <br>        *CLR0 = digit0 &lt;&lt; 20; <br> <br>        *SET0 = digit1 &lt;&lt; 20; <br>        for (int c = DELAY; c != 0; c--) ; <br>        *CLR0 = digit1 &lt;&lt; 20;</pre><pre name="451b" id="451b" class="graf graf--pre graf-after--pre">        *SET0 = digit2 &lt;&lt; 20; <br>        for (int c = DELAY; c != 0; c--) ; <br>        *CLR0 = digit2 &lt;&lt; 20;</pre><pre name="38d5" id="38d5" class="graf graf--pre graf-after--pre">        *SET0 = digit3 &lt;&lt; 20; <br>        for (int c = DELAY; c != 0; c--) ; <br>        *CLR0 = digit3 &lt;&lt; 20;</pre><pre name="269e" id="269e" class="graf graf--pre graf-after--pre">        *SET0 = digit4 &lt;&lt; 20; <br>        for (int c = DELAY; c != 0; c--) ; <br>        *CLR0 = digit4 &lt;&lt; 20;</pre><pre name="e7d1" id="e7d1" class="graf graf--pre graf-after--pre">        *SET0 = digit5 &lt;&lt; 20; <br>        for (int c = DELAY; c != 0; c--) ; <br>        *CLR0 = digit5 &lt;&lt; 20;</pre><pre name="5dc5" id="5dc5" class="graf graf--pre graf-after--pre">        *SET0 = digit6 &lt;&lt; 20; <br>        for (int c = DELAY; c != 0; c--) ; <br>        *CLR0 = digit6 &lt;&lt; 20;</pre><pre name="1afc" id="1afc" class="graf graf--pre graf-after--pre">        *SET0 = digit7 &lt;&lt; 20; <br>        for (int c = DELAY; c != 0; c--) ; <br>        *CLR0 = digit7 &lt;&lt; 20;</pre><pre name="8413" id="8413" class="graf graf--pre graf-after--pre">        *SET0 = digit8 &lt;&lt; 20; <br>        for (int c = DELAY; c != 0; c--) ; <br>        *CLR0 = digit8 &lt;&lt; 20;</pre><pre name="d768" id="d768" class="graf graf--pre graf-after--pre">        *SET0 = digit9 &lt;&lt; 20; <br>        for (int c = DELAY; c != 0; c--) ; <br>        *CLR0 = digit9 &lt;&lt; 20; <br>    }<br>}</pre><p name="ad84" id="ad84" class="graf graf--p graf-after--pre">And you can also find this program from <a href="https://github.com/Sadamingh/ComputerSysE/tree/main/counter" data-href="https://github.com/Sadamingh/ComputerSysE/tree/main/counter" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">my repo</a>. The electronic diagram of this experiment is as follows,</p><figure name="013e" id="013e" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*Mqy-PLGQS1nKSvf7oPqvSQ.png" data-width="1250" data-height="698" src="https://cdn-images-1.medium.com/max/800/1*Mqy-PLGQS1nKSvf7oPqvSQ.png"></figure><figure name="f6fd" id="f6fd" class="graf graf--figure graf-after--figure"><img class="graf-image" data-image-id="1*ATmf2bwPWq0nJHbQNrRxZA.gif" data-width="600" data-height="340" src="https://cdn-images-1.medium.com/max/800/1*ATmf2bwPWq0nJHbQNrRxZA.gif"></figure><p name="77d5" id="77d5" class="graf graf--p graf-after--figure graf--trailing">And note that the LEDs in this gif are for decoration (or debugging) purpose and you don’t have to include them in your circuit.</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/5c15b9c9e3c"><time class="dt-published" datetime="2021-01-05T04:19:41.650Z">January 5, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/computer-systems-experiments-16-0-to-9-counter-5c15b9c9e3c" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

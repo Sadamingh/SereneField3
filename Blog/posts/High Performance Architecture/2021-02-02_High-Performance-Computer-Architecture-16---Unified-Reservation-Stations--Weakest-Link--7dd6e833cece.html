@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>High-Performance Computer Architecture 16 | Unified Reservation Stations, Weakest Link…</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">High-Performance Computer Architecture 16 | Unified Reservation Stations, Weakest Link…</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: High-Performance Computer Architecture
+</section>
+<section data-field="body" class="e-content">
+<section name="ecaa" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="708e" id="708e" class="graf graf--h3 graf--leading graf--title">High-Performance Computer Architecture 16 | <strong class="markup--strong markup--h3-strong">Unified Reservation Stations, Weakest Link, Terminology Confusion, and I</strong>n-order Processor</h3><figure name="a129" id="a129" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*1tD6eBwtb1Oda7_H.png" data-width="1446" data-height="864" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/0*1tD6eBwtb1Oda7_H.png"></figure><ol class="postList"><li name="a8ab" id="a8ab" class="graf graf--li graf-after--figure"><strong class="markup--strong markup--li-strong">Unified Reservation Stations</strong></li></ol><p name="a743" id="a743" class="graf graf--p graf-after--li">Now that you have seen how the ROB based processor works when we have a reservation station for separate ALUs. For example,</p><figure name="2686" id="2686" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*qBPUBu5-3mP8t290NkgTDw.png" data-width="2040" data-height="490" src="https://cdn-images-1.medium.com/max/800/1*qBPUBu5-3mP8t290NkgTDw.png"></figure><p name="60b3" id="60b3" class="graf graf--p graf-after--figure">We have seen that in at least one of our examples that we can run these reservation stations while we still have plenty of these left. However, we still couldn’t issue instructions because we don’t have the reservation station left for the type of instruction we want. Because we have talked that the issues must happen in order, we have to wait until the reservation we need to become available.</p><p name="4e81" id="4e81" class="graf graf--p graf-after--p">Note that these reservation stations are exactly the same and actually we want to use some idle reservation stations for some other ALUs because an idle reservation can be expensive for us. So in practice, we will have a <strong class="markup--strong markup--p-strong">unified reservation station</strong> where all of the reservation stations are in one big array.</p><figure name="0091" id="0091" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*7Mo9e50btc_nj7iYEDZXlw.png" data-width="1760" data-height="464" src="https://cdn-images-1.medium.com/max/800/1*7Mo9e50btc_nj7iYEDZXlw.png"></figure><p name="9a2f" id="9a2f" class="graf graf--p graf-after--figure">Now, because we have to supervise more reservation stations and we also have to choose which ALU we are going to dispatch. So the dispatchings are becoming more complicated. However, to think about the expensive idle reservation station, this still sounds like a fair trade-off. So usually, processors will use some variants of the unified reservation station rather than the separate unified reservation stations.</p><p name="4c8d" id="4c8d" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">2. Weakest Link Rule for Superscalar</strong></p><p name="8ac2" id="8ac2" class="graf graf--p graf-after--p">We have seen our raw based processor, which is not a superscalar processor. A real superscalar processor requires the following features,</p><ul class="postList"><li name="e997" id="e997" class="graf graf--li graf-after--p">it needs to <strong class="markup--strong markup--li-strong">fetch more than 1 instruction per cycle</strong> (i.e. we need 8 bytes for our fetch if we want to fetch two 4-byte instructions per cycle)</li><li name="7d32" id="7d32" class="graf graf--li graf-after--li">it needs to <strong class="markup--strong markup--li-strong">decode more than 1 instruction per cycle</strong> (i.e. we need to have more than 1 decoder)</li><li name="f0f9" id="f0f9" class="graf graf--li graf-after--li">it needs to <strong class="markup--strong markup--li-strong">issue more than 1 instruction per cycle</strong> (i.e. we can try to issue instructions as much as possible in a cycle)</li><li name="5818" id="5818" class="graf graf--li graf-after--li">it needs to <strong class="markup--strong markup--li-strong">dispatch more than 1 instruction per cycle</strong> (i.e. we need more than 1 execution unit for each type of instructions)</li><li name="8296" id="8296" class="graf graf--li graf-after--li">it needs to <strong class="markup--strong markup--li-strong">broadcast more than 1 result per cycle </strong>(i.e. this involves not only having 2 broadcast buses or 3 broadcast buses, but also each of the register stations has to compare with all of the values on these buses)</li><li name="08f3" id="08f3" class="graf graf--li graf-after--li">it needs to <strong class="markup--strong markup--li-strong">commit more than 1 instruction per cycle</strong> (so the commit logic needs to be capable of committing more than 1 instruction per cycle)</li></ul><p name="b094" id="b094" class="graf graf--p graf-after--li">For all of these requirements, what finally determines our general processor’s performance <strong class="markup--strong markup--p-strong">weakest link</strong>. Suppose all of them are very very large (like 500 instructions per cycle :)! ) and one of them is very small with only 1 instruction per cycle, then we will not be able to reach an overall performance of more than 1 instruction per cycle no matter how well the program matches this organization.</p><p name="47cb" id="47cb" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">3. Terminology Confusion for OOO Execution</strong></p><p name="e1d8" id="e1d8" class="graf graf--p graf-after--p">We have been calling the stage of execution as <code class="markup--code markup--p-code">issue</code>, <code class="markup--code markup--p-code">dispatch</code>, <code class="markup--code markup--p-code">write</code> <code class="markup--code markup--p-code">results/broadcast</code>, and <code class="markup--code markup--p-code">commit</code>. These terminologies came from Tomasulo’s algorithm and also introduced in the first paper talked about the ROB. So most academics will use the terminologies like that in most of the research papers. However, some companies will use the following terminologies,</p><ul class="postList"><li name="6f48" id="6f48" class="graf graf--li graf-after--p"><code class="markup--code markup--li-code">allocate/dispatch</code> for <code class="markup--code markup--li-code">issue</code></li><li name="6a96" id="6a96" class="graf graf--li graf-after--li"><code class="markup--code markup--li-code">execute/issue</code> for <code class="markup--code markup--li-code">dispatch</code></li><li name="621d" id="621d" class="graf graf--li graf-after--li"><code class="markup--code markup--li-code">complete/retire/graduate</code> for <code class="markup--code markup--li-code">commit</code></li></ul><p name="b62f" id="b62f" class="graf graf--p graf-after--li">Note there is a joke because some papers are written by the students, so they would be more likely to call the <code class="markup--code markup--p-code">commit</code> as <code class="markup--code markup--p-code">graduate</code> for good luck.</p><p name="3bc9" id="3bc9" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">4. ROB Vs. Without ROB</strong></p><p name="a2e9" id="a2e9" class="graf graf--p graf-after--p">Now, let’s discuss what we have changed to in-order execution with ROB.</p><p name="bbb7" id="bbb7" class="graf graf--p graf-after--p">For a system without ROB,</p><ul class="postList"><li name="9940" id="9940" class="graf graf--li graf-after--p">In-order: fetch, decode, issue, commit</li><li name="663b" id="663b" class="graf graf--li graf-after--li">Out-of-order: execute, write result/broadcast</li></ul><p name="16a4" id="16a4" class="graf graf--p graf-after--li">For a system with ROB,</p><ul class="postList"><li name="3a0a" id="3a0a" class="graf graf--li graf-after--p">In-order: fetch, decode, issue</li><li name="6648" id="6648" class="graf graf--li graf-after--li">Out-of-order: execute, write result/broadcast, commit</li></ul><p name="7ece" id="7ece" class="graf graf--p graf-after--li graf--trailing">So even if we have an <strong class="markup--strong markup--p-strong">OOO processor</strong>, we actually do a lot of things in order. However, if we have an <strong class="markup--strong markup--p-strong">in-order processor</strong>, we must do all the stages in order.</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/7dd6e833cece"><time class="dt-published" datetime="2021-02-02T16:53:14.969Z">February 2, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/high-performance-computer-architecture-16-unified-reservation-stations-weakest-link-7dd6e833cece" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

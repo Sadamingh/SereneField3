@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Information Security Lab 4 | GDB Vs. PWN Debugger</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Information Security Lab 4 | GDB Vs. PWN Debugger</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Information Security Lab
+</section>
+<section data-field="body" class="e-content">
+<section name="fe53" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="802c" id="802c" class="graf graf--h3 graf--leading graf--title">Information Security Lab 4 | GDB Vs. PWN Debugger</h3><figure name="40bf" id="40bf" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*jMx8me39pTKGbPLr.png" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/0*jMx8me39pTKGbPLr.png"></figure><ol class="postList"><li name="6fab" id="6fab" class="graf graf--li graf-after--figure"><strong class="markup--strong markup--li-strong">GDB</strong></li></ol><p name="a217" id="a217" class="graf graf--p graf-after--li">In the previous section, we have discussed the GNU debugger and PWN debugger. Now, let’s summarize the basic usage of them.</p><ul class="postList"><li name="47a2" id="47a2" class="graf graf--li graf-after--p">Initiate debugging</li></ul><pre name="bb26" id="bb26" class="graf graf--pre graf-after--li">$ gdb &lt;filename&gt;</pre><ul class="postList"><li name="56f4" id="56f4" class="graf graf--li graf-after--pre">Set breakpoint at a specific location (e.g. main)</li></ul><pre name="d74d" id="d74d" class="graf graf--pre graf-after--li">(gdb) b main</pre><ul class="postList"><li name="5008" id="5008" class="graf graf--li graf-after--pre">Run the debugged program</li></ul><pre name="25e6" id="25e6" class="graf graf--pre graf-after--li">(gdb) r</pre><ul class="postList"><li name="64d0" id="64d0" class="graf graf--li graf-after--pre">Check the register values</li></ul><pre name="6206" id="6206" class="graf graf--pre graf-after--li">(gdb) i r</pre><ul class="postList"><li name="d883" id="d883" class="graf graf--li graf-after--pre">Examine (briefly, <code class="markup--code markup--li-code">x</code>) the memory contents of an instruction</li></ul><pre name="12b5" id="12b5" class="graf graf--pre graf-after--li">(gdb) x/1i 0x80492c9</pre><ul class="postList"><li name="7341" id="7341" class="graf graf--li graf-after--pre">Examine (briefly, <code class="markup--code markup--li-code">x</code>) the memory contents of one instruction and its next 9 instructions</li></ul><pre name="3671" id="3671" class="graf graf--pre graf-after--li">(gdb) x/10i 0x80492c9</pre><ul class="postList"><li name="1826" id="1826" class="graf graf--li graf-after--pre">Examine (briefly, <code class="markup--code markup--li-code">x</code>) the memory contents of a string</li></ul><pre name="759f" id="759f" class="graf graf--pre graf-after--li">(gdb) x/1s 0x80492c9</pre><ul class="postList"><li name="2326" id="2326" class="graf graf--li graf-after--pre">Show the value of a specific register by a dollar sign (i.e. <code class="markup--code markup--li-code">$</code>), <code class="markup--code markup--li-code">p</code> means print</li></ul><pre name="235f" id="235f" class="graf graf--pre graf-after--li">(gdb) p $esp</pre><ul class="postList"><li name="176b" id="176b" class="graf graf--li graf-after--pre">Know the detail of each command, we can always type <code class="markup--code markup--li-code">help</code> with the command name as its argument. For example,</li></ul><pre name="9e2f" id="9e2f" class="graf graf--pre graf-after--li">(gdb) help x</pre><ul class="postList"><li name="9107" id="9107" class="graf graf--li graf-after--pre">Execute the following instruction in the function, we can type,</li></ul><pre name="5562" id="5562" class="graf graf--pre graf-after--li">(gdb) si</pre><ul class="postList"><li name="c4ce" id="c4ce" class="graf graf--li graf-after--pre">Print the value of expression whenever stopped</li></ul><pre name="0f4b" id="0f4b" class="graf graf--pre graf-after--li">(gdb) x/i $eip</pre><ul class="postList"><li name="3c95" id="3c95" class="graf graf--li graf-after--pre">Execute until the current function returns</li></ul><pre name="9bbb" id="9bbb" class="graf graf--pre graf-after--li">(gdb) finish</pre><ul class="postList"><li name="d05a" id="d05a" class="graf graf--li graf-after--pre">Execute the next instruction without going into the functions, we can type,</li></ul><pre name="8a63" id="8a63" class="graf graf--pre graf-after--li">(gdb) ni</pre><ul class="postList"><li name="4b28" id="4b28" class="graf graf--li graf-after--pre">Continue executing the program until the next breakpoint,</li></ul><pre name="7836" id="7836" class="graf graf--pre graf-after--li">(gdb) c</pre><ul class="postList"><li name="5dba" id="5dba" class="graf graf--li graf-after--pre">Send an interrupt signal to the program by pressing <code class="markup--code markup--li-code">ctrl+C</code> ,</li></ul><pre name="2315" id="2315" class="graf graf--pre graf-after--li">^c</pre><ul class="postList"><li name="2b3b" id="2b3b" class="graf graf--li graf-after--pre">Check the frame information or where we are in the program, we can use backtrace. We can see the code chain from the main function all the way down to the system call.</li></ul><pre name="dc4e" id="dc4e" class="graf graf--pre graf-after--li">(gdb) bt</pre><ul class="postList"><li name="1ada" id="1ada" class="graf graf--li graf-after--pre">Add a breakpoint at a memory address (e.g. <code class="markup--code markup--li-code">0x80492c9</code>)</li></ul><pre name="125a" id="125a" class="graf graf--pre graf-after--li">(gdb) b *<code class="markup--code markup--pre-code">0x80492c9</code></pre><ul class="postList"><li name="fb37" id="fb37" class="graf graf--li graf-after--pre">Delete a breakpoint at the current location</li></ul><pre name="a62f" id="a62f" class="graf graf--pre graf-after--li">(gdb) clear</pre><ul class="postList"><li name="52aa" id="52aa" class="graf graf--li graf-after--pre">Terminate a gdb section</li></ul><pre name="85c8" id="85c8" class="graf graf--pre graf-after--li">(gdb) q</pre><p name="f2b5" id="f2b5" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">2. PWN Debugger</strong></p><p name="c267" id="c267" class="graf graf--p graf-after--p">An advanced plugin for GDB specifically designed for reverse engineering is called pwndbg. Here are the common usages,</p><ul class="postList"><li name="acbf" id="acbf" class="graf graf--li graf-after--p">Initiate PWN debugging</li></ul><pre name="db9c" id="db9c" class="graf graf--pre graf-after--li">$ gdb-pwndbg &lt;filename&gt;</pre><ul class="postList"><li name="0d01" id="0d01" class="graf graf--li graf-after--pre">Set the breakpoint at the main function and run</li></ul><pre name="f116" id="f116" class="graf graf--pre graf-after--li">&gt; start</pre><ul class="postList"><li name="c9dd" id="c9dd" class="graf graf--li graf-after--pre">Display the basic information about the process (e.g. <code class="markup--code markup--li-code">pid</code>, <code class="markup--code markup--li-code">tid</code>, <code class="markup--code markup--li-code">gid</code>, <code class="markup--code markup--li-code">fd</code>, etc.)</li></ul><pre name="db36" id="db36" class="graf graf--pre graf-after--li">&gt; procinfo</pre><ul class="postList"><li name="ca35" id="ca35" class="graf graf--li graf-after--pre">Display section mapping information of the ELF file</li></ul><pre name="31b8" id="31b8" class="graf graf--pre graf-after--li">&gt; elfheader</pre><ul class="postList"><li name="7f0a" id="7f0a" class="graf graf--li graf-after--pre">Show the virtual memory map</li></ul><pre name="c697" id="c697" class="graf graf--pre graf-after--li">&gt; vmmap</pre><ul class="postList"><li name="55df" id="55df" class="graf graf--li graf-after--pre">Examine memory for recursive differences</li></ul><pre name="bec7" id="bec7" class="graf graf--pre graf-after--li">&gt; telescope &lt;addr&gt;</pre><ul class="postList"><li name="708c" id="708c" class="graf graf--li graf-after--pre">Display contents of registers</li></ul><pre name="9c5a" id="9c5a" class="graf graf--pre graf-after--li">&gt; regs</pre><ul class="postList"><li name="61e8" id="61e8" class="graf graf--li graf-after--pre">Disassembly near the program counter (PC)</li></ul><pre name="9bc4" id="9bc4" class="graf graf--pre graf-after--li">&gt; nearpc</pre><ul class="postList"><li name="86c3" id="86c3" class="graf graf--li graf-after--pre">Search strings, pointers, and integer values</li></ul><pre name="81c7" id="81c7" class="graf graf--pre graf-after--li graf--trailing">&gt; search &lt;something&gt;</pre></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/6f4294d2b7df"><time class="dt-published" datetime="2021-05-13T06:40:59.173Z">May 13, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/information-security-lab-4-gdb-vs-pwn-debugger-6f4294d2b7df" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

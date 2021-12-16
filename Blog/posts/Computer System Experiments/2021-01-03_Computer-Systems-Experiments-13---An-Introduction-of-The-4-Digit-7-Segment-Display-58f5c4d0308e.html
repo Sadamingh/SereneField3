@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Computer Systems Experiments 13 | An Introduction of The 4-Digit 7-Segment Display</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Computer Systems Experiments 13 | An Introduction of The 4-Digit 7-Segment Display</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Computer Systems Experiments
+</section>
+<section data-field="body" class="e-content">
+<section name="8b67" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="3790" id="3790" class="graf graf--h3 graf--leading graf--title">Computer Systems Experiments 13 | An Introduction of The 4-Digit 7-Segment Display</h3><figure name="ac5c" id="ac5c" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*FT70EIg2uoB_6LiU.png" data-width="1530" data-height="1104" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/0*FT70EIg2uoB_6LiU.png"></figure><p name="edf2" id="edf2" class="graf graf--p graf-after--figure">The 4-digit 7-segment Display is actually a bunch of LEDs (8 × 4 = 32 LEDs), so the usage of this electronic component is similar to the usage of LEDs. You may find that there are 12 pins in total (with 6 pins on the each side) and each of these pins serves a specific function.</p><p name="09f4" id="09f4" class="graf graf--p graf-after--p">The name of the pins follows the following diagram. You don’t need to know the meaning of them now, just to remember their names and the positions.</p><figure name="87b6" id="87b6" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*AIOevW7-osHV8UBnQNjL9w.png" data-width="1520" data-height="462" src="https://cdn-images-1.medium.com/max/800/1*AIOevW7-osHV8UBnQNjL9w.png"></figure><p name="7c4e" id="7c4e" class="graf graf--p graf-after--figure">You may notice that we have used the common cathode display and you may know that there’s also another kind of display of common anode. What’s the difference between them? Well, we have known that each LED has two pins, one is called the anode pin (connected to the source) and the other is called cathode pin (connected to the ground). The common anode display means that all the anode pins of a digit is connected together, while the common cathode means the opposite case. You can better understand them from the following diagrams.</p><figure name="6d42" id="6d42" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*lgCZLW_SIuJktrW4pxq2hA.png" data-width="1790" data-height="312" src="https://cdn-images-1.medium.com/max/800/1*lgCZLW_SIuJktrW4pxq2hA.png"></figure><p name="f994" id="f994" class="graf graf--p graf-after--figure">Now, let’s give it a try. Let’s connect the E pin (the pin connected all the anode pins of the E LEDs) to the 1k resistor and then connect to the 5V source. The D1 pin (the common cathode pin of the first digit) should be connected to the ground. Then,</p><figure name="7dc2" id="7dc2" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*CAXsqmyidyijgue_q5ZIvA.png" data-width="1330" data-height="430" src="https://cdn-images-1.medium.com/max/800/1*CAXsqmyidyijgue_q5ZIvA.png"></figure><figure name="3d11" id="3d11" class="graf graf--figure graf-after--figure"><img class="graf-image" data-image-id="1*FiABHUVek1qvokMgWEI5qg.png" data-width="2356" data-height="1080" src="https://cdn-images-1.medium.com/max/800/1*FiABHUVek1qvokMgWEI5qg.png"></figure><p name="70f1" id="70f1" class="graf graf--p graf-after--figure">Also, if we change the input pin to the D pin, then,</p><figure name="ea75" id="ea75" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*blGKJHg0rDRE2iLnYMuT4w.png" data-width="1330" data-height="430" src="https://cdn-images-1.medium.com/max/800/1*blGKJHg0rDRE2iLnYMuT4w.png"></figure><figure name="2aea" id="2aea" class="graf graf--figure graf-after--figure"><img class="graf-image" data-image-id="1*5ZtjQM5LNIRh5omQBJqM4w.png" data-width="2356" data-height="1080" src="https://cdn-images-1.medium.com/max/800/1*5ZtjQM5LNIRh5omQBJqM4w.png"></figure><p name="3131" id="3131" class="graf graf--p graf-after--figure">If we then change the output pin to the D2 pin, then,</p><figure name="776f" id="776f" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*l-5-gp9j_FcXS7vCgWiq1A.png" data-width="1330" data-height="430" src="https://cdn-images-1.medium.com/max/800/1*l-5-gp9j_FcXS7vCgWiq1A.png"></figure><figure name="c5f7" id="c5f7" class="graf graf--figure graf-after--figure graf--trailing"><img class="graf-image" data-image-id="1*TihUoIAQU2o2mhDw0Xp3xg.png" data-width="2356" data-height="1080" src="https://cdn-images-1.medium.com/max/800/1*TihUoIAQU2o2mhDw0Xp3xg.png"></figure></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/58f5c4d0308e"><time class="dt-published" datetime="2021-01-03T07:29:55.770Z">January 3, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/computer-systems-experiments-13-an-introduction-of-the-4-digit-7-segment-display-58f5c4d0308e" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

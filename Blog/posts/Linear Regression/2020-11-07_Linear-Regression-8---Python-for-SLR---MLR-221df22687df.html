@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Linear Regression 8 | Python for SLR &amp; MLR</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Linear Regression 8 | Python for SLR &amp; MLR</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Linear Regression
+</section>
+<section data-field="body" class="e-content">
+<section name="0f8a" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="178d" id="178d" class="graf graf--h3 graf--leading graf--title">Linear Regression 8 | Python for SLR &amp; MLR</h3><figure name="ca4a" id="ca4a" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*k030sxticD_osvzIz9_9cw.png" data-width="1484" data-height="696" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*k030sxticD_osvzIz9_9cw.png"></figure><ol class="postList"><li name="11b4" id="11b4" class="graf graf--li graf-after--figure">Import the Packages for Analysis</li></ol><pre name="971c" id="971c" class="graf graf--pre graf-after--li">from math import *</pre><pre name="b92a" id="b92a" class="graf graf--pre graf-after--pre">import pandas as pd<br>import numpy as np<br>from scipy import stats</pre><pre name="520e" id="520e" class="graf graf--pre graf-after--pre">import scipy.linalg as linalg</pre><pre name="6e77" id="6e77" class="graf graf--pre graf-after--pre">from sklearn import linear_model<br>import statsmodels.api as sm<br>import statsmodels.formula.api as smf</pre><p name="b5b8" id="b5b8" class="graf graf--p graf-after--pre">2. SLR</p><pre name="16bf" id="16bf" class="graf graf--pre graf-after--p"># modeling<br>model = smf.ols(&#39;y ~ x&#39;, data=df).fit()<br>model.summary()</pre><pre name="e3e0" id="e3e0" class="graf graf--pre graf-after--pre"># prediction<br>xs = &lt;list of xs to be predicted&gt;<br>prediction=model.get_prediction(exog=dict(x=xs)) <br>prediction.summary_frame(alpha=0.05)</pre><p name="f294" id="f294" class="graf graf--p graf-after--pre">3. MLR</p><pre name="a855" id="a855" class="graf graf--pre graf-after--p"># modeling<br>model = smf.ols(&#39;y ~ x1+x2+x3...&#39;, data=df).fit()<br>model.summary()</pre><pre name="a370" id="a370" class="graf graf--pre graf-after--pre"># forced dummy encoding<br>model= smf.ols(&#39;y ~ C(x)&#39;, data=df).fit()<br>model.summary()</pre><pre name="394f" id="394f" class="graf graf--pre graf-after--pre"># MLR Calculation</pre><pre name="7e0e" id="7e0e" class="graf graf--pre graf-after--pre">b = np.dot(np.dot(linalg.inv(np.dot(X.T, X)), Xt), Y)   # OLSE<br>e = Y - np.dot(X, b)                                    # Residual<br>H = np.dot(np.dot(X, linalg.inv(np.dot(X.T, X))), X.T)  # Hat Matrix</pre><pre name="a582" id="a582" class="graf graf--pre graf-after--pre">In = np.identity(6)<br>Jn = np.ones(n**2).reshape(n,n)</pre><pre name="b47e" id="b47e" class="graf graf--pre graf-after--pre">SSE = np.dot(np.dot(Y.T, (np.identity(n) - H)), Y)     # SSE<br>SSE = np.dot(e.T, e)                                   # SSE<br>SSE = np.dot(Y.T, e)                                   # SSE<br>SSE = np.dot(Y.T, Y) - np.dot(np.dot(b.T, X.T), Y)     # SSE</pre><pre name="2054" id="2054" class="graf graf--pre graf-after--pre">SSR = np.dot(np.dot(Y.T, H - Jn * 1 / n), Y)           # SSR<br>SST = np.dot(np.dot(Y.T, In - Jn * 1 / n),Y)           # SST<br>SST = SSR + SSE                                        # SST</pre><pre name="f3f7" id="f3f7" class="graf graf--pre graf-after--pre">MSE = SSE / (n-k)                                      # MSE<br>MSR = SSR / (k-1)                                      # MSR<br>MST = SST / (n-1)                                      # MST</pre><p name="f45c" id="f45c" class="graf graf--p graf-after--pre">4. ANOVA</p><pre name="8455" id="8455" class="graf graf--pre graf-after--p">sm.stats.anova_lm(model, typ=1)<br>sm.stats.anova_lm(model, typ=2)<br>sm.stats.anova_lm(model, typ=3)</pre><p name="f5ab" id="f5ab" class="graf graf--p graf-after--pre">5. Inference</p><pre name="a03d" id="a03d" class="graf graf--pre graf-after--p"># rounding<br>np.round(&lt;exp&gt;, 2)</pre><pre name="2884" id="2884" class="graf graf--pre graf-after--pre"># p value<br>pval = (1 - &lt;cdf&gt;)                              # one tail<br>pval = (1 - &lt;cdf&gt;) * 2                          # two tails<br>pval = (1 - &lt;cdf.f&gt;)                            # one tail F test</pre><pre name="2fa9" id="2fa9" class="graf graf--pre graf-after--pre"># hypothesis testing</pre><pre name="c96c" id="c96c" class="graf graf--pre graf-after--pre">stats.norm.ppf(1-&lt;alpha&gt;[/2])<br>stats.norm.cdf(&lt;Z&gt;)</pre><pre name="0704" id="0704" class="graf graf--pre graf-after--pre">stats.t.ppf(1-&lt;alpha&gt;[/2], &lt;degreeoffreedom&gt;)<br>stats.t.cdf(&lt;T&gt;, &lt;degreeoffreedom&gt;)</pre><pre name="330c" id="330c" class="graf graf--pre graf-after--pre">stats.f.ppf(1-&lt;alpha&gt;[/2], 1, n-2)              # SLR<br>stats.f.cdf(&lt;F&gt;, 1, n-2)                        # SLR<br>F = MSR/MSE</pre><pre name="889f" id="889f" class="graf graf--pre graf-after--pre">stats.f.ppf(1-&lt;alpha&gt;[/2], k-1, n-k)              # MLR<br>stats.f.cdf(&lt;F&gt;, k-1, n-k)                        # MLR<br>F = MSR/MSE</pre><pre name="bd19" id="bd19" class="graf graf--pre graf-after--pre">stats.chi2.ppf(1-&lt;alpha&gt;[/2], &lt;degreeoffreedom&gt;)<br>stats.chi2.cdf(&lt;Χ_square&gt;, &lt;degreeoffreedom&gt;)</pre><pre name="72d8" id="72d8" class="graf graf--pre graf-after--pre graf--trailing"># measure<br>R2 = SSR/SST <br>R2 = 1 - SSE/SST<br>R2 =model.rsquared<br>adjR2 = 1 - (SSE*(n-k)) / (SST/(n-1)) <br>adjR2 = 1 - MSE / MST<br>adjR2 = 1 - (n-1)/(n-k)*R2<br>adjR2 = model.rsquared_adj</pre></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/221df22687df"><time class="dt-published" datetime="2020-11-07T06:45:40.846Z">November 7, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/linear-regression-8-python-for-slr-mlr-221df22687df" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

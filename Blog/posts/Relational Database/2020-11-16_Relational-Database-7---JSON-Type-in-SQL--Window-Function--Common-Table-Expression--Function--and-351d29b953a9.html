@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Relational Database 7 | JSON Type in SQL, Window Function, Common Table Expression, Function, and</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Relational Database 7 | JSON Type in SQL, Window Function, Common Table Expression, Function, and</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Relational Database
+</section>
+<section data-field="body" class="e-content">
+<section name="76ad" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="18f1" id="18f1" class="graf graf--h3 graf--leading graf--title">Relational Database 7 | JSON Type in SQL, <strong class="markup--strong markup--h3-strong">Window Function, Common Table Expression, Function, and View</strong></h3><figure name="39a3" id="39a3" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*3IaCF_vbefdstmWFpZxCRw.png" data-width="1600" data-height="1200" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*3IaCF_vbefdstmWFpZxCRw.png"></figure><ol class="postList"><li name="489b" id="489b" class="graf graf--li graf-after--figure"><strong class="markup--strong markup--li-strong">JSON Data Type For SQL</strong></li></ol><ul class="postList"><li name="bad5" id="bad5" class="graf graf--li graf-after--li">Create a table with JSON type</li></ul><pre name="bb3b" id="bb3b" class="graf graf--pre graf-after--li">CREATE TABLE tablename (<br>        colname JSON<br>);</pre><ul class="postList"><li name="b085" id="b085" class="graf graf--li graf-after--pre">Get the data type of data in a Column</li></ul><pre name="4163" id="4163" class="graf graf--pre graf-after--li">SELECT pg_typeof(colname) <br>FROM tablename;</pre><ul class="postList"><li name="4f1a" id="4f1a" class="graf graf--li graf-after--pre">Get the data in JSON as JSON type</li></ul><pre name="6f3f" id="6f3f" class="graf graf--pre graf-after--li">SELECT colname -&gt; &#39;_id&#39;<br>FROM tablename;</pre><ul class="postList"><li name="21d3" id="21d3" class="graf graf--li graf-after--pre">Get the data in JSON as text type</li></ul><pre name="3b83" id="3b83" class="graf graf--pre graf-after--li">SELECT colname -&gt;&gt; &#39;_id&#39;<br>FROM tablename;</pre><ul class="postList"><li name="671e" id="671e" class="graf graf--li graf-after--pre">Convert a table to JSON</li></ul><pre name="4813" id="4813" class="graf graf--pre graf-after--li">SELECT TO_JSON(tablename) <br>FROM tablename;</pre><p name="4c01" id="4c01" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">2. Window Function in PostgreSQL</strong></p><p name="6ef8" id="6ef8" class="graf graf--p graf-after--p">A <strong class="markup--strong markup--p-strong">window function</strong> performs a calculation across a set of table rows that are somehow related to the current row. It makes things easier for us because we don’t have to do JOINs if we want to write some specific kinds of queries. By this window function, we don’t have to write GROUP BY any more.</p><ul class="postList"><li name="5cce" id="5cce" class="graf graf--li graf-after--p">SUM all the values in colname</li></ul><pre name="e7a4" id="e7a4" class="graf graf--pre graf-after--li">SELECT SUM(colname) OVER ()<br>FROM tablename;</pre><ul class="postList"><li name="3cae" id="3cae" class="graf graf--li graf-after--pre">SUM the values in colname1 group by colname2</li></ul><pre name="1962" id="1962" class="graf graf--pre graf-after--li">SELECT SUM(colname1) OVER (PARTITION BY colname2)<br>FROM tablename;</pre><ul class="postList"><li name="fdd8" id="fdd8" class="graf graf--li graf-after--pre">Accumulate the values in colname1 group by colname2</li></ul><pre name="5ffa" id="5ffa" class="graf graf--pre graf-after--li">SELECT SUM(colname1) OVER (<br>     PARTITION BY colname2<br>     ORDER BY colname1)<br>FROM tablename;</pre><ul class="postList"><li name="ce8c" id="ce8c" class="graf graf--li graf-after--pre">Add the values in colname1 group by colname2 of the current row and the following row</li></ul><pre name="d395" id="d395" class="graf graf--pre graf-after--li">SELECT SUM(colname1) OVER (<br>     PARTITION BY colname2<br>     ORDER BY colname1<br>     ROWS BETWEEN CURRENT ROW AND 1 FOLLOWING)<br>FROM tablename;</pre><ul class="postList"><li name="8564" id="8564" class="graf graf--li graf-after--pre">Add the values in colname1 group by colname2 between the current row and the following row</li></ul><pre name="fa22" id="fa22" class="graf graf--pre graf-after--li">SELECT SUM(colname1) OVER (<br>     PARTITION BY colname2<br>     ORDER BY colname1<br>     ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING)<br>FROM tablename;</pre><ul class="postList"><li name="985e" id="985e" class="graf graf--li graf-after--pre">Add the values in colname1 group by colname2 between the preceding row and the last row in this group</li></ul><pre name="a783" id="a783" class="graf graf--pre graf-after--li">SELECT SUM(colname1) OVER (<br>     PARTITION BY colname2<br>     ORDER BY colname1<br>     ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING)<br>FROM tablename;</pre><ul class="postList"><li name="24c5" id="24c5" class="graf graf--li graf-after--pre">Add the values in colname1 group by colname2 between the very first row in this group and the current row (same to accumulate the values in colname1 group by colname2)</li></ul><pre name="efc9" id="efc9" class="graf graf--pre graf-after--li">SELECT SUM(colname1) OVER (<br>     PARTITION BY colname2<br>     ORDER BY colname1<br>     ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)<br>FROM tablename;</pre><ul class="postList"><li name="b285" id="b285" class="graf graf--li graf-after--pre">Calculate the difference between every two lines (Useful for time series data)</li></ul><pre name="f337" id="f337" class="graf graf--pre graf-after--li">SELECT ABS(LAG(colname1) <br>   OVER (<br>      PARTITION BY colname2<br>      ORDER BY date, colname1) - colname1) AS diff,<br>FROM tablename;</pre><p name="5596" id="5596" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">3. Common Table Expression (CTE)</strong></p><p name="7d62" id="7d62" class="graf graf--p graf-after--p">This is a way to make the table a variable for us to use in the new query!</p><ul class="postList"><li name="6ae5" id="6ae5" class="graf graf--li graf-after--p">Useless CTE (just to show how it can be used)</li></ul><pre name="2a19" id="2a19" class="graf graf--pre graf-after--li">WITH tablename1 AS (SELECT * FROM tablename2)<br>SELECT *<br>FROM tablename1;</pre><ul class="postList"><li name="ec0a" id="ec0a" class="graf graf--li graf-after--pre">Grab values from 2 tables</li></ul><pre name="c1da" id="c1da" class="graf graf--pre graf-after--li">WITH tablename1 AS (SELECT * FROM tablename3),<br>     tablename2 AS (SELECT * FROM tablename4)<br>SELECT tablename1.colname1, tablename2.colname2<br>FROM tablename1, tablename2;</pre><p name="9507" id="9507" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">4. Function in PostgreSQL</strong></p><ul class="postList"><li name="4977" id="4977" class="graf graf--li graf-after--p">Create a function that returns a value.</li></ul><pre name="c60c" id="c60c" class="graf graf--pre graf-after--li">CREATE OR REPLACE FUNCTION function_name (inputarg datatype) <br>RETURNS type AS<br>$$<br>    BODY OF FUNCTION<br>$$<br>LANGUAGE SQL;</pre><ul class="postList"><li name="cbae" id="cbae" class="graf graf--li graf-after--pre">Create a function that increases the given number by 1,</li></ul><pre name="6581" id="6581" class="graf graf--pre graf-after--li">CREATE OR REPLACE FUNCTION increment(num int) <br>RETURNS int AS <br>$$ <br>    SELECT num + 1 <br>$$ <br>LANGUAGE SQL;</pre><p name="daaa" id="daaa" class="graf graf--p graf-after--pre">To test the function,</p><pre name="8fb4" id="8fb4" class="graf graf--pre graf-after--p">SELECT * FROM increment(42);</pre><ul class="postList"><li name="20dd" id="20dd" class="graf graf--li graf-after--pre">Create a function that returns a table</li></ul><pre name="ba40" id="ba40" class="graf graf--pre graf-after--li">CREATE OR REPLACE FUNCTION sid_by_name(name VARCHAR) <br>RETURNS TABLE (sid INTEGER, sname VARCHAR) AS<br>$$<br>    SELECT sid, sname<br>    FROM students<br>    WHERE sname = name<br>$$<br>LANGUAGE SQL;</pre><ul class="postList"><li name="156d" id="156d" class="graf graf--li graf-after--pre">Delete a function</li></ul><pre name="adc5" id="adc5" class="graf graf--pre graf-after--li">DROP FUNCTION IF EXISTS functname;</pre><p name="fe1c" id="fe1c" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">5. View in PostgreSQL</strong></p><p name="4e77" id="4e77" class="graf graf--p graf-after--p">Views are the shortcuts of the existed or non-existed tables in the database. The view is not physically materialized and we can query a view just as we do with tables. If we conduct the UPDATE / INSERT / DELETE queries for a view, then the relative values in the tables will also be changed.</p><p name="fe37" id="fe37" class="graf graf--p graf-after--p">The difference between the views and the CTEs is that the view can be used many times until it is deleted but the CTE will only work in the defined query.</p><ul class="postList"><li name="975f" id="975f" class="graf graf--li graf-after--p">Create the view of a table</li></ul><pre name="703a" id="703a" class="graf graf--pre graf-after--li">CREATE VIEW viewname AS<br>SELECT *<br>FROM tablename<br>WHERE colname = value;</pre><ul class="postList"><li name="0e91" id="0e91" class="graf graf--li graf-after--pre">Delete a view</li></ul><pre name="9357" id="9357" class="graf graf--pre graf-after--li">DROP VIEW IF EXISTS viewname;</pre><ul class="postList"><li name="1177" id="1177" class="graf graf--li graf-after--pre">Delete a table with a view depending on it</li></ul><pre name="02e4" id="02e4" class="graf graf--pre graf-after--li graf--trailing">DROP TABLE IF EXISTS tablename CASCADE;</pre></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/351d29b953a9"><time class="dt-published" datetime="2020-11-16T12:23:46.318Z">November 16, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/relational-database-7-json-type-in-sql-window-function-common-table-expression-function-and-351d29b953a9" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

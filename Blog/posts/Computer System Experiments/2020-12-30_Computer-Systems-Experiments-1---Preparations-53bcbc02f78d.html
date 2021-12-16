@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Computer Systems Experiments 1 | Preparations</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Computer Systems Experiments 1 | Preparations</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Computer Systems Experiments
+</section>
+<section data-field="body" class="e-content">
+<section name="71bb" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="e596" id="e596" class="graf graf--h3 graf--leading graf--title">Computer Systems Experiments 1 | Preparations</h3><figure name="32a9" id="32a9" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*BJR9p7Vvc4gaAOTrVQrGrA.png" data-width="1530" data-height="1104" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*BJR9p7Vvc4gaAOTrVQrGrA.png"></figure><ol class="postList"><li name="f7ca" id="f7ca" class="graf graf--li graf-after--figure"><strong class="markup--strong markup--li-strong">Hardware Preparation</strong></li></ol><p name="7bbb" id="7bbb" class="graf graf--p graf-after--li"><strong class="markup--strong markup--p-strong">(1) Raspberry Pi and ARM</strong></p><p name="3784" id="3784" class="graf graf--p graf-after--p">The Raspberry Pi model we are going to use is the Raspberry Pi 1 Model A+ and the CPU model of the Pi is BCM2835 (ARM11 series, ARMv6 architecture). Check the manual here <a href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf" data-href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf" class="markup--anchor markup--p-anchor" rel="nofollow noopener" target="_blank">BCM2835 Peripherals Specification</a> (you don’t have to read it now) and please note that this manual has a lot of errors, so we must read it with <a href="https://elinux.org/BCM2835_datasheet_errata#p96" data-href="https://elinux.org/BCM2835_datasheet_errata#p96" class="markup--anchor markup--p-anchor" rel="nofollow noopener" target="_blank">BCM 2835 Datasheet Errata</a>. Note that the address in the manual <code class="markup--code markup--p-code">0x7E...</code> is the logic address and we will change it <code class="markup--code markup--p-code">0x20...</code> in the code.</p><p name="785d" id="785d" class="graf graf--p graf-after--p">Because ARM is a RISC processor, it is easy to program at the assembly level. To know something more about the ARM assembly language, we can read the following <a href="http://www.toves.org/books/arm/" data-href="http://www.toves.org/books/arm/" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">book</a> by Carl Burch and Hendrix College.</p><p name="6fda" id="6fda" class="graf graf--p graf-after--p"><a href="https://pinout.xyz/" data-href="https://pinout.xyz/" class="markup--anchor markup--p-anchor" rel="nofollow noopener" target="_blank">Pinout.xyz</a> is an awesome website that shows the pins of the Raspberry Pi 1 Model A+ and the app <a href="https://salmanarif.bitbucket.io/visual/index.html" data-href="https://salmanarif.bitbucket.io/visual/index.html" class="markup--anchor markup--p-anchor" rel="nofollow noopener" target="_blank">VisUAL</a> is a useful visual ARM emulator for us to write simulate our assembly language.</p><p name="b205" id="b205" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(2) Checklist for the Toolkit</strong></p><p name="3473" id="3473" class="graf graf--p graf-after--p">We have three kits for our experiments. The first one is called the Main Kit. The second one is called the Jumpers Kit. The last one is the Mini-Kit. The components of the three kits follow the following list. To continue, we must have all the tools to be well prepared.</p><figure name="30e1" id="30e1" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*udLtlXW7u8wQ7fGBmbJ4Hg.png" data-width="2186" data-height="1638" src="https://cdn-images-1.medium.com/max/800/1*udLtlXW7u8wQ7fGBmbJ4Hg.png"></figure><p name="3ea5" id="3ea5" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">2. Software Installation</strong></p><p name="b1f0" id="b1f0" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(1) Install arm-none-eabi</strong></p><p name="315e" id="315e" class="graf graf--p graf-after--p">We need to install the arm toolchain for our Pi (compiler, assembler, linker, etc.) and the CP2012 driver. This tool is called arm-none-eabi. The meaning of this is that <code class="markup--code markup--p-code">none</code> means we are not targeting any operating system here, aka we are in &quot;bare metal&quot; and <code class="markup--code markup--p-code">eabi</code> means the ABI for the ARM architecture.</p><p name="b234" id="b234" class="graf graf--p graf-after--p">First, “Tap” into the CS107e Homebrew package,</p><pre name="5ffe" id="5ffe" class="graf graf--pre graf-after--p">$ brew tap cs107e/cs107e</pre><p name="fac4" id="fac4" class="graf graf--p graf-after--pre">Then, install the <code class="markup--code markup--p-code">arm-none-eabi</code> formula,</p><pre name="da8c" id="da8c" class="graf graf--pre graf-after--p">$ brew install arm-none-eabi</pre><p name="a3bc" id="a3bc" class="graf graf--p graf-after--pre">Finally, we can check the version of the <code class="markup--code markup--p-code">arm-none-eabi</code>,</p><pre name="026f" id="026f" class="graf graf--pre graf-after--p"><code class="markup--code markup--pre-code">$ arm-none-eabi-gcc --version</code></pre><p name="0c58" id="0c58" class="graf graf--p graf-after--pre">The output should be,</p><pre name="6d38" id="6d38" class="graf graf--pre graf-after--p"><code class="markup--code markup--pre-code">arm-none-eabi-gcc (GCC) 4.8.3</code></pre><p name="ada1" id="ada1" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(2) Install CP2012 Driver</strong></p><p name="5468" id="5468" class="graf graf--p graf-after--p">We also need to install the arm toolchain for the CP2012 driver. Download the CP2012 driver. The drivers are available on the Silicon Labs <a href="https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers" data-href="https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">CP210x Downloads page</a>. Scroll down to the section titled “Download for Mac OS” and download the VCP zip file. Open the zip to decompress into the dmg file <code class="markup--code markup--p-code">SiLabsUSBDriverDisk.dmg</code>. Open the dmg file to mount the volume named <code class="markup--code markup--p-code">Silicon Labs VCP Driver Install Disk</code>.</p><p name="05e9" id="05e9" class="graf graf--p graf-after--p">On the mounted volume, find the file named <code class="markup--code markup--p-code">Install CP2010x VCP Driver</code>. Open this file to launch the installer. Follow its instructions to install the driver.</p><p name="31be" id="31be" class="graf graf--p graf-after--p">Finally, confirm CP2102 driver is installed and loadable,</p><pre name="6cba" id="6cba" class="graf graf--pre graf-after--p"><code class="markup--code markup--pre-code">$ kextfind -B -s SiLabs -report -b -loadable</code></pre><p name="8423" id="8423" class="graf graf--p graf-after--pre">The output should be,</p><pre name="97c0" id="97c0" class="graf graf--pre graf-after--p">CFBundleIdentifier Loadable<br>com.silabs.driver.CP210xVCPDriver64 yes<br>com.silabs.driver.CP210xVCPDriver yes</pre><p name="a98b" id="a98b" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(3) pyserial and xmodem Installation</strong></p><p name="eede" id="eede" class="graf graf--p graf-after--p">We should also install <code class="markup--code markup--p-code">pyserial</code>and <code class="markup--code markup--p-code">xmodem</code> for Python3. To install this package, we should use,</p><pre name="0ea4" id="0ea4" class="graf graf--pre graf-after--p">$ pip install pyserial xmodem</pre><p name="cf5e" id="cf5e" class="graf graf--p graf-after--pre">To check the installation,</p><pre name="e14f" id="e14f" class="graf graf--pre graf-after--p">$ pip list | grep xmodem</pre><p name="9ea0" id="9ea0" class="graf graf--p graf-after--pre">The output should be,</p><pre name="3c4d" id="3c4d" class="graf graf--pre graf-after--p"><strong class="markup--strong markup--pre-strong">xmodem</strong>                             0.4.6</pre><p name="cc2e" id="cc2e" class="graf graf--p graf-after--pre">Note that the Python2 maybe the default version on your PC, so please manually assign the installation version of your python as follows if version errors happen,</p><pre name="de3c" id="de3c" class="graf graf--pre graf-after--p"><code class="markup--code markup--pre-code">$ python3 -m pip install pyserial xmodem</code></pre><p name="2cd0" id="2cd0" class="graf graf--p graf-after--pre">To check the installation, also,</p><pre name="e601" id="e601" class="graf graf--pre graf-after--p graf--trailing"><code class="markup--code markup--pre-code">$ python3 -m pip list</code></pre></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/53bcbc02f78d"><time class="dt-published" datetime="2020-12-30T17:13:45.575Z">December 30, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/computer-systems-experiments-1-preparations-53bcbc02f78d" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

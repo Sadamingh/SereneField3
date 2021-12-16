@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Linux操作系统实践11 Makefile指南</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Linux操作系统实践11 Makefile指南</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+系列：Linux操作系统实践
+</section>
+<section data-field="body" class="e-content">
+<section name="ff59" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="ef1c" id="ef1c" class="graf graf--h3 graf--leading graf--title">Linux操作系统实践11 Makefile指南</h3><figure name="eb94" id="eb94" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*beSHA3cQNnPOOKl4ypDgfw.jpeg" data-width="2689" data-height="1513" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*beSHA3cQNnPOOKl4ypDgfw.jpeg"></figure><p name="db57" id="db57" class="graf graf--p graf-after--figure">Make是使构建程序自动化的工具。Makefile描述了构建过程中使用的命令和选项。正如您很快就会看到的那样，使用Makefile可以节省很多重新输入的时间，并使您作为开发人员的生活更加顺畅！</p><p name="55b6" id="55b6" class="graf graf--p graf-after--p">一、初识Makefile</p><p name="5210" id="5210" class="graf graf--p graf-after--p">在这一个指南中，我们使用的示例仍然是之前编写的larson scanner代码。我们打开终端，进行下面的操作：</p><ol class="postList"><li name="5f24" id="5f24" class="graf graf--li graf-after--p">我们先进入到larson scanner的assignment1目录下，我们输入命令：</li></ol><pre name="96b0" id="96b0" class="graf graf--pre graf-after--li">$ mkdir -p ./build/bin ./build/obj</pre><p name="4ac5" id="4ac5" class="graf graf--p graf-after--pre">这句指令是在assignment1目录下创建build目录以及build目录下的bin目录和obj目录。</p><p name="5a13" id="5a13" class="graf graf--p graf-after--p">2. 我们输入下面的指令，通过arm-none-eabi工具链中的AS工具和objcopy工具将.s文件编译成.bin文件：</p><pre name="27ef" id="27ef" class="graf graf--pre graf-after--p">$ arm-none-eabi-as ./src/apps/larson.s -o ./build/obj/larson.o<br>$ arm-none-eabi-objcopy ./build/obj/larson.o -O binary ./build/bin/larson.bin</pre><p name="e285" id="e285" class="graf graf--p graf-after--pre">3. 最后，我们输入下面的指令，这个指令可以让我们加载二进制代码.bin文件到Pi中（基于python3的脚本）：</p><pre name="546e" id="546e" class="graf graf--pre graf-after--p">rpi-install.py ./build/bin/larson.bin</pre><p name="3cf3" id="3cf3" class="graf graf--p graf-after--pre">完整完成上述步骤之后，在面包板上，我们的LED灯应该被点亮了。</p><p name="43ad" id="43ad" class="graf graf--p graf-after--p">4. 我们通过下面的代码来删除在指令执行过程中生成的中间文件：</p><pre name="4f1e" id="4f1e" class="graf graf--pre graf-after--p">rm ./build/obj/*.o ./build/bin/*.bin</pre><p name="9518" id="9518" class="graf graf--p graf-after--pre">在完成了上面四个步骤之后，我们每次修改代码或者每次更新代码，都要输入一遍一模一样的语句，这是非常耗费精力的一件事情。因此，GNU规定了一种名为Makefile的脚本，它不需要任何扩展名。在这个脚本中，我们可以集成上面的语句，从而帮助我们通过简单的make命令来实现上面代码的输入。Makefile文件可以看作是对上述代码的一次封装。</p><p name="2c98" id="2c98" class="graf graf--p graf-after--p">下面我们通过文本编辑器打开assignment1目录中的Makefile文件，我们就可以得到下面的代码：</p><pre name="2233" id="2233" class="graf graf--pre graf-after--p">larson.bin:<br> mkdir -p ./build/bin ./build/obj<br> arm-none-eabi-as ./src/apps/larson.s -o ./build/obj/larson.o<br> arm-none-eabi-objcopy ./build/obj/larson.o -O binary ./build/bin/larson.bin</pre><pre name="b082" id="b082" class="graf graf--pre graf-after--pre">install:<br> rpi-install.py ./build/bin/larson.bin</pre><pre name="3bc0" id="3bc0" class="graf graf--pre graf-after--pre">clean:<br> rm ./build/obj/*.o ./build/bin/*.bin</pre><p name="059e" id="059e" class="graf graf--p graf-after--pre">首先，larson:整合了我们在1和2中的代码；其次，install:整合了我们在3中的代码；最后，clean:整合了我们在4中的代码。我们可以大概看出来上面的逻辑如下图所示。</p><figure name="722d" id="722d" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*W1J0FBL8tO2Ol6uslzBkvw.png" data-width="1566" data-height="376" src="https://cdn-images-1.medium.com/max/800/1*W1J0FBL8tO2Ol6uslzBkvw.png"></figure><p name="e719" id="e719" class="graf graf--p graf-after--figure">二、Makefile进阶</p><ol class="postList"><li name="e516" id="e516" class="graf graf--li graf-after--p">目标（Target）、依赖项（Dependencies）、配方（Receipts）、以及规则（Rule）</li></ol><p name="a01c" id="a01c" class="graf graf--p graf-after--li">对于Makefile代码来说，每一个「:」左边的内容被称为Target，它可以被输入到make命令之后执行。每一个「:」右面同一行的内容被称为Dependencies，它指的是为了运行下面的代码，我们还要依赖于的另一个Target。每一个「:」后面的若干行代码，直到再下一个「:」之前，被称为Receipts。他们总体上被称为一个Rule。这种关系由下面的图表示出来。</p><figure name="a72c" id="a72c" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*tcLeOZ0L8GWHcNSywAWU6g.png" data-width="1598" data-height="456" src="https://cdn-images-1.medium.com/max/800/1*tcLeOZ0L8GWHcNSywAWU6g.png"></figure><p name="4ff2" id="4ff2" class="graf graf--p graf-after--figure">我们下面来仔细分析上面图中这一段代码，它的完整代码如下：</p><pre name="2c7c" id="2c7c" class="graf graf--pre graf-after--p"><code class="markup--code markup--pre-code">all: button.bin<br><br>button.bin: button.c<br>    arm-none-eabi-gcc -Og -g -Wall -std=c99 -ffreestanding -c button.c -o button.o<br>    arm-none-eabi-gcc -nostdlib button.o -o button.elf<br>    arm-none-eabi-objcopy button.elf -O binary button.bin<br><br>clean: <br>    rm -f *.bin *.o</code></pre><p name="6678" id="6678" class="graf graf--p graf-after--pre">对于第1行，当我们输入指令make或者make all的时候，第一行指令都会运行，它运行的时候需要依赖于button.bin这一Target的运行。因此，在运行all之前，button.bin后面的内容会先运行。这表示我们会进入名为button.bin的rule。</p><p name="3c90" id="3c90" class="graf graf--p graf-after--p">button.bin中的第一个receipt规定了很多option，这可能有些复杂。对于这些options，我们作出下面的注释。我们可以在Makefile中添加注释来解释调用编译器时所包含的其他标志。以开头的行<code class="markup--code markup--p-code">#</code>被视为注释。</p><pre name="f672" id="f672" class="graf graf--pre graf-after--p"><code class="markup--code markup--pre-code"># Compiler flags used:<br>#  -std=c99        use the c99 standard<br>#  -Og             generate optimized code designed for debugging<br>#  -g              add debugging information<br>#  -Wall           give warnings about *all* issues<br>#  -ffreestanding  generate code assuming no operating system</code></pre><p name="eea8" id="eea8" class="graf graf--p graf-after--pre">最终的规则指出了当我们输入<code class="markup--code markup--p-code">make clean</code>;的时候会发生什么，我们将会按照指令清除以前的所有构建的代码，以便下次编译重新开始。这是因为一件特别令人讨厌的关于<code class="markup--code markup--p-code">make</code>的事情：仅当目标所依赖的一个或多个组件发生更改时才rebuild目标。如果您尝试重建已经是最新的目标，<code class="markup--code markup--p-code">make</code>则会告诉您：</p><pre name="f37b" id="f37b" class="graf graf--pre graf-after--p"><code class="markup--code markup--pre-code">$ make<br>make: Nothing to be done for `all&#39;.</code></pre><p name="dc28" id="dc28" class="graf graf--p graf-after--pre">2. 宏Macros</p><p name="1faf" id="1faf" class="graf graf--p graf-after--p">我们可以通过在Makefile文件的开头加上宏来让我们的代码更容易理解、维护、和更改。宏在Makefile文件开头的格式为：</p><pre name="db96" id="db96" class="graf graf--pre graf-after--p">NAME = things to be replaced</pre><p name="16d5" id="16d5" class="graf graf--p graf-after--pre">宏在文件中需要替代的部分的格式为：</p><pre name="cf2d" id="cf2d" class="graf graf--pre graf-after--p">$(NAME)</pre><p name="b257" id="b257" class="graf graf--p graf-after--pre">例如，对于上面对于button.c的Makefile文件，我们用宏来替换掉重复和需要保留接口的部分，形成的新代码如下：</p><pre name="2a11" id="2a11" class="graf graf--pre graf-after--p"><code class="markup--code markup--pre-code">    NAME = blink<br>    CFLAGS  = -std=c99 -Og -g -Wall -ffreestanding<br>    LDFLAGS = -nostdlib<br><br>    all: $(NAME).bin<br><br>    $(NAME).bin: $(NAME).c<br>        arm-none-eabi-gcc $(CFLAGS) -c $(NAME).c -o $(NAME).o<br>        arm-none-eabi-gcc $(LDFLAGS) $(NAME).o -o $(NAME).elf<br>        arm-none-eabi-objcopy $(NAME).elf -O binary $(NAME).bin<br>    <br>    clean: <br>        rm -f *.bin *.o</code></pre><p name="4e83" id="4e83" class="graf graf--p graf-after--pre">这样规定之后，代码就变得更清楚简明了。</p><p name="b7ae" id="b7ae" class="graf graf--p graf-after--p">3. 模式规则Pattern Rules</p><p name="92c5" id="92c5" class="graf graf--p graf-after--p">有的时候，为了让Makefile文件更具有通用性，我们可以使用不需要任何额外编码或者额外指定名称的Pattern Rules进行编程。Pattern Rules里面主要包括了对一些符号的定义：</p><ul class="postList"><li name="bc14" id="bc14" class="graf graf--li graf-after--p">%：指的是通配符。例如%.bin指的是任何.bin为结尾的文件。</li><li name="08c2" id="08c2" class="graf graf--li graf-after--li">$@：指的是Target，也就是一个rule的「:」左边的部分。</li><li name="eef2" id="eef2" class="graf graf--li graf-after--li">$&lt;：指的是第一个Dependency，也就是一个rule的「:」右边部分的Dependencies中的第一个Dependency。</li><li name="ba0e" id="ba0e" class="graf graf--li graf-after--li">$^：指的是全部Dependency，也就是一个rule的「:」右边部分的Dependencies中的全部Dependency。</li></ul><p name="65a8" id="65a8" class="graf graf--p graf-after--li">在了解了上面全部的规则之后，我们就可以一劳永逸地解决之后我们会用到的Makefile了，我们有下面的代码。对于不同文件，我们只需要改变宏中的NAME项即可：</p><pre name="61d9" id="61d9" class="graf graf--pre graf-after--p"><code class="markup--code markup--pre-code">    NAME = blink<br><br>    CFLAGS = -g -Wall -Og -std=c99 -ffreestanding<br>    LDFLAGS = -nostdlib<br><br>    all: $(NAME).bin<br>     <br>    %.bin: %.elf<br>        arm-none-eabi-objcopy $&lt; -O binary $@<br><br>    %.elf: %.o<br>        arm-none-eabi-gcc $(LDFLAGS) $&lt; -o $@<br><br>    %.o: %.c<br>        arm-none-eabi-gcc $(CFLAGS) -c $&lt; -o $@<br>    <br>    %.list: %.o<br>        arm-none-eabi-objdump -d $&lt; &gt; $@<br><br>    install: $(NAME).bin<br>        rpi-install.py $&lt;<br><br>    clean:<br>        rm -f *.o *.elf *.bin *.li</code></pre><p name="61a9" id="61a9" class="graf graf--p graf-after--pre">4. 一个蠢问题：Make失败，出现关于的神秘错误<code class="markup--code markup--p-code">Makefile: *** missing separator</code>。这是什么原因？</p><p name="ba68" id="ba68" class="graf graf--p graf-after--p graf--trailing">答：在计算历史上被普遍认为是愚蠢的决定之一就是Makefile区分制表符和空格。Rule中的Recepit行必须以制表符开头，而等效数量的空格则不会让代码运行。编辑您的makefile，并用制表符替换那些错误的空格，以恢复我们使用Makefile的信心和喜悦。</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/16b4196fe7b7"><time class="dt-published" datetime="2020-05-08T09:02:06.332Z">May 8, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B511-makefile%E6%8C%87%E5%8D%97-16b4196fe7b7" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

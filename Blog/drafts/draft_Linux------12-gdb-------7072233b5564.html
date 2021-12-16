@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Linux操作系统实践12 gdb的安装及使用</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Linux操作系统实践12 gdb的安装及使用</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+我们建议使用GNU调试器gdb，因为它基本上在所有可能的区域都在dbx上运行，并且可以与gcc编译器很好地协同工作。其他不错的调试环境包括ups和CodeCenter，但是它们不如gdb普遍可用，在CodeCenter可用的情况下也不便宜。尽管gdb没有其他图形界面，但它是一个功…
+</section>
+<section data-field="body" class="e-content">
+<section name="d949" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="ae7d" id="ae7d" class="graf graf--h3 graf--leading graf--title">Linux操作系统实践12 gdb的安装及使用</h3><figure name="3f3e" id="3f3e" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*beSHA3cQNnPOOKl4ypDgfw.jpeg" data-width="2689" data-height="1513" src="https://cdn-images-1.medium.com/max/800/1*beSHA3cQNnPOOKl4ypDgfw.jpeg"></figure><p name="3ff6" id="3ff6" class="graf graf--p graf-after--figure">我们建议使用GNU调试器gdb，因为它基本上在所有可能的区域都在dbx上运行，并且可以与gcc编译器很好地协同工作。其他不错的调试环境包括ups和CodeCenter，但是它们不如gdb普遍可用，在CodeCenter可用的情况下也不便宜。尽管gdb没有其他图形界面，但它是一个功能强大的工具，可为知识丰富的程序员提供他们可能需要的所有信息，然后提供一些信息。</p><p name="8561" id="8561" class="graf graf--p graf-after--p">本章节距离描述gdb的所有功能还很近，但是我们给出了最重要的功能。 gdb有在线帮助，可以通过在gdb中使用help命令来查看。如果您想了解更多信息，请尝试使用xinfo登录到具有X display的计算机的控制台上，或者在emacs中使用info-browser模式。</p><p name="663a" id="663a" class="graf graf--p graf-after--p">一、GDB的安装</p><p name="d376" id="d376" class="graf graf--p graf-after--p">如果你使用的是Mac OS X 10.9或者更高版本，那么它可能会让你非常失望，因为在开始学习GDB之前，我们先要完成复杂的GDB配置。这是因为Eclipse拒绝了交互调试本可以被配置和正常运行的问题，这让人失望！你可能会得到一个错误的提示，告诉我们在电脑上没有GDB。</p><p name="1553" id="1553" class="graf graf--p graf-after--p">问题的产生是由于Apple在其Xcode工具链中（连同从GCC到Clang的转换）从GNU调试器GDB切换到LLVM调试器LLDB。不幸的是，Eclipse无法与GDB之外的任何调试器进行通信（尚未）。因此，我们需要通过后面的步骤对其加以配置。</p><p name="fec5" id="fec5" class="graf graf--p graf--empty graf-after--p graf--trailing"><br></p></div></div></section>
+</section>
+<footer><p><a href="https://medium.com/p/7072233b5564">View original.</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

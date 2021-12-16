@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Computer Systems Experiments 17 | Vertical Counter</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Computer Systems Experiments 17 | Vertical Counter</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Computer Systems Experiments
+</section>
+<section data-field="body" class="e-content">
+<section name="10c8" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="a9d7" id="a9d7" class="graf graf--h3 graf--leading graf--title">Computer Systems Experiments 17 | Vertical Counter</h3><figure name="af97" id="af97" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*OxeeUu1CcFat2oXe.png" data-width="1530" data-height="1104" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/0*OxeeUu1CcFat2oXe.png"></figure><p name="66a6" id="66a6" class="graf graf--p graf-after--figure">In this experiment, we are going to create a vertical counter counting from 0 to 3. The final result of this experiment should be,</p><figure name="4ecd" id="4ecd" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*jCDIKAef5LNaZy2Gn5GKGA.gif" data-width="600" data-height="340" src="https://cdn-images-1.medium.com/max/800/1*jCDIKAef5LNaZy2Gn5GKGA.gif"></figure><p name="b8c4" id="b8c4" class="graf graf--p graf-after--figure">Note that the red, green, and yellow LEDs are for the decoration (or debugging) purpose and you can omit them in your circuit.</p><p name="4614" id="4614" class="graf graf--p graf-after--p">To achieve this goal, let’s recall the digital switch function of the BJTs. To control the 4 digits, we have to connect them to the four collector pins of the BJTs and then the 4 emitter pins should be connected to the ground because the 7-segment display is common cathode.</p><p name="b476" id="b476" class="graf graf--p graf-after--p">The 4 base pins of the BJTs should be connected to the GPIO 10–13, respectively, so that we can control whether or not to display the digits with the electronic level at the GPIO 10–13 pins.</p><p name="50a2" id="50a2" class="graf graf--p graf-after--p">Thus, the diagram should be,</p><figure name="3e51" id="3e51" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*TldSbkz0HKq5nwD4LhHfAg.png" data-width="1612" data-height="620" src="https://cdn-images-1.medium.com/max/800/1*TldSbkz0HKq5nwD4LhHfAg.png"></figure><p name="c300" id="c300" class="graf graf--p graf-after--figure">In the last experiment, we assign digit rules to different variable named <code class="markup--code markup--p-code">digit0</code> to <code class="markup--code markup--p-code">digit9</code> . In this experiment, we are going to put them together as a single variable named <code class="markup--code markup--p-code">digit</code> .</p><pre name="b19a" id="b19a" class="graf graf--pre graf-after--p">int digit[] = {<br>    0b111111,<br>    0b110,<br>    0b1011011,<br>    0b1001111,<br>    0b1100110,<br>    0b1101101,<br>    0b1111101,<br>    0b111,<br>    0b1111111,<br>    0b1101111};</pre><p name="702c" id="702c" class="graf graf--p graf-after--pre">Then, it’s more convenient to use the <code class="markup--code markup--p-code">digit0</code> to <code class="markup--code markup--p-code">digit9</code> because,</p><pre name="50f0" id="50f0" class="graf graf--pre graf-after--p">digit[0] == digit0<br>digit[1] == digit1<br>...<br>digit[9] == digit9</pre><p name="95ed" id="95ed" class="graf graf--p graf-after--pre">And we can also use <code class="markup--code markup--p-code">i</code> (an int) to represent the ith digit,</p><pre name="0018" id="0018" class="graf graf--pre graf-after--p">digit[i]</pre><p name="df00" id="df00" class="graf graf--p graf-after--pre">Finally, for displaying these digits, we can use an infinite while loop. Also note that we should also set the GPIO 10–13 by,</p><pre name="ec91" id="ec91" class="graf graf--pre graf-after--p">while (1) {<br>    for(int i = 0; i &lt; 4; i++){<br>        *SET0 = (digit[i] &lt;&lt; 20) + (1 &lt;&lt; (10+i)); <br>        for (int c = DELAY; c != 0; c--) ;<br>        *CLR0 = (digit[i] &lt;&lt; 20) + (1 &lt;&lt; (10+i)); <br>    }<br>}</pre><p name="87ea" id="87ea" class="graf graf--p graf-after--pre">In conclusion, the overall program is,</p><pre name="e814" id="e814" class="graf graf--pre graf-after--p">static volatile unsigned int *FSEL1 =  (unsigned int *)0x20200004;<br>static volatile unsigned int *FSEL2 =  (unsigned int *)0x20200008;<br>static volatile unsigned int *SET0  =  (unsigned int *)0x2020001c;<br>static volatile unsigned int *CLR0  =  (unsigned int *)0x20200028;</pre><pre name="bf92" id="bf92" class="graf graf--pre graf-after--pre">#define DELAY 0x3f0000</pre><pre name="7544" id="7544" class="graf graf--pre graf-after--pre">void main(void) {<br>    // set GPIO 10-13 to output<br>    *FSEL1 = 0b1001001001;<br>    // set GPIO 20-26 to output<br>    *FSEL2 = 0b1001001001001001001;</pre><pre name="976b" id="976b" class="graf graf--pre graf-after--pre">// assign the rules for displaying digits<br>    int digit[] = {<br>        0b111111,<br>        0b110,<br>        0b1011011,<br>        0b1001111,<br>        0b1100110,<br>        0b1101101,<br>        0b1111101,<br>        0b111,<br>        0b1111111,<br>        0b1101111};</pre><pre name="0719" id="0719" class="graf graf--pre graf-after--pre">while (1) {<br>        for(int i = 0; i &lt; 4; i++){<br>            *SET0 = (digit[i] &lt;&lt; 20) + (1 &lt;&lt; (10+i)); <br>            for (int c = DELAY; c != 0; c--) ;<br>            *CLR0 = (digit[i] &lt;&lt; 20) + (1 &lt;&lt; (10+i)); <br>        }<br>    }<br>}</pre><p name="9f13" id="9f13" class="graf graf--p graf-after--pre graf--trailing">You can also find this code from my <a href="https://github.com/Sadamingh/ComputerSysE/tree/main/counter%20vertical" data-href="https://github.com/Sadamingh/ComputerSysE/tree/main/counter%20vertical" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">repo</a>.</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/deeb37ee93f2"><time class="dt-published" datetime="2021-01-05T09:10:40.389Z">January 5, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/computer-systems-experiments-17-vertical-counter-deeb37ee93f2" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

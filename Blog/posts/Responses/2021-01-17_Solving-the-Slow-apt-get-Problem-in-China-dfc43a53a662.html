@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Solving the Slow apt-get Problem in China</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Solving the Slow apt-get Problem in China</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Linux
+</section>
+<section data-field="body" class="e-content">
+<section name="5f3e" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="2633" id="2633" class="graf graf--h3 graf--leading graf--title">Solving the Slow <code class="markup--code markup--h3-code">apt-get</code> Problem in China</h3><figure name="dc0e" id="dc0e" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*weT15cXnd-bPFhMA4rw1qw.png" data-width="1322" data-height="574" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*weT15cXnd-bPFhMA4rw1qw.png"></figure><p name="02a2" id="02a2" class="graf graf--p graf-after--figure">In China, it can be quite slow when we do,</p><pre name="488e" id="488e" class="graf graf--pre graf-after--p">$ sudo apt-get update</pre><p name="468b" id="468b" class="graf graf--p graf-after--pre">How to deal with this?</p><p name="c02f" id="c02f" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">Step 1. Open the </strong><code class="markup--code markup--p-code"><strong class="markup--strong markup--p-strong">sources.list</strong></code><strong class="markup--strong markup--p-strong"> file</strong></p><pre name="ff0c" id="ff0c" class="graf graf--pre graf-after--p">$ sudo gedit /etc/apt/sources.list</pre><p name="d5d2" id="d5d2" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">Step 2. Replace the content with the following sources</strong></p><pre name="e502" id="e502" class="graf graf--pre graf-after--p"><code class="markup--code markup--pre-code">deb-src http://archive.ubuntu.com/ubuntu xenial main restricted #Added by software-properties<br>deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted<br>deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted multiverse universe #Added by software-properties<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted<br>deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted multiverse universe #Added by software-properties<br>deb http://mirrors.aliyun.com/ubuntu/ xenial universe<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe<br>deb http://mirrors.aliyun.com/ubuntu/ xenial multiverse<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-updates multiverse<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse<br>deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse #Added by software-properties<br>deb http://archive.canonical.com/ubuntu xenial partner<br>deb-src http://archive.canonical.com/ubuntu xenial partner<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted<br>deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted multiverse universe #Added by software-properties<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse</code></pre><p name="7c35" id="7c35" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">Step 3. Run </strong><code class="markup--code markup--p-code"><strong class="markup--strong markup--p-strong">apt-get</strong></code><strong class="markup--strong markup--p-strong"> command to update</strong></p><pre name="4a82" id="4a82" class="graf graf--pre graf-after--p graf--trailing">$ sudo apt-get update</pre></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/dfc43a53a662"><time class="dt-published" datetime="2021-01-17T09:15:19.886Z">January 17, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/solving-the-slow-apt-get-problem-in-china-dfc43a53a662" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Linear Regression 15 | Logistic Regression Inference</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Linear Regression 15 | Logistic Regression Inference</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Linear Regression
+</section>
+<section data-field="body" class="e-content">
+<section name="9218" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="0150" id="0150" class="graf graf--h3 graf--leading graf--title">Linear Regression 15 | Logistic Regression Inference</h3><figure name="0c0b" id="0c0b" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*JRXYaS8AmzV2HWueCj2mRA.png" data-width="1514" data-height="716" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*JRXYaS8AmzV2HWueCj2mRA.png"></figure><ol class="postList"><li name="7eb5" id="7eb5" class="graf graf--li graf-after--figure"><strong class="markup--strong markup--li-strong">Wald Test of Coefficient</strong></li></ol><p name="52e0" id="52e0" class="graf graf--p graf-after--li"><strong class="markup--strong markup--p-strong">(1) Hypotheses for Wald Test</strong></p><p name="2c0b" id="2c0b" class="graf graf--p graf-after--p">Similar to SLR and MRL, to tell whether or not a predictor of logistic regression is significant or not, we have to test the parameter of this predictor. The hypotheses of the Wald test is,</p><figure name="bc8c" id="bc8c" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*HyO5MOA8wrgBkcc9T7PRvg.png" data-width="896" data-height="64" src="https://cdn-images-1.medium.com/max/800/1*HyO5MOA8wrgBkcc9T7PRvg.png"></figure><p name="b86a" id="b86a" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">(2) Assumption for Wald Test</strong></p><p name="72f9" id="72f9" class="graf graf--p graf-after--p">The Wald test can only be valid when the sample size is large enough. If we assume that the logistic model is rely on a large sample size, then the MLE is of predicor p follows,</p><figure name="b194" id="b194" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*FJC-XfQQAFk1OeKBRF6HGA.png" data-width="896" data-height="64" src="https://cdn-images-1.medium.com/max/800/1*FJC-XfQQAFk1OeKBRF6HGA.png"></figure><p name="f517" id="f517" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">(3) Wald Test</strong></p><p name="1302" id="1302" class="graf graf--p graf-after--p">Based on our discussion, we should conduct Z test for the parameter,</p><figure name="d4a4" id="d4a4" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*ahYlFhCb4KMXCNevf6YRaw.png" data-width="1138" data-height="108" src="https://cdn-images-1.medium.com/max/800/1*ahYlFhCb4KMXCNevf6YRaw.png"></figure><p name="9db5" id="9db5" class="graf graf--p graf-after--figure">Here, we don’t Then, if</p><figure name="1203" id="1203" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*bnHqJD_zhk92HDZ_kk3UjQ.png" data-width="1018" data-height="64" src="https://cdn-images-1.medium.com/max/800/1*bnHqJD_zhk92HDZ_kk3UjQ.png"></figure><p name="bae1" id="bae1" class="graf graf--p graf-after--figure">then we can reject H0 and reach the conclusion that the p predictor is significant.</p><p name="719b" id="719b" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(4) Confidence Interval based on Wald Test</strong></p><ul class="postList"><li name="4ce3" id="4ce3" class="graf graf--li graf-after--p">The confidence level for an estimate</li></ul><figure name="38bd" id="38bd" class="graf graf--figure graf-after--li"><img class="graf-image" data-image-id="1*hZ1LuZe1iTMjaGlZkLtebg.png" data-width="1018" data-height="64" src="https://cdn-images-1.medium.com/max/800/1*hZ1LuZe1iTMjaGlZkLtebg.png"></figure><ul class="postList"><li name="22ee" id="22ee" class="graf graf--li graf-after--figure">The confidence level for the odds ratio of an estimate</li></ul><figure name="e7d1" id="e7d1" class="graf graf--figure graf-after--li"><img class="graf-image" data-image-id="1*1zUAcqwCy8pZgAD26v3atA.png" data-width="1018" data-height="64" src="https://cdn-images-1.medium.com/max/800/1*1zUAcqwCy8pZgAD26v3atA.png"></figure><p name="0176" id="0176" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">2. Likelihood Ratio Test</strong></p><p name="8282" id="8282" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(1) Hypotheses for Likelihood Ratio Test</strong></p><p name="f953" id="f953" class="graf graf--p graf-after--p">The likelihood ratio test is quite similar to a likelihood version F test with OLSE. Commonly. The null hypothesis and the alternate hypothesis are,</p><figure name="1f06" id="1f06" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*RpYxXNaxGOGCGhlBynyB4w.png" data-width="1156" data-height="64" src="https://cdn-images-1.medium.com/max/800/1*RpYxXNaxGOGCGhlBynyB4w.png"></figure><p name="8591" id="8591" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">(2) The Definition of Deviance</strong></p><p name="aef7" id="aef7" class="graf graf--p graf-after--p">We don’t have to fully understand this and we only have to know the meaning of this model in a general way. The deviance is defined as the difference of the likelihood value between the fitted model and the saturated model.</p><figure name="d7b3" id="d7b3" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*db9rXyF43YdQU3aJ4fdRJg.png" data-width="902" data-height="70" src="https://cdn-images-1.medium.com/max/800/1*db9rXyF43YdQU3aJ4fdRJg.png"></figure><p name="c28f" id="c28f" class="graf graf--p graf-after--figure">Then, because the second term of this equation is a constant, then the deviance can be simplified as,</p><figure name="f3ef" id="f3ef" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*ZFq1uBkQ35-WX3PNFILklg.png" data-width="902" data-height="70" src="https://cdn-images-1.medium.com/max/800/1*ZFq1uBkQ35-WX3PNFILklg.png"></figure><p name="bedf" id="bedf" class="graf graf--p graf-after--figure">Denote G² as the deviance of the model, then</p><figure name="661c" id="661c" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*wu4g9BomEcNIGfODxJK0Tg.png" data-width="902" data-height="70" src="https://cdn-images-1.medium.com/max/800/1*wu4g9BomEcNIGfODxJK0Tg.png"></figure><p name="8a76" id="8a76" class="graf graf--p graf-after--figure">then for the test above, define the test statistics as,</p><figure name="ed45" id="ed45" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*NtiyRO3NEq-84MLh1OaMiA.png" data-width="1156" data-height="62" src="https://cdn-images-1.medium.com/max/800/1*NtiyRO3NEq-84MLh1OaMiA.png"></figure><p name="735b" id="735b" class="graf graf--p graf-after--figure">if,</p><figure name="cd99" id="cd99" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*B4SzFvwdY3F6FOHajydrNg.png" data-width="1028" data-height="62" src="https://cdn-images-1.medium.com/max/800/1*B4SzFvwdY3F6FOHajydrNg.png"></figure><p name="31ba" id="31ba" class="graf graf--p graf-after--figure">then reject H0, the full model is significantly improved in the likelihood.</p><p name="5e95" id="5e95" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">3. Deviance Residuals</strong></p><p name="1431" id="1431" class="graf graf--p graf-after--p">If we want to evaluate the residuals for the logistic regression model, we have to modify the residuals because they are not the same as the OLS residuals. Basically, there are two commonly used ways for modification,</p><ul class="postList"><li name="a17e" id="a17e" class="graf graf--li graf-after--p">Pearson Residuals: this is similar to OLS studentized residuals</li></ul><figure name="1bad" id="1bad" class="graf graf--figure graf-after--li"><img class="graf-image" data-image-id="1*kTKezi9o2hgbud2NYIrBOA.png" data-width="1028" data-height="98" src="https://cdn-images-1.medium.com/max/800/1*kTKezi9o2hgbud2NYIrBOA.png"></figure><p name="7c00" id="7c00" class="graf graf--p graf-after--figure">we should observe the person residuals to be distributed horizontally around the ei = 0 line.</p><ul class="postList"><li name="471b" id="471b" class="graf graf--li graf-after--p">Deviance Residuals</li></ul><p name="53b4" id="53b4" class="graf graf--p graf-after--li">The deviance residuals are defined by,</p><figure name="2565" id="2565" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*cMEwuJejHchPXZbFQcQ8Uw.png" data-width="1166" data-height="288" src="https://cdn-images-1.medium.com/max/800/1*cMEwuJejHchPXZbFQcQ8Uw.png"></figure><p name="a325" id="a325" class="graf graf--p graf-after--figure">The square of each deviance residual measures the contribution of each response to the deviance of the fitted model.</p><p name="13b8" id="13b8" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">4. Pseudo R²</strong></p><p name="5e96" id="5e96" class="graf graf--p graf-after--p">Because there’s no OLS principle for the logistic model, then we don’t have the regular R² for us to explain the variance of the model. But there’s actually some pseudo-R²’s that can suggest the goodness of fit for us.</p><ul class="postList"><li name="8673" id="8673" class="graf graf--li graf-after--p">Efron’s pseudo-R²</li></ul><figure name="e7d4" id="e7d4" class="graf graf--figure graf-after--li"><img class="graf-image" data-image-id="1*ULW67WYEXKJJcPfv_gENrg.png" data-width="878" data-height="114" src="https://cdn-images-1.medium.com/max/800/1*ULW67WYEXKJJcPfv_gENrg.png"></figure><ul class="postList"><li name="442e" id="442e" class="graf graf--li graf-after--figure">Mc Fadden’s pseudo-R²</li></ul><figure name="0146" id="0146" class="graf graf--figure graf-after--li"><img class="graf-image" data-image-id="1*EtxKlyAZ_BlpxX0v4ocVgg.png" data-width="1014" data-height="114" src="https://cdn-images-1.medium.com/max/800/1*EtxKlyAZ_BlpxX0v4ocVgg.png"></figure><p name="986f" id="986f" class="graf graf--p graf-after--figure">See a more detailed explanation <a href="https://stats.idre.ucla.edu/other/mult-pkg/faq/general/faq-what-are-pseudo-r-squareds/" data-href="https://stats.idre.ucla.edu/other/mult-pkg/faq/general/faq-what-are-pseudo-r-squareds/" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">here</a> (from UCLA).</p><p name="0e33" id="0e33" class="graf graf--p graf-after--p graf--trailing">To select the best logistic model, we can use the AIC or the BIC because these concepts hold for the logistic model.</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/13d1027d2353"><time class="dt-published" datetime="2020-12-06T17:23:50.292Z">December 6, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/linear-regression-15-logistic-regression-inference-13d1027d2353" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

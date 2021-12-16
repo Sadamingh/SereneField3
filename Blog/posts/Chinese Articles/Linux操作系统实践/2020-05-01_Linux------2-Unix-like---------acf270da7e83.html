@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Linux操作系统实践2 Unix-like的基本命令行指南</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Linux操作系统实践2 Unix-like的基本命令行指南</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+系列：Linux操作系统实践
+</section>
+<section data-field="body" class="e-content">
+<section name="8e51" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="f3ca" id="f3ca" class="graf graf--h3 graf--leading graf--title">Linux操作系统实践2 Unix-like的基本命令行指南</h3><figure name="d7ed" id="d7ed" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*q5hqJXTfFe-UGGWH" data-width="1000" data-height="563" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/0*q5hqJXTfFe-UGGWH"></figure><p name="f180" id="f180" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">一、列出文件</strong></p><p name="27f8" id="27f8" class="graf graf--p graf-after--p">我们先打开terminal，在终端输入：</p><pre name="f463" id="f463" class="graf graf--pre graf-after--p">ls</pre><p name="d014" id="d014" class="graf graf--p graf-after--pre">这一指令会返回当前目录下的所有文件名称。</p><figure name="ac3f" id="ac3f" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*aVpldjTW_qof7bxIOuJrMg.png" data-width="1160" data-height="192" src="https://cdn-images-1.medium.com/max/800/1*aVpldjTW_qof7bxIOuJrMg.png"></figure><p name="6fa6" id="6fa6" class="graf graf--p graf-after--figure">如果我们想要查询每个文件的详细信息，我们在ls后面加上-l即可：</p><pre name="01aa" id="01aa" class="graf graf--pre graf-after--p">ls -l</pre><p name="6485" id="6485" class="graf graf--p graf-after--pre">这一指令会返回当前目录下的文件的所有信息。</p><figure name="ba52" id="ba52" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*54ACBCjRsPO3OotSzOAGxw.png" data-width="1430" data-height="376" src="https://cdn-images-1.medium.com/max/800/1*54ACBCjRsPO3OotSzOAGxw.png"></figure><p name="744a" id="744a" class="graf graf--p graf-after--figure">我们可能不想要列出所有文件的信息，比如，我们可能只需要列出dataset.xlsx 这个文件的信息。那么我们就可以输入下面的语句，在输出的结果中仅仅显示dataset.xlsx的文件信息：</p><pre name="3c0e" id="3c0e" class="graf graf--pre graf-after--p">ls -l dataset.xlsx</pre><p name="dffa" id="dffa" class="graf graf--p graf-after--pre">有的时候我们可能要选择多个文件，这些文件可能具有比较类似的名字。例如，我们要显示dataset.xlsx, dataset1.xlsx, dataset2.xlsx, 和dataset3.xlsx。但是在后面打出他们的全称太麻烦了，我们就可以利用符号*指代后面的任何内容，比如：</p><pre name="2cb6" id="2cb6" class="graf graf--pre graf-after--p">ls -l data*</pre><figure name="d542" id="d542" class="graf graf--figure graf-after--pre"><img class="graf-image" data-image-id="1*pr98xWNlN9KQEHdxQ2v3-A.png" data-width="1250" data-height="250" src="https://cdn-images-1.medium.com/max/800/1*pr98xWNlN9KQEHdxQ2v3-A.png"></figure><p name="13a3" id="13a3" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">二、更改目录</strong></p><p name="d220" id="d220" class="graf graf--p graf-after--p">我们先打开terminal，通过 ls -l 找到权限为d开头的文件。比如在我们的例子中，files和images都是权限为d开头的文件。</p><p name="d7b6" id="d7b6" class="graf graf--p graf-after--p">我们可以通过输入下面的指令进入这个文件：</p><pre name="9334" id="9334" class="graf graf--pre graf-after--p">cd files</pre><p name="5ba4" id="5ba4" class="graf graf--p graf-after--pre">我们就可以通过这个命令来进入目录。</p><figure name="8d51" id="8d51" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*4m_eA9BJ9HtHUNDr8wLj3g.png" data-width="1146" data-height="272" src="https://cdn-images-1.medium.com/max/800/1*4m_eA9BJ9HtHUNDr8wLj3g.png"></figure><p name="a6fc" id="a6fc" class="graf graf--p graf-after--figure">一些常见的目录符号：～表示home目录，/表示root目录。home目录表示的实际上是我们在何处打开了这个shell。</p><figure name="8567" id="8567" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*qvD22Th99AKonO9C36y4wQ.png" data-width="1226" data-height="726" src="https://cdn-images-1.medium.com/max/800/1*qvD22Th99AKonO9C36y4wQ.png"></figure><p name="ee8f" id="ee8f" class="graf graf--p graf-after--figure">为了显示全部路径，我们可以输入下面的指令查看当前目录的具体路径：</p><pre name="74c2" id="74c2" class="graf graf--pre graf-after--p">pwd</pre><p name="d003" id="d003" class="graf graf--p graf-after--pre">通过返回的值，我们可以得到当店目录的路径（Path）。</p><figure name="734d" id="734d" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*TkuSRynl2NLr93tcPRbRrg.png" data-width="1226" data-height="350" src="https://cdn-images-1.medium.com/max/800/1*TkuSRynl2NLr93tcPRbRrg.png"></figure><p name="4d2b" id="4d2b" class="graf graf--p graf-after--figure">下面两种命令可以让我们随时返回home目录：</p><pre name="cb19" id="cb19" class="graf graf--pre graf-after--p">cd ~</pre><pre name="be54" id="be54" class="graf graf--pre graf-after--pre">cd</pre><p name="9a5e" id="9a5e" class="graf graf--p graf-after--pre">下面一种命令可以让我们随时返回根目录：</p><pre name="369a" id="369a" class="graf graf--pre graf-after--p">cd /</pre><p name="4dcc" id="4dcc" class="graf graf--p graf-after--pre">下面的命令可以让我们返回上一层目录。比如，如果我们在files目录中，该命令会让我们返回new目录：</p><pre name="b92e" id="b92e" class="graf graf--pre graf-after--p">cd ..</pre><p name="ae32" id="ae32" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">三、创建目录</strong></p><p name="b62f" id="b62f" class="graf graf--p graf-after--p">我们现在回到了new目录下，我们想要在new目录下创建一个新的目录，我们可以通过mkdir（make directory）指令来实现这一功能：</p><pre name="ee71" id="ee71" class="graf graf--pre graf-after--p">mkdir mydir</pre><figure name="16d2" id="16d2" class="graf graf--figure graf-after--pre"><img class="graf-image" data-image-id="1*5EgZKXeyE8OaWGNKYGQsLQ.png" data-width="1020" data-height="232" src="https://cdn-images-1.medium.com/max/800/1*5EgZKXeyE8OaWGNKYGQsLQ.png"></figure><p name="0986" id="0986" class="graf graf--p graf-after--figure">之后我们通过ls从查看当前目录，可以发现new中新增了mydir目录。</p><figure name="9ead" id="9ead" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*zjQ-SzBK4PLceoya8NZ4Lg.png" data-width="1236" data-height="214" src="https://cdn-images-1.medium.com/max/800/1*zjQ-SzBK4PLceoya8NZ4Lg.png"></figure><p name="ee79" id="ee79" class="graf graf--p graf-after--figure">我们可以用Tab键对其进行自动填充，例如我们想要进入mydir这个文件夹，我们只需要输入：</p><pre name="8c19" id="8c19" class="graf graf--pre graf-after--p">cd m</pre><p name="55bc" id="55bc" class="graf graf--p graf-after--pre">之后我们可以点击Tab键来自动填充后面的内容。</p><p name="b6ca" id="b6ca" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">四、移动和复制文件</strong></p><p name="1dca" id="1dca" class="graf graf--p graf-after--p">经过第三部分的操作，我们将dataset.xlsx, dataset1.xlsx, dataset2.xlsx, 和dataset3.xlsx四个文件移动到新建的目录mydir中。我们先回到new目录，然后输入下面的语句：</p><pre name="3e45" id="3e45" class="graf graf--pre graf-after--p">mv data* mydir</pre><p name="63e8" id="63e8" class="graf graf--p graf-after--pre">之后我们可以通过在new目录下的ls命令和在mydir目录下使用ls命令来检查。检查的结果表示，四个data文件已经被移动到mydir目录下了。</p><figure name="52c8" id="52c8" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*6zgcp_yrtF5QJbzVymo9xw.png" data-width="1596" data-height="454" src="https://cdn-images-1.medium.com/max/800/1*6zgcp_yrtF5QJbzVymo9xw.png"></figure><p name="b84b" id="b84b" class="graf graf--p graf-after--figure">如果我们想要将这些文件移动回上一层目录，那么只需要在mydir目录下输入命令，其中「..」表示上一层目录：</p><pre name="5fcd" id="5fcd" class="graf graf--pre graf-after--p">mv data* ..</pre><p name="12a2" id="12a2" class="graf graf--p graf-after--pre">如果我们在new目录下，我们想要做同样的事情，我们需要输入下面的命令，其中「.」表示的是当前目录。</p><pre name="b594" id="b594" class="graf graf--pre graf-after--p">mv mydir/data* .</pre><p name="59d4" id="59d4" class="graf graf--p graf-after--pre">现在我们想要在目录mydir中复制一个dataset，并且将它的文件名命名为dataset4.xlsx，那么我们需要做的是输入下面的命令（形式为：cp + 源文件 + 目标目录）：</p><pre name="8268" id="8268" class="graf graf--pre graf-after--p">cp dataset.xlsx mydir/</pre><p name="a436" id="a436" class="graf graf--p graf-after--pre">之后我们可以发现，在mydir目录下创建了一个dataset.xlsx文件。</p><figure name="dea5" id="dea5" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*T1SjngrfGw-DyfbFm2XLjQ.png" data-width="992" data-height="358" src="https://cdn-images-1.medium.com/max/800/1*T1SjngrfGw-DyfbFm2XLjQ.png"></figure><p name="953a" id="953a" class="graf graf--p graf-after--figure">如果我们想在new目录下复制一个dataset.xlsx，并将这个新文件文件名作为dataset-new.xlsx那么我们可以输入下面的指令（形式为：cp + 源文件 + 新文件名）。</p><pre name="898e" id="898e" class="graf graf--pre graf-after--p">cp dataset.xlsx dataset-new.xlsx</pre><figure name="35d6" id="35d6" class="graf graf--figure graf-after--pre"><img class="graf-image" data-image-id="1*anq00amFHq6buKmPexAOhA.png" data-width="1466" data-height="350" src="https://cdn-images-1.medium.com/max/800/1*anq00amFHq6buKmPexAOhA.png"></figure><p name="2e6f" id="2e6f" class="graf graf--p graf-after--figure">但是有的时候，我们不仅想要指明复制的目标位置，也想要在复制的同时更改文件的名称。例如，我们想要复制dataset.xlsx到mydir中，并将其复制后的文件名更改为dataset-test.xlsx。那么我们就可以在目录new中通过下面的命令（形式为：cp + 源文件 + 目标路径 + 新文件名）来实现：</p><pre name="66d8" id="66d8" class="graf graf--pre graf-after--p">cp dataset.xlsx mydir/dataset-test.xlsx</pre><figure name="124f" id="124f" class="graf graf--figure graf-after--pre"><img class="graf-image" data-image-id="1*8OMTszyvpsxetyoPsY8qxw.png" data-width="1386" data-height="324" src="https://cdn-images-1.medium.com/max/800/1*8OMTszyvpsxetyoPsY8qxw.png"></figure><p name="0101" id="0101" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">五、删除文件</strong></p><p name="02de" id="02de" class="graf graf--p graf-after--p">我们如果想要删除文件，我们需要使用的指令为rm（表示remove），比如，我们想要删除刚刚复制的dataset-test.xlsx文件，那么我们只需要指明这个文件或者这个文件的位置即可。</p><p name="2e5f" id="2e5f" class="graf graf--p graf-after--p">所以，如果我们在目录new中，我们的指令为：</p><pre name="ab2c" id="ab2c" class="graf graf--pre graf-after--p">rm mydir/dataset-test.xlsx</pre><figure name="956f" id="956f" class="graf graf--figure graf-after--pre"><img class="graf-image" data-image-id="1*cIGAeEt7C_QHqveST9O9Og.png" data-width="1288" data-height="290" src="https://cdn-images-1.medium.com/max/800/1*cIGAeEt7C_QHqveST9O9Og.png"></figure><p name="14c0" id="14c0" class="graf graf--p graf-after--figure">类似地，如果我们在目录mydir中，我们就不要指明路径，则我们的指令为：</p><pre name="7abf" id="7abf" class="graf graf--pre graf-after--p">rm dataset-test.xlsx</pre><p name="e2bd" id="e2bd" class="graf graf--p graf-after--pre">我们也同样可以用*来批量删除文件。比如，如果想要删除mydir目录下的所有文件，在目录mydir下使用的指令为：</p><pre name="b596" id="b596" class="graf graf--pre graf-after--p">rm *</pre><figure name="6168" id="6168" class="graf graf--figure graf-after--pre"><img class="graf-image" data-image-id="1*GlAMF6t2TY0z2TPujkuwjw.png" data-width="956" data-height="224" src="https://cdn-images-1.medium.com/max/800/1*GlAMF6t2TY0z2TPujkuwjw.png"></figure><p name="04ea" id="04ea" class="graf graf--p graf-after--figure">当我们回到目录new下，并且用rm指令来删除目录（比如mydir）的时候，我们会得到一个错误「rm: mydir/: is a directory」。这表明rm指令不能被用于删除空目录。在删除空目录的时候，我们需要使用的是rmdir（表示remove directory）命令：</p><pre name="d30c" id="d30c" class="graf graf--pre graf-after--p">rmdir mydir/</pre><p name="be3c" id="be3c" class="graf graf--p graf-after--pre">但是，如果我们想要删除非空目录，那么我们就不能使用rmdir指令，比如，如果我们想要删除files目录，我们会得到一个错误「rmdir: files/: Directory not empty」。在删除非空目录及其所有文件时，我们需要使用的是加了options的rm指令。比如，如果我们要删除new目录中的files目录，我们可以输入指令：</p><pre name="0dd5" id="0dd5" class="graf graf--pre graf-after--p">rm -rf files/</pre><p name="c27a" id="c27a" class="graf graf--p graf-after--pre">这条指令中的选项 -r 表示逐一删除目标目录中的文件。-f 表示的是强行删除，不需要询问。因此 -rf表示的就是逐一强行删除目标目录中文件和目标目录。</p><p name="2cdc" id="2cdc" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">六、查看手册</strong></p><p name="0a1d" id="0a1d" class="graf graf--p graf-after--p">对于Unix-like的操作系统来说，我们可以使用一些指令来查找通用的指南。比如一个非常简短的总结性指南可以通过help命令获得。</p><pre name="1386" id="1386" class="graf graf--pre graf-after--p">help</pre><p name="ced7" id="ced7" class="graf graf--p graf-after--pre">此外，我们还可以通过下面的命令来获得一个更加详细的指南：</p><pre name="5cc5" id="5cc5" class="graf graf--pre graf-after--p">less --help </pre><p name="3493" id="3493" class="graf graf--p graf-after--pre">或者,</p><pre name="af4d" id="af4d" class="graf graf--pre graf-after--p">more --help</pre><p name="614a" id="614a" class="graf graf--p graf-after--pre">同样地，对于每一句指令，操作系统也为我们准备了详细的手册。查询他们的方式是使用man（表示manual）命令。比如，如果我们想要查询rm命令的手册，我们可以输入：</p><pre name="9049" id="9049" class="graf graf--pre graf-after--p">man rm</pre><p name="f1fa" id="f1fa" class="graf graf--p graf-after--pre graf--trailing">在进入所有手册后，我们都可以通过键盘的up和down键来进行翻页，我们也可以随时按字母q键（表示quit）退出手册。</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/acf270da7e83"><time class="dt-published" datetime="2020-05-01T08:23:02.398Z">May 1, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B52-unix-like%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%8C%87%E5%8D%97-acf270da7e83" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Computer Systems Experiments 3 | Configure Experiment Environment</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Computer Systems Experiments 3 | Configure Experiment Environment</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Computer Systems Experiments
+</section>
+<section data-field="body" class="e-content">
+<section name="c841" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="c640" id="c640" class="graf graf--h3 graf--leading graf--title">Computer Systems Experiments 3 | Configure Experiment Environment</h3><figure name="5556" id="5556" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*BJR9p7Vvc4gaAOTrVQrGrA.png" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*BJR9p7Vvc4gaAOTrVQrGrA.png"></figure><p name="e3ce" id="e3ce" class="graf graf--p graf-after--figure">First, let’s clone my ComputerSysE repo from GitHub to your home directory,</p><pre name="6a12" id="6a12" class="graf graf--pre graf-after--p">$ cd ~<br>$ git clone <a href="https://github.com/Sadamingh/ComputerSysE.git" data-href="https://github.com/Sadamingh/ComputerSysE.git" class="markup--anchor markup--pre-anchor" rel="nofollow noopener" target="_blank">https://github.com/Sadamingh/ComputerSysE.git</a></pre><p name="b9f4" id="b9f4" class="graf graf--p graf-after--pre">Then, get the path of the environment folder,</p><pre name="1169" id="1169" class="graf graf--pre graf-after--p">$ cd ComputerSysE/environment<br>$ pwd</pre><p name="9403" id="9403" class="graf graf--p graf-after--pre">If you follow my instruction and successfully cloned my repo, the path should be,</p><pre name="da59" id="da59" class="graf graf--pre graf-after--p">~/ComputerSysE/environment</pre><p name="9fd2" id="9fd2" class="graf graf--p graf-after--pre">Assume that you are using macOS and bash, let’s edit the .bashrc file at the home directory (if it doesn&#39;t exist, create a new .bashrc file),</p><pre name="d889" id="d889" class="graf graf--pre graf-after--p">$ vi .bashrc</pre><p name="95af" id="95af" class="graf graf--p graf-after--pre">we add the following two statements to into this file,</p><pre name="14d3" id="14d3" class="graf graf--pre graf-after--p">export ENV=~/ComputerSysE/environment<br>export PATH=$PATH:$ENV/bin</pre><p name="bf1a" id="bf1a" class="graf graf--p graf-after--pre">Then we restart the shell,</p><pre name="ed53" id="ed53" class="graf graf--pre graf-after--p">$ source .bashrc</pre><p name="50f6" id="50f6" class="graf graf--p graf-after--pre">If all the things are right, you can use the pinout command now to get a diagram of the pins (it is located at ~/ComputerSysE/environment/bin) and we can find it by.</p><pre name="28fb" id="28fb" class="graf graf--pre graf-after--p">$ cat ~/ComputerSysE/environment/bin/pinout</pre><p name="313b" id="313b" class="graf graf--p graf-after--pre">Also, we have to make sure that we have an essential file named rpi-install.py and we will use it to transfer files to the Raspberry Pi. We can check its version by,</p><pre name="1c50" id="1c50" class="graf graf--pre graf-after--p">$ rpi-install.py -h</pre><p name="c1ff" id="c1ff" class="graf graf--p graf-after--pre">The output should be,</p><pre name="cb31" id="cb31" class="graf graf--pre graf-after--p">usage: rpi-install.py [-h] [-d device] [-v]  [-p | -s] [file]</pre><pre name="8fa4" id="8fa4" class="graf graf--pre graf-after--pre graf--trailing">This script sends a binary file to the Raspberry Pi bootloader. Version 1.1</pre></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/e2acc878a1b1"><time class="dt-published" datetime="2020-12-30T18:12:10.470Z">December 30, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/computer-systems-experiments-3-configure-experiment-environment-e2acc878a1b1" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

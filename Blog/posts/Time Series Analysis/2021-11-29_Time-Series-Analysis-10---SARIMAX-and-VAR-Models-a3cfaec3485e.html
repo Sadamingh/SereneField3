@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Time Series Analysis 10 | SARIMAX and VAR Models</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Time Series Analysis 10 | SARIMAX and VAR Models</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Time Series Analysis
+</section>
+<section data-field="body" class="e-content">
+<section name="eaf9" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="2388" id="2388" class="graf graf--h3 graf--leading graf--title">Time Series Analysis 10 | SARIMAX and VAR Models</h3><figure name="e0c3" id="e0c3" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*XQanNDlHFXU23ZEZetgLwA.png" data-width="1398" data-height="782" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*XQanNDlHFXU23ZEZetgLwA.png"></figure><ol class="postList"><li name="3e4f" id="3e4f" class="graf graf--li graf-after--figure"><strong class="markup--strong markup--li-strong">Multivariate Time Series</strong></li></ol><p name="54b5" id="54b5" class="graf graf--p graf-after--li"><strong class="markup--strong markup--p-strong">(1) The Definition of the Multivariate Data</strong></p><p name="b2a9" id="b2a9" class="graf graf--p graf-after--p">Multivariate data<strong class="markup--strong markup--p-strong"> </strong>are multivariate variables collected with the same time steps that have a relationship or correlation with each other.</p><p name="0614" id="0614" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(2) Two Types of Multivariate Time Series Models</strong></p><ul class="postList"><li name="f785" id="f785" class="graf graf--li graf-after--p"><strong class="markup--strong markup--li-strong">Exogenous Models</strong>: one response variable and the other variables are <strong class="markup--strong markup--li-strong">exogenous</strong> features. For example, the number of people taking the bus daily can be a response variable of the exogenous variable of daily weather. In this case, exogenous variables are able to impact the response variable, but not the other way around. An example of this is the SARIMAX model.</li><li name="32a5" id="32a5" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">Endogenous Models</strong>: all the variables are <strong class="markup--strong markup--li-strong">endogenous</strong> and they will influence each other. So we have to model them simultaneously. An example of this is the VAR (i.e. Vector AR(p)) model.</li></ul><p name="dc4b" id="dc4b" class="graf graf--p graf-after--li"><strong class="markup--strong markup--p-strong">(3) SARIMAX Model</strong></p><p name="1bb2" id="1bb2" class="graf graf--p graf-after--p">Seasonal Auto-Regressive Integrated Moving Average with eXogenous factors (aka. <strong class="markup--strong markup--p-strong">SARIMAX</strong>) is an extension of the ARIMA class of models, which has one responsible variable <code class="markup--code markup--p-code">Y_t</code> and we will have exogenous variables <code class="markup--code markup--p-code">X_1t</code> , <code class="markup--code markup--p-code">X_2t</code> , … , <code class="markup--code markup--p-code">X_kt</code> . So <code class="markup--code markup--p-code">Y_t</code> is related to both the exogenous variables (which can be modeled by a linear model) and its historical data (which can be modeled by a SARIMA model).</p><p name="d480" id="d480" class="graf graf--p graf-after--p">So for the set up of the model, we will use the ARMA model plus the linear model, and expression of a SARIMAX model should be,</p><figure name="987c" id="987c" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*5fmqlQ9uP2tYcJgz0NBI4A.png" data-width="1350" data-height="160" src="https://cdn-images-1.medium.com/max/800/1*5fmqlQ9uP2tYcJgz0NBI4A.png"></figure><p name="f8a0" id="f8a0" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">(4) Fitting SARIMAX Model</strong></p><p name="0630" id="0630" class="graf graf--p graf-after--p">In practice, we will use a training set of time <em class="markup--em markup--p-em">t</em> from <code class="markup--code markup--p-code">0</code> to <code class="markup--code markup--p-code"><em class="markup--em markup--p-em">n</em></code> for fitting the model. The training set of exogenous should be,</p><pre name="381b" id="381b" class="graf graf--pre graf-after--p">Y_{t-1}    =    y_0    , y_1    , ... , y_{n-1}<br>X_{1,t}    =    x_{1,0}, x_{1,1}, ... , x_{1,n-1}<br>  ...      =                      ...<br>X_{k,t}    =    x_{k,0}, x_{k,1}, ... , x_{k,n-1}</pre><p name="8c24" id="8c24" class="graf graf--p graf-after--pre">And the training set of response variables should be,</p><pre name="d284" id="d284" class="graf graf--pre graf-after--p">Y_{t} = y_1, y_2, ... , y_{n}</pre><p name="7e0c" id="7e0c" class="graf graf--p graf-after--pre">Then, we will also have a testing set of time <em class="markup--em markup--p-em">t</em> from <code class="markup--code markup--p-code u-paddingRight0 u-marginRight0"><em class="markup--em markup--p-em">n</em>+1</code> to <code class="markup--code markup--p-code u-paddingRight0 u-marginRight0"><em class="markup--em markup--p-em">n</em>+<em class="markup--em markup--p-em">h</em></code> for forecasting,</p><pre name="8b89" id="8b89" class="graf graf--pre graf-after--p">Y_{t}      =    y_0       , y_1       , ... , y_{n}<br>X_{1,t+h}  =    x_{1,n+1} , x_{1,n+2} , ... , x_{1,n+h}<br>  ...      =                            ...<br>X_{k,t+h}  =    x_{k,n+1} , x_{k,n+2} , ... , x_{k,n+h}</pre><p name="8611" id="8611" class="graf graf--p graf-after--pre">And the forecasted response variables of the testing set should be,</p><pre name="a341" id="a341" class="graf graf--pre graf-after--p">Y_{t}-hat = y_{n+1}-hat, y_{n+1}-hat , ... , y_{n}-hat</pre><p name="eec1" id="eec1" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(5) VAR Model</strong></p><p name="0119" id="0119" class="graf graf--p graf-after--p">Vector autoregression (aka. VAR or Vector AR(p)) model is a statistical model used to capture the relationship between multiple quantities as they change over time. Suppose we have the multivariate time series data with time <code class="markup--code markup--p-code"><em class="markup--em markup--p-em">t</em></code> from <code class="markup--code markup--p-code">0</code> to <code class="markup--code markup--p-code u-paddingRight0 u-marginRight0"><em class="markup--em markup--p-em">n</em>-1</code> as follows,</p><pre name="652b" id="652b" class="graf graf--pre graf-after--p">Y_1  =    y_{1,0}  ,  y_{1,1}  ,  ...  ,  y_{1,n-1}<br>Y_2  =    y_{2,0}  ,  y_{2,1}  ,  ...  ,  y_{2,n-1}<br>...<br>Y_k  =    y_{k,0}  ,  y_{k,1}  ,  ...  ,  y_{k,n-1}</pre><p name="89e6" id="89e6" class="graf graf--p graf-after--pre">Instead of analyzing them separately, we can put them together in a vector case. So that the data can be represented as,</p><figure name="fd32" id="fd32" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*8WKj71RRoaOedXE5ZbFN_w.png" data-width="1350" data-height="70" src="https://cdn-images-1.medium.com/max/800/1*8WKj71RRoaOedXE5ZbFN_w.png"></figure><p name="e303" id="e303" class="graf graf--p graf-after--figure">We use an AR(p) model instead of an ARMA model here for simplicity purposes. Generally, we can write this expression as,</p><figure name="d4f5" id="d4f5" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*grrsPqq72gl9pDxRap-BzQ.png" data-width="1350" data-height="70" src="https://cdn-images-1.medium.com/max/800/1*grrsPqq72gl9pDxRap-BzQ.png"></figure><p name="d217" id="d217" class="graf graf--p graf-after--figure">Then the estimated <code class="markup--code markup--p-code">Y_{t}-hat</code> can be expressed as</p><figure name="7a2c" id="7a2c" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*CgUlDDFwurgD4nA_EUezmw.png" data-width="1350" data-height="70" src="https://cdn-images-1.medium.com/max/800/1*CgUlDDFwurgD4nA_EUezmw.png"></figure><p name="2bdb" id="2bdb" class="graf graf--p graf-after--figure">where A_1 to A_p are the coefficient matrix of this model.</p><p name="fd89" id="fd89" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(6) An Example of VAR Model</strong></p><p name="a80d" id="a80d" class="graf graf--p graf-after--p">Now let’s see an example. Suppose we have two variables Y_1 and Y_2 for VAR(p) model, then we will have,</p><figure name="bb0c" id="bb0c" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*J3aIrold_WgdZWYjsmSG5g.png" data-width="1348" data-height="128" src="https://cdn-images-1.medium.com/max/800/1*J3aIrold_WgdZWYjsmSG5g.png"><figcaption class="imageCaption">where the subscripts of ϕ are [# of row, # of col, seasonality lag h]</figcaption></figure><p name="d13e" id="d13e" class="graf graf--p graf-after--figure">This can be written as,</p><figure name="9a83" id="9a83" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*hi4EDFlNw7uOO9vbgSwTvw.png" data-width="1348" data-height="76" src="https://cdn-images-1.medium.com/max/800/1*hi4EDFlNw7uOO9vbgSwTvw.png"></figure><p name="10ed" id="10ed" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">(7) VAR Model Evaluation</strong></p><p name="944d" id="944d" class="graf graf--p graf-after--p">Even though VAR models are good to address endogenous relations and forecasting, it has some drawbacks.</p><ul class="postList"><li name="f5c1" id="f5c1" class="graf graf--li graf-after--p">VAR model assumes that all the variables are <strong class="markup--strong markup--li-strong">stationary</strong>. If some of the variables are not stationary, we need to difference them and then transform them back afterward.</li><li name="e99a" id="e99a" class="graf graf--li graf-after--li graf--trailing">We assign the same p for all the variables, which may simply not be the case.</li></ul></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/a3cfaec3485e"><time class="dt-published" datetime="2021-11-29T00:37:54.565Z">November 29, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/time-series-analysis-10-sarimax-and-var-models-a3cfaec3485e" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

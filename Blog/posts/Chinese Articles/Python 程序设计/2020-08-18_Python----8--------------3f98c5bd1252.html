@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Python程序设计8 类和对象，面向对象的编程</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Python程序设计8 类和对象，面向对象的编程</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+系列：Python程序设计
+</section>
+<section data-field="body" class="e-content">
+<section name="653d" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="86cc" id="86cc" class="graf graf--h3 graf--leading graf--title">Python程序设计8 类和对象，面向对象的编程</h3><figure name="4e7f" id="4e7f" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*nMQTiDVkQq7j6ZlqQEKLbQ.jpeg" data-width="2689" data-height="1513" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*nMQTiDVkQq7j6ZlqQEKLbQ.jpeg"></figure><p name="4449" id="4449" class="graf graf--p graf-after--figure">一、类和对象</p><p name="6f91" id="6f91" class="graf graf--p graf-after--p">迄今为止我们接触到的实际上都是命令型编程 imperative programming，例如，我们输入指令，指令直接地运行并得到运行的结果。我们的程序总体上是通过语句改变的而不是通过变量改变的。</p><ol class="postList"><li name="2451" id="2451" class="graf graf--li graf-after--p"><strong class="markup--strong markup--li-strong">类的特征</strong></li></ol><p name="0192" id="0192" class="graf graf--p graf-after--li">类 Class 就像是我们所说的蓝图，它具有如下特征：</p><ul class="postList"><li name="218a" id="218a" class="graf graf--li graf-after--p">它为一种对象 object 提供了模板 template</li><li name="2ac4" id="2ac4" class="graf graf--li graf-after--li">它定义了一种新的数据类型 type</li></ul><p name="3e0b" id="3e0b" class="graf graf--p graf-after--li">例如，人就是一个类，大体上来说人要有两只手，两只脚，一个头等等……</p><p name="e8b6" id="e8b6" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">2. 对象的特征</strong></p><p name="a3dd" id="a3dd" class="graf graf--p graf-after--p">对象 Object 是类的实例 instance，例如，我本身是一个人，因此我就是人这个类的一个对象。</p><p name="bf30" id="bf30" class="graf graf--p graf-after--p">下面我们来构建一个排队计数器类，要求此类有如下特点：</p><figure name="5b06" id="5b06" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*nypSe9aVyjOeAhqgGyklmg.png" data-width="1302" data-height="420" src="https://cdn-images-1.medium.com/max/800/1*nypSe9aVyjOeAhqgGyklmg.png"></figure><ul class="postList"><li name="ec7e" id="ec7e" class="graf graf--li graf-after--figure">可以通过请求得到下一个数值next_value</li><li name="ba46" id="ba46" class="graf graf--li graf-after--li">类名首字母大写</li><li name="c36e" id="c36e" class="graf graf--li graf-after--li">没有main函数（类不是程序！）</li></ul><p name="2607" id="2607" class="graf graf--p graf-after--li">下面我们来实现这个功能。我们写如下代码：</p><pre name="eb08" id="eb08" class="graf graf--pre graf-after--p">class Counter:<br>    <br>    def __init__(self):<br>        self.tacket_num = 0</pre><pre name="6dee" id="6dee" class="graf graf--pre graf-after--pre">    def ask_next(self):<br>        self.tacket_num += 1<br>        return self.tacket_num</pre><p name="60c6" id="60c6" class="graf graf--p graf-after--pre">我们将这个类储存为一个python文件，命名为counter.py。之后我们打开另一个文件，开始编写主函数。首先，我们要通过import导入类：</p><pre name="4fc6" id="4fc6" class="graf graf--pre graf-after--p">from counter import Counter</pre><p name="05c2" id="05c2" class="graf graf--p graf-after--pre">我们创建两个counter对象，分别进行计数，如下代码所示：</p><pre name="6756" id="6756" class="graf graf--pre graf-after--p">def count_two_times(count): <br>    for i in range(2):<br>        print(count.next_value()) </pre><pre name="12cc" id="12cc" class="graf graf--pre graf-after--pre">def main(): <br>    count1 = Counter() <br>    count2 = Counter() <br>    print(&#39;Count1: &#39;) <br>    count_two_times(count1) <br>    print(&#39;Count2: &#39;) <br>    count_two_times(count2) <br>    print(&#39;Count1: &#39;) <br>    count_two_times(count1)</pre><p name="ebc1" id="ebc1" class="graf graf--p graf-after--pre">得到输出为：</p><pre name="d279" id="d279" class="graf graf--pre graf-after--p">Count1: <br>1 <br>2 <br>Count2: <br>1 <br>2 <br>Count1: <br>3 <br>4</pre><p name="8717" id="8717" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">3. 类的结构</strong></p><p name="3d79" id="3d79" class="graf graf--p graf-after--p">刚才我们通过一段counter代码简单实现了类的功能，下面我们来仔细介绍类的结构。首先类的文件名一般是 classname.py ，在文件中第一行以 class Classname: 开头（二者的区别是在第一个首字母有没有大写）。</p><p name="000e" id="000e" class="graf graf--p graf-after--p">在 class Classname: 之后，第一个结构是constructor。一个常见的constructor结构如下：</p><pre name="940a" id="940a" class="graf graf--pre graf-after--p">def __init__(self, additional parameters): <br>    body</pre><p name="f483" id="f483" class="graf graf--p graf-after--pre">其中：__init__(self)函数指的是在根据类创建对象的同时执行的函数，其中self指的是对象本身。该函数会决定产生的初始对象 initial object，并且通常情况下，该函数会为该实例变量赋值（通过self）。例如：</p><pre name="c830" id="c830" class="graf graf--pre graf-after--p">self.variable_name = value</pre><p name="5b1e" id="5b1e" class="graf graf--p graf-after--pre">第二个结构，我们通常称为方法 Method。在Python中，一个常见的 Method 如下所示：</p><pre name="1499" id="1499" class="graf graf--pre graf-after--p">def method_name(self, additional parameters): <br>    body</pre><p name="afbb" id="afbb" class="graf graf--p graf-after--pre">Method的调用方法是在对象后面用.函数名的方式进行引用。一般的结构例如：</p><pre name="2fe4" id="2fe4" class="graf graf--pre graf-after--p">object_name.method_name(additional parameters)</pre><p name="07db" id="07db" class="graf graf--p graf-after--pre">比如，在上面的例子中，我们有：</p><pre name="bf13" id="bf13" class="graf graf--pre graf-after--p">count1.next_value()</pre><p name="9836" id="9836" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">4. self 变量不需要在调用的时候指出</strong></p><p name="abc1" id="abc1" class="graf graf--p graf-after--p">需要注意的是，所有的 self 变量在对象被调用的时候，就已经被Python自动设置了，所以我们并不需要再在函数的参数中输入 self 变量。例如我们的代码为：</p><pre name="cb1d" id="cb1d" class="graf graf--pre graf-after--p">number = count1.next_value()</pre><p name="239a" id="239a" class="graf graf--p graf-after--pre">python会直接将它理解为：</p><pre name="90ad" id="90ad" class="graf graf--pre graf-after--p graf--trailing">number = next_value(count1)</pre></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/3f98c5bd1252"><time class="dt-published" datetime="2020-08-18T16:22:55.493Z">August 18, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/python%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A18-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%BC%96%E7%A8%8B-3f98c5bd1252" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

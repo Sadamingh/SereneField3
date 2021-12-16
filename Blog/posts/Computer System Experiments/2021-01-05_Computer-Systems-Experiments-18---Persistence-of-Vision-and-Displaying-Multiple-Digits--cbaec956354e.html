@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Computer Systems Experiments 18 | Persistence of Vision and Displaying Multiple Digits…</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Computer Systems Experiments 18 | Persistence of Vision and Displaying Multiple Digits…</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Computer Systems Experiments
+</section>
+<section data-field="body" class="e-content">
+<section name="84b5" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="1223" id="1223" class="graf graf--h3 graf--leading graf--title">Computer Systems Experiments 18 | Persistence of Vision and Displaying Multiple Digits Simultaneously</h3><figure name="fb7b" id="fb7b" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*8Jw5StUCHAlGUVw1.png" data-width="1530" data-height="1104" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/0*8Jw5StUCHAlGUVw1.png"></figure><p name="b8fe" id="b8fe" class="graf graf--p graf-after--figure">You may have a question about the 7-segment display. That is we can not actually display two different digits at the same time based on the structure of this electronic component. For example, you can display 1111, 111, 11, or 11 but we can not display 1234 other numbers with multiple digits.</p><p name="6f5f" id="6f5f" class="graf graf--p graf-after--p">However, the good news is — we are almost there! Before we learn about how to display digits simultaneously, we have to know about the concept called the <strong class="markup--strong markup--p-strong">persistence of vision</strong>. It refers to the optical illusion that occurs when visual perception of an object does not cease for some time after the rays of light proceeding from it have ceased to enter the eye. This concept is widely used for animations, movies, and video games.</p><p name="907a" id="907a" class="graf graf--p graf-after--p">So our idea to display multiple digits is by shortening the DELAY time as much as possible. In the last experiment, the delay time is set to be <code class="markup--code markup--p-code">0x3f0000</code>. And if we shorten this time to <code class="markup--code markup--p-code">0x3f000</code> , let’s see what will happen.</p><figure name="cfc6" id="cfc6" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*vKMswBnDpvzAujxDBhbFAg.gif" data-width="600" data-height="340" src="https://cdn-images-1.medium.com/max/800/1*vKMswBnDpvzAujxDBhbFAg.gif"></figure><p name="6e7f" id="6e7f" class="graf graf--p graf-after--figure">Wow! The speed of counting is boosted and we can hardly tell what is the number at a glance. Now, let’s continue shortening the DELAY time from <code class="markup--code markup--p-code">0x3f000</code> to <code class="markup--code markup--p-code">0x3f00</code> .</p><figure name="e2ea" id="e2ea" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*qYgRi3MAnnLTacnrX2I3QA.png" data-width="1570" data-height="548" src="https://cdn-images-1.medium.com/max/800/1*qYgRi3MAnnLTacnrX2I3QA.png"></figure><p name="5743" id="5743" class="graf graf--p graf-after--figure graf--trailing">Hooray! Now the persistence of vision is created and we have cheated our eye that the digits are frozen (while actually, they don’t). That’s how we can display multiple digits simultaneously.</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/cbaec956354e"><time class="dt-published" datetime="2021-01-05T09:39:00.860Z">January 5, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/computer-systems-experiments-18-persistence-of-vision-and-displaying-multiple-digits-cbaec956354e" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

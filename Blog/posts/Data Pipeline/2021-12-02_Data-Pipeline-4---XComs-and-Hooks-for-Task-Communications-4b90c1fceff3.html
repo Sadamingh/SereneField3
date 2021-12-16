@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Data Pipeline 4 | XComs and Hooks for Task Communications</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Data Pipeline 4 | XComs and Hooks for Task Communications</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Data Pipeline
+</section>
+<section data-field="body" class="e-content">
+<section name="f818" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="87f5" id="87f5" class="graf graf--h3 graf--leading graf--title">Data Pipeline 4 | XComs and Hooks for Task Communications</h3><figure name="da30" id="da30" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*KVv6jwcPsxqJ4UiO.png" data-width="1352" data-height="622" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/0*KVv6jwcPsxqJ4UiO.png"></figure><ol class="postList"><li name="a024" id="a024" class="graf graf--li graf-after--figure"><strong class="markup--strong markup--li-strong">Internal Cross Communications (XComs)</strong></li></ol><p name="8618" id="8618" class="graf graf--p graf-after--li"><strong class="markup--strong markup--p-strong">(1) The Definition of Cross Communications</strong></p><p name="ae50" id="ae50" class="graf graf--p graf-after--p">XComs (short for “cross-communications”) is a mechanism that lets Tasks talk to each other, as by default Tasks are entirely isolated and may be running on entirely different machines. An XCom is identified by a <code class="markup--code markup--p-code">key</code> (essentially its name), as well as the <code class="markup--code markup--p-code">task_id</code> and <code class="markup--code markup--p-code">dag_id</code> it came from. They can have any (serializable) value, but they are only designed for small amounts of data; do not use them to pass around large values, like dataframes.</p><p name="78da" id="78da" class="graf graf--p graf-after--p">It is important to know that XCom is only used for transferring a small amount of data and we should find some other ways if we want to transfer a larger data volume. If we have a larger amount of data, we have to think about using intermediary data storage. This means saving your data to some system external to Airflow at the end of one task, then reading it in from that system in the next task.</p><p name="3a1d" id="3a1d" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(2) </strong><code class="markup--code markup--p-code"><strong class="markup--strong markup--p-strong">xcom_push</strong></code><strong class="markup--strong markup--p-strong"> Method in PythonOperator Tasks</strong></p><p name="4bf7" id="4bf7" class="graf graf--p graf-after--p">In the PythonOperator, we can easily push and share data with another task by <code class="markup--code markup--p-code">xcom_push</code> function or simply return it. For example, suppose in the task <code class="markup--code markup--p-code">push_data</code>, we have a variable named <code class="markup--code markup--p-code">passme</code> and we would like to pass it to another task. Then what we can do is either push an XCom without a specific target,</p><pre name="1ad7" id="1ad7" class="graf graf--pre graf-after--p">kwags[&#39;ti&#39;].xcom_push(key=&#39;passme&#39;, value=passme)</pre><p name="ab59" id="ab59" class="graf graf--p graf-after--pre">Or we can simply return it without a specific target,</p><pre name="ec4a" id="ec4a" class="graf graf--pre graf-after--p">return passme</pre><p name="6cf0" id="6cf0" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(3) Pull Data from PythonOperator Tasks</strong></p><p name="2bbf" id="2bbf" class="graf graf--p graf-after--p">If we push by the <code class="markup--code markup--p-code">xcom_push</code> method, then in the Python script, we can get it through the <code class="markup--code markup--p-code">output</code> method. The <code class="markup--code markup--p-code">output</code> method is only used XCom and it returns the reference to <code class="markup--code markup--p-code">XCom</code> pushed by the current operator. So if we want to pull the data with the key <code class="markup--code markup--p-code">&#39;passme&#39;</code> from the task <code class="markup--code markup--p-code">push_data</code> , we have,</p><pre name="19f6" id="19f6" class="graf graf--pre graf-after--p"><code class="markup--code markup--pre-code">push_data</code>.output[&#39;passme&#39;]</pre><p name="bc42" id="bc42" class="graf graf--p graf-after--pre">Or, if we directly return this value, we can use,</p><pre name="fd4f" id="fd4f" class="graf graf--pre graf-after--p"><code class="markup--code markup--pre-code">push_data.output</code></pre><p name="462d" id="462d" class="graf graf--p graf-after--pre">It is also okay to extract the shared data from <code class="markup--code markup--p-code">kwargs</code>,</p><pre name="cba2" id="cba2" class="graf graf--pre graf-after--p">kwargs[&#39;ti&#39;].xcom_pull(key=&quot;passme&quot;, task_ids=&#39;<code class="markup--code markup--pre-code">push_data</code>&#39;)</pre><p name="91d5" id="91d5" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(4) </strong><code class="markup--code markup--p-code"><strong class="markup--strong markup--p-strong">xcom_push</strong></code><strong class="markup--strong markup--p-strong"> Method in Non-PythonOperator Tasks</strong></p><p name="18fc" id="18fc" class="graf graf--p graf-after--p">Typically, we are able to access XCom variables within templated fields. For example, in a bash command, we can use a template reference for <code class="markup--code markup--p-code">xcom_push</code>,</p><pre name="971b" id="971b" class="graf graf--pre graf-after--p">{{ ti.xcom_push(key=&#39;passme&#39;, value=passme) }}</pre><p name="fffd" id="fffd" class="graf graf--p graf-after--pre">Or we can directly return it as our return value,</p><pre name="ebc3" id="ebc3" class="graf graf--pre graf-after--p">echo {{ passme }}</pre><p name="ec3f" id="ec3f" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(5) Common Scenario</strong></p><p name="484c" id="484c" class="graf graf--p graf-after--p">Commonly, we can not pass a value easily with XCom, so we may have to think about creating some customed operators as we have discussed previously.</p><p name="f766" id="f766" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(6) XCom Example</strong></p><p name="8f10" id="8f10" class="graf graf--p graf-after--p">Apache Airflow provided us an example of how to use the XCom and this code should be self-explanatory according to our discussions above.</p><figure name="0f01" id="0f01" class="graf graf--figure graf--iframe graf-after--p"><script src="https://gist.github.com/Sadamingh/c8530e623b5d32f5de652152d3e0d4b9.js"></script></figure><p name="3a65" id="3a65" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">2. External Hook Communications</strong></p><p name="db38" id="db38" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(1) The Definition of Hooks</strong></p><p name="de4a" id="de4a" class="graf graf--p graf-after--p">Hooks are meant as an interface to interact with external systems. Airflow operators and sensors don’t operate in isolation. Instead, they can connect to systems outside of Airflow, such as databases, cloud systems, remote machines, etc., using hooks and connections, which contain the necessary information required to connect to external systems.</p><p name="5bcd" id="5bcd" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(2) Create a New External Connection</strong></p><p name="78bc" id="78bc" class="graf graf--p graf-after--p">Now, let’s suppose we would like to interact with our external local ProgreSQL database. So what we would like to do is to first, establish a new connection. We should go to the Airflow webserver and select Admin &gt; Connections. Then we should click the blue + sign for creating a new connection.</p><figure name="ffb6" id="ffb6" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*5vmruPa6vj5tMJ8p0pviQA.png" data-width="1304" data-height="480" src="https://cdn-images-1.medium.com/max/800/1*5vmruPa6vj5tMJ8p0pviQA.png"></figure><p name="cfa6" id="cfa6" class="graf graf--p graf-after--figure">Then we can create our own Postgres connection <code class="markup--code markup--p-code">PostgreDB</code> by,</p><figure name="06ce" id="06ce" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*nr7PTcEDt52BsbuHgjfSDg.png" data-width="1093" data-height="703" src="https://cdn-images-1.medium.com/max/800/1*nr7PTcEDt52BsbuHgjfSDg.png"></figure><p name="32e4" id="32e4" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">(3) Connect to Database</strong></p><p name="0ecd" id="0ecd" class="graf graf--p graf-after--p">For <code class="markup--code markup--p-code">PostgreSQL</code> , we have to import <code class="markup--code markup--p-code">psycopg2</code> for connecting to the PostgreSQL database.</p><pre name="b5b4" id="b5b4" class="graf graf--pre graf-after--p">import <code class="markup--code markup--pre-code">psycopg2</code></pre><p name="dc79" id="dc79" class="graf graf--p graf-after--pre">We can then establish a connection using the connection information we have filled in,</p><pre name="3cba" id="3cba" class="graf graf--pre graf-after--p">conn = BaseHook.get_connection(&#39;PostgreDB&#39;)<br>conn = psycopg2.connect(host = conn.host, <br>                        port = conn.port,<br>                        database = conn.schema, <br>                        user = conn.login, <br>                        password = conn.password)</pre><p name="237e" id="237e" class="graf graf--p graf-after--pre">Then we should be able to query this database if we can successfully connect to this database,</p><pre name="a383" id="a383" class="graf graf--pre graf-after--p">cur = conn.cursor()<br>cur.execute(&quot;SELECT * FROM courses&quot;)</pre><p name="31d3" id="31d3" class="graf graf--p graf-after--pre">To get the data in that cursor, we can then use,</p><pre name="e718" id="e718" class="graf graf--pre graf-after--p">cur.fetchall()</pre><p name="2f65" id="2f65" class="graf graf--p graf-after--pre">Note that if we are using the <code class="markup--code markup--p-code">MySQL</code> database, we should use <code class="markup--code markup--p-code">MySQLdb</code>,</p><pre name="9369" id="9369" class="graf graf--pre graf-after--p">import MySQLdb</pre><p name="a455" id="a455" class="graf graf--p graf-after--pre graf--trailing">And the other steps are quite similar.</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/4b90c1fceff3"><time class="dt-published" datetime="2021-12-02T08:15:24.088Z">December 2, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/data-pipeline-4-xcoms-and-hooks-for-task-communications-4b90c1fceff3" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

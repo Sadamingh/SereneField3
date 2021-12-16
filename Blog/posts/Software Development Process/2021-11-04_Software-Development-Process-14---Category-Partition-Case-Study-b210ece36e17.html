@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Software Development Process 14 | Category Partition Case Study</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Software Development Process 14 | Category Partition Case Study</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Software Development Process
+</section>
+<section data-field="body" class="e-content">
+<section name="aa84" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="a307" id="a307" class="graf graf--h3 graf--leading graf--title">Software Development Process 14 | Category Partition Case Study</h3><figure name="e9ae" id="e9ae" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*5_sp2FeEJShxyPEd.png" data-width="700" data-height="328" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/0*5_sp2FeEJShxyPEd.png"></figure><ol class="postList"><li name="2b21" id="2b21" class="graf graf--li graf-after--figure"><strong class="markup--strong markup--li-strong">Configure the TSLgenerator</strong></li></ol><ul class="postList"><li name="45ec" id="45ec" class="graf graf--li graf-after--li">Download the TSL generator for Mac OS from this <a href="https://drive.google.com/file/d/1wtyKIm1cXFCWvqRUZ6tnYQoLWZjJ-75t/view" data-href="https://drive.google.com/file/d/1wtyKIm1cXFCWvqRUZ6tnYQoLWZjJ-75t/view" class="markup--anchor markup--li-anchor" rel="noopener" target="_blank">link</a>.</li><li name="cf54" id="cf54" class="graf graf--li graf-after--li">Move the file to the <code class="markup--code markup--li-code">/usr/local/bin/</code> directory</li></ul><pre name="b880" id="b880" class="graf graf--pre graf-after--li">$ sudo cp &lt;dir&gt;/TSLgenerator-mac /usr/local/bin/</pre><ul class="postList"><li name="b89b" id="b89b" class="graf graf--li graf-after--pre">Go to <code class="markup--code markup--li-code">/usr/local/bin/</code> directory</li></ul><pre name="7062" id="7062" class="graf graf--pre graf-after--li">$ cd /usr/local/bin/</pre><ul class="postList"><li name="f446" id="f446" class="graf graf--li graf-after--pre">Change the permission mode to</li></ul><pre name="0d51" id="0d51" class="graf graf--pre graf-after--li">$ sudo chmod +x TSLgenerator-mac ./TSLgenerator-mac</pre><ul class="postList"><li name="c940" id="c940" class="graf graf--li graf-after--pre">Go to the root directory</li></ul><pre name="f434" id="f434" class="graf graf--pre graf-after--li">$ cd ~</pre><ul class="postList"><li name="593c" id="593c" class="graf graf--li graf-after--pre">Check if it works</li></ul><pre name="e203" id="e203" class="graf graf--pre graf-after--li">$ TSLgenerator-mac --manpage</pre><p name="9da2" id="9da2" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">2. Generate Test Cases by a Given TSL File</strong></p><p name="73c2" id="73c2" class="graf graf--p graf-after--p">Suppose we have the following TSL file named <br><code class="markup--code markup--p-code">cp-example.txt</code> . You can download it from <a href="https://drive.google.com/file/d/0B6urvdQprh5NUkNJVjVLdzNaUWc/view?resourcekey=0--Qmzq5CTzAJUdQTPecoKag" data-href="https://drive.google.com/file/d/0B6urvdQprh5NUkNJVjVLdzNaUWc/view?resourcekey=0--Qmzq5CTzAJUdQTPecoKag" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">here</a>.</p><pre name="aa24" id="aa24" class="graf graf--pre graf-after--p"># Input string</pre><pre name="5521" id="5521" class="graf graf--pre graf-after--pre">Length:<br>    0.                        [property zerovalue]<br>    1.<br>    size - 1.<br>    size + 1.<br>    size*2.<br>    size*2 - 1.<br>    size*2 + 1.<br>    maxint.</pre><pre name="3331" id="3331" class="graf graf--pre graf-after--pre">Content:<br>    alphanumeric characters.  [if !zerovalue]<br>    special characters.       [if !zerovalue]<br>    spaces.                   [if !zerovalue]</pre><pre name="0c4d" id="0c4d" class="graf graf--pre graf-after--pre"># Input size</pre><pre name="e26b" id="e26b" class="graf graf--pre graf-after--pre">Value:<br>    0.<br>    &gt;0.<br>    &lt;0.                       [error]<br>    maxint.                   [single]</pre><p name="c3fc" id="c3fc" class="graf graf--p graf-after--pre">Now, let’s try this file out through the <code class="markup--code markup--p-code">TSLgenerator</code> ,</p><ul class="postList"><li name="39c6" id="39c6" class="graf graf--li graf-after--p">Reports the number of test frames that would be generated without actually producing them,</li></ul><pre name="9132" id="9132" class="graf graf--pre graf-after--li">$ TSLgenerator-mac -c cp-example.txt<br>...<br> 46 test frames generated</pre><pre name="2b38" id="2b38" class="graf graf--pre graf-after--pre">Write test frames to cp-example.txt.tsl (y/n)? n</pre><ul class="postList"><li name="12de" id="12de" class="graf graf--li graf-after--pre">Output the result to stdout</li></ul><pre name="41a2" id="41a2" class="graf graf--pre graf-after--li">$ TSLgenerator-mac -s cp-example.txt<br>...<br>Test Case 1 ...<br>...</pre><ul class="postList"><li name="46de" id="46de" class="graf graf--li graf-after--pre">Output the result to a file named <code class="markup--code markup--li-code">&lt;filename&gt;.TSL</code> at the file directory</li></ul><pre name="250d" id="250d" class="graf graf--pre graf-after--li">$ TSLgenerator-mac cp-example.txt</pre><ul class="postList"><li name="1375" id="1375" class="graf graf--li graf-after--pre">Output the result to a specific file <code class="markup--code markup--li-code">TestCases.TSL</code> at the file directory</li></ul><pre name="d2b1" id="d2b1" class="graf graf--pre graf-after--li">$ TSLgenerator-mac cp-example.txt -o TestCases.TSL</pre><ul class="postList"><li name="8d93" id="8d93" class="graf graf--li graf-after--pre">Checkout the result</li></ul><pre name="d211" id="d211" class="graf graf--pre graf-after--li">$ diff TestCases.TSL cp-example.txt.TSL<br>$ more TestCases.TSL<br>...<br>q</pre><p name="c5a6" id="c5a6" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">3. Start of Part I</strong></p><ul class="postList"><li name="2aba" id="2aba" class="graf graf--li graf-after--p">Create a directory called <code class="markup--code markup--li-code">IndividualProject</code> in the root</li></ul><pre name="554d" id="554d" class="graf graf--pre graf-after--li">$ mkdir IndividualProject</pre><ul class="postList"><li name="b84f" id="b84f" class="graf graf--li graf-after--pre">Create a <code class="markup--code markup--li-code">catpart.txt</code> file in the <code class="markup--code markup--li-code">IndividualProject</code> directory</li></ul><pre name="671e" id="671e" class="graf graf--pre graf-after--li">$ cd IndividualProject/<br>$ touch catpart.txt</pre><ul class="postList"><li name="b0b8" id="b0b8" class="graf graf--li graf-after--pre">Implement the TSL file <code class="markup--code markup--li-code">catpart.txt</code></li><li name="658d" id="658d" class="graf graf--li graf-after--li">Run it by <code class="markup--code markup--li-code">TSLgenerator-mac</code> and make sure we have 60 to 90 test cases</li></ul><pre name="c366" id="c366" class="graf graf--pre graf-after--li">$ TSLgenerator-mac catpart.txt</pre><ul class="postList"><li name="d51e" id="d51e" class="graf graf--li graf-after--pre">Commit and push to GitHub.</li></ul><p name="78f4" id="78f4" class="graf graf--p graf-after--li"><strong class="markup--strong markup--p-strong">4. Start of Part II</strong></p><ul class="postList"><li name="b047" id="b047" class="graf graf--li graf-after--p">Implement all the test cases by JUnit tests</li><li name="624a" id="624a" class="graf graf--li graf-after--li graf--trailing">Commit and push to GitHub</li></ul></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/b210ece36e17"><time class="dt-published" datetime="2021-11-04T16:40:41.950Z">November 4, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/software-development-process-14-category-partition-case-study-b210ece36e17" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

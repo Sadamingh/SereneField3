@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Linux操作系统实践1 准备一个Raspberry Pi Kit</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Linux操作系统实践1 准备一个Raspberry Pi Kit</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+系列：Linux操作系统实践
+</section>
+<section data-field="body" class="e-content">
+<section name="17f5" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="2289" id="2289" class="graf graf--h3 graf--leading graf--title">Linux操作系统实践1 准备一个Raspberry Pi Kit</h3><figure name="5e28" id="5e28" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*XMhkGZ8UVAKDJ-5I" data-width="1000" data-height="563" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/0*XMhkGZ8UVAKDJ-5I"></figure><p name="7a15" id="7a15" class="graf graf--p graf-after--figure">我们不会立刻开始，这一部分原因是因为我们还有许多关于软件层面的介绍。在这一部分中，我们会介绍功能强大但是预算较低的硬件设备——RPi，我们会从零开始介绍我们将会在这一系列的文章中所用到的硬件设备。并且，通过这一章节的介绍，我们希望给出从零开始构建一个Raspberry Pi Kit的方式。我们在这一部分的预算上限是：75美金（我在实际中的操作是）。如果你有一个更低的预算，那么你可能需要考虑其他的替代方案。</p><p name="8feb" id="8feb" class="graf graf--p graf-after--p">一、开发板</p><p name="e463" id="e463" class="graf graf--p graf-after--p">我们选择的开发版是Raspberry Pi Model A+ (256MB)，这块开发版是树莓派早期设计的一款开发版，它具有一个Hdmi接口（这意味着我们可能需要进行接口转换），和一个USB接口。A+是树莓派在2014年的早期产品，但是功能足够我们去使用了，因此不需要特别担心。它可以在下面的链接中找到：<a href="https://www.newark.com/raspberry-pi/raspbrry-moda-512m/silicon-manufacturer-broadcom/dp/81Y5333?src=raspberrypi" data-href="https://www.newark.com/raspberry-pi/raspbrry-moda-512m/silicon-manufacturer-broadcom/dp/81Y5333?src=raspberrypi" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">Click me</a>！售价为20美金。</p><figure name="74cd" id="74cd" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*594N9fAHR6W8jDpUYk7BGw.png" data-width="1578" data-height="1244" src="https://cdn-images-1.medium.com/max/800/1*594N9fAHR6W8jDpUYk7BGw.png"></figure><p name="00b2" id="00b2" class="graf graf--p graf-after--figure">二、SD储存卡</p><p name="01b3" id="01b3" class="graf graf--p graf-after--p">在这里我们选择的SD储存卡是Kingston的SDHC Class 10储存卡，容量为16GB（4GB或者8GB也可以）。它可以在下面的链接中被找到：<a href="https://www.ebay.com/i/273549181602?chn=ps&amp;norover=1&amp;mkevt=1&amp;mkrid=711-117182-37290-0&amp;mkcid=2&amp;itemid=273549181602&amp;targetid=884131267673&amp;device=c&amp;mktype=pla&amp;googleloc=&amp;poi=2840&amp;campaignid=9248481087&amp;mkgroupid=99428154928&amp;rlsatarget=pla-884131267673&amp;abcId=1141156&amp;merchantid=118852272&amp;gclid=CjwKCAjwqJ_1BRBZEiwAv73uwPXggZtdDjX8LoOi9DaI5-P01t1f0NzgL3PJ-fiqdiIL7Y8LG-oi3BoCXEMQAvD_BwE" data-href="https://www.ebay.com/i/273549181602?chn=ps&amp;norover=1&amp;mkevt=1&amp;mkrid=711-117182-37290-0&amp;mkcid=2&amp;itemid=273549181602&amp;targetid=884131267673&amp;device=c&amp;mktype=pla&amp;googleloc=&amp;poi=2840&amp;campaignid=9248481087&amp;mkgroupid=99428154928&amp;rlsatarget=pla-884131267673&amp;abcId=1141156&amp;merchantid=118852272&amp;gclid=CjwKCAjwqJ_1BRBZEiwAv73uwPXggZtdDjX8LoOi9DaI5-P01t1f0NzgL3PJ-fiqdiIL7Y8LG-oi3BoCXEMQAvD_BwE" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">Click me</a>！它的售价为5美元。</p><figure name="e32b" id="e32b" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="0*XITj3UgZXK0yZN98.jpg" data-width="640" data-height="640" src="https://cdn-images-1.medium.com/max/800/0*XITj3UgZXK0yZN98.jpg"></figure><p name="b4c2" id="b4c2" class="graf graf--p graf-after--figure">三、USB串口CP2102</p><p name="f02a" id="f02a" class="graf graf--p graf-after--p">USB串口在后续的实验中起到很多作用，包括了供电和必要的数据传输，它的价格为5.65美元。链接为：<a href="https://www.ebay.com/p/1585553345?iid=113863380725&amp;chn=ps&amp;norover=1&amp;mkevt=1&amp;mkrid=711-117182-37290-0&amp;mkcid=2&amp;itemid=113863380725&amp;targetid=883564623986&amp;device=c&amp;mktype=pla&amp;googleloc=&amp;poi=2840&amp;campaignid=6469750549&amp;mkgroupid=93041470030&amp;rlsatarget=pla-883564623986&amp;abcId=1141176&amp;merchantid=127685092&amp;gclid=CjwKCAjwqJ_1BRBZEiwAv73uwEvX88UsGhR4r8wtXZu--VI_qYLzJBh2dkfi-uhD61FwgMUxXC8kqBoCcXgQAvD_BwE" data-href="https://www.ebay.com/p/1585553345?iid=113863380725&amp;chn=ps&amp;norover=1&amp;mkevt=1&amp;mkrid=711-117182-37290-0&amp;mkcid=2&amp;itemid=113863380725&amp;targetid=883564623986&amp;device=c&amp;mktype=pla&amp;googleloc=&amp;poi=2840&amp;campaignid=6469750549&amp;mkgroupid=93041470030&amp;rlsatarget=pla-883564623986&amp;abcId=1141176&amp;merchantid=127685092&amp;gclid=CjwKCAjwqJ_1BRBZEiwAv73uwEvX88UsGhR4r8wtXZu--VI_qYLzJBh2dkfi-uhD61FwgMUxXC8kqBoCcXgQAvD_BwE" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">Click me</a>！</p><figure name="82be" id="82be" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="0*i2WvjGJx5GUTOLSD.jpg" data-width="640" data-height="640" src="https://cdn-images-1.medium.com/max/800/0*i2WvjGJx5GUTOLSD.jpg"></figure><p name="3db0" id="3db0" class="graf graf--p graf-after--figure">四、电子元件</p><p name="b656" id="b656" class="graf graf--p graf-after--p">下面是一些我们需要的零件，在网上应该都可以找到：</p><ul class="postList"><li name="eccf" id="eccf" class="graf graf--li graf-after--p">全尺寸面包板一块</li><li name="f845" id="f845" class="graf graf--li graf-after--li">20个1K电阻器（用于LED，4位数字显示，晶体管）</li><li name="67d3" id="67d3" class="graf graf--li graf-after--li">4个10K电阻器（用于按钮）</li><li name="f3f1" id="f3f1" class="graf graf--li graf-after--li">8个LED（颜色不限）</li><li name="8b24" id="8b24" class="graf graf--li graf-after--li">4位7段显示器（数码管）</li><li name="b87d" id="b87d" class="graf graf--li graf-after--li">4个带彩色盖的按钮（也可以不带色盖，用丙烯涂色）</li><li name="8dc0" id="8dc0" class="graf graf--li graf-after--li">4个2N3904双极结晶体管（BJT）</li><li name="ad52" id="ad52" class="graf graf--li graf-after--li">10个（短10cm）F-F杜邦线</li><li name="5491" id="5491" class="graf graf--li graf-after--li">10个（长20cm）F-F杜邦线</li><li name="6907" id="6907" class="graf graf--li graf-after--li">20个（长20cm）M-F杜邦线</li><li name="9527" id="9527" class="graf graf--li graf-after--li">20个（长20cm）M-M杜邦线（如果你有面包板跳线，这是不必要的）</li></ul><figure name="60f2" id="60f2" class="graf graf--figure graf-after--li"><img class="graf-image" data-image-id="0*wpzEPKn7WYmaorBe.jpg" data-width="1800" data-height="1386" src="https://cdn-images-1.medium.com/max/800/0*wpzEPKn7WYmaorBe.jpg"></figure><p name="5ab0" id="5ab0" class="graf graf--p graf-after--figure">五、其他设备</p><p name="0044" id="0044" class="graf graf--p graf-after--p">考虑到我们还需要I/O设备，所以我们需要准备键盘和显示器。我们不需要准备一个鼠标，因为我们的操作都是通过键盘来完成的。</p><p name="03f9" id="03f9" class="graf graf--p graf-after--p">找一个显示器：任何显示器都是可选的，只要它具有VGA接口或者Hdmi接口中的任何一个。</p><ul class="postList"><li name="9f37" id="9f37" class="graf graf--li graf-after--p">我的显示器是VGA接口：请购买VGA转Hdmi接口转换器</li><li name="f5ca" id="f5ca" class="graf graf--li graf-after--li">我的显示器是Hdmi接口：请购买Hdmi数据线</li></ul><p name="a5d4" id="a5d4" class="graf graf--p graf-after--li">对于键盘，我们可以找任何一个已有的键盘完成所需要的要求。</p><figure name="e697" id="e697" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*5ysC_6BHJ80S93lYTNY5AQ.png" data-width="1612" data-height="1150" src="https://cdn-images-1.medium.com/max/800/1*5ysC_6BHJ80S93lYTNY5AQ.png"></figure><figure name="e69d" id="e69d" class="graf graf--figure graf-after--figure graf--trailing"><img class="graf-image" data-image-id="1*PtjibTu7pPeiHzPJEjTXqA.png" data-width="1650" data-height="1246" src="https://cdn-images-1.medium.com/max/800/1*PtjibTu7pPeiHzPJEjTXqA.png"></figure></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/4bf8aacb6709"><time class="dt-published" datetime="2020-04-29T12:29:28.951Z">April 29, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B51-%E5%87%86%E5%A4%87%E4%B8%80%E4%B8%AAraspberry-pi-kit-4bf8aacb6709" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

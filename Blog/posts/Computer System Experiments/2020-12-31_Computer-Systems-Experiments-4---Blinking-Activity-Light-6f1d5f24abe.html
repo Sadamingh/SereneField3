@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Computer Systems Experiments 4 | Blinking Activity Light</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Computer Systems Experiments 4 | Blinking Activity Light</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Computer Systems Experiments
+</section>
+<section data-field="body" class="e-content">
+<section name="6824" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="1eb7" id="1eb7" class="graf graf--h3 graf--leading graf--title">Computer Systems Experiments 4 | Blinking Activity Light</h3><figure name="6282" id="6282" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*BJR9p7Vvc4gaAOTrVQrGrA.png" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*BJR9p7Vvc4gaAOTrVQrGrA.png"></figure><p name="5356" id="5356" class="graf graf--p graf-after--figure">Now, we have powered the light with the Raspberry Pi and we have already set the environment for the experiment. Let’s move on to create a blinking activity ACT light (the green light on the Pi next to the power light PWR).</p><p name="d461" id="d461" class="graf graf--p graf-after--p">From the home directory, let’s firstly pull or clone (it depends on whether you have created this local repo) <a href="https://github.com/Sadamingh/ComputerSysE" data-href="https://github.com/Sadamingh/ComputerSysE" class="markup--anchor markup--p-anchor" rel="nofollow noopener" target="_blank">https://github.com/Sadamingh/ComputerSysE</a> (note that if the local repo is already up-to-date, there’s no need to pull). Then, let’s go to the blinking folder,</p><pre name="b121" id="b121" class="graf graf--pre graf-after--p">$ cd blinking/<br>$ ls</pre><p name="6525" id="6525" class="graf graf--p graf-after--pre">From this folder, we can find four files <code class="markup--code markup--p-code">blink-actled.bin</code>, <code class="markup--code markup--p-code">bootloader.bin</code>, <code class="markup--code markup--p-code">bootcode.bin </code>and <code class="markup--code markup--p-code">start.elf</code>. We don&#39;t have to understand these files now. But if you are interested,</p><ul class="postList"><li name="07ee" id="07ee" class="graf graf--li graf-after--p"><code class="markup--code markup--li-code">bootcode.bin</code> to boot the GPU</li><li name="d717" id="d717" class="graf graf--li graf-after--li"><code class="markup--code markup--li-code">start.elf</code> to start the CPU</li><li name="e827" id="e827" class="graf graf--li graf-after--li"><code class="markup--code markup--li-code">bootloader.bin</code> to listen to the file transmission</li></ul><p name="83d9" id="83d9" class="graf graf--p graf-after--li">Notice that the Pi must have a file named <code class="markup--code markup--p-code">kernel.img</code> to execute when booting. Normally, the <code class="markup--code markup--p-code">kernel.img</code> file is the operating system kernel that you may want to run on the Pi, like Linux or Windows. But notice that we don&#39;t give you a <code class="markup--code markup--p-code">kernel.img</code>. What we can do is to copy the file <code class="markup--code markup--p-code">bootloader.bin</code> and rename it to <code class="markup--code markup--p-code">kernel.img</code> and so that it will listen to the pins in case there is any file to be transferred.</p><pre name="f225" id="f225" class="graf graf--pre graf-after--p">$ cp <code class="markup--code markup--pre-code">bootloader.bin </code>kernel.img</pre><p name="120b" id="120b" class="graf graf--p graf-after--pre">We can not transfer the file when we use the Pi for the first time, because there’s no kernel and other critical files in the SDHC card. Thus, we have to manually copy these files to the SDHC card. We use an SD card reader to save those files to the SD card.</p><p name="01be" id="01be" class="graf graf--p graf-after--p">First, let’s check the name of our SD card,</p><pre name="dd4c" id="dd4c" class="graf graf--pre graf-after--p">$ ls /Volumes</pre><p name="356c" id="356c" class="graf graf--p graf-after--pre">Instead of Macintosh HD, there’s another folder (mine named boot). This folder is the folder of our SD card. Then let’s copy the necessary files into this folder,</p><pre name="59af" id="59af" class="graf graf--pre graf-after--p">$ cp kernel.img /Volumes/boot/<br>$ cp <code class="markup--code markup--pre-code">bootcode.bin</code> /Volumes/boot/<br>$ cp <code class="markup--code markup--pre-code">start.elf</code> /Volumes/boot/</pre><p name="50ee" id="50ee" class="graf graf--p graf-after--pre">To make sure all the steps are right, check the files in the SD card,</p><pre name="df3e" id="df3e" class="graf graf--pre graf-after--p">$ ls /Volumes/boot/</pre><p name="1dbc" id="1dbc" class="graf graf--p graf-after--pre">This should be,</p><pre name="89db" id="89db" class="graf graf--pre graf-after--p">bootcode.bin kernel.img start.elf</pre><p name="44a2" id="44a2" class="graf graf--p graf-after--pre">Then we pull out the SD card and insert the card into the Raspberry Pi. Restart the Pi by breaking and reconnecting the power jumper. You can find that the ACT light is blinking now (but this is not what we want). The ACT light is now blinking like bibi — bibi — bibi — (this is called the heartbeat of the bootloader) but what we want is bi-bi-bi- (bi means lighten). The way that it’s blinking now actually means that the Pi is listening to the pins directed by the kernel.img file.</p><p name="157a" id="157a" class="graf graf--p graf-after--p">Normally, the RXD (means Receive Data) pin on our CP2102 should be connected (always connected as the<strong class="markup--strong markup--p-strong"> green</strong> line) to the <a href="https://pinout.xyz/pinout/pin8_gpio14" data-href="https://pinout.xyz/pinout/pin8_gpio14" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">GPIO14</a> (UART TX) and the TXD (means Transmit Data) pin on our CP2102 should be connected (always connected as the <strong class="markup--strong markup--p-strong">blue</strong> line) to the <a href="https://pinout.xyz/pinout/pin10_gpio15" data-href="https://pinout.xyz/pinout/pin10_gpio15" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">GPIO15</a>(UART RX).</p><p name="67d9" id="67d9" class="graf graf--p graf-after--p">Finally, let’s transmit our <code class="markup--code markup--p-code">blink-actled.bin</code> file to the Pi,</p><pre name="e8f6" id="e8f6" class="graf graf--pre graf-after--p">$ rpi-install.py blink-actled.bin</pre><p name="3187" id="3187" class="graf graf--p graf-after--pre">If it sends back,</p><pre name="b376" id="b376" class="graf graf--pre graf-after--p">Found serial device: <strong class="markup--strong markup--pre-strong">/dev/cu.SLAB_USBtoUART<br></strong>Sending `blink-actled.bin` (72 bytes): .<br><strong class="markup--strong markup--pre-strong">Successfully sent!</strong></pre><p name="33aa" id="33aa" class="graf graf--p graf-after--pre graf--trailing">This means that we successfully transmit the file to the Pi. Notice that the ACT light is now blinking like bi-bi-bi-.</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/6f1d5f24abe"><time class="dt-published" datetime="2020-12-31T05:16:53.485Z">December 31, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/computer-systems-experiments-4-blinking-activity-light-6f1d5f24abe" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

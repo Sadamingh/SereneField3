@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Python程序设计10 网络</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Python程序设计10 网络</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+系列：Python程序设计
+</section>
+<section data-field="body" class="e-content">
+<section name="a854" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="f9d4" id="f9d4" class="graf graf--h3 graf--leading graf--title">Python程序设计10 网络</h3><figure name="cc26" id="cc26" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*nMQTiDVkQq7j6ZlqQEKLbQ.jpeg" data-width="2689" data-height="1513" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*nMQTiDVkQq7j6ZlqQEKLbQ.jpeg"></figure><p name="fd19" id="fd19" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">一、手机和facebook的交互</strong></p><p name="847b" id="847b" class="graf graf--p graf-after--p">JavaScript和HTML是网页语言，Kotlin是安卓手机的语言，Swift是苹果手机的语言。假设我们的手机需要和Facebook的服务器进行交互。下面的图例演示了从登陆账户到更改状态的服务器交互过程。</p><figure name="bb39" id="bb39" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*CIZNvn0L9i9-HZjkGKUL-Q.png" data-width="1898" data-height="970" src="https://cdn-images-1.medium.com/max/800/1*CIZNvn0L9i9-HZjkGKUL-Q.png"></figure><figure name="15ea" id="15ea" class="graf graf--figure graf-after--figure"><img class="graf-image" data-image-id="1*9OAsosFIhUkiaRVgy_vyRA.png" data-width="1898" data-height="518" src="https://cdn-images-1.medium.com/max/800/1*9OAsosFIhUkiaRVgy_vyRA.png"></figure><p name="f9b9" id="f9b9" class="graf graf--p graf-after--figure">在此时，如果其他人请求查看状态。那么交互过程为：</p><figure name="bd6b" id="bd6b" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*c7aHOrzcdyl1qLwG4P2-3A.png" data-width="633" data-height="211" src="https://cdn-images-1.medium.com/max/800/1*c7aHOrzcdyl1qLwG4P2-3A.png"></figure><figure name="6fc9" id="6fc9" class="graf graf--figure graf-after--figure"><img class="graf-image" data-image-id="1*veAc3eAym9Ijn_BBPWiS9A.png" data-width="633" data-height="232" src="https://cdn-images-1.medium.com/max/800/1*veAc3eAym9Ijn_BBPWiS9A.png"></figure><p name="1aa1" id="1aa1" class="graf graf--p graf-after--figure">Python的服务器实际上是非常多用于长时间运行代码的计算机，例如我们常见的如图所示：</p><figure name="a257" id="a257" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*3lZGe9S6CVjYodvPcIInjQ.png" data-width="647" data-height="286" src="https://cdn-images-1.medium.com/max/800/1*3lZGe9S6CVjYodvPcIInjQ.png"></figure><p name="d313" id="d313" class="graf graf--p graf-after--figure">在这一过程中，信息并不是直线传递的，而是通过许多中继节点进行传递的。</p><p name="7c78" id="7c78" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">二、服务器和客户端</strong></p><p name="044c" id="044c" class="graf graf--p graf-after--p">到今天为止，大部分服务器的作用是用来回复请求。服务器又被称为：后端 backend，云 cloud，大脑 brains；客户端又被称为：前端 frontend，GUI等等。</p><ol class="postList"><li name="f7e7" id="f7e7" class="graf graf--li graf-after--p"><strong class="markup--strong markup--li-strong">搭建一个最简单的服务器</strong></li></ol><p name="8e49" id="8e49" class="graf graf--p graf-after--li">我们希望实现的第一个服务器是对于不论什么请求，我们都返回hello world（或者其他我们想要返回的内容）。我们需要使用的是SimpleServer包。首先，我们在程序的最开始导入SimpleServer。SimpleServer可以通过<a href="http://web.stanford.edu/class/cs106a/lectures/22-Internet/22-Internet.zip" data-href="http://web.stanford.edu/class/cs106a/lectures/22-Internet/22-Internet.zip" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">此链接</a>下载。：</p><pre name="498b" id="498b" class="graf graf--pre graf-after--p">import SimpleServer</pre><p name="8ebb" id="8ebb" class="graf graf--p graf-after--pre">之后，我们创建一个类，这个类实现的就是一个服务器的类，我们可以通过这个类来进行服务器的设置。对于 __init__ 函数来说，我们不需要在创建该服务器对象的时候进行任何配置，所以我们可以直接写一个 pass 语句。对于其他的requests，我们通过 handle_request 函数来返回 hello world 。例如：</p><pre name="a0c8" id="a0c8" class="graf graf--pre graf-after--p">class MyFirstServer:<br>    def __init__(self):<br>        pass<br><br>    def handle_request(self, request):<br>        return &#39;hello world&#39;</pre><p name="2ff2" id="2ff2" class="graf graf--p graf-after--pre">之后，我们通过主函数完成下面两个目标。首先是创建一个 MyFirstServer的对象，之后我们通过 SimpleServer 包中的run_server方法指定该对象和端口。例如：</p><pre name="a67d" id="a67d" class="graf graf--pre graf-after--p">def main():<br>    # make the server<br>    handler = MyFirstServer()<br>    # start the server to handle internet requests!<br>    SimpleServer.run_server(handler, 8000)<br><br>if __name__ == &#39;__main__&#39;:<br>    main()</pre><p name="edbd" id="edbd" class="graf graf--p graf-after--pre">我们运行程序，我们会得到输出为：</p><pre name="2138" id="2138" class="graf graf--pre graf-after--p">Server running on port 8000...</pre><p name="733c" id="733c" class="graf graf--p graf-after--pre">之后我们在浏览器地址栏输入：</p><pre name="3245" id="3245" class="graf graf--pre graf-after--p">127.0.0.1:8000</pre><figure name="7c5f" id="7c5f" class="graf graf--figure graf-after--pre"><img class="graf-image" data-image-id="1*UcilzFseAF-JwVv08nERZg.png" data-width="1162" data-height="230" src="https://cdn-images-1.medium.com/max/800/1*UcilzFseAF-JwVv08nERZg.png"></figure><p name="0004" id="0004" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">2. 端口 Ports</strong></p><p name="c5ed" id="c5ed" class="graf graf--p graf-after--p">在上面的例子中，我们用到端口的概念。端口相当于是一种抽象的信息交互接口（它是类似于虚拟的USB接口之类的事物，用来传递信息）。为了防止信息之间的干扰，我们通过端口来区分不同类型的信息，这减少了我们区分不同信息的工作量。</p><p name="c91b" id="c91b" class="graf graf--p graf-after--p">对于网络来说，80号端口是一个服务器用来和浏览器进行交互的端口，是被保留的端口之一。而我们在刚才用到的8000端口，通常不具有特殊的功能，所以这个端口被我们在这里用于测试本地服务器。</p><p name="c911" id="c911" class="graf graf--p graf-after--p">在ip地址后，我们通过符号 : 来指定端口。例如:</p><pre name="e824" id="e824" class="graf graf--pre graf-after--p">192.168.1.32:8080</pre><p name="9037" id="9037" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">3. 本地主机 localhost</strong></p><p name="208f" id="208f" class="graf graf--p graf-after--p">以当前主机为互联网服务器的地址就是本地主机地址，该地址固定为127.0.0.1，也可以写为localhost。在刚才的例子中，同样地，我们在地址栏有两种写法：</p><pre name="8fac" id="8fac" class="graf graf--pre graf-after--p">127.0.0.1:8000</pre><p name="1b12" id="1b12" class="graf graf--p graf-after--pre">以及，</p><pre name="1c82" id="1c82" class="graf graf--pre graf-after--p">localhost:8000</pre><p name="0da1" id="0da1" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">4. 常见的通过浏览器请求的方式</strong></p><p name="6fc5" id="6fc5" class="graf graf--p graf-after--p">对于下面的网址：</p><pre name="0567" id="0567" class="graf graf--pre graf-after--p">http://mywebsite.com/test?first=a&amp;second=b</pre><p name="c17a" id="c17a" class="graf graf--p graf-after--pre">其中http是互联网协议，指的是HTTP协议，通常是http或者https。mywebsite.com是互联网地址，通过DNS服务器可以解析成对应的ip地址。/test?是请求命令。first=a&amp;second=b是请求的参数。</p><p name="e70f" id="e70f" class="graf graf--p graf-after--p">Request通常由两步分组成，一个是请求的命令 command，另一个是请求的参数 parameters。其中command是以string作为类型来传递，而params是通过dictionary作为类型来传递。服务器一般使用下面的语句来调用请求的命令和参数：</p><pre name="09e4" id="09e4" class="graf graf--pre graf-after--p">request.command <br>request.params</pre><p name="a9c3" id="a9c3" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">5. 请求的方法</strong></p><p name="0255" id="0255" class="graf graf--p graf-after--p">一般来说，请求类似于执行一种远程的、位于服务器上的方法。服务器只有一些离散的方法可以做事情。一般来说，不同的command会对应特定的parameters，如果参数不匹配命令，那么服务器会终止请求并返回错误。</p><p name="fa82" id="fa82" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">6. 请求计数服务器</strong></p><p name="ff56" id="ff56" class="graf graf--p graf-after--p">我们可以通过稍微更改上面的服务器程序实现计数的功能。其中我们每次访问指定地址都会进行计数，服务器程序会返回访问的次数。例如：</p><pre name="22ff" id="22ff" class="graf graf--pre graf-after--p">import SimpleServer<br><br># classes are our friends!<br>class HitCounter:<br>    def __init__(self):<br>        self.hits = 0<br><br>    def handle_request(self, request):<br>        self.hits += 1<br>        return str(self.hits) + &#39; hits to this website!&#39;<br><br>def main():<br>    # make the server<br>    handler = HitCounter()<br>    # start the server to handle internet requests!<br>    SimpleServer.run_server(handler, 8001)<br><br>if __name__ == &#39;__main__&#39;:<br>    main()</pre><p name="7939" id="7939" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">三、聊天服务器</strong></p><p name="81df" id="81df" class="graf graf--p graf-after--p">下面是一个聊天服务器的示例，我不会过于细致的分析它，因为它已经足够清楚。</p><pre name="1b24" id="1b24" class="graf graf--pre graf-after--p graf--trailing">import SimpleServer<br>import json<br><br># classes are our friends!<br>class ChatServer:<br>    def __init__(self):<br>        <em class="markup--em markup--pre-em">&quot;&quot;&quot;<br>        We need data to &#39;persist&#39; between requests. What data? in this case a<br>        history of messages<br>        &quot;&quot;&quot;<br>        </em>self.history = []<br><br>    # this is the server request callback function. You can&#39;t change its header<br>    def handle_request(self, request):<br>        <em class="markup--em markup--pre-em">&quot;&quot;&quot;<br>        A message has just arrived. From the internet! They need our help<br>        &quot;&quot;&quot;<br>        </em>cmd = request.get_command()<br>        params = request.get_params()<br>        if cmd == &#39;getMsgs&#39;:<br>            return self.get_messages(params)<br>        if cmd == &#39;newMsg&#39;:<br>            return self.new_message(params)<br>        return &#39;unknown command: &#39; + cmd<br><br>    def get_messages(self, params):<br>        start_index = int(params[&#39;index&#39;])<br>        # slice that list!<br>        to_return = self.history[start_index:]<br>        return json.dumps(to_return)<br><br>    def new_message(self, params):<br>        user = params[&#39;user&#39;]<br>        msg = params[&#39;msg&#39;]<br>        self.history.append(&#39;[&#39; + user + &#39;] &#39; + msg)<br>        return &#39;success&#39;<br><br>def main():<br>    # make the server<br>    handler = ChatServer()<br>    # start the server to handle internet requests!<br>    SimpleServer.run_server(handler, 8000)<br><br>if __name__ == &#39;__main__&#39;:<br>    main()</pre></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/3e7e778174f"><time class="dt-published" datetime="2020-08-19T16:26:14.725Z">August 19, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/python%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A19-%E7%BD%91%E7%BB%9C-3e7e778174f" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

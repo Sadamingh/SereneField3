@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Computer Systems Experiments 8 | Larson Scanner</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Computer Systems Experiments 8 | Larson Scanner</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Computer Systems Experiments
+</section>
+<section data-field="body" class="e-content">
+<section name="de23" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="75b3" id="75b3" class="graf graf--h3 graf--leading graf--title">Computer Systems Experiments 8 | Larson Scanner</h3><figure name="c575" id="c575" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*R5K4d9apNyZusZUT.png" data-width="1530" data-height="1104" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/0*R5K4d9apNyZusZUT.png"></figure><figure name="4cc0" id="4cc0" class="graf graf--figure graf--iframe graf--layoutOutsetLeft graf-after--figure"><iframe src="https://www.youtube.com/embed/alW5zHiF6_0?feature=oembed" width="525" height="394" frameborder="0" scrolling="no"></iframe></figure><p name="982f" id="982f" class="graf graf--p graf-after--figure">In this experiment, we are going to create a Larson Scanner. The Larson scanner is named after Glen A. Larson, the man responsible for producing both the original Battlestar Galactica and Knight Rider television shows. You can find a video that shows the demo of a Larson Scanner on the left-hand side of this paragraph.</p><p name="5ddc" id="5ddc" class="graf graf--p graf-after--p">The leftmost LED in your scanner should be connected to GPIO 20 of your Raspberry Pi, the second from the left to GPIO 21, and so on, such that the rightmost LED in your scanner is connected to GPIO 27 for using 8 LEDs.</p><ol class="postList"><li name="9cfa" id="9cfa" class="graf graf--li graf-after--p"><strong class="markup--strong markup--li-strong">Set the output functions to GPIO 20 to 27</strong></li></ol><p name="584f" id="584f" class="graf graf--p graf-after--li">To set the input function of the GPIO 20 to 27 we should set the value of FSEL2 to,</p><pre name="8a17" id="8a17" class="graf graf--pre graf-after--p">0000 0000 0010 0100 1001 0010 0100 1001</pre><p name="6765" id="6765" class="graf graf--p graf-after--pre">This value equal to the hexadecimal number,</p><pre name="d682" id="d682" class="graf graf--pre graf-after--p">0x249249</pre><p name="e3d1" id="e3d1" class="graf graf--p graf-after--pre">If we directly assign this value to a register, there will be an error,</p><pre name="e5b0" id="e5b0" class="graf graf--pre graf-after--p">// set output to GPIO 20 to 27, false code<br>ldr r0, FSEL2<br>mov r1, #0x249249<br>ldr r1, [r0]</pre><p name="6186" id="6186" class="graf graf--p graf-after--pre">This is because we can load it or build up the register 8 non-zero bits at a time. We can use <code class="markup--code markup--p-code">ldr</code> to assign this value,</p><pre name="f9ae" id="f9ae" class="graf graf--pre graf-after--p">// set output to GPIO 20 to 27<br>ldr r0, FSEL2<br>ldr r1, =0x00249249<br>ldr r1, [r0]</pre><p name="3981" id="3981" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">2. Set the starting status</strong></p><pre name="3eef" id="3eef" class="graf graf--pre graf-after--p">// set the starting status <br>mov r2, #(1&lt;&lt;20) // current pin</pre><p name="0537" id="0537" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">3. Create a one-way scanner</strong></p><p name="9e1c" id="9e1c" class="graf graf--p graf-after--p">We actually want the feature that the light goes from one side (left) to the other side (right), and then it will come back from the right side to the left. However, let’s do it step by step. How about we first create a one-way scanner that only goes from the left side to the right side? That’s easier.</p><pre name="0af4" id="0af4" class="graf graf--pre graf-after--p">restart:</pre><pre name="82c9" id="82c9" class="graf graf--pre graf-after--pre"> // set the starting status<br> mov r1, #(1&lt;&lt;20) // current pin</pre><pre name="e26a" id="e26a" class="graf graf--pre graf-after--pre"> loop:</pre><pre name="1d4b" id="1d4b" class="graf graf--pre graf-after--pre">   ldr r0, SET0<br>   str r1, [r0]</pre><pre name="0a16" id="0a16" class="graf graf--pre graf-after--pre">   // delay a certain time<br>   mov r2, #DELAY<br>   wait1:<br>       subs r2, r2, #1<br>       bne wait1</pre><pre name="db5a" id="db5a" class="graf graf--pre graf-after--pre">   // clear GPIO status<br>   ldr r0, CLR0<br>   str r1, [r0]<br>  <br>   lsl r1, #1<br>   tst r1, #(1&lt;&lt;29)</pre><pre name="9afe" id="9afe" class="graf graf--pre graf-after--pre">   beq loop<br>   bne restart</pre><figure name="2b1a" id="2b1a" class="graf graf--figure graf-after--pre"><img class="graf-image" data-image-id="1*UultUNsLOHV1s3VHvz05Cw.gif" data-width="600" data-height="340" src="https://cdn-images-1.medium.com/max/800/1*UultUNsLOHV1s3VHvz05Cw.gif"></figure><p name="9423" id="9423" class="graf graf--p graf-after--figure"><strong class="markup--strong markup--p-strong">4. Develop a two-way scanner</strong></p><p name="4ece" id="4ece" class="graf graf--p graf-after--p">The difference between the one-way scanner and the two-way scanner is that we have to add a conditional structure and tell when the light should move from the left to the right and when the light should move the opposite way. In this case, we are going to hard code the values (i.e. 19, 21, 26, 28) and we are going to make it a more general case in the next experiment.</p><p name="6af9" id="6af9" class="graf graf--p graf-after--p">The full code for the Larson Scanner is,</p><pre name="a627" id="a627" class="graf graf--pre graf-after--p">.equ DELAY, 0x3F0000</pre><pre name="a699" id="a699" class="graf graf--pre graf-after--pre">// set output to GPIO 20 to 27<br>ldr r0, FSEL2<br>ldr r1, =0x00249249<br>str r1, [r0]</pre><pre name="da35" id="da35" class="graf graf--pre graf-after--pre">// set the starting status<br>mov r1, #(1&lt;&lt;20) // current pin<br>mov r3, #1 //start with forward</pre><pre name="5b37" id="5b37" class="graf graf--pre graf-after--pre">loop:<br>  ldr r0, SET0<br>  str r1, [r0]</pre><pre name="fec0" id="fec0" class="graf graf--pre graf-after--pre">  // delay a certain time<br>  mov r2, #DELAY<br>  wait1:<br>      subs r2, r2, #1<br>      bne wait1</pre><pre name="62f6" id="62f6" class="graf graf--pre graf-after--pre">  // clear GPIO status<br>  ldr r0, CLR0<br>  str r1, [r0]</pre><pre name="226c" id="226c" class="graf graf--pre graf-after--pre">  tst r3, #1<br>  bne forward<br>  beq backward<br> <br>forward:<br>  lsl r1, #1<br>  b compar</pre><pre name="6398" id="6398" class="graf graf--pre graf-after--pre">backward:<br>  lsr r1, #1<br>  b compar</pre><pre name="eefc" id="eefc" class="graf graf--pre graf-after--pre">compar:<br>  cmp r1, #(1&lt;&lt;28)<br>  moveq r1, #(1&lt;&lt;26)<br>  moveq r3, #2</pre><pre name="9669" id="9669" class="graf graf--pre graf-after--pre">  cmp r1, #(1&lt;&lt;19)<br>  moveq r1, #(1&lt;&lt;21)<br>  moveq r3, #1</pre><pre name="fec9" id="fec9" class="graf graf--pre graf-after--pre">  b loop</pre><pre name="c081" id="c081" class="graf graf--pre graf-after--pre">FSEL2: .word 0x20200008<br>SET0: .word 0x2020001c<br>CLR0: .word 0x20200028</pre><p name="27ef" id="27ef" class="graf graf--p graf-after--pre">You can also find this code from my <a href="https://github.com/Sadamingh/ComputerSysE/tree/main/Larson%20Scanner" data-href="https://github.com/Sadamingh/ComputerSysE/tree/main/Larson%20Scanner" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">repo</a>.</p><figure name="7866" id="7866" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*JBDHTQ8_x9HrA1Bm_rebwQ.gif" data-width="600" data-height="340" src="https://cdn-images-1.medium.com/max/800/1*JBDHTQ8_x9HrA1Bm_rebwQ.gif"></figure><p name="703e" id="703e" class="graf graf--p graf-after--figure graf--trailing">Congratulations! That’s huge progress. In the next few experiments, we are going to add more features to this scanner.</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/f77276ce7aa"><time class="dt-published" datetime="2021-01-01T09:28:54.191Z">January 1, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/computer-systems-experiments-8-larson-scanner-f77276ce7aa" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

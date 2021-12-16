@@ -1,0 +1,73 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Data Acquisition 2 | Beautifulsoup</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Data Acquisition 2 | Beautifulsoup</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Data Acquisition
+</section>
+<section data-field="body" class="e-content">
+<section name="6fa4" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="7822" id="7822" class="graf graf--h3 graf--leading graf--title">Data Acquisition 2 | Beautifulsoup</h3><figure name="879a" id="879a" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*Xyvyq3V41SSG1-Q2qtlIXw.png" data-width="1596" data-height="824" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*Xyvyq3V41SSG1-Q2qtlIXw.png"></figure><ol class="postList"><li name="6c2d" id="6c2d" class="graf graf--li graf-after--figure"><strong class="markup--strong markup--li-strong">Installation</strong></li></ol><p name="a0d2" id="a0d2" class="graf graf--p graf-after--li">To begin using Beautifulsoup, we have to install it first.</p><pre name="412c" id="412c" class="graf graf--pre graf-after--p">$ pip install beautifulsoup4</pre><p name="9373" id="9373" class="graf graf--p graf-after--pre">Then we have to import this package at the front of our python file,</p><pre name="eebb" id="eebb" class="graf graf--pre graf-after--p">from bs4 import BeautifulSoup</pre><p name="e955" id="e955" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">2. Create the Soup</strong></p><p name="9d82" id="9d82" class="graf graf--p graf-after--p">We can create the soup by a local html file,</p><pre name="4968" id="4968" class="graf graf--pre graf-after--p">with open(&lt;path of the file&gt;) as f:    <br>    text = f.read()    <br>    soup = BeautifulSoup(text, &#39;html.parser&#39;)</pre><p name="6927" id="6927" class="graf graf--p graf-after--pre">or we can create the soup by an online webpage,</p><pre name="112d" id="112d" class="graf graf--pre graf-after--p">import requests</pre><pre name="8f31" id="8f31" class="graf graf--pre graf-after--pre">reqs = requests.get(&lt;URL&gt;)<br>reqs.encoding = &#39;utf-8&#39;.   # this can be changed<br>soup = BeautifulSoup(reqs.text, &#39;html.parser&#39;)</pre><p name="c18f" id="c18f" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">3. Play with the Soup</strong></p><ul class="postList"><li name="0caa" id="0caa" class="graf graf--li graf-after--p">formatting the html code to make it easier for reading</li></ul><pre name="9e6f" id="9e6f" class="graf graf--pre graf-after--li">soup.prettify()</pre><ul class="postList"><li name="58aa" id="58aa" class="graf graf--li graf-after--pre">get the title line of the page</li></ul><pre name="1c80" id="1c80" class="graf graf--pre graf-after--li">soup.title</pre><ul class="postList"><li name="fcc6" id="fcc6" class="graf graf--li graf-after--pre">get the title text of the page</li></ul><pre name="2489" id="2489" class="graf graf--pre graf-after--li">soup.title.string</pre><p name="1e6e" id="1e6e" class="graf graf--p graf-after--pre">or</p><pre name="a575" id="a575" class="graf graf--pre graf-after--p">soup.title.text</pre><ul class="postList"><li name="54fd" id="54fd" class="graf graf--li graf-after--pre">get all the &lt;a&gt; tags</li></ul><pre name="128d" id="128d" class="graf graf--pre graf-after--li">soup.find_all(&#39;a&#39;)</pre><ul class="postList"><li name="4e3a" id="4e3a" class="graf graf--li graf-after--pre">get the link of all the &lt;a&gt; tags including None</li></ul><pre name="53cf" id="53cf" class="graf graf--pre graf-after--li">for link in soup.find_all(&#39;a&#39;):<br>    print(link.get(&#39;href&#39;))</pre><ul class="postList"><li name="5604" id="5604" class="graf graf--li graf-after--pre">get the link of all the &lt;a&gt; tags, not including None</li></ul><pre name="71d4" id="71d4" class="graf graf--pre graf-after--li">for link in soup.find_all(&#39;a&#39;):<br>    print(link.get(&#39;href&#39;))</pre><ul class="postList"><li name="5c0d" id="5c0d" class="graf graf--li graf-after--pre">print the name of a tag</li></ul><pre name="6636" id="6636" class="graf graf--pre graf-after--li">tag.name</pre><ul class="postList"><li name="3856" id="3856" class="graf graf--li graf-after--pre">print the text of a tag</li></ul><pre name="f70c" id="f70c" class="graf graf--pre graf-after--li">tag.text</pre><ul class="postList"><li name="d22e" id="d22e" class="graf graf--li graf-after--pre">print the attributes dictionary of a tag</li></ul><pre name="a792" id="a792" class="graf graf--pre graf-after--li">tag.attrs</pre><ul class="postList"><li name="1349" id="1349" class="graf graf--li graf-after--pre">print the id of a tag</li></ul><pre name="ae08" id="ae08" class="graf graf--pre graf-after--li">tag[&#39;id&#39;]</pre><p name="3aff" id="3aff" class="graf graf--p graf-after--pre">or</p><pre name="41ed" id="41ed" class="graf graf--pre graf-after--p">tag.get(&#39;id&#39;)</pre><ul class="postList"><li name="be8f" id="be8f" class="graf graf--li graf-after--pre">find all the images</li></ul><pre name="2030" id="2030" class="graf graf--pre graf-after--li">soup.find_all(&#39;img&#39;)</pre><ul class="postList"><li name="3cf8" id="3cf8" class="graf graf--li graf-after--pre">find all the links to the images</li></ul><pre name="8e8b" id="8e8b" class="graf graf--pre graf-after--li">for link in soup.find_all(&#39;img&#39;):<br>    print(link.get(&#39;src&#39;))</pre><ul class="postList"><li name="8bbe" id="8bbe" class="graf graf--li graf-after--pre">get a list of all the children tags in a tag</li></ul><pre name="2823" id="2823" class="graf graf--pre graf-after--li">tag.contents</pre><ul class="postList"><li name="01d1" id="01d1" class="graf graf--li graf-after--pre">get a <strong class="markup--strong markup--li-strong">generator</strong> of a list of all the children tags in a tag</li></ul><pre name="ed95" id="ed95" class="graf graf--pre graf-after--li">tag.children</pre><ul class="postList"><li name="4b6a" id="4b6a" class="graf graf--li graf-after--pre">find a tag with a specific attribute</li></ul><pre name="87f3" id="87f3" class="graf graf--pre graf-after--li">soup.find(&lt;attr&gt;=&lt;value&gt;)</pre><ul class="postList"><li name="fc48" id="fc48" class="graf graf--li graf-after--pre">find the first &lt;a&gt; tag</li></ul><pre name="034f" id="034f" class="graf graf--pre graf-after--li">soup.find(&#39;a&#39;)</pre><ul class="postList"><li name="5cbd" id="5cbd" class="graf graf--li graf-after--pre">find the next tag</li></ul><pre name="4fe3" id="4fe3" class="graf graf--pre graf-after--li">tag.next_element</pre><ul class="postList"><li name="a67b" id="a67b" class="graf graf--li graf-after--pre">find the next tag</li></ul><pre name="5669" id="5669" class="graf graf--pre graf-after--li">tag.last_element</pre><ul class="postList"><li name="2f5a" id="2f5a" class="graf graf--li graf-after--pre">find &lt;a&gt; tags and &lt;b&gt; tags</li></ul><pre name="d9b7" id="d9b7" class="graf graf--pre graf-after--li">soup.find_all([&quot;a&quot;, &quot;b&quot;])</pre><ul class="postList"><li name="b93c" id="b93c" class="graf graf--li graf-after--pre">find the first &lt;a&gt; tag with an id</li></ul><pre name="99c0" id="99c0" class="graf graf--pre graf-after--li">soup.find(&#39;a&#39;, id=&lt;ID&gt;)</pre><ul class="postList"><li name="3ecf" id="3ecf" class="graf graf--li graf-after--pre">find the first &lt;a&gt; tag with a class</li></ul><pre name="27a2" id="27a2" class="graf graf--pre graf-after--li">soup.find(&#39;a&#39;, class_=&lt;CLASS&gt;)</pre><ul class="postList"><li name="facc" id="facc" class="graf graf--li graf-after--pre">find the first n &lt;a&gt; tags</li></ul><pre name="d350" id="d350" class="graf graf--pre graf-after--li graf--trailing">soup.find_all(&quot;a&quot;, limit=&lt;n&gt;)</pre></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/4e749f9cfb1b"><time class="dt-published" datetime="2020-10-28T17:30:58.774Z">October 28, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/data-acquisition-2-beautifulsoup-4e749f9cfb1b" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>
+

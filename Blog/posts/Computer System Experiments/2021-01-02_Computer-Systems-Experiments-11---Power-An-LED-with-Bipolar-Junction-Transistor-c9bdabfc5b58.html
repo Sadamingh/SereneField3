@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Computer Systems Experiments 11 | Power An LED with Bipolar Junction Transistor</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Computer Systems Experiments 11 | Power An LED with Bipolar Junction Transistor</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Computer Systems Experiments
+</section>
+<section data-field="body" class="e-content">
+<section name="5e9f" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="0635" id="0635" class="graf graf--h3 graf--leading graf--title">Computer Systems Experiments 11 | Power An LED with BJT</h3><figure name="e591" id="e591" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*T1XSZVKcHXLqtkq5.png" data-width="1530" data-height="1104" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/0*T1XSZVKcHXLqtkq5.png"></figure><p name="3441" id="3441" class="graf graf--p graf-after--figure">In this experiment, we are going to show how the BJT (bipolar junction transistor) works as a switch in a digital circuit. In this case, we are going to design the easiest circuit with BJT.</p><p name="316d" id="316d" class="graf graf--p graf-after--p">First, let’s introduce a little bit of the BJT. The BJT is one of the most powerful electronic components that is widely used for modern digital devices. We are not going to analyze how it works because you can find some great videos from the internet (i.e. <a href="https://www.youtube.com/watch?v=7ukDKVHnac4" data-href="https://www.youtube.com/watch?v=7ukDKVHnac4" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">Learn Engineerin</a>g [complex] and <a href="https://www.youtube.com/watch?v=sRVvUkK0U80" data-href="https://www.youtube.com/watch?v=sRVvUkK0U80" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">Add0hms</a> [much simpler]). The electronic symbol of a BJT is as follows,</p><figure name="29eb" id="29eb" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*WGaUgjcioKvJfmQ2DpTADw.png" data-width="1444" data-height="396" src="https://cdn-images-1.medium.com/max/800/1*WGaUgjcioKvJfmQ2DpTADw.png"></figure><p name="be57" id="be57" class="graf graf--p graf-after--figure">It is easy to remember the three corresponding pinouts of the diagram if you keep remembering the following picture,</p><figure name="9918" id="9918" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*PeK2sJz8r_Uk2QqC4zdg9A.png" data-width="1444" data-height="412" src="https://cdn-images-1.medium.com/max/800/1*PeK2sJz8r_Uk2QqC4zdg9A.png"></figure><p name="89f2" id="89f2" class="graf graf--p graf-after--figure">Now, let’s focus on the applications of the BJTs. In the present experiment, we are going to use the BJT as a switch.</p><figure name="1548" id="1548" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*paOLfXop3ZyItgoYcq4VFA.png" data-width="1444" data-height="462" src="https://cdn-images-1.medium.com/max/800/1*paOLfXop3ZyItgoYcq4VFA.png"></figure><p name="febd" id="febd" class="graf graf--p graf-after--figure">When the button is pressed, the LED will be lightened. The red line in the following shows the closed circuit.</p><figure name="8376" id="8376" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*_4pCbmWfTZBp_Y-NY0QdKQ.png" data-width="1686" data-height="472" src="https://cdn-images-1.medium.com/max/800/1*_4pCbmWfTZBp_Y-NY0QdKQ.png"></figure><figure name="bf4b" id="bf4b" class="graf graf--figure graf-after--figure"><img class="graf-image" data-image-id="1*BvSgLAucLmSIlqMn7N8ECg.png" data-width="1686" data-height="572" src="https://cdn-images-1.medium.com/max/800/1*BvSgLAucLmSIlqMn7N8ECg.png"></figure><p name="8b19" id="8b19" class="graf graf--p graf-after--figure">Now, let’s add another LED to the connector pin (also add a resistor and a 5V power).</p><figure name="7fdb" id="7fdb" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*LucWFD5BsnA4peXu8hHpIQ.png" data-width="1088" data-height="514" src="https://cdn-images-1.medium.com/max/800/1*LucWFD5BsnA4peXu8hHpIQ.png"></figure><p name="688d" id="688d" class="graf graf--p graf-after--figure">Then we press the button. Both of the LEDs are lightened and it is obvious that the D2 LED is even brighter than the D3 LED. This is because that there are two currents (shown by the red line and the yellow line) flow through the D2 LED but there’s merely a single current (the yellow line) that flows through the D3 LED.</p><figure name="c1d0" id="c1d0" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*oItlN-KYOpUJgdYrl2-ERQ.png" data-width="1378" data-height="526" src="https://cdn-images-1.medium.com/max/800/1*oItlN-KYOpUJgdYrl2-ERQ.png"></figure><figure name="cbf5" id="cbf5" class="graf graf--figure graf-after--figure"><img class="graf-image" data-image-id="1*uUwgtm5s5KdNYWpRFAPo8g.png" data-width="1378" data-height="476" src="https://cdn-images-1.medium.com/max/800/1*uUwgtm5s5KdNYWpRFAPo8g.png"></figure><p name="f6db" id="f6db" class="graf graf--p graf-after--figure">Now, it may seem useless that we have a 5V Power on the left of the diagram. If we remove the 5V power on the left, then both of the LEDs will be unpowered even though it seems that the circuit is still perfectly closed and powered by the 5V source on the right side.</p><p name="6d32" id="6d32" class="graf graf--p graf-after--p">The reason for this is that the 5V power on the left actually acts as a switch of this circuit. If there is HIGH to the base pin, then the collector pin will be connected to the emitter pin. If there is LOW to the base pin, then the collector pin will be broken from the emitter pin.</p><p name="6f25" id="6f25" class="graf graf--p graf-after--p">The application of this is that we can use the signal to the base pin to control the connection between the collector pin and the emitter pin.</p><p name="6899" id="6899" class="graf graf--p graf-after--p graf--trailing">Okay, cool! In the next experiment, we are going to create a blinking light based on this feature of the BJT.</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/c9bdabfc5b58"><time class="dt-published" datetime="2021-01-02T12:43:10.122Z">January 2, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/computer-systems-experiments-11-power-an-led-with-bipolar-junction-transistor-c9bdabfc5b58" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

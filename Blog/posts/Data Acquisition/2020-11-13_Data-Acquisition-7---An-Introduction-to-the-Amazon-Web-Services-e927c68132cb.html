@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Data Acquisition 7 | An Introduction to the Amazon Web Services</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Data Acquisition 7 | An Introduction to the Amazon Web Services</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Data Acquisition
+</section>
+<section data-field="body" class="e-content">
+<section name="a4e5" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="cce9" id="cce9" class="graf graf--h3 graf--leading graf--title">Data Acquisition 7 | An Introduction to the Amazon Web Services</h3><figure name="eede" id="eede" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*IpBrBG_Vsgc_GjWLZtEPvQ.png" data-width="1472" data-height="774" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*IpBrBG_Vsgc_GjWLZtEPvQ.png"></figure><ol class="postList"><li name="84c1" id="84c1" class="graf graf--li graf-after--figure"><strong class="markup--strong markup--li-strong">Launch a New Server</strong></li></ol><p name="e6ec" id="e6ec" class="graf graf--p graf-after--li">In this case, we are going to launch a deep learning server with Ubuntu 18.04.</p><figure name="ba29" id="ba29" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*L4FZqXoAoQLdKw79LjHOVQ.png" data-width="2236" data-height="240" src="https://cdn-images-1.medium.com/max/800/1*L4FZqXoAoQLdKw79LjHOVQ.png"></figure><p name="1d24" id="1d24" class="graf graf--p graf-after--figure">Recall what we have done in the last section and select the t2.medium type (with 2 CPU cores and 4 GB memory),</p><figure name="2f98" id="2f98" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*SiucOl4EiJsL38baUkpzWA.png" data-width="2782" data-height="866" src="https://cdn-images-1.medium.com/max/800/1*SiucOl4EiJsL38baUkpzWA.png"></figure><p name="dca5" id="dca5" class="graf graf--p graf-after--figure">Then we launch the server and then choose the connection tag to connect. Make sure you understand this, or you may refer to the last session where we have talked a little about AWS,</p><div name="02f1" id="02f1" class="graf graf--mixtapeEmbed graf-after--p"><a href="https://medium.com/adamedelwiess/data-acquisition-6-an-introduction-to-the-computer-network-12f0bc5c7586" data-href="https://medium.com/adamedelwiess/data-acquisition-6-an-introduction-to-the-computer-network-12f0bc5c7586" class="markup--anchor markup--mixtapeEmbed-anchor" title="https://medium.com/adamedelwiess/data-acquisition-6-an-introduction-to-the-computer-network-12f0bc5c7586"><strong class="markup--strong markup--mixtapeEmbed-strong">Data Acquisition 6 | An Introduction to the Computer Network</strong><br><em class="markup--em markup--mixtapeEmbed-em">Series: Data Acquisition</em>medium.com</a><a href="https://medium.com/adamedelwiess/data-acquisition-6-an-introduction-to-the-computer-network-12f0bc5c7586" class="js-mixtapeImage mixtapeImage u-ignoreBlock" data-media-id="549c5aab7dac27b26c85e11abdd5f70b" data-thumbnail-img-id="1*-ItYlRptA-ctuXgODMTDEA.png" style="background-image: url(https://cdn-images-1.medium.com/fit/c/160/160/1*-ItYlRptA-ctuXgODMTDEA.png);"></a></div><p name="e192" id="e192" class="graf graf--p graf-after--mixtapeEmbed">Now, let’s install all the dependences,</p><pre name="076c" id="076c" class="graf graf--pre graf-after--p">pip install --upgrade pip<br>pip install numpy Flask<br>conda update -n base conda<br>conda install gunicorn</pre><p name="8abc" id="8abc" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">2. File Transfer</strong></p><p name="1324" id="1324" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">(1) Transformation Based on Copy and Paste</strong></p><p name="a037" id="a037" class="graf graf--p graf-after--p">Suppose we have a file named awstest.md and the content of it is,</p><pre name="585f" id="585f" class="graf graf--pre graf-after--p">$ cat awstest.md<br>Hello Word<br>Hi<br>Good to know you</pre><p name="f60b" id="f60b" class="graf graf--p graf-after--pre">Then the most easy way (not cool at all) to do the the file transformation is by copy and paste. First, we copy the content of the awstest.md file, then in our ssh connection, we type in,</p><pre name="a79f" id="a79f" class="graf graf--pre graf-after--p"><strong class="markup--strong markup--pre-strong">ubuntu@ip-172-31-32-243</strong>:<strong class="markup--strong markup--pre-strong">~</strong>$ cat &gt; awstest.md</pre><p name="0543" id="0543" class="graf graf--p graf-after--pre">then paste the content and then press control-c to quit</p><pre name="6541" id="6541" class="graf graf--pre graf-after--p">Hello Word<br>Hi<br>Good to know you<br>^C</pre><p name="01fd" id="01fd" class="graf graf--p graf-after--pre">to check the file, we can use,</p><pre name="1b56" id="1b56" class="graf graf--pre graf-after--p"><strong class="markup--strong markup--pre-strong">ubuntu@ip-172-31-32-243</strong>:<strong class="markup--strong markup--pre-strong">~</strong>$ cat awstest.md</pre><p name="c349" id="c349" class="graf graf--p graf-after--pre">then, the output should be</p><pre name="cb5d" id="cb5d" class="graf graf--pre graf-after--p">Hello Word<br>Hi<br>Good to know you</pre><p name="ffea" id="ffea" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(2) Transformation Based on scp</strong></p><p name="7218" id="7218" class="graf graf--p graf-after--p">The scp command is the secure copy command which can be used to transfer files through ssh.</p><p name="b8fa" id="b8fa" class="graf graf--p graf-after--p">By the following command, we will transfer our file to the server through ssh and name the file awstest.md as hi.md in the home directory.</p><pre name="5c8b" id="5c8b" class="graf graf--pre graf-after--p">$ scp -i privatekey.pem awstest.md ubuntu@ec2-18-221-186-233.us-east-2.compute.amazonaws.com:~/hi.md</pre><p name="cf18" id="cf18" class="graf graf--p graf-after--pre">Remember to change the connection information <code class="markup--code markup--p-code">ubuntu@ec2-18-221-186-233.us-est-2.compute.amazonaws.com</code> part to your own. Based on the network traffic speed, it may take time for the files to be transferred. You have to wait until you see something like,</p><pre name="eba1" id="eba1" class="graf graf--pre graf-after--p">awstest.md                            100%   31     0.1KB/s   00:00</pre><p name="28db" id="28db" class="graf graf--p graf-after--pre">From the server, then we can check whether the file is successfully transferred.</p><pre name="a7c2" id="a7c2" class="graf graf--pre graf-after--p"><strong class="markup--strong markup--pre-strong">ubuntu@ip-172-31-32-243</strong>:<strong class="markup--strong markup--pre-strong">~</strong>$ cat hi.md<br>Hello Word<br>Hi<br>Good to know you</pre><p name="20aa" id="20aa" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">(3) Set up a Flask Server</strong></p><p name="54b3" id="54b3" class="graf graf--p graf-after--p">Again, we have our python script as,</p><figure name="aad2" id="aad2" class="graf graf--figure graf--iframe graf-after--p"><script src="https://gist.github.com/Sadamingh/e1652ca9bd491c07ba4386b533b6386a.js"></script></figure><p name="ad59" id="ad59" class="graf graf--p graf-after--figure">Then we use scp to transfer this script to the server,</p><pre name="ed27" id="ed27" class="graf graf--pre graf-after--p">$ scp -i privatekey.pem flaskpage_argu.py ubuntu@ec2-18-221-186-233.us-east-2.compute.amazonaws.com:~/server.py</pre><p name="b57a" id="b57a" class="graf graf--p graf-after--pre">After this, we then run our python script on the server,</p><pre name="4138" id="4138" class="graf graf--pre graf-after--p"><strong class="markup--strong markup--pre-strong">ubuntu@ip-172-31-32-243</strong>:<strong class="markup--strong markup--pre-strong">~</strong>$ python server.py<br>* Serving Flask app &quot;server&quot; (lazy loading)<br>* Environment: production<br>WARNING: This is a development server. Do not use it in a production deployment.<br>Use a production WSGI server instead.<br>* Debug mode: off<br>* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)</pre><p name="2864" id="2864" class="graf graf--p graf-after--pre">We may think that we can now get an access to the server by its public IP address (find in the instance information page of the AWS console) and the port 5000, however, when we try to access the URL:</p><pre name="d309" id="d309" class="graf graf--pre graf-after--p">http://&lt;public ip&gt;:5000/     # mine is <a href="http://18.221.186.233:5000/" data-href="http://18.221.186.233:5000/" class="markup--anchor markup--pre-anchor" rel="nofollow noopener" target="_blank">http://18.221.186.233:5000/</a></pre><p name="882e" id="882e" class="graf graf--p graf-after--pre">in our browser, then we can not get anything. Again, this is because of the firewall rules. We then open the port 5000 with TCP for all IP address (0.0.0.0/0).</p><figure name="f158" id="f158" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*X9H2P_nbFyxQBug4DvB8NA.png" data-width="2160" data-height="564" src="https://cdn-images-1.medium.com/max/800/1*X9H2P_nbFyxQBug4DvB8NA.png"></figure><p name="f5e7" id="f5e7" class="graf graf--p graf-after--figure">Also, to make your server openly accessed by the other computers, also, we have to make the flask run on 0.0.0.0.</p><pre name="053b" id="053b" class="graf graf--pre graf-after--p"><strong class="markup--strong markup--pre-strong">ubuntu@ip-172-31-32-243</strong>:<strong class="markup--strong markup--pre-strong">~</strong>$ vi server.py</pre><p name="ef8a" id="ef8a" class="graf graf--p graf-after--pre">edit,</p><pre name="500d" id="500d" class="graf graf--pre graf-after--p">app.run(&#39;0.0.0.0&#39;)</pre><p name="c507" id="c507" class="graf graf--p graf-after--pre">then save and quit the vim.</p><p name="b4b9" id="b4b9" class="graf graf--p graf-after--p">Launch the server by,</p><pre name="0602" id="0602" class="graf graf--pre graf-after--p"><strong class="markup--strong markup--pre-strong">ubuntu@ip-172-31-32-243</strong>:<strong class="markup--strong markup--pre-strong">~</strong>$ python server.py</pre><p name="cd5c" id="cd5c" class="graf graf--p graf-after--pre">Great, now we can have access to our public IP address port 5000, open a browser and type in,</p><pre name="339d" id="339d" class="graf graf--pre graf-after--p">http://&lt;public ip&gt;:5000/</pre><p name="1052" id="1052" class="graf graf--p graf-after--pre graf--trailing">You can find the page there! That’s all you need to know about AWS.</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/e927c68132cb"><time class="dt-published" datetime="2020-11-13T19:08:50.181Z">November 13, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/data-acquisition-7-an-introduction-to-the-amazon-web-services-e927c68132cb" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

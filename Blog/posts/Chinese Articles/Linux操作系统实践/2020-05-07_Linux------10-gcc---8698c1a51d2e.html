@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Linux操作系统实践10 gcc指南</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Linux操作系统实践10 gcc指南</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+系列：Linux操作系统实践
+</section>
+<section data-field="body" class="e-content">
+<section name="377d" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="eac8" id="eac8" class="graf graf--h3 graf--leading graf--title">Linux操作系统实践10 gcc指南</h3><figure name="cebb" id="cebb" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*beSHA3cQNnPOOKl4ypDgfw.jpeg" data-width="2689" data-height="1513" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*beSHA3cQNnPOOKl4ypDgfw.jpeg"></figure><p name="44c9" id="44c9" class="graf graf--p graf-after--figure">一、编译过程</p><p name="b04b" id="b04b" class="graf graf--p graf-after--p">在我们编写完程序的文本文件和执行程序之间，先等一等。机器并不能够理解我们写了些什么，所以我们需要将我们的程序语言（C）翻译成机器语言，并且将我们不同的文件通过一种规则连接在一起。其中，第一步的翻译工作被我们称为编译（Compiling），第二步的连接工作被我们称为连接（Linking）。</p><p name="86ee" id="86ee" class="graf graf--p graf-after--p">通过编译的过程，我们可以将C文件（foo.c）翻译为Object文件（foo.o），但是我们同一个项目中可能会有很多C文件，在他们转换成Object文件之后，机器并不知道先执行哪个，也不知道执行的顺序。因此，每一个Object文件中包括了系统依赖（system-dependent），它被用于描述这个程序在源代码中的位置，并且，它还包括了代码编译过程中需要的参考（例如标志、函数、变量等等）。</p><p name="022d" id="022d" class="graf graf--p graf-after--p">之后，通过连接器（Linker），我们将不同的Objective文件连接在一起，形成机器可以执行的完整程序。Linker也会在这一步提供相应的库函数代码，比如Printf()或者Malloc()等等。关于库函数代码的编译，我们在后面会仔细讨论。</p><figure name="cb34" id="cb34" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*oeE5oMqZwpon5smqKlPH7A.png" data-width="1386" data-height="494" src="https://cdn-images-1.medium.com/max/800/1*oeE5oMqZwpon5smqKlPH7A.png"></figure><p name="f990" id="f990" class="graf graf--p graf-after--figure">二、gcc是什么？</p><p name="0ba5" id="0ba5" class="graf graf--p graf-after--p">gcc全称为GNU项目C语言编译器（GNU C Compiler），以下讨论是关于gcc编译器的，这是开源<a href="http://www.gnu.org" data-href="http://www.gnu.org" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">GNU项目</a>的产品。使用gcc有几个优点：它往往是<strong class="markup--strong markup--p-strong">最新的</strong>和<strong class="markup--strong markup--p-strong">可靠的</strong>，可以在多种平台上使用，当然它是免费和开源的。</p><p name="497b" id="497b" class="graf graf--p graf-after--p">gcc可以编译C，C ++和Objective-C。 gcc实际上既是编译器又是连接器。对于简单的问题，一次调用gcc将执行整个compile和link的操作。例如，对于小型项目，可以使用类似以下的命令，该命令将三个.c文件编译并链接在一起，以创建名为 program 的可执行文件。</p><pre name="7109" id="7109" class="graf graf--pre graf-after--p">$ gcc main.c module1.c module2.c -o program</pre><p name="4000" id="4000" class="graf graf--p graf-after--pre">实际上，这一行指令可以被分解成下面几行指令：</p><ol class="postList"><li name="3929" id="3929" class="graf graf--li graf-after--p">对main.c，module1.c，和module2.c进行分别的编译</li></ol><pre name="fdc2" id="fdc2" class="graf graf--pre graf-after--li">$ gcc -c main.c <br>$ gcc -c module1.c <br>$ gcc -c module2.c</pre><p name="417e" id="417e" class="graf graf--p graf-after--pre">2. 对三个文件通过linker进行连接，生成可执行的program文件</p><pre name="4f77" id="4f77" class="graf graf--pre graf-after--p">$ gcc main.o module1.o module2.o -o program</pre><p name="c3f7" id="c3f7" class="graf graf--p graf-after--pre">gcc指令的一般形式为：</p><pre name="273a" id="273a" class="graf graf--pre graf-after--p">gcc &lt;opt&gt; &lt;filenames&gt;</pre><p name="895a" id="895a" class="graf graf--p graf-after--pre">三、gcc指令的可选项（options）</p><p name="dce7" id="dce7" class="graf graf--p graf-after--p">最常见的gcc指令可选项包括了：-c, -o, -g, -Wall, -I, -L,以及-l。对于这些可选项，我们在后面将他们一一列出讨论。</p><pre name="f42e" id="f42e" class="graf graf--pre graf-after--p">$ gcc -c</pre><ul class="postList"><li name="32a8" id="32a8" class="graf graf--li graf-after--pre">指示gcc将源文件编译为目标文件，而无需经过链接阶段。</li><li name="c236" id="c236" class="graf graf--li graf-after--li">Makefiles使用此选项一次编译一个文件。</li></ul><pre name="8a53" id="8a53" class="graf graf--pre graf-after--li">$ gcc -o file</pre><ul class="postList"><li name="add9" id="add9" class="graf graf--li graf-after--pre">指定gcc的输出应命名为file。</li><li name="e6f1" id="e6f1" class="graf graf--li graf-after--li">如果未指定此选项，则使用的默认名称取决于上下文…</li><li name="99ef" id="99ef" class="graf graf--li graf-after--li">（a）如果编译源为.c文件，则输出目标文件将以相同的名称命名，但扩展名为.o。</li><li name="7978" id="7978" class="graf graf--li graf-after--li">或者，（b）如果链接创建可执行文件，则输出文件将命名为a.out。大多数情况下，-o选项用于在链接可执行文件时指定输出文件名，而在编译时，人们只是让默认的.c / .o命名来接管。</li></ul><pre name="44e5" id="44e5" class="graf graf--pre graf-after--li">$ gcc -o sourcefile.c file</pre><ul class="postList"><li name="6852" id="6852" class="graf graf--li graf-after--pre">这可能是一个值得纪念的错误。永远不要有意/无意写这行代码。</li><li name="8d3d" id="8d3d" class="graf graf--li graf-after--li">如果你用了上面这种语句，gcc将会重写你的sourcefile.c，因此你会丢失你所有的努力！</li><li name="67fa" id="67fa" class="graf graf--li graf-after--li">拜拜啦，source file！</li></ul><pre name="8c6b" id="8c6b" class="graf graf--pre graf-after--li">$ gcc -g</pre><ul class="postList"><li name="0b7f" id="0b7f" class="graf graf--li graf-after--pre">指示编译器在其输出中包括额外的调试信息。</li><li name="e095" id="e095" class="graf graf--li graf-after--li">我们建议您始终使用此选项集编译源代码，因为我们鼓励您使用诸如gdb（关于gbd的内容，我们会在Makefile的后面进行介绍）之类的调试器来提高熟练程度。</li><li name="37d2" id="37d2" class="graf graf--li graf-after--li">注意：该可选项生成的调试信息是针对gdb的，可能会导致其他调试器（例如dbx）出现问题。</li></ul><pre name="7459" id="7459" class="graf graf--pre graf-after--li">$ gcc -Wall</pre><ul class="postList"><li name="1bf0" id="1bf0" class="graf graf--li graf-after--pre">在源代码中给出有关可能错误的警告。</li><li name="ce81" id="ce81" class="graf graf--li graf-after--li">-Wall注意到的问题并不完全是错误，它们是编译器认为可能是错误的构造。我们强烈建议您使用-Wall编译代码。在编译时查找错误比运行时容易得多。</li><li name="01da" id="01da" class="graf graf--li graf-after--li">-Wall选项看起来有点麻烦，但这是值得的。如果的任务却不起作用，并且会产生-Wall警告，那么在30％的情况下，警告是解决问题的线索。 30％听起来可能不那么多，但是您必须感谢它——因为它是为你免费调试的。</li><li name="f4e5" id="f4e5" class="graf graf--li graf-after--li">有时-Wall警告实际上并不是问题。可能你的代码比较OK，并且只需要说服编译器去工作即可。但是不要忽略警告，尝试根据-Wall警告修复源代码以消除警告。习惯于产生“一些警告”的编译是一个非常不好的习惯。</li><li name="6a49" id="6a49" class="graf graf--li graf-after--li">下面是一段示例代码，您可以使用它一步来测试-Wall选项…</li></ul><pre name="5f4c" id="5f4c" class="graf graf--pre graf-after--li">int flag; </pre><pre name="d903" id="d903" class="graf graf--pre graf-after--pre">if (flag = IsPrime(13)) { <br>... <br>}</pre><ul class="postList"><li name="845f" id="845f" class="graf graf--li graf-after--pre">尽管在这种情况下赋值flag = IsPrime(13)是正确的，但是编译器会发出警告，提示可能是意外的分配。此警告将捕获您打算键入==而不是键入=的常见错误。为了消除警告，请重新编写代码以使测试明确…</li></ul><pre name="47ec" id="47ec" class="graf graf--pre graf-after--li">int flag; </pre><pre name="fddb" id="fddb" class="graf graf--pre graf-after--pre">if ((flag = IsPrime(13)) != 0) {<br>... <br>}</pre><ul class="postList"><li name="13e0" id="13e0" class="graf graf--li graf-after--pre">这消除了警告，并且生成的代码将与以前相同。或者，您可以将整个测试用另一组括号括起来以表明您的意图。这是付出很小的代价才能获得-Wall为您找到一些bug的机会。</li></ul><pre name="6ad9" id="6ad9" class="graf graf--pre graf-after--li">$ gcc -Idir</pre><ul class="postList"><li name="1162" id="1162" class="graf graf--li graf-after--pre">将目录dir添加到搜索#include文件的目录列表中。</li><li name="413a" id="413a" class="graf graf--li graf-after--li">编译器将自动搜索几个标准目录。使用此选项可以添加目录供编译器搜索。 “ -I”和目录名称dir之间没有空格。</li><li name="bcd6" id="bcd6" class="graf graf--li graf-after--li">如果编译由于找不到#include文件而失败，则需要-I对其进行修复。</li><li name="2928" id="2928" class="graf graf--li graf-after--li">附加：这是使用Unix“查找”命令查找#include文件的方法。本示例在/ usr / include目录中搜索所有包含模式为“ inet”的包含文件…</li></ul><pre name="0ad9" id="0ad9" class="graf graf--pre graf-after--li">$ find /usr/include -name &#39;*inet*&#39; </pre><pre name="050b" id="050b" class="graf graf--pre graf-after--pre">/usr/include/arpa/inet.h /usr/include/netinet /usr/include/netinet6</pre><ul class="postList"><li name="5b59" id="5b59" class="graf graf--li graf-after--pre">上面这个例子能帮助我们找到头文件，如果它也不奏效，试试从互联网上下载一个吧。</li></ul><pre name="d55a" id="d55a" class="graf graf--pre graf-after--li">$ gcc -Ldir</pre><ul class="postList"><li name="fd4c" id="fd4c" class="graf graf--li graf-after--pre">将目录dir添加到搜索-L标志指定的库文件的目录列表中。</li><li name="bccc" id="bccc" class="graf graf--li graf-after--li">在这里，选项标志和库目录名之间也没有空格。</li><li name="f4fc" id="f4fc" class="graf graf--li graf-after--li">如果由于找不到库文件而导致链接步骤失败，则需要-L，或者库文件名错误。</li></ul><pre name="4834" id="4834" class="graf graf--pre graf-after--li">$ gcc -lmylib</pre><ul class="postList"><li name="13fa" id="13fa" class="graf graf--li graf-after--pre">（小写“ l”）在linking时，在名为mylib的库中搜索未解析的符号（函数，全局变量）。该文件的实际名称将为libmylib.a，并且必须在库的默认位置或添加了-L标志的目录中找到。</li><li name="d1f6" id="d1f6" class="graf graf--li graf-after--li">-l标志在选项列表中的位置很重要，因为链接器不会返回以前检查过的库来查找未解析的符号。</li><li name="3f7d" id="3f7d" class="graf graf--li graf-after--li">例如，如果您使用的库需要Math Library，则它必须出现在命令行中的Math Library之前，否则将报告链接错误。</li><li name="31bf" id="31bf" class="graf graf--li graf-after--li">同样，选项标志和库文件名之间没有空格。</li><li name="a09b" id="a09b" class="graf graf--li graf-after--li">如果由于找不到符号而导致链接步骤失败，则需要使用-l来添加适当的库，或者使用某种错误的函数名或-Ldir全局变量进行编译</li><li name="dae1" id="dae1" class="graf graf--li graf-after--li graf--trailing">注意：这是小写的“ L”，而不是数字“ 1”。</li></ul></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/8698c1a51d2e"><time class="dt-published" datetime="2020-05-07T08:06:24.585Z">May 7, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B510-gcc%E6%8C%87%E5%8D%97-8698c1a51d2e" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

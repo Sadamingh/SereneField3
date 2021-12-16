@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Information Security Lab 8 | Pwntools</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Information Security Lab 8 | Pwntools</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+2. Cyclic Pattern
+</section>
+<section data-field="body" class="e-content">
+<section name="8c60" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="c44c" id="c44c" class="graf graf--h3 graf--leading graf--title">Information Security Lab 8 | Pwntools</h3><figure name="3e44" id="3e44" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*A7346OhQs-wJWSvy.png" data-width="1738" data-height="952" src="https://cdn-images-1.medium.com/max/800/0*A7346OhQs-wJWSvy.png"></figure><ol class="postList"><li name="c463" id="c463" class="graf graf--li graf--empty graf-after--figure"><br></li></ol><p name="264f" id="264f" class="graf graf--p graf-after--li"><strong class="markup--strong markup--p-strong">2. Cyclic Pattern</strong></p><p name="e4f0" id="e4f0" class="graf graf--p graf-after--p">Let’s first direct to the <code class="markup--code markup--p-code">tut03-pwntool</code> directory and start our discussion for Pwntools,</p><pre name="cf41" id="cf41" class="graf graf--pre graf-after--p">$ cd ~/tuts/lab03/tut03-pwntool</pre><p name="796a" id="796a" class="graf graf--p graf-after--pre">Recall that in the last section, we invoke the stack overflow problem by manually injecting a long enough input like,</p><pre name="8645" id="8645" class="graf graf--pre graf-after--p">$ echo AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJ &gt; /tmp/input</pre><p name="a16e" id="a16e" class="graf graf--p graf-after--pre">In fact, pwntools provide a convenient way to create such an input, which is commonly known as a “cyclic” input. We can create a simple one by the <code class="markup--code markup--p-code">cyclic</code> command,</p><pre name="6513" id="6513" class="graf graf--pre graf-after--p">$ cyclic 40<br>aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaa</pre><p name="8e23" id="8e23" class="graf graf--p graf-after--pre">To quickly locate the position of the return address in the input string, we can follow the following steps,</p><ul class="postList"><li name="1574" id="1574" class="graf graf--li graf-after--p">Check if the current input is long enough to invoke stack overflow,</li></ul><pre name="12c7" id="12c7" class="graf graf--pre graf-after--li">$ cyclic 40 | ./crackme0x00<br>IOLI Crackme Level 0x00<br>Password: Invalid Password!<br>Segmentation fault (core dumped)</pre><ul class="postList"><li name="780d" id="780d" class="graf graf--li graf-after--pre">Output the payload to a file</li></ul><pre name="c749" id="c749" class="graf graf--pre graf-after--li">$ cyclic 40 &gt; /tmp/input</pre><ul class="postList"><li name="2e01" id="2e01" class="graf graf--li graf-after--pre">Use <code class="markup--code markup--li-code">gdb</code> for debugging, and then get the return  address</li></ul><pre name="795a" id="795a" class="graf graf--pre graf-after--li">$ gdb crackme0x00<br>pwndbg&gt; r &lt; /tmp/input<br>...<br>Invalid address 0x61616167<br>...<br>pwndbg&gt; q</pre><ul class="postList"><li name="8d7d" id="8d7d" class="graf graf--li graf-after--pre">Quickly get the location of the return address by </li></ul><pre name="047e" id="047e" class="graf graf--pre graf-after--li">$ cyclic -l 0x61616167<br>24</pre><p name="2ed7" id="2ed7" class="graf graf--p graf-after--pre">The <code class="markup--code markup--p-code">cyclic</code> function is also provided by Pwntools. We can try this out by,</p><pre name="2d80" id="2d80" class="graf graf--pre graf-after--p">$ python<br>&gt;&gt;&gt; from pwn import *<br>&gt;&gt;&gt; cyclic(40)<br>&#39;aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaa&#39;<br>&gt;&gt;&gt; cyclic_find(0x61616167)<br>24<br>&gt;&gt;&gt; cyclic_find(&quot;gaaa&quot;)<br>24</pre><p name="4767" id="4767" class="graf graf--p graf-after--pre">And we can also create a payload by nesting these functions. For example,</p><pre name="f4cd" id="f4cd" class="graf graf--pre graf-after--p">&gt;&gt;&gt; cyclic(cyclic_find(0x61616167))<br>&#39;aaaabaaacaaadaaaeaaafaaa&#39;</pre><p name="f8ba" id="f8ba" class="graf graf--p graf-after--pre">By disassembling the binary, we are able to get the return address we want to execute. So the overall payload can be simply constructed by adding these things up,</p><pre name="be86" id="be86" class="graf graf--pre graf-after--p">cyclic(cyclic_find(????)) + p32(????)</pre><p name="4daf" id="4daf" class="graf graf--p graf-after--pre">To create a process of <code class="markup--code markup--p-code">crackme0x00</code>, we can write something like,</p><pre name="1590" id="1590" class="graf graf--pre graf-after--p">p = process(&quot;./crackme0x00&quot;)</pre><p name="4fda" id="4fda" class="graf graf--p graf-after--pre">And then, to send the payload to this process, we can use the <code class="markup--code markup--p-code">sendline</code> method, </p><pre name="f7e2" id="f7e2" class="graf graf--pre graf-after--p">p.sendline(payload)</pre><p name="96db" id="96db" class="graf graf--p graf-after--pre">You can modify the <code class="markup--code markup--p-code">exploit1.py</code> script and hijack the control flow of <code class="markup--code markup--p-code">crackme0x00</code> to <code class="markup--code markup--p-code">0xdeadbeef</code> by using <code class="markup--code markup--p-code">cyclic_find()</code> and <code class="markup--code markup--p-code">p32()</code> functions. Then we can run this script by,</p><pre name="8ab7" id="8ab7" class="graf graf--pre graf-after--p">$ python exploit1.py<br>[+] Starting local process &#39;./crackme0x00&#39;: pid 5121<br>[*] Switching to interactive mode<br>IOLI Crackme Level 0x00<br>Password: Invalid Password!<br>[*] Got EOF while reading in interactive<br>$ <br>[*] Process &#39;./crackme0x00&#39; stopped with exit code -11 (SIGSEGV) (pid 5121)<br>[*] Got EOF while sending in interactive</pre><p name="cfce" id="cfce" class="graf graf--p graf-after--pre"><strong class="markup--strong markup--p-strong">3. Check Security</strong></p><p name="90f2" id="90f2" class="graf graf--p graf-after--p">When we have a binary file, we can check its security mechanisms by using the <code class="markup--code markup--p-code">checksec</code> command, and the source code of this command can be found from <a href="https://github.com/slimm609/checksec.sh/" data-href="https://github.com/slimm609/checksec.sh/" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">here</a>. For example, we can use this command for <code class="markup--code markup--p-code">crackme0x00</code>, </p><pre name="8839" id="8839" class="graf graf--pre graf-after--p">$ checksec ./crackme0x00<br>[*] &#39;/home/vagrant/tuts/lab03/tut03-pwntool/crackme0x00&#39;<br>    Arch:     i386-32-little<br>    RELRO:    Partial RELRO<br>    Stack:    No canary found<br>    NX:       NX disabled<br>    PIE:      No PIE (0x8048000)<br>    RWX:      Has RWX segments</pre><ul class="postList"><li name="333a" id="333a" class="graf graf--li graf-after--pre"><code class="markup--code markup--li-code">Stack: No canary found</code> means that we have no canary protection on the stack so that we can invoke the stack overflow problem</li><li name="a6c9" id="a6c9" class="graf graf--li graf-after--li"><code class="markup--code markup--li-code">NX: NX disabled</code> means that the memory space such as stack is executable, so we can put our shellcode onto the stack</li></ul><p name="27c0" id="27c0" class="graf graf--p graf--empty graf-after--li"><br></p><p name="cbea" id="cbea" class="graf graf--p graf--empty graf-after--p"><br></p><p name="f3e2" id="f3e2" class="graf graf--p graf--empty graf-after--p"><br></p><p name="947c" id="947c" class="graf graf--p graf--empty graf-after--p"><br></p><p name="7f01" id="7f01" class="graf graf--p graf--empty graf-after--p graf--trailing"><br></p></div></div></section>
+</section>
+<footer><p><a href="https://medium.com/p/123df98a32c6">View original.</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

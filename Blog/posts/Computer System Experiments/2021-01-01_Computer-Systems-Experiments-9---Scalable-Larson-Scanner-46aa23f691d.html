@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Computer Systems Experiments 9 | Scalable Larson Scanner</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Computer Systems Experiments 9 | Scalable Larson Scanner</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Series: Computer Systems Experiments
+</section>
+<section data-field="body" class="e-content">
+<section name="5f79" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="8fa5" id="8fa5" class="graf graf--h3 graf--leading graf--title">Computer Systems Experiments 9 | Scalable Larson Scanner</h3><figure name="9004" id="9004" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="0*HiiYAzxlGPdzRDsj.png" data-width="1530" data-height="1104" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/0*HiiYAzxlGPdzRDsj.png"></figure><p name="91fb" id="91fb" class="graf graf--p graf-after--figure">This experiment is just a simple application of our last experiment. The word “scalable” actually means that we can change the length of the scanner by changing just one line of the code. For example, we have 8 LEDs and we want to make the scanner shorter, to 4 LEDs (Only GPIO 20 to GPIO 23 will work). The code for this feature is,</p><pre name="1a19" id="1a19" class="graf graf--pre graf-after--p">.equ DELAY, 0x3F0000<br>.equ AMOUNT, 4   // set the scale of 2-8 LEDs</pre><pre name="8a72" id="8a72" class="graf graf--pre graf-after--pre">// set output to GPIO 20 to 27<br>ldr r0, FSEL2<br>ldr r1, =0x00249249<br>str r1, [r0]</pre><pre name="fd8b" id="fd8b" class="graf graf--pre graf-after--pre">// set the starting status<br>mov r1, #(1&lt;&lt;20) // current pin<br>mov r3, #1<br>mov r4, #(1&lt;&lt;20)<br>mov r5, #(1&lt;&lt;18)<br>lsl r4, #AMOUNT<br>lsl r5, #AMOUNT</pre><pre name="6864" id="6864" class="graf graf--pre graf-after--pre">loop:<br>  ldr r0, SET0<br>  str r1, [r0]</pre><pre name="8018" id="8018" class="graf graf--pre graf-after--pre">  // delay a certain time<br>  mov r2, #DELAY<br>  wait1:<br>      subs r2, r2, #1<br>      bne wait1</pre><pre name="2246" id="2246" class="graf graf--pre graf-after--pre">  // clear GPIO status<br>  ldr r0, CLR0<br>  str r1, [r0]</pre><pre name="1834" id="1834" class="graf graf--pre graf-after--pre">  tst r3, #1<br>  bne forward<br>  beq backward<br> <br>forward:<br>  lsl r1, #1<br>  b compar</pre><pre name="ea0b" id="ea0b" class="graf graf--pre graf-after--pre">backward:<br>  lsr r1, #1<br>  b compar</pre><pre name="117a" id="117a" class="graf graf--pre graf-after--pre">compar:<br>  cmp r1, r4<br>  moveq r1, r5<br>  moveq r3, #2</pre><pre name="3081" id="3081" class="graf graf--pre graf-after--pre">  cmp r1, #(1&lt;&lt;19)<br>  moveq r1, #(1&lt;&lt;21)<br>  moveq r3, #1</pre><pre name="11dd" id="11dd" class="graf graf--pre graf-after--pre">  b loop</pre><pre name="898c" id="898c" class="graf graf--pre graf-after--pre">FSEL2: .word 0x20200008<br>SET0: .word 0x2020001c<br>CLR0: .word 0x20200028</pre><p name="c9da" id="c9da" class="graf graf--p graf-after--pre graf--trailing">Note that we can change the second line of this code to change the length of our scanner. You can also find this code form my <a href="https://github.com/Sadamingh/ComputerSysE/tree/main/Larson%20Scanner-Scalable" data-href="https://github.com/Sadamingh/ComputerSysE/tree/main/Larson%20Scanner-Scalable" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">repo</a>. In the next experiment, we are going to change the brightness of LEDs to make a smoother scanner.</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/46aa23f691d"><time class="dt-published" datetime="2021-01-01T11:29:08.425Z">January 1, 2021</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/computer-systems-experiments-9-scalable-larson-scanner-46aa23f691d" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>

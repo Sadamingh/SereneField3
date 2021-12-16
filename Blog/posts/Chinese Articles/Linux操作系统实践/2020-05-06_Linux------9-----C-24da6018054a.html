@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Linux操作系统实践9 从汇编到C</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Linux操作系统实践9 从汇编到C</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+系列：Linux操作系统实践
+</section>
+<section data-field="body" class="e-content">
+<section name="7407" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="39d2" id="39d2" class="graf graf--h3 graf--leading graf--title">Linux操作系统实践9 从汇编到C</h3><figure name="3da7" id="3da7" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*beSHA3cQNnPOOKl4ypDgfw.jpeg" data-width="2689" data-height="1513" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*beSHA3cQNnPOOKl4ypDgfw.jpeg"></figure><p name="5121" id="5121" class="graf graf--p graf-after--figure">在这一章节中，我们先会介绍之前没有明确的汇编语言中的其他问题，比如NZCV标志位，Shift位等等。</p><p name="338f" id="338f" class="graf graf--p graf-after--p">一、ARM汇编的第二个操作数（0～11位）</p><p name="cc5d" id="cc5d" class="graf graf--p graf-after--p">我们之所以会将ARM汇编中的第二个操作数单独拿出来讨论，就是因为它具有一部分ARM汇编中比较独特的性质。</p><figure name="446a" id="446a" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*gNc81i8pDqYkd3dX216Chg.png" data-width="1342" data-height="388" src="https://cdn-images-1.medium.com/max/800/1*gNc81i8pDqYkd3dX216Chg.png"></figure><p name="a851" id="a851" class="graf graf--p graf-after--figure">我们上一部分中已经说过了，当存在立即数（i=1）时，0～7位是立即数（8bits），8～11位是RoR（4bits）；当不存在立即数（i=0）时，0～3位是寄存器（4bits），4～11位是Shift（8bits）。</p><p name="2031" id="2031" class="graf graf--p graf-after--p">什么是Shift呢？Shift是在特殊的指令下才会被使用的字段，这些特殊的指令包括lsl指令（Logical Shift Left，type值为00）、lsr指令（Logical Shift Right，值为01）、asr指令（Arithmetic Shift Right，值为10）、以及ror（Rotate Right，值为11）指令。下面一张图说明了在Shift内部是如何规定这些语句的：</p><figure name="d0de" id="d0de" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*cWkOW5B6nhfmNuhjeWKF1A.png" data-width="1100" data-height="394" src="https://cdn-images-1.medium.com/max/800/1*cWkOW5B6nhfmNuhjeWKF1A.png"></figure><p name="078b" id="078b" class="graf graf--p graf-after--figure">二、控制流Control Flow</p><p name="f57e" id="f57e" class="graf graf--p graf-after--p">指令在内存中是连续存储的。寄存器PC（r15）跟踪的是在内存中指令被读取的位置，默认的指令前进方向是顺序的，这表示执行完一个指令之后，PC = PC + 4。但是branch指令会改变这种顺序。通过改变fetch instruction的过程，一个branch指令可以修改PC寄存器内的值，从而实现跳转。</p><p name="7bd3" id="7bd3" class="graf graf--p graf-after--p">三、条件码Conditional Code</p><p name="994d" id="994d" class="graf graf--p graf-after--p">我们在之前已经介绍过NZCV条件码的概念，那么什么样的指令会修改（set or clear）条件码呢？比如下面的指令等：</p><ul class="postList"><li name="9c02" id="9c02" class="graf graf--li graf-after--p">CMP：相当于丢弃result的SUB指令，修改条件码</li><li name="dfec" id="dfec" class="graf graf--li graf-after--li">TST：相当于丢弃result的AND指令，修改条件码</li><li name="a7f8" id="a7f8" class="graf graf--li graf-after--li">TEQ：相当于丢弃result的ORR指令，修改条件码</li><li name="d31d" id="d31d" class="graf graf--li graf-after--li">SUBS：相当于修改条件码的SUB指令</li><li name="8898" id="8898" class="graf graf--li graf-after--li">MOVS：相当于修改条件码的MOV指令</li><li name="388e" id="388e" class="graf graf--li graf-after--li">……</li></ul><p name="0364" id="0364" class="graf graf--p graf-after--li">另外，指令尾缀和条件码的判断关系对应如下（我们在上一章展示过类似的东西）。</p><figure name="87f6" id="87f6" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*mnB0XnuAWg0AinLo0cAuyg.png" data-width="1440" data-height="528" src="https://cdn-images-1.medium.com/max/800/1*mnB0XnuAWg0AinLo0cAuyg.png"></figure><p name="1d3b" id="1d3b" class="graf graf--p graf-after--figure">这里我们简单做一个常见的跳转指令的解释：</p><p name="ca12" id="ca12" class="graf graf--p graf-after--p">B</p><ul class="postList"><li name="5f79" id="5f79" class="graf graf--li graf-after--p">无条件跳转指令，不需要判断任何标志位</li></ul><p name="45e6" id="45e6" class="graf graf--p graf-after--li">BNE</p><ul class="postList"><li name="f310" id="f310" class="graf graf--li graf-after--p">Branch Not Equal指令，前面的结果不相等则跳转指令</li></ul><p name="4df3" id="4df3" class="graf graf--p graf-after--li">BMI</p><ul class="postList"><li name="7217" id="7217" class="graf graf--li graf-after--p">Branch Minus / Negative指令，指的是前面的结果是负数（1开头）则跳转指令</li></ul><p name="144f" id="144f" class="graf graf--p graf-after--li">BGE</p><ul class="postList"><li name="1eaf" id="1eaf" class="graf graf--li graf-after--p">Branch Signed Greater than or Equal指令，指的是两个数比较操作数2比操作数1大的情况（当然实际上也可能不是，这取决于上一步指令）</li></ul><p name="76c0" id="76c0" class="graf graf--p graf-after--li">另外，我们还介绍过机器码的前四位是Conditional Field，在之前的例子中，我们都将前四位值赋值为1110（0xE），它其实也是上面的表格中AL的判断。所以实际上，对于所有的指令，我们都可以为它追加执行条件，例如ADDEQ指令，SUBMI指令，这些在ARM指令体系中都是合法的语法。</p><p name="9db3" id="9db3" class="graf graf--p graf-after--p">四、On状态计数器</p><p name="f794" id="f794" class="graf graf--p graf-after--p">假设我们给定一个十六进制数，我们想要得到这个十六进制数中有多少位处于On的状态（值 = 1），我们可以编写一个汇编程序代码进行计数。这个给定的十六进制数&lt;chr&gt;被我们预先储存在r0寄存器中。</p><pre name="a3bc" id="a3bc" class="graf graf--pre graf-after--p">mov r0, &lt;chr&gt;</pre><p name="9759" id="9759" class="graf graf--p graf-after--pre">例如，我们给定二进制数0011 1010（0x3A），我们来计算里面有多少个1。</p><pre name="a392" id="a392" class="graf graf--pre graf-after--p">mov r0, #0x3A</pre><p name="ccf3" id="ccf3" class="graf graf--p graf-after--pre">我们先开辟一个新的寄存器，它的目的是用来存储我们的累计计数，它的值从0开始，我们每次得到一个1，它就会增加1。</p><pre name="69af" id="69af" class="graf graf--pre graf-after--p">mov r1, #0</pre><p name="1e31" id="1e31" class="graf graf--p graf-after--pre">之后我们来设计我们的计数程序。我们的算法是这样的，我们通过给定的数和立即数1做AND运算，他会计算给定数字的最低位和1之间的关系：如果结果是0，那么我们就可以得到一个Z=1标志位，如果结果是1，我们就能得到一个Z=0的标志位。所以，我们可以通过这个计算来判断最低位的值。之后我们再通过右移动给定的数值，来将高位移动到低位，循环判断并且计数直到这个给定的数值被我们右移到0。这意味着我们完成了计数，便可以退出循环。这个代码的实例如下：</p><pre name="58fa" id="58fa" class="graf graf--pre graf-after--p">loop<br>  tst  r2, r0, #1<br>  addne r1, r1, #1<br>  lsrs  r0, r0, #1<br>  bne  loop</pre><p name="033c" id="033c" class="graf graf--p graf-after--pre">最后，我们可以在r1中得到我们想要的结果：On状态的计数。</p><figure name="09c8" id="09c8" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*YHOG0VadCQVjL2x6p07mVQ.png" data-width="2040" data-height="1296" src="https://cdn-images-1.medium.com/max/800/1*YHOG0VadCQVjL2x6p07mVQ.png"></figure><p name="e1c7" id="e1c7" class="graf graf--p graf-after--figure">五、Branch指令的跳转范围</p><p name="914d" id="914d" class="graf graf--p graf-after--p">Branch指令可以跳转到某一个给定的Label处，可是这种跳转是随意的吗？我们知道，对于一个Branch指令来说，它的前四位一定是用来判断条件的，因此，实际上我们能跳转到的范围就一定是小于32 - 4 = 28位的（实际上只有24位被用来储存跳转的目标）。Branch机器码的结构如下图所示：</p><figure name="8557" id="8557" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*lS6-UhbyGIskSy8UmJtGcQ.png" data-width="1354" data-height="430" src="https://cdn-images-1.medium.com/max/800/1*lS6-UhbyGIskSy8UmJtGcQ.png"></figure><p name="4f4e" id="4f4e" class="graf graf--p graf-after--figure">由于Target字段的长度限制，我们不可能做到任意跳转。我们只有24个位可以用于区别Target，这将导致我们只能跳转到PC+/- 2²⁴的位置（或者可以理解为跳转到PC前后各2²⁴ = 16,777,216Bytes = 16Mb的范围，也即为PC两端32Mb的总范围）。</p><p name="c024" id="c024" class="graf graf--p graf-after--p">六、从汇编语言到C语言</p><p name="e142" id="e142" class="graf graf--p graf-after--p">比起汇编语言，C语言有着更多让我们喜欢的特性，它允许我们写更短、更直观的代码！</p><p name="44d6" id="44d6" class="graf graf--p graf-after--p">我们先来通过网站：<a href="https://godbolt.org/" data-href="https://godbolt.org/" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">Godblot</a>来了解C代码的编译。我们通过下图中的配置可以让它变得和我们的ARM指令和硬件（16个寄存器）一致。</p><figure name="c582" id="c582" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*mqQllb3erRBbe5tl83yxow.png" data-width="1578" data-height="494" src="https://cdn-images-1.medium.com/max/800/1*mqQllb3erRBbe5tl83yxow.png"><figcaption class="imageCaption">选择Godblot编译方式</figcaption></figure><p name="426e" id="426e" class="graf graf--p graf-after--figure">我们之前配置的编译工具是汇编语言转码器AS，如果你还记得的话，它的全称是arm-none-eabi-as，我们曾经把它称为arm-none-eabi-as工具链，是通过Homebrew下载下来的。它的功能是将Assembly Code转换成Object Code。</p><p name="7e8d" id="7e8d" class="graf graf--p graf-after--p">为了编译C语言到Object Code，我们需要新的编译器，它需要先将C语言编译为Assembly Code，然后再将Assembly Code转换为Object Code。这里我们需要用到的编译器就是大名鼎鼎的gcc编译器（GNU C Compiler）。</p><p name="c4f9" id="c4f9" class="graf graf--p graf-after--p graf--trailing">我们在这一章里不会仔细探讨太多关于C编译器的问题，我们在之后的部分会仔细介绍它。</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@adamedelweiss" class="p-author h-card">Adam Edelweiss</a> on <a href="https://medium.com/p/24da6018054a"><time class="dt-published" datetime="2020-05-06T06:14:08.120Z">May 6, 2020</time></a>.</p><p><a href="https://medium.com/@adamedelweiss/linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B59-%E4%BB%8E%E6%B1%87%E7%BC%96%E5%88%B0c-24da6018054a" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 15, 2021.</p></footer></article></body></html>
