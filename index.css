@@ -7,6 +7,7 @@ ul {
   padding:0;*/
   justify-content: center;
   display:flex;
+  padding-left: 0px;
 }
 
 ul li {
@@ -18,7 +19,7 @@ ul li a {
   height:50px;
   display:block;
   text-align:center;
-  margin:20px;
+  margin:15px;
   border-radius: 50%;
   padding: 6px;
   box-sizing: border-box;
@@ -39,8 +40,8 @@ ul li a .fab {
   display:block;
   background: linear-gradient(0deg, #fff, #ddd);
   border-radius: 50%;
-  line-height: calc(60px - 12px);
-  font-size:24px;
+  line-height: 40px;
+  font-size:20px;
   color: #262626;
   transition: .5s;
 }
