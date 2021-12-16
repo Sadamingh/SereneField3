@@ -1,0 +1,44 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #ffffff;
+  padding: 0px;
+}
+
+.grid-item {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0);
+  padding: 20px;
+  font-size: 16px;
+  text-align: center;
+}
+
+  /* initial link */
+a:link, a:visited {
+  color: #000000;
+  text-decoration: none;
+}
+
+/* mouse over or select link */
+a:hover, a:active {
+  color: rgba(0, 0, 255, 0.8);
+  text-decoration: none;
+}
+
+.search-box {
+  margin-bottom: 20px;
+}
+
+.search-box input {
+  height: 20px;
+}
+
+.search-box button {
+  height: 26px;
+  width: 26px;
+  padding: 0px;
+}
+
+i {
+  font-size: 13px;
+}
