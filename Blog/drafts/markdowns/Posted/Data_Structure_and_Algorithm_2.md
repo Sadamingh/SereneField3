@@ -22,7 +22,7 @@ We can assume that the `connected` is defined as the following relations,
 
 The connected components are defined as the maximal set of objects that are manually connected. For example, the following connected graph has the connected components of `{ 0 } { 1 4 5 } { 2 3 6 7 }`.
 
-![image-20211220092358843](/Users/apple/Library/Application Support/typora-user-images/image-20211220092358843.png)
+![image-20211220092358843](../../image/image-20211220092358843.png)
 
 
 
@@ -144,7 +144,7 @@ Because quick-find is an eager algorithm, it can be too slow and expensive. It t
 
 For example, suppose we have 10⁹ union objects, the quick-find algorithm would take more than 10¹⁸ operations, this means over 30 years of computing time.
 
-![image-20211220130657342](/Users/apple/Library/Application Support/typora-user-images/image-20211220130657342.png)
+![image-20211220130657342](../../image/image-20211220130657342.png)
 
 **3. Quick-Union**
 
@@ -226,7 +226,7 @@ public class QuickUnionUF {
 
 The result of Quick-Union should be a data structure of the tree. For example,
 
-![image-20211220132222967](/Users/apple/Library/Application Support/typora-user-images/image-20211220132222967.png)
+![image-20211220132222967](../../image/image-20211220132222967.png)
 
 
 
