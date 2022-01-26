@@ -20,13 +20,13 @@ The response variable is the variable of the primary interest. This is what need
 
 #### (3) The Definition of Factors
 
-Factors are also called covariates, explainatory variables, predictors, or features. These variables are thought to influence the response. 
+Factors are also called covariates, explanatory variables, predictors, or features. These variables are thought to influence the response. 
 
 #### (4) The Definition of Levels
 
-Levels are the values that a factor takes on in an experiment.Levels can be either numeric or categorical according to the factors.
+Levels are the values that a factor takes on in an experiment. Levels can be either numeric or categorical according to the factors.
 
-#### (5) The Definition of Experiment Conditions
+#### (5) The Definition of Experiment Conditions 
 
 Experiment conditions are the unique combinations of levels of one or more factors. For a single-factor experiment, the levels are exactly the conditions.
 
@@ -40,7 +40,7 @@ An experiment is composed of a collection of conditions defined by purposeful ch
 
 #### (8) The Problem of Experiments
 
-It would be nice if we could observe the same units and how they behave in each experimental condition, but we can not do that because we can only observe their response in a single condition. So the conterfactual part is the hypothetical and unobservable value of a unit's response in a condition to which they were not assigned because counterfactuals can not be observed. Therefore, a proxy is required.
+It would be nice if we could observe the same units and how they behave in each experimental condition, but we can not do that because we can only observe their response in a single condition. So the counterfactual part is the hypothetical and unobservable value of a unit's response in a condition to which they were not assigned because counterfactuals can not be observed. Therefore, a proxy is required.
 
 The solution for this problem is that we assign different units to different conditions and compare their responses. Ideally, the only difference between the units in each condition is the fact that they are in different conditions, so we want the units to be as homogeneous as possible and this will help facilitate casual influence. Commonly, this can be achieved typically by **randomizator**. 
 
@@ -83,7 +83,7 @@ In the planning stage, the experiment is designed and all pre-experimental quest
 
 #### (4) Data
 
-In the data stage, the data are collected according to the **plan**. It is extremely important that this step be done correctly and the suitability and ectiveness of the analysis relies on the data being collected correctly.
+In the data stage, the data are collected according to the **plan**. It is extremely important that this step be done correctly and the suitability and activeness of the analysis relies on the data being collected correctly.
 
 #### (5) Analysis
 
