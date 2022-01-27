@@ -1,6 +1,6 @@
 ### Advanced Machine Learning 1 | Recommender System
 
-![aml](/Users/apple/Dropbox/SereneField3/Blog/image/aml.png)
+![aml](../../image/aml.png)
 
 #### 1. Trends in Today's Machine Learning
 
@@ -84,7 +84,7 @@ Y \approx \hat{Y} = UV^T
 $$
 For example, suppose we have $K = 2$ latent factors with 7 users and 5 items. Then the following matrix fractorization can be give through our definition.
 
-<img src="/Users/apple/Dropbox/SereneField3/Blog/image/Screen Shot 2022-01-27 at 1.00.47 AM.png" alt="Screen Shot 2022-01-27 at 1.00.47 AM" style="zoom:47%;" />
+<img src="../../image/Screen Shot 2022-01-27 at 1.00.47 AM.png" alt="Screen Shot 2022-01-27 at 1.00.47 AM" style="zoom:47%;" />
 
 **(7) Matrix Fractorization Optimization** 
 

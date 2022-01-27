@@ -1,6 +1,6 @@
 ### Non-Relational Database 1 | MongoDB Installation and NoSQL Introduction
 
-![mongodb](/Users/apple/Dropbox/SereneField3/Blog/image/mongodb.png)
+![mongodb](../../image/mongodb.png)
 
 #### 1. Installation
 
