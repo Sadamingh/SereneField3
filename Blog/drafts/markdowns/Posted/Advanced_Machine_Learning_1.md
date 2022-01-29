@@ -72,11 +72,16 @@ user 4      item C      5
 
 The downside of this utility matrix is that the data is always very sparse with only 1% valid information. Also, the number of columns (or the number of items) can be very large so that finding matches to less popular items could be difficult.
 
-**(5) The Definition of Latent Factors**
+**(5) Two Types of Collaborative Filtering Systems**
+
+* Memory Based: memorize the utility matrix and make recommendatiions based on the relationship based on the KNN algorithm
+* Model Based: fit a parameterized model to give utility matrix and then make recommendations based on that model. The common method of fitting this parameterized model is called matrix factorization or UV decomposition.
+
+**(6) The Definition of Latent Factors**
 
 The latent variables are variables that can not be observed, but they can be inferred from other variables that are observed. 
 
-**(6) Utility Matrix Fractorization**
+**(7) Utility Matrix Factorization**
 
 In order to make predictions of the ratings, we have to decompose the utility matrix $Y$. Let's suppose we have $K$ latent factors and the user matrix $U$ is an $M \times K$ matrix (where $M$ is the number of the users), and $V$ is an $N \times K$ matrix (where $N$ is the number of items). So we have,
 $$
@@ -86,7 +91,7 @@ For example, suppose we have $K = 2$ latent factors with 7 users and 5 items. Th
 
 <img src="../../image/Screen Shot 2022-01-27 at 1.00.47 AM.png" alt="Screen Shot 2022-01-27 at 1.00.47 AM" style="zoom:47%;" />
 
-**(7) Matrix Fractorization Optimization** 
+**(8) Matrix Fractorization Optimization** 
 
 To optimize the matrix fractorization, we can construct the loss function as,
 $$
