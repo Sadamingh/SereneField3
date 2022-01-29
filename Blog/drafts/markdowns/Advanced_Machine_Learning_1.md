@@ -95,6 +95,58 @@ For example, suppose we have $K = 2$ latent factors with 7 users and 5 items. Th
 
 To optimize the matrix fractorization, we can construct the loss function as,
 $$
-\min _{u_{i}, v_{j}} \frac{1}{N} \sum_{(i, j): r_{i j}=1}\left(y_{i j}-u_{i} v_{j}\right)^{2}
+Loss = \text{training error} = \frac{1}{N} \sum_{(i, j): r_{i j}=1}\left(y_{i j}-u_{i} v_{j}\right)^{2}
 $$
 Where $r_{ij} = 1$ if the user $i$ rated item $j$. Otherwise, $r_{ij} = 0$.
+
+Therefore, we have to minimize the loss for optimization.
+$$
+\min _{u_{i}, v_{j}} Loss
+$$
+Here, the method we are going to use is the gradient descent, which is generally,
+$$
+w \leftarrow w + \eta\nabla Loss
+$$
+We have talked about different gradient methods in [this article](https://serenefield.com/Blog/posts/IntrotoMachineLearning/2021-11-11_Intro-to-Machine-Learning-2---Linear-Model-Regularization-and-Various-Types-of-Gradient-Descents-2ea9f5aa1294.html) and please review them if you need. Notice that momentum gradient descent is a simple by efficency method that we can use for this optimization. The moving average of the current gradient and the history gradients are defined as,
+$$
+v \leftarrow \gamma v+(1-\gamma) \nabla Loss
+$$
+Then,
+$$
+w \leftarrow w + \eta v
+$$
+The gradients for the loss function we have above are,
+$$
+\begin{aligned}
+&\frac{\partial E}{\partial u_{i k}}=-\frac{2}{N} \sum_{j: r_{i j}=1}\left(y_{i j}-u_{i} \cdot v_{j}\right) v_{j k} \\
+&\frac{\partial E}{\partial v_{j k}}=-\frac{2}{N} \sum_{i: r_{i j}=1}\left(y_{i j}-u_{i} \cdot v_{j}\right) u_{i k}
+\end{aligned}
+$$
+Which can also be written to the matrix form of
+$$
+\begin{aligned}
+&\frac{\partial E}{\partial U}=-\frac{2}{N} \Delta \cdot V \\
+&\frac{\partial E}{\partial V}=-\frac{2}{N} \Delta^{T} \cdot U
+\end{aligned}
+$$
+Where $\Delta$ is defined as,
+$$
+\Delta=\left(Y-U \cdot V^{T}\right) \otimes R 
+$$
+And $\otimes $ means element-wise multiplication.
+
+**(9) Predictions and Validations**
+
+To make a prediction about the rating of user $i$ to item $j$ based on the model we have fitted, 
+$$
+\text{prediction}_{ij} = \hat{y}_{ij} = u_{i} v_{j}
+$$
+Based on the loss function above, we have known that the training error is,
+$$
+\text{training error} = \frac{1}{N} \sum_{(i, j):\ r_{i j}=1}\left(y_{i j}-u_{i} v_{j}\right)^{2}
+$$
+Then, suppose we are given a validation set with some user ratings not existing in training set (means $r_{ij} = 0$ ). Then with this new validation set, we can calculate the validation error as,
+$$
+\text{validation error} = \frac{1}{N} \sum_{(i, j):\ val_{i j}=1}\left(y_{i j}-u_{i} v_{j}\right)^{2}
+$$
+Where $val_{ij} = 1$ means the data point of user $i$ rated item $j$ in the validation set. 
