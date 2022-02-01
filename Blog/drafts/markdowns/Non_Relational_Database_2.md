@@ -179,16 +179,20 @@ db.collection_name.updateMany({"field" : value}, {$inc : {"field_inc" : 5}})
 db.collection_name.updateMany({}, {$rename : {"field_1" : "field_2"}})
 ```
 
-* Make a field `field_min` no less than 5 in all documents
+* Make a field `field_min` **no more than** 5 in all documents
 
 ```
 db.collection_name.updateMany({}, {$min : {"field_min" : 5}})
+// 6 -> 5
+// 4 -> 4
 ```
 
-* Make a field `field_max` no more than 5 in all documents
+* Make a field `field_max` **no less than** 5 in all documents
 
 ```
 db.collection_name.updateMany({}, {$max : {"field_max" : 5}})
+// 6 -> 6
+// 4 -> 5
 ```
 
 * Add `element` to the end of the array value of field `field_array` in all documents
