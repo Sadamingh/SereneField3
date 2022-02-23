@@ -1,4 +1,4 @@
-### Non-Relational Database  | 
+### Non-Relational Database 4 | Aggregation Operations
 
-![mongodb](/Users/apple/Dropbox/SereneField3/Blog/image/mongodb.png)
+![mongodb](../../image/mongodb.png)
 
