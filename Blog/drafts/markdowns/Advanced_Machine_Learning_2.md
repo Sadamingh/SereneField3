@@ -108,7 +108,7 @@ class g:
 
 So, to cauculate the $f'_x(g(x))$ value, and the `d_out` passed to backward of the first box should be the value returned by the backward of the second box. The 1 at the end is to start off the chain rule process with a value for `d_out`.
 
-<img src="/Users/apple/Dropbox/SereneField3/Blog/image/Screen Shot 2022-02-04 at 2.13.44 AM.png" alt="Screen Shot 2022-02-04 at 2.13.44 AM" style="zoom:55%;" />
+<img src="../../image/Screen Shot 2022-02-04 at 2.13.44 AM.png" alt="Screen Shot 2022-02-04 at 2.13.44 AM" style="zoom:55%;" />
 
 Now, let's see an example. Suppose we want to calculate the derivate of $f(g(x)) = sin(x^2)$ at $x = 3$. Based on chain rule, we can derive that,
 $$
@@ -189,7 +189,7 @@ Then, let's suppose we first compute the backward of the $log$ function. From th
 $$
 log'_x(\text{last_step_forward}) \times d_{out} = log'_x(z)
 $$
-<img src="/Users/apple/Dropbox/SereneField3/Blog/image/Screen Shot 2022-02-04 at 11.20.29 AM.png" alt="Screen Shot 2022-02-04 at 11.20.29 AM" style="zoom:40%;" />
+<img src="../../image/Screen Shot 2022-02-04 at 11.20.29 AM.png" alt="Screen Shot 2022-02-04 at 11.20.29 AM" style="zoom:40%;" />
 
 So the next issue is that, it sames that we can continue to backward to both the green box and the blue box, but the order of the backward pass really matters. Actually, in this case we have to perform the blue box as the next backward step instead of the green one, but how can the machine know that?
 
