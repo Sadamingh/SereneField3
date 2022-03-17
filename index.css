@@ -1,1 +1,16 @@
+#title {
+  background-color: #3B3B3B;
+}
 
+.title-icon {
+  padding: 0 0 0 10%;
+}
+
+.title-icon img {
+  width: 120;
+}
+
+.nav-link {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
