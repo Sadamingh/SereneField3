@@ -3,6 +3,10 @@ body {
   border: unset;
 }
 
+div {
+  margin-bottom: -1px;
+}
+
 .container-custom-1 {
   padding: 15 30 0 30;
 }
