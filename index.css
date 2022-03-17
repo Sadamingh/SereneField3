@@ -101,3 +101,23 @@ a.fab {
 .pixelstyle {
   font-family: 'Press Start 2P', cursive;
 }
+
+.text-reset {
+  text-decoration: none;
+}
+
+.linkedin:hover {
+  color: #0e76a8;
+}
+
+.github:hover {
+  color: #563d7c;
+}
+
+.gmail:hover {
+  color: #bb001b;
+}
+
+.twr:hover {
+  color: #1da1f2;
+}
