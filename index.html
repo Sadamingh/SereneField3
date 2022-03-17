@@ -15,7 +15,7 @@
 	<!-- Font-style -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Press+Start+2P&display=swap" rel="stylesheet">
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-QFX7BH309B"></script>
 	<script>
@@ -115,7 +115,7 @@
 	<section id="downbutton">
 
 		<div class="scrowdownbtn">
-			<button type="button" class="btn btn-outline-light btn-md"><i class="fa fa-angle-down"></i></button>
+			<a href="#whatiwanttosay" class="btn btn-outline-light btn-md" role="button" aria-disabled="true"><i class="fa fa-angle-down"></i></button></a>
 		</div>
 
 	</section>
@@ -123,19 +123,36 @@
 	<section id="whatiwanttosay">
 
 		<div class="text">
-			<h1 class="text-center">Foreword</h1>
-			<p>Hiya, here's Yufeng Xing, or you can call me Adam Edelweiss.</p>
-			<p>This is the 3rd blog of mine (So I call it SereneField3) and it's a free
-				 place for me to share my knowledge.</p>
-			<p>Currently, I am building this webpage continuously so it can be messy
-				when you access some pages of it. I think I should be appologize for that.
-				I know someone may use Wordpress or Medium for their blogs but I don't like
-				 them. Because I have to build my blog from scrach, it may take some time
-				  to become perfect.</p>
-			<p>Hope you like my articles. Enjoy!</p>
-			<p>Adam</p>
-			<p>March 16, 2022</p>
+
+			<div class="card">
+		  	<h5 class="card-header text-center header">- FOREWORD -</h5>
+			  <div class="card-body">
+					<p class="hand-write">Hiya, here's Yufeng Xing, or you can call me Adam Edelweiss.
+						 If you want to know more about me, you can simply click on the following link.</p>
+					<p class="hand-write">This is the 3rd blog of mine (So I call it SereneField3) and it's a free
+						 place for me to share my knowledge.</p>
+					<p class="hand-write">Currently, I am building this webpage continuously so it can be messy
+						when you access some pages of it. I think I should be appologize for that.
+						I know someone may use Wordpress or Medium for their blogs but I don't like
+						 them. Because I have to build my blog from scrach, it may take some time
+						  to become perfect.</p>
+					<p class="hand-write">Hope you enjoy my articles.</p>
+					<p class="hand-write">Adam</p>
+					<p class="hand-write">March 16, 2022</p>
+					<div class="rightward">
+						<a href="https://serenefield.com/About" class="btn btn-outline-dark btn-sm" role="button" aria-disabled="true">See About Me</button></a>
+						<a href="https://serenefield.com/About" class="btn btn-dark btn-sm" role="button" aria-disabled="true">See Articles</button></a>
+					</div>
+			  </div>
+			</div>
+
 		</div>
+
+	</section>
+
+	<section id="cards">
+
+
 
 	</section>
 
@@ -146,4 +163,36 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Get connected with me on social networks:</span>
+    </div>
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="#" class="me-4 text-reset">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="#" class="me-4 text-reset">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+
+  <!-- Copyright -->
+  <div class="text-center p-2">
+    © 2022 Copyright: <a class="text-reset fw-bold" href="https://serenefield.com/">serenefield.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
 </html>

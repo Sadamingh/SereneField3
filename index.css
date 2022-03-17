@@ -7,6 +7,14 @@ div {
   margin-bottom: -1px;
 }
 
+footer {
+  font-size: 12px;
+}
+
+a.fab {
+  text-decoration: none;
+}
+
 .container-custom-1 {
   padding: 15 30 0 30;
 }
@@ -69,5 +77,27 @@ div {
 }
 
 .text {
-  padding: 2% 25% 0 25%;
+  padding: 2% 25% 3% 25%;
+}
+
+.header {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 42px;
+}
+
+.hand-write {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 18px;
+}
+
+.centerlize {
+  text-align: center;
+}
+
+.rightward {
+  text-align: right;
+}
+
+.pixelstyle {
+  font-family: 'Press Start 2P', cursive;
 }
