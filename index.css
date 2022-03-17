@@ -1,11 +1,13 @@
-.container-custom-1 {
+body {
   background-color: #000;
+}
+
+.container-custom-1 {
   padding: 15 30 0 30;
 }
 
 .container-custom-2 {
-  background-color: #000;
-  padding: 15 30 0 80;
+  padding: 15 30 0 30;
 }
 
 #bar {
@@ -36,6 +38,7 @@
   font-size: 1rem;
   line-height: 1.5;
   color: #dddddd;
+  padding: 0 50 0 50
 }
 
 .h1-style:hover {
@@ -58,4 +61,8 @@
   background-color: #000;
   text-align: center;
   padding: 0 0 2% 0;
+}
+
+.text {
+  padding: 2% 25% 0 25%;
 }
