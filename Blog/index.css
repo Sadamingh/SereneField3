@@ -20,7 +20,7 @@ a.fab {
 }
 
 .container-custom-2 {
-  padding: 15 30 0 30;
+  padding: 15 20% 0 75%;
 }
 
 #bar {
@@ -120,4 +120,16 @@ a.fab {
 
 .twr:hover {
   color: #1da1f2;
+}
+
+.searchbbox {
+  padding: 5 0 0 40;
+  position: absolute !important;
+  width: 270 !important;
+  right: 45px;
+}
+
+#cards {
+  padding-top: 80;
+  padding-bottom: 80;
 }
