@@ -132,8 +132,8 @@ a.fab {
 #carousel {
   padding-top: 60;
   padding-bottom: 40;
-  padding-left: 35%;
-  padding-right: 35%;
+  padding-left: 30%;
+  padding-right: 30%;
 }
 
 #cards {
@@ -153,4 +153,8 @@ a.fab {
 hr {
   margin-top: 5 !important;
   margin-bottom: 30 !important;
+}
+
+.h5-style {
+  background-color: rgba(0, 0, 0, .3)
 }
