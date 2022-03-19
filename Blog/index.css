@@ -129,7 +129,28 @@ a.fab {
   right: 45px;
 }
 
+#carousel {
+  padding-top: 60;
+  padding-bottom: 40;
+  padding-left: 35%;
+  padding-right: 35%;
+}
+
 #cards {
-  padding-top: 80;
-  padding-bottom: 80;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.onelineafter {
+  padding-bottom: 20;
+}
+
+.h2-style {
+  padding-top: 20;
+  padding-bottom: 0;
+}
+
+hr {
+  margin-top: 5 !important;
+  margin-bottom: 30 !important;
 }
