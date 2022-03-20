@@ -15,6 +15,10 @@ a.fab {
   text-decoration: none;
 }
 
+a {
+  text-decoration: none !important;
+}
+
 .container-custom-1 {
   padding: 15 30 0 30;
 }
@@ -148,4 +152,9 @@ a.fab {
   padding-bottom: 20;
   padding-left: 10%;
   padding-right: 10%;
+}
+
+.myproject {
+  padding-bottom: 20;
+  padding-top: 20;
 }
