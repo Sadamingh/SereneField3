@@ -11,6 +11,10 @@ footer {
   font-size: 12px;
 }
 
+a {
+  text-decoration: none !important;
+}
+
 a.fab {
   text-decoration: none;
 }
@@ -120,4 +124,25 @@ a.fab {
 
 .twr:hover {
   color: #1da1f2;
+}
+
+#personal-info {
+  padding-top: 30;
+  padding-bottom: 30;
+  padding-left: 25%;
+  padding-right: 25%;
+}
+
+.post-link {
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: black;
+
+  font-weight: bold;
+}
+
+.post-link:hover {
+  color: green;
 }

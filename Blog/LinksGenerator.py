@@ -22,7 +22,7 @@ def main():
                 name = post.replace(".html", "")
                 name = name.replace("-", " ")
                 name = name.replace("_", " ")
-                link_tag += f"<a href=\"./{post}\" class=\"post-link\">{name}</a>\n<br>\n"
+                link_tag += f"<a href=\"./{post}\"><div class=\"post-link\">{name}</div></a>\n<br>\n"
             links = BeautifulSoup(link_tag, 'html.parser')
             pi_section = soup.find("section", {"id": "personal-info"})
             pi_section.clear()
