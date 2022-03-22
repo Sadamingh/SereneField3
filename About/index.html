@@ -176,21 +176,65 @@
 				<div class="myproject" id="">
 					<div class="row">
 						<div class="col-lg-8">
-							<img src="./image/socket.png" alt="" class="w-100">
+							<img src="./image/search.png" alt="" class="w-100">
 						</div>
 						<div class="col-lg-4">
-							<h3>GETFILE Protocol</h3>
-							<p>GETFILE is a simple (FTP-like) protocol used to transfer a file
-								from one computer to another. For both the client and the server,
-								the implementation follows a boss-worker thread pattern. Thereby,
-								the server can handle more requests at a time and the workload generator
-								can also be able to download more than one file at a time. The implementation
-								of this project is not publicly released. </p>
-							<a href="./notes/socket.pdf">
-								<button type="button" class="btn btn-outline-dark btn-md dl-button">Read Document</button>
+							<h3>Search Engine</h3>
+							<p>The search engine project searches the document based on the keywords.
+								For linear search, we walk through all the files and check if there's a
+								keyword inside. For indexing search, we create an index by traversing all
+								the files at the beginning and it will return the intersection of documents
+								on keywords. This project also implement hash table indexing, which is even
+								more efficient.</p>
+							<a href="https://github.com/parrt/msds692/blob/master/hw/search.md">
+								<button type="button" class="btn btn-outline-dark btn-md dl-button"><i class="fab fa-github"></i> View Description</button>
 							</a>
 						</div>
 					</div>
+
+					<hr class="separator">
+
+					<div class="myproject" id="">
+						<div class="row">
+							<div class="col-lg-8">
+								<img src="./image/recommendation.png" alt="" class="w-100">
+							</div>
+							<div class="col-lg-4">
+								<h3>Recommendation System</h3>
+								<p> The recommendation system is based on a variant of word2vec called doc2vec,
+									which convert the whole document into a vector for comparisation. After converting,
+									it selects k nearest neighbourhood based on the current article and then makes
+									recommendations. This project also has an online demo but it can be very
+									slow based on different circumstances.</p>
+									<a href="https://github.com/parrt/msds692/blob/master/hw/recommender.md">
+										<button type="button" class="btn btn-outline-dark btn-md dl-button"><i class="fab fa-github"></i> View Description</button>
+									</a>
+									<a href="http://ec2-35-160-215-28.us-west-2.compute.amazonaws.com:5000/" class="p-2">
+										<button type="button" data-mdb-toggle="tooltip" class="btn btn-outline-dark btn-md dl-button" data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fab fa-aws"></i> View Demo</button>
+									</a>
+							</div>
+						</div>
+
+						<hr class="separator">
+
+						<div class="myproject" id="">
+							<div class="row">
+								<div class="col-lg-8">
+									<img src="./image/socket.png" alt="" class="w-100">
+								</div>
+								<div class="col-lg-4">
+									<h3>GETFILE Protocol</h3>
+									<p>GETFILE is a simple (FTP-like) protocol used to transfer a file
+										from one computer to another. For both the client and the server,
+										the implementation follows a boss-worker thread pattern. Thereby,
+										the server can handle more requests at a time and the workload generator
+										can also be able to download more than one file at a time. The implementation
+										of this project is not publicly released. </p>
+									<a href="./notes/socket.pdf">
+										<button type="button" class="btn btn-outline-dark btn-md dl-button">Read Document</button>
+									</a>
+								</div>
+							</div>
 
 					<hr class="separator">
 
