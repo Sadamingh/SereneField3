@@ -1,447 +1,630 @@
 <html>
-<head>
-
-	<!-- Title -->
-	<title> SereneField </title>
-	<!-- Favicon -->
-	<link rel="icon" href="../image/index/favicon.ico" type="image/x-icon">
-	<!-- CSS -->
-	<link rel="stylesheet" href="index.css">
-	<!-- Font awesome -->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
-	<!-- Bootstrap -->
-	<meta charset="utf-8">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<!-- Font-style -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Press+Start+2P&display=swap" rel="stylesheet">
-
-</head>
-<body>
-
-	<section id="bar">
-
-		<div class="container-custom-1">
-
-		<nav class="navbar navbar-expand-lg navbar-dark">
-			<a class="navbar-brand" href="https://serenefield.com">
-				<div class="title-icon">
-					<img src="../image/icon-min.png" alt="" id="title-icon">
-				</div>
-			</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNavDropdown">
-				<ul class="navbar-nav ms-auto">
-					<li class="navbar-item">
-						<a href="https://serenefield.com" class="nav-link">Home</a>
-					</li>
-					<li class="navbar-item">
-						<a href="https://serenefield.com/About" class="nav-link">About Me</a>
-					</li>
-					<li class="navbar-item">
-						<a href="https://serenefield.com/Blog" class="nav-link">Blogs</a>
-					</li>
-					<div class="btn-group">
-					<li class="nav-item dropdown">
-		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		          Projects
-		        </a>
-		        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-		          <a class="dropdown-item" href="#">Project_1</a>
-		          <a class="dropdown-item" href="#">Project_2</a>
-		          <a class="dropdown-item" href="#">Project_3</a>
-		        </div>
-      		</li>
-					<li class="nav-item dropdown">
-		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		          Interesting Links
-		        </a>
-		        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-		          <a class="dropdown-item" href="#">Link_1</a>
-		          <a class="dropdown-item" href="#">Link_2</a>
-		          <a class="dropdown-item" href="#">Link_3</a>
-		        </div>
-      		</li>
-				</ul>
-			</div>
-		</nav>
-
-	</div>
-
-	</section>
-
-	<section id="searchbox">
-
-		<div class="container-custom-2">
-			<div class="input-group mb-3 searchbbox">
-				<input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
-				<div class="input-group-append">
-					<button class="btn btn-dark" type="button">Search</button>
-				</div>
-			</div>
-		</div>
-
-	</section>
-
-	<section id="carousel" class="d-md-none d-lg-block">
-		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-		  <div class="carousel-inner">
-		    <div class="carousel-item active">
-					<a href="./posts/OperatingSystem">
-						<img class="d-block w-100 rounded" src="./image/mds/os-md.png" alt="First slide">
-						<div class="carousel-caption d-none d-md-block">
-							<h5 class="h5-style">Operating System</h5>
-					  </div>
-					</a>
-		    </div>
-		    <div class="carousel-item">
-					<a href="./posts/IntrotoMachineLearning">
-			      <img class="d-block w-100 rounded" src="./image/mds/ml-md.png" alt="Second slide">
-						<div class="carousel-caption d-none d-md-block">
-							<h5 class="h5-style">Introduction to Machine Learning</h5>
-					  </div>
-					</a>
-		    </div>
-		    <div class="carousel-item">
-					<a href="./posts/AdvancedMachineLearning">
-			      <img class="d-block w-100 rounded" src="./image/mds/aml-md.png" alt="Third slide">
-						<div class="carousel-caption d-none d-md-block">
-							<h5 class="h5-style">Advanced Machine Learning</h5>
-					  </div>
-					</a>
-		    </div>
-		  </div>
-		  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		    <span class="sr-only">Previous</span>
-		  </a>
-		  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-		    <span class="sr-only">Next</span>
-		  </a>
-		</div>
-	</section>
-
-	<section id="cards">
-
-		<h2 class="h2-style">Mathematics</h2>
-		<hr>
-
-		<div class="row">
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/la-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Linear Algebra</h5>
-				    <p class="card-text">Gaussian elimination, LU Factorization, subspaces, eigenvalues and eigenvectors, SVD, PCA, and other applications.</p>
-				    <a href="./posts/LinearAlgebra" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/pr-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Probability and Statistics</h5>
-				    <p class="card-text">Conditional probability, expectation, variance, joint probability, MLE and CLT, hypothesis testings, and distributions.</p>
-				    <a href="./posts/ProbabilityandStatistics" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/ap-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Statistics for Application</h5>
-				    <p class="card-text">LLN, CLT, confidence interval, moment generating functions, and so on. [Still not finish]</p>
-				    <a href="./posts/StatisticsForApplication" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/lr-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Linear Regression</h5>
-				    <p class="card-text">SLR estimaters and bias, MLR estimaters and bias, ANOVA (Type 1/2/3), model diagonsis and selection, logistic regression.</p>
-				    <a href="./posts/LinearRegression" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/ts-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Time Series Analytics</h5>
-				    <p class="card-text">Stationary condition, ARMA models, ARIMA models, partial autocorrelation, exponential smoothing techniques, and Prophet.</p>
-				    <a href="./posts/TimeSeriesAnalysis" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-
-			<h2 class="h2-style">Data Science</h2>
-			<hr>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/eda-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Data Visualization Design</h5>
-				    <p class="card-text">Data types, common charts, design principles, basic Matplotlib and Pandas, Stephen Few’s Rules for Color.</p>
-				    <a href="./posts/DataVisualizationDesign" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-					<img class="card-img-top" src="./image/mds/da-md.png" alt="Card image cap">
-					<div class="card-body">
-						<h5 class="card-title">Data Acquisition</h5>
-						<p class="card-text">Data pipeline, text processing, TFIDF, computer networks basics, AWS, cookies, APIs, and Selenium.</p>
-						<a href="./posts/DataAcquisition" class="btn btn-dark">Read More</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/ml-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Introduction to Machine Learning</h5>
-				    <p class="card-text">Ridge regression, LASSO regression, naive bayes, decision tree, random forest, clustering, and basic pyTorch.</p>
-				    <a href="./posts/IntrotoMachineLearning" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/aml-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Advanced Machine Learning</h5>
-				    <p class="card-text">Recommender system, backpropagation, neural network, AdaBoosting, gradient boosting, and basic NLP.</p>
-				    <a href="./posts/AdvancedMachineLearning" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/rdb-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Relational Database</h5>
-				    <p class="card-text">PostgreSQL, CRUD, JOIN, indexing, window function, database transaction, and schema refinement.</p>
-				    <a href="./posts/RelationalDatabase" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/nrdb-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Non Relational Database</h5>
-				    <p class="card-text">MongoDB, CRUD, and so on. [Still not finish]</p>
-				    <a href="./posts/NonRelationalDatabase" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/dc-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Distributed Computing</h5>
-				    <p class="card-text">Apache Spark, Spark operations, Spark RDD and paired RDD, Spark SQL, and Spark MLlib.</p>
-				    <a href="./posts/DistributedComputing" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/dp-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Data Pipeline</h5>
-				    <p class="card-text">Apache Airflow, DAG design, operators, sensors, xComs, Hooks, and subDAGs.</p>
-				    <a href="./posts/DataPipeline" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/d3-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">D3.js Guildlines</h5>
-				    <p class="card-text">[Not yet finished]</p>
-				    <a href="./posts/D3jsGuidlines" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-
-			<h2 class="h2-style">Computer Science</h2>
-			<hr>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/python-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Advanced Python</h5>
-				    <p class="card-text">Python, list comprehensions, set, dictionary, counter, string operations, OS/SYS modules, copies.</p>
-				    <a href="./posts/AdvancedPython" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/java-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Java Programming</h5>
-				    <p class="card-text">Java, data types, loops, input and output, functions and libraries, object oriented programming.</p>
-				    <a href="./posts/JavaProgramming" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/dsargo-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Data Structure and Algorithms</h5>
-				    <p class="card-text">Sorting algorithms, walking algorighms, searching algorithms, graph algorithms.</p>
-				    <a href="./posts/AlgoForDS" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/os-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Operating System</h5>
-				    <p class="card-text">Multi-process, multi-threads, mutual exclusion, condition variables, EDM, IPC, sync, I/O devices, and RPC.</p>
-				    <a href="./posts/OperatingSystem" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/hpca-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Computer Architecture</h5>
-				    <p class="card-text">RISC assembly, branch prediction, data dependency, Tomasulo's algo, memory ordering, cache and LRU, coherence and consistency.</p>
-				    <a href="./posts/HighPerformanceArchitecture" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/web-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Web Development</h5>
-				    <p class="card-text">[Not yet finished]</p>
-				    <a href="./posts/WebDevelopment" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/vgd-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Video Game Design</h5>
-				    <p class="card-text">About how to make a toy game using Unity 3D.</p>
-				    <a href="./posts/VideoGameDesign" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/sdp-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Software Development Process</h5>
-				    <p class="card-text">IDE, VCS, OOP, UML, Android development, requirement engineering, design patterns, black/white-box testing.</p>
-				    <a href="./posts/SoftwareDevelopmentProcess" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/cli-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Play with Command Lines</h5>
-				    <p class="card-text">Introduction to bash and other command line commands.</p>
-				    <a href="./posts/CommandLines" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/regex-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Regular Expressions</h5>
-				    <p class="card-text">Introduction to regular expressions.</p>
-				    <a href="./posts/Regex" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/css-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Computer Systems Experiments</h5>
-				    <p class="card-text">Experiments based on Raspberry Pi.</p>
-				    <a href="./posts/ComputerSystemExperiments" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/islab-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Information Security Lab</h5>
-				    <p class="card-text">GDB, PWN, ida, shellcode, stack overflow, and so on. [Still not finish]</p>
-				    <a href="./posts/InformationSecurity" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
-				<div class="card">
-				  <img class="card-img-top" src="./image/mds/gh-md.png" alt="Card image cap">
-				  <div class="card-body">
-				    <h5 class="card-title">Git and GitHub</h5>
-				    <p class="card-text">Introduction to git and GitHub. Need updates for rebase.</p>
-				    <a href="./posts/GitHub" class="btn btn-dark">Read More</a>
-				  </div>
-				</div>
-			</div>
-	</section>
-
-
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-</body>
-
-<footer class="text-center text-lg-start bg-light text-muted">
-
-  <section class="d-flex justify-content-center justify-content-lg-between p-3 border-bottom">
-    <div class="me-5 d-none d-lg-block">
-      <span>Get connected with me on social networks:</span>
-    </div>
-    <div>
-			<a href="https://twitter.com/AdamEdelweiss" class="me-4 text-reset">
-				<i class="fab fa-twitter twr"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/yufengxing/" class="me-4 text-reset">
-        <i class="fab fa-linkedin linkedin"></i>
-      </a>
-      <a href="https://github.com/Sadamingh" class="me-4 text-reset github">
-        <i class="fab fa-github github"></i>
-      </a>
-			<a href="mailto:yxing11@dons.usfca.edu?subject=%5BMessage%20from%20Blog%5D" class="me-4 text-reset gmail">
-        <i class="fa fa-envelope gmail"></i>
-      </a>
-    </div>
+ <head>
+  <!-- Title -->
+  <title>
+   SereneField
+  </title>
+  <!-- Favicon -->
+  <link href="../image/index/favicon.ico" rel="icon" type="image/x-icon"/>
+  <!-- CSS -->
+  <link href="index.css" rel="stylesheet"/>
+  <!-- Font awesome -->
+  <link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet"/>
+  <!-- Bootstrap -->
+  <meta charset="utf-8"/>
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" rel="stylesheet"/>
+  <!-- Font-style -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&amp;family=Press+Start+2P&amp;display=swap" rel="stylesheet"/>
+ </head>
+ <body>
+  <section id="bar">
+   <div class="container-custom-1">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+     <a class="navbar-brand" href="https://serenefield.com">
+      <div class="title-icon">
+       <img alt="" id="title-icon" src="../image/icon-min.png"/>
+      </div>
+     </a>
+     <button aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarNavDropdown" data-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon">
+      </span>
+     </button>
+     <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
+       <li class="navbar-item">
+        <a class="nav-link" href="https://serenefield.com">
+         Home
+        </a>
+       </li>
+       <li class="navbar-item">
+        <a class="nav-link" href="https://serenefield.com/About">
+         About Me
+        </a>
+       </li>
+       <li class="navbar-item">
+        <a class="nav-link" href="https://serenefield.com/Blog">
+         Blogs
+        </a>
+       </li>
+       <div class="btn-group">
+        <li class="nav-item dropdown">
+         <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">
+          My Projects
+         </a>
+         <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
+          <a class="dropdown-item" href="https://github.com/parrt/msds692/blob/master/hw/search.md">
+           Search Engine
+          </a>
+          <a class="dropdown-item" href="https://github.com/parrt/msds692/blob/master/hw/recommender.md">
+           Recommender
+          </a>
+          <a class="dropdown-item" href="https://github.com/Sadamingh/Projects/blob/main/Android%20Dev/UserManual.md">
+           Android APP
+          </a>
+          <a class="dropdown-item" href="https://serenefield.com/About/notes/gRPC.pdf">
+           Distributed FS
+          </a>
+          <a class="dropdown-item" href="https://serenefield.com/About/">
+           Read More
+          </a>
+         </div>
+        </li>
+       </div>
+      </ul>
+     </div>
+    </nav>
+   </div>
   </section>
-
+  <section id="searchbox">
+   <div class="container-custom-2">
+    <div class="input-group mb-3 searchbbox">
+     <input aria-describedby="basic-addon2" aria-label="Search" class="form-control" placeholder="Search" type="text"/>
+     <div class="input-group-append">
+      <button class="btn btn-dark" type="button">
+       Search
+      </button>
+     </div>
+    </div>
+   </div>
+  </section>
+  <section class="d-md-none d-lg-block" id="carousel">
+   <div class="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
+    <div class="carousel-inner">
+     <div class="carousel-item active">
+      <a href="./posts/OperatingSystem">
+       <img alt="First slide" class="d-block w-100 rounded" src="./image/mds/os-md.png"/>
+       <div class="carousel-caption d-none d-md-block">
+        <h5 class="h5-style">
+         Operating System
+        </h5>
+       </div>
+      </a>
+     </div>
+     <div class="carousel-item">
+      <a href="./posts/IntrotoMachineLearning">
+       <img alt="Second slide" class="d-block w-100 rounded" src="./image/mds/ml-md.png"/>
+       <div class="carousel-caption d-none d-md-block">
+        <h5 class="h5-style">
+         Introduction to Machine Learning
+        </h5>
+       </div>
+      </a>
+     </div>
+     <div class="carousel-item">
+      <a href="./posts/AdvancedMachineLearning">
+       <img alt="Third slide" class="d-block w-100 rounded" src="./image/mds/aml-md.png"/>
+       <div class="carousel-caption d-none d-md-block">
+        <h5 class="h5-style">
+         Advanced Machine Learning
+        </h5>
+       </div>
+      </a>
+     </div>
+    </div>
+    <a class="carousel-control-prev" data-slide="prev" href="#carouselExampleIndicators" role="button">
+     <span aria-hidden="true" class="carousel-control-prev-icon">
+     </span>
+     <span class="sr-only">
+      Previous
+     </span>
+    </a>
+    <a class="carousel-control-next" data-slide="next" href="#carouselExampleIndicators" role="button">
+     <span aria-hidden="true" class="carousel-control-next-icon">
+     </span>
+     <span class="sr-only">
+      Next
+     </span>
+    </a>
+   </div>
+  </section>
+  <section id="cards">
+   <h2 class="h2-style">
+    Mathematics
+   </h2>
+   <hr/>
+   <div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/la-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Linear Algebra
+       </h5>
+       <p class="card-text">
+        Gaussian elimination, LU Factorization, subspaces, eigenvalues and eigenvectors, SVD, PCA, and other applications.
+       </p>
+       <a class="btn btn-dark" href="./posts/LinearAlgebra">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/pr-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Probability and Statistics
+       </h5>
+       <p class="card-text">
+        Conditional probability, expectation, variance, joint probability, MLE and CLT, hypothesis testings, and distributions.
+       </p>
+       <a class="btn btn-dark" href="./posts/ProbabilityandStatistics">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/ap-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Statistics for Application
+       </h5>
+       <p class="card-text">
+        LLN, CLT, confidence interval, moment generating functions, and so on. [Still not finish]
+       </p>
+       <a class="btn btn-dark" href="./posts/StatisticsForApplication">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/lr-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Linear Regression
+       </h5>
+       <p class="card-text">
+        SLR estimaters and bias, MLR estimaters and bias, ANOVA (Type 1/2/3), model diagonsis and selection, logistic regression.
+       </p>
+       <a class="btn btn-dark" href="./posts/LinearRegression">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/ts-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Time Series Analytics
+       </h5>
+       <p class="card-text">
+        Stationary condition, ARMA models, ARIMA models, partial autocorrelation, exponential smoothing techniques, and Prophet.
+       </p>
+       <a class="btn btn-dark" href="./posts/TimeSeriesAnalysis">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <h2 class="h2-style">
+     Data Science
+    </h2>
+    <hr/>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/eda-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Data Visualization Design
+       </h5>
+       <p class="card-text">
+        Data types, common charts, design principles, basic Matplotlib and Pandas, Stephen Few’s Rules for Color.
+       </p>
+       <a class="btn btn-dark" href="./posts/DataVisualizationDesign">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/da-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Data Acquisition
+       </h5>
+       <p class="card-text">
+        Data pipeline, text processing, TFIDF, computer networks basics, AWS, cookies, APIs, and Selenium.
+       </p>
+       <a class="btn btn-dark" href="./posts/DataAcquisition">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/ml-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Introduction to Machine Learning
+       </h5>
+       <p class="card-text">
+        Ridge regression, LASSO regression, naive bayes, decision tree, random forest, clustering, and basic pyTorch.
+       </p>
+       <a class="btn btn-dark" href="./posts/IntrotoMachineLearning">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/aml-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Advanced Machine Learning
+       </h5>
+       <p class="card-text">
+        Recommender system, backpropagation, neural network, AdaBoosting, gradient boosting, and basic NLP.
+       </p>
+       <a class="btn btn-dark" href="./posts/AdvancedMachineLearning">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/rdb-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Relational Database
+       </h5>
+       <p class="card-text">
+        PostgreSQL, CRUD, JOIN, indexing, window function, database transaction, and schema refinement.
+       </p>
+       <a class="btn btn-dark" href="./posts/RelationalDatabase">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/nrdb-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Non Relational Database
+       </h5>
+       <p class="card-text">
+        MongoDB, CRUD, and so on. [Still not finish]
+       </p>
+       <a class="btn btn-dark" href="./posts/NonRelationalDatabase">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/dc-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Distributed Computing
+       </h5>
+       <p class="card-text">
+        Apache Spark, Spark operations, Spark RDD and paired RDD, Spark SQL, and Spark MLlib.
+       </p>
+       <a class="btn btn-dark" href="./posts/DistributedComputing">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/dp-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Data Pipeline
+       </h5>
+       <p class="card-text">
+        Apache Airflow, DAG design, operators, sensors, xComs, Hooks, and subDAGs.
+       </p>
+       <a class="btn btn-dark" href="./posts/DataPipeline">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/d3-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        D3.js Guildlines
+       </h5>
+       <p class="card-text">
+        [Not yet finished]
+       </p>
+       <a class="btn btn-dark" href="./posts/D3jsGuidlines">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <h2 class="h2-style">
+     Computer Science
+    </h2>
+    <hr/>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/python-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Advanced Python
+       </h5>
+       <p class="card-text">
+        Python, list comprehensions, set, dictionary, counter, string operations, OS/SYS modules, copies.
+       </p>
+       <a class="btn btn-dark" href="./posts/AdvancedPython">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/java-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Java Programming
+       </h5>
+       <p class="card-text">
+        Java, data types, loops, input and output, functions and libraries, object oriented programming.
+       </p>
+       <a class="btn btn-dark" href="./posts/JavaProgramming">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/dsargo-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Data Structure and Algorithms
+       </h5>
+       <p class="card-text">
+        Sorting algorithms, walking algorighms, searching algorithms, graph algorithms.
+       </p>
+       <a class="btn btn-dark" href="./posts/AlgoForDS">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/os-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Operating System
+       </h5>
+       <p class="card-text">
+        Multi-process, multi-threads, mutual exclusion, condition variables, EDM, IPC, sync, I/O devices, and RPC.
+       </p>
+       <a class="btn btn-dark" href="./posts/OperatingSystem">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/hpca-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Computer Architecture
+       </h5>
+       <p class="card-text">
+        RISC assembly, branch prediction, data dependency, Tomasulo's algo, memory ordering, cache and LRU, coherence and consistency.
+       </p>
+       <a class="btn btn-dark" href="./posts/HighPerformanceArchitecture">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/web-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Web Development
+       </h5>
+       <p class="card-text">
+        [Not yet finished]
+       </p>
+       <a class="btn btn-dark" href="./posts/WebDevelopment">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/vgd-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Video Game Design
+       </h5>
+       <p class="card-text">
+        About how to make a toy game using Unity 3D.
+       </p>
+       <a class="btn btn-dark" href="./posts/VideoGameDesign">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/sdp-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Software Development Process
+       </h5>
+       <p class="card-text">
+        IDE, VCS, OOP, UML, Android development, requirement engineering, design patterns, black/white-box testing.
+       </p>
+       <a class="btn btn-dark" href="./posts/SoftwareDevelopmentProcess">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/cli-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Play with Command Lines
+       </h5>
+       <p class="card-text">
+        Introduction to bash and other command line commands.
+       </p>
+       <a class="btn btn-dark" href="./posts/CommandLines">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/regex-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Regular Expressions
+       </h5>
+       <p class="card-text">
+        Introduction to regular expressions.
+       </p>
+       <a class="btn btn-dark" href="./posts/Regex">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/css-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Computer Systems Experiments
+       </h5>
+       <p class="card-text">
+        Experiments based on Raspberry Pi.
+       </p>
+       <a class="btn btn-dark" href="./posts/ComputerSystemExperiments">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/islab-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Information Security Lab
+       </h5>
+       <p class="card-text">
+        GDB, PWN, ida, shellcode, stack overflow, and so on. [Still not finish]
+       </p>
+       <a class="btn btn-dark" href="./posts/InformationSecurity">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 onelineafter">
+     <div class="card">
+      <img alt="Card image cap" class="card-img-top" src="./image/mds/gh-md.png"/>
+      <div class="card-body">
+       <h5 class="card-title">
+        Git and GitHub
+       </h5>
+       <p class="card-text">
+        Introduction to git and GitHub. Need updates for rebase.
+       </p>
+       <a class="btn btn-dark" href="./posts/GitHub">
+        Read More
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <script crossorigin="anonymous" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" src="https://code.jquery.com/jquery-3.2.1.slim.min.js">
+  </script>
+  <script crossorigin="anonymous" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js">
+  </script>
+  <script crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
+  </script>
+ </body>
+ <footer class="text-center text-lg-start bg-light text-muted">
+  <section class="d-flex justify-content-center justify-content-lg-between p-3 border-bottom">
+   <div class="me-5 d-none d-lg-block">
+    <span>
+     Get connected with me on social networks:
+    </span>
+   </div>
+   <div>
+    <a class="me-4 text-reset" href="https://twitter.com/AdamEdelweiss">
+     <i class="fab fa-twitter twr">
+     </i>
+    </a>
+    <a class="me-4 text-reset" href="https://www.linkedin.com/in/yufengxing/">
+     <i class="fab fa-linkedin linkedin">
+     </i>
+    </a>
+    <a class="me-4 text-reset github" href="https://github.com/Sadamingh">
+     <i class="fab fa-github github">
+     </i>
+    </a>
+    <a class="me-4 text-reset gmail" href="mailto:yxing11@dons.usfca.edu?subject=%5BMessage%20from%20Blog%5D">
+     <i class="fa fa-envelope gmail">
+     </i>
+    </a>
+   </div>
+  </section>
   <div class="text-center p-2">
-    © 2022 Copyright: <a class="text-reset fw-bold" href="https://serenefield.com/">serenefield.com</a>
+   © 2022 Copyright:
+   <a class="text-reset fw-bold" href="https://serenefield.com/">
+    serenefield.com
+   </a>
   </div>
-
-</footer>
-
+ </footer>
 </html>

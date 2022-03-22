@@ -1,23 +1,36 @@
 import os
+from bs4 import BeautifulSoup
 
 string_to_replace = """<li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">
 Projects
 </a>
-<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-<a class="dropdown-item" href="#">Project_1</a>
-<a class="dropdown-item" href="#">Project_2</a>
-<a class="dropdown-item" href="#">Project_3</a>
+<div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
+<a class="dropdown-item" href="#">
+Project_1
+</a>
+<a class="dropdown-item" href="#">
+Project_2
+</a>
+<a class="dropdown-item" href="#">
+Project_3
+</a>
 </div>
 </li>
 <li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">
 Interesting Links
 </a>
-<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-<a class="dropdown-item" href="#">Link_1</a>
-<a class="dropdown-item" href="#">Link_2</a>
-<a class="dropdown-item" href="#">Link_3</a>
+<div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu dropdown-menu-end">
+<a class="dropdown-item" href="#">
+Link_1
+</a>
+<a class="dropdown-item" href="#">
+Link_2
+</a>
+<a class="dropdown-item" href="#">
+Link_3
+</a>
 </div>
 </li>
 """
@@ -49,7 +62,7 @@ for root, subdirs, files in os.walk("./"):
 
 for n, filename in enumerate(indexes):
 
-    print(len(indexes) - n)
+    print(len(indexes) - n, filename)
 
     with open(filename, "r") as fp:
         content = fp.readlines()
@@ -58,5 +71,8 @@ for n, filename in enumerate(indexes):
         content = "".join(content)
         content = content.replace(string_to_replace, string_after_replace)
 
-    with open("index.html", "w") as fp:
+    soup = BeautifulSoup(content, "html.parser")
+    content = soup.prettify()
+
+    with open(filename, "w") as fp:
         fp.write(content)

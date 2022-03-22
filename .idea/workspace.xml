@@ -2,8 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5347a100-e1fc-493e-9304-9f60ca223130" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/About/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/About/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/About/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/About/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/Advanced Python/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/Advanced Python/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/AdvancedMachineLearning/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/AdvancedMachineLearning/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/AdvancedPython/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/AdvancedPython/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/AlgoForDS/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/AlgoForDS/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/ChineseArticles/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/ChineseArticles/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/CommandLines/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/CommandLines/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/ComputerSystemExperiments/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/ComputerSystemExperiments/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/D3jsGuidlines/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/D3jsGuidlines/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/DataAcquisition/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/DataAcquisition/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/DataPipeline/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/DataPipeline/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/DataScienceExperiments/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/DataScienceExperiments/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/DataStructureAndAlgo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/DataStructureAndAlgo/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/DataVisualizationDesign/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/DataVisualizationDesign/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/DistributedComputing/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/DistributedComputing/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/GitHub/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/GitHub/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/HighPerformanceArchitecture/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/HighPerformanceArchitecture/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/InformationSecurity/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/InformationSecurity/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/IntrotoMachineLearning/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/IntrotoMachineLearning/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/JavaProgramming/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/JavaProgramming/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/Leetcode/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/Leetcode/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/LinearAlgebra/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/LinearAlgebra/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/LinearRegression/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/LinearRegression/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/NonRelationalDatabase/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/NonRelationalDatabase/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/OperatingSystem/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/OperatingSystem/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/Others/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/Others/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/PWN/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/PWN/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/ProbabilityandStatistics/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/ProbabilityandStatistics/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/Regex/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/Regex/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/RelationalDatabase/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/RelationalDatabase/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/Responses/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/Responses/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/SoftwareDevelopmentProcess/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/SoftwareDevelopmentProcess/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/StatisticsForApplication/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/StatisticsForApplication/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/TimeSeriesAnalysis/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/TimeSeriesAnalysis/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/VideoGameDesign/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/VideoGameDesign/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/posts/WebDevelopment/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/posts/WebDevelopment/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navbarRelpacer.py" beforeDir="false" afterPath="$PROJECT_DIR$/navbarRelpacer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,21 +115,21 @@
       <screen x="40" y="0" width="1400" height="900" />
     </state>
     <state x="480" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/40.0.1400.900/1440.0.1920.1080@40.0.1400.900" timestamp="1647914341333" />
-    <state width="1374" height="231" key="GridCell.Tab.0.bottom" timestamp="1647915317286">
+    <state width="1374" height="231" key="GridCell.Tab.0.bottom" timestamp="1647916160013">
       <screen x="40" y="0" width="1400" height="900" />
     </state>
-    <state width="1374" height="231" key="GridCell.Tab.0.bottom/40.0.1400.900/1440.0.1920.1080@40.0.1400.900" timestamp="1647915317286" />
-    <state width="1374" height="231" key="GridCell.Tab.0.center" timestamp="1647915317285">
+    <state width="1374" height="231" key="GridCell.Tab.0.bottom/40.0.1400.900/1440.0.1920.1080@40.0.1400.900" timestamp="1647916160013" />
+    <state width="1374" height="231" key="GridCell.Tab.0.center" timestamp="1647916160012">
       <screen x="40" y="0" width="1400" height="900" />
     </state>
-    <state width="1374" height="231" key="GridCell.Tab.0.center/40.0.1400.900/1440.0.1920.1080@40.0.1400.900" timestamp="1647915317285" />
-    <state width="1374" height="231" key="GridCell.Tab.0.left" timestamp="1647915317284">
+    <state width="1374" height="231" key="GridCell.Tab.0.center/40.0.1400.900/1440.0.1920.1080@40.0.1400.900" timestamp="1647916160012" />
+    <state width="1374" height="231" key="GridCell.Tab.0.left" timestamp="1647916160010">
       <screen x="40" y="0" width="1400" height="900" />
     </state>
-    <state width="1374" height="231" key="GridCell.Tab.0.left/40.0.1400.900/1440.0.1920.1080@40.0.1400.900" timestamp="1647915317284" />
-    <state width="1374" height="231" key="GridCell.Tab.0.right" timestamp="1647915317285">
+    <state width="1374" height="231" key="GridCell.Tab.0.left/40.0.1400.900/1440.0.1920.1080@40.0.1400.900" timestamp="1647916160010" />
+    <state width="1374" height="231" key="GridCell.Tab.0.right" timestamp="1647916160012">
       <screen x="40" y="0" width="1400" height="900" />
     </state>
-    <state width="1374" height="231" key="GridCell.Tab.0.right/40.0.1400.900/1440.0.1920.1080@40.0.1400.900" timestamp="1647915317285" />
+    <state width="1374" height="231" key="GridCell.Tab.0.right/40.0.1400.900/1440.0.1920.1080@40.0.1400.900" timestamp="1647916160012" />
   </component>
 </project>
