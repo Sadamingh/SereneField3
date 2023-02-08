@@ -1,62 +1,107 @@
 import os
 from bs4 import BeautifulSoup
 
-string_to_replace = """<li class="nav-item dropdown">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">
-Projects
-</a>
-<div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
-<a class="dropdown-item" href="#">
-Project_1
-</a>
-<a class="dropdown-item" href="#">
-Project_2
-</a>
-<a class="dropdown-item" href="#">
-Project_3
-</a>
-</div>
+string_to_replace = """<a class="nav-link" href=".">
+         Home
+        </a>
 </li>
+<li class="navbar-item">
+<a class="nav-link" href="./About">
+         About Me
+        </a>
+</li>
+<li class="navbar-item">
+<a class="nav-link" href="./Blog">
+         Blogs
+        </a>
+</li>
+<div class="btn-group">
 <li class="nav-item dropdown">
 <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">
-Interesting Links
-</a>
-<div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu dropdown-menu-end">
-<a class="dropdown-item" href="#">
-Link_1
-</a>
-<a class="dropdown-item" href="#">
-Link_2
-</a>
-<a class="dropdown-item" href="#">
-Link_3
-</a>
+          My Projects
+         </a>
+<div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
+<a class="dropdown-item" href="https://github.com/parrt/msds692/blob/master/hw/search.md">
+           Search Engine
+          </a>
+<a class="dropdown-item" href="https://github.com/parrt/msds692/blob/master/hw/recommender.md">
+           Recommender
+          </a>
+<a class="dropdown-item" href="https://github.com/Sadamingh/Projects/blob/main/Android%20Dev/UserManual.md">
+           Android APP
+          </a>
+<a class="dropdown-item" href="./About/notes/gRPC.pdf">
+           Distributed FS
+          </a>
+<a class="dropdown-item" href="./About/">
+           Read More
+          </a>
 </div>
 </li>
+</div>
+</ul>
+</div>
+</nav>
+</div>
+</section>
 """
 
-string_after_replace = """<li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-My Projects
-</a>
-<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-<a class="dropdown-item" href="https://github.com/parrt/msds692/blob/master/hw/search.md">Search Engine</a>
-<a class="dropdown-item" href="https://github.com/parrt/msds692/blob/master/hw/recommender.md">Recommender</a>
-<a class="dropdown-item" href="https://github.com/Sadamingh/Projects/blob/main/Android%20Dev/UserManual.md">Android APP</a>
-<a class="dropdown-item" href="./About/notes/gRPC.pdf">Distributed FS</a>
-<a class="dropdown-item" href="./About/">Read More</a>
+string_after_replace = """<a class="nav-link" href="../../..">
+         Home
+        </a>
+</li>
+<li class="navbar-item">
+<a class="nav-link" href="../../../About">
+         About Me
+        </a>
+</li>
+<li class="navbar-item">
+<a class="nav-link" href="../../../Blog">
+         Blogs
+        </a>
+</li>
+<div class="btn-group">
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">
+          My Projects
+         </a>
+<div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
+<a class="dropdown-item" href="https://github.com/parrt/msds692/blob/master/hw/search.md">
+           Search Engine
+          </a>
+<a class="dropdown-item" href="https://github.com/parrt/msds692/blob/master/hw/recommender.md">
+           Recommender
+          </a>
+<a class="dropdown-item" href="https://github.com/Sadamingh/Projects/blob/main/Android%20Dev/UserManual.md">
+           Android APP
+          </a>
+<a class="dropdown-item" href="../../../About/notes/gRPC.pdf">
+           Distributed FS
+          </a>
+<a class="dropdown-item" href="../../../About/">
+           Read More
+          </a>
 </div>
 </li>
+</div>
+</ul>
+</div>
+</nav>
+</div>
+</section>
 """
 
 
 indexes = []
 
 for root, subdirs, files in os.walk("./"):
-    if root == "./":
-        indexes.append("./index.html")
-        continue
-    if ".git" not in root:
+    # if root == "./":
+    #     indexes.append("./index.html")
+    #     continue
+    # if ".git" not in root:
+    #     if "index.html" in files:
+    #         indexes.append(root + "/index.html")
+    if root.startswith("./Blog/posts"):
         if "index.html" in files:
             indexes.append(root + "/index.html")
 
