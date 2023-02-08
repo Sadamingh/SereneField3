@@ -43,8 +43,8 @@ My Projects
 <a class="dropdown-item" href="https://github.com/parrt/msds692/blob/master/hw/search.md">Search Engine</a>
 <a class="dropdown-item" href="https://github.com/parrt/msds692/blob/master/hw/recommender.md">Recommender</a>
 <a class="dropdown-item" href="https://github.com/Sadamingh/Projects/blob/main/Android%20Dev/UserManual.md">Android APP</a>
-<a class="dropdown-item" href="https://serenefield.com/About/notes/gRPC.pdf">Distributed FS</a>
-<a class="dropdown-item" href="https://serenefield.com/About/">Read More</a>
+<a class="dropdown-item" href="./About/notes/gRPC.pdf">Distributed FS</a>
+<a class="dropdown-item" href="./About/">Read More</a>
 </div>
 </li>
 """

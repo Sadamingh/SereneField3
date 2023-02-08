@@ -107,7 +107,7 @@ Here, the method we are going to use is the gradient descent, which is generally
 $$
 w \leftarrow w + \eta\nabla Loss
 $$
-We have talked about different gradient methods in [this article](https://serenefield.com/Blog/posts/IntrotoMachineLearning/2021-11-11_Intro-to-Machine-Learning-2---Linear-Model-Regularization-and-Various-Types-of-Gradient-Descents-2ea9f5aa1294.html) and please review them if you need. Notice that momentum gradient descent is a simple by efficency method that we can use for this optimization. The moving average of the current gradient and the history gradients are defined as,
+We have talked about different gradient methods in [this article](./Blog/posts/IntrotoMachineLearning/2021-11-11_Intro-to-Machine-Learning-2---Linear-Model-Regularization-and-Various-Types-of-Gradient-Descents-2ea9f5aa1294.html) and please review them if you need. Notice that momentum gradient descent is a simple by efficency method that we can use for this optimization. The moving average of the current gradient and the history gradients are defined as,
 $$
 v \leftarrow \gamma v+(1-\gamma) \nabla Loss
 $$
